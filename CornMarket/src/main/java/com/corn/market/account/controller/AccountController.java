@@ -24,13 +24,19 @@ public class AccountController {
 		return "account/searchid";
 	}
 	
+	//비밀번호 찾기 페이지 이동
+	@RequestMapping(value = "/account/pw", method = RequestMethod.GET)
+	public String searchPwGET() {
+		return "account/searchpw";
+	}
+	
 	//아이디 찾기 - 휴대폰번호로
 	@RequestMapping(value = "/account/id/phone", method = RequestMethod.POST)
 	public String searchIdPhone(SearchIdPhone phone, Model model) {
 		System.out.println(phone); //
 		AccountId accountId = service.searchIdPhone(phone);
 		model.addAttribute("accountId",accountId);
-		return "account/test";
+		return "account/id_popup";
 	}
 	
 	//아이디 찾기 - 이메일로
@@ -39,13 +45,9 @@ public class AccountController {
 		System.out.println(mail);
 		AccountId accountId = service.searchIdMail(mail);
 		model.addAttribute("accountId",accountId);
-		return "account/test";
+		return "account/id_popup";
 	}
 	
-	@RequestMapping(value = "/account/pw", method = RequestMethod.GET)
-	public String searchPwGET() {
-		//아이디 찾기 페이지 이동
-		return "account/searchpw";
-	}
+	
 	
 }
