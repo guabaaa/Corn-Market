@@ -1,15 +1,15 @@
 package com.corn.market.account.domain;
 
-public class AccountIdPhone {
+public class SearchIdPhone {
 	
 	String user_name;
 	String phone;
 	
-	public AccountIdPhone() {
+	public SearchIdPhone() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AccountIdPhone(String user_name, String phone) {
+	public SearchIdPhone(String user_name, String phone) {
 		super();
 		this.user_name = user_name;
 		this.phone = phone;

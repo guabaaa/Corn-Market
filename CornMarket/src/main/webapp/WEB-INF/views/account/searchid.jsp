@@ -8,6 +8,19 @@
     <meta charset="UTF-8" />
     <title>아이디/비밀번호 찾기</title>
     <link rel="stylesheet" href="${path}/resources/css/searchidpw.css" />
+    <script> 
+      function openPopup(){
+        let url = "";
+        let windowTargetName = "targetName";
+        let features = "scrollbars=yes,width=1000,height=800,location=no, resizable=yes";
+        window.open(url, windowTargetName, features);
+
+        frm1.action = "<c:url value='/account/id/phone'/>";
+        frm1.method = "POST";
+        frm1.target = windowTargetName;
+        frm1.submit();
+      }
+    </script>
   </head>
   <body>
     <div class="search-idpw-title">
@@ -35,7 +48,7 @@
                 <button type="button">등록된 휴대폰번호로 찾기</button>
               </div>
               <div class="inputEnter" style="display: block">
-                <form action="<c:url value='/account/id/phone'/>" method="POST">
+                <form action="<c:url value='/account/id/phone'/>" method="POST" name="frm1">
                     <div class="inputBox">
                       <div class="styleInput">
                         <input id="memberNm1" name="user_name" type="text" class="input1" placeholder="이름" />
@@ -55,7 +68,7 @@
                       </div>
                     </div>
                     <div class="btnArea">
-                      <button type="submit" onclick="" class="btnYellow">확인</button>
+                      <button type="button" onclick="openPopup()" class="btnYellow">확인</button>
                     </div>
                 </form>
               </div>

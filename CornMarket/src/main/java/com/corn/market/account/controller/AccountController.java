@@ -2,11 +2,14 @@ package com.corn.market.account.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.corn.market.account.domain.AccountIdMail;
-import com.corn.market.account.domain.AccountIdPhone;
+import com.corn.market.account.domain.AccountId;
+import com.corn.market.account.domain.SearchIdMail;
+import com.corn.market.account.domain.SearchIdPhone;
 import com.corn.market.account.service.AccountService;
 
 @Controller
@@ -23,15 +26,16 @@ public class AccountController {
 	
 	//아이디 찾기 - 휴대폰번호로
 	@RequestMapping(value = "/account/id/phone", method = RequestMethod.POST)
-	public String searchIdPhone(AccountIdPhone phone) {
-		System.out.println(phone);
-		
-		return "id";
+	public String searchIdPhone(SearchIdPhone phone, Model model) {
+		System.out.println(phone); //
+		AccountId accountId = service.searchIdPhone(phone);
+		model.addAttribute("accountId",accountId);
+		return "account/test";
 	}
 	
 	//아이디 찾기 - 이메일로
 	@RequestMapping(value = "/account/id/mail", method = RequestMethod.POST)
-	public String searchIdMail(AccountIdMail mail) {
+	public String searchIdMail(SearchIdMail mail) {
 		System.out.println(mail);
 		
 		return "id";

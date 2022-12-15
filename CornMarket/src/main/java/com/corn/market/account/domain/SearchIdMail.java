@@ -1,28 +1,18 @@
 package com.corn.market.account.domain;
 
-public class AccountPw {
-	
-	String user_id;
+public class SearchIdMail {
+
 	String user_name;
 	String email;
 	
-	public AccountPw() {
+	public SearchIdMail() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AccountPw(String user_id, String user_name, String email) {
+	public SearchIdMail(String user_name, String email) {
 		super();
-		this.user_id = user_id;
 		this.user_name = user_name;
 		this.email = email;
-	}
-
-	public String getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
 	}
 
 	public String getUser_name() {
@@ -43,7 +33,9 @@ public class AccountPw {
 
 	@Override
 	public String toString() {
-		return "AccountPw [user_id=" + user_id + ", user_name=" + user_name + ", email=" + email + "]";
+		return "AccountIdMail [user_name=" + user_name + ", email=" + email + "]";
 	}
+	
+	
 	
 }
