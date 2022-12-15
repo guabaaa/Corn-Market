@@ -35,10 +35,11 @@ public class AccountController {
 	
 	//아이디 찾기 - 이메일로
 	@RequestMapping(value = "/account/id/mail", method = RequestMethod.POST)
-	public String searchIdMail(SearchIdMail mail) {
+	public String searchIdMail(SearchIdMail mail, Model model) {
 		System.out.println(mail);
-		
-		return "id";
+		AccountId accountId = service.searchIdMail(mail);
+		model.addAttribute("accountId",accountId);
+		return "account/test";
 	}
 	
 	@RequestMapping(value = "/account/pw", method = RequestMethod.GET)
