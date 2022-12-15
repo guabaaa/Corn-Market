@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.corn.market.account.domain.AccountId;
+import com.corn.market.account.domain.AccountPw;
 import com.corn.market.account.domain.SearchIdMail;
 import com.corn.market.account.domain.SearchIdPhone;
+import com.corn.market.account.domain.SearchPw;
 
 @Component
 public class AccountDao {
@@ -20,7 +22,7 @@ public class AccountDao {
 	@Autowired
 	DataSource dataSource;
 	
-	//아이디 찾기 - 이름, 휴대폰번호로
+	//아이디 찾기 - 휴대폰번호로
 	public AccountId selectUserId1(SearchIdPhone phone) {
 		String user_id = "";
 		Connection conn = null;
@@ -68,6 +70,32 @@ public class AccountDao {
 		}
 		AccountId id = new AccountId(user_id);
 		return id;
+	}
+	
+	//비밀번호 찾기
+	public AccountPw selectUserPw(SearchPw searchPw) {
+		String user_pw = "";
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "SELECT user_pw FROM user_tbl22 WHERE user_id = ? AND user_name = ? AND email = ?";
+		try {
+			conn = dataSource.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, searchPw.getUser_id());
+			pst.setString(2, searchPw.getUser_name());
+			pst.setString(3, searchPw.getEmail());
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				user_pw = rs.getString(1); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs,pst,conn);
+		}
+		AccountPw pw = new AccountPw(user_pw);
+		return pw;
 	}
 	
 	private void close(AutoCloseable...acs) {

@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.corn.market.account.dao.AccountDao;
 import com.corn.market.account.domain.AccountId;
+import com.corn.market.account.domain.AccountPw;
 import com.corn.market.account.domain.SearchIdMail;
 import com.corn.market.account.domain.SearchIdPhone;
+import com.corn.market.account.domain.SearchPw;
 
 @Service
 public class AccountService {
@@ -24,6 +26,12 @@ public class AccountService {
 	public AccountId searchIdMail(SearchIdMail mail) {
 		AccountId accountId = dao.selectUserId2(mail);
 		return accountId;
+	}
+	
+	//비밀번호 찾기
+	public AccountPw searchPw(SearchPw searchPw) {
+		AccountPw accountPw = dao.selectUserPw(searchPw);
+		return accountPw;
 	}
 	
 	

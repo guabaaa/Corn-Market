@@ -8,6 +8,19 @@
     <meta charset="UTF-8" />
     <title>아이디/비밀번호 찾기</title>
     <link rel="stylesheet" href="${path}/resources/css/searchidpw.css" />
+    <script> 
+      function openPopup(){
+        let url = "";
+        let windowTargetName = "targetName";
+        let features = "scrollbars=yes,width=1000,height=800,location=no, resizable=yes";
+        window.open(url, windowTargetName, features);
+
+        frm.action = "<c:url value='/account/pw'/>";
+        frm.method = "POST";
+        frm.target = windowTargetName;
+        frm.submit();
+      }
+    </script>
   </head>
   <body>
     <div class="search-idpw-title">
@@ -71,38 +84,40 @@
                 <button type="button">등록된 이메일로 찾기</button>
               </div>
               <div class="inputEnter" style="display: block">
-                <div class="inputBox">
-                  <div class="styleInput">
-                    <input id="conInput" name="sc.memberIdTmp" value type="text" class="input1" placeholder="아이디" />
-                    <span id="conClear" class="delBtn" style="display: none"></span>
-                  </div>
-                  <div class="styleInput">
-                    <input id="memberNm2" name="memberNm" type="text" class="input1" placeholder="이름" />
-                    <span id="conClear" class="delBtn" style="display: none"></span>
-                  </div>
-                  <div class="emailInput">
+                <form name="frm" action="<c:url value='/account/pw'/>" method="POST">
+                  <div class="inputBox">
                     <div class="styleInput">
-                      <input name="memberEmail" id="memberEmail" type="text" class="inputE" placeholder="이메일" />
+                      <input id="conInput" name="user_id" value type="text" class="input1" placeholder="아이디" />
                       <span id="conClear" class="delBtn" style="display: none"></span>
                     </div>
-                    <div class="userSelect">
-                      <select name="memberEmail2" id="memberEmail2" onchange="checkMemEmail()">
-                        <option value="etc">직접입력</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="hanmail.net">hanmail.net</option>
-                        <option value="hotmail.com">hotmail.com</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="yahoo.co.kr">yahoo.co.kr</option>
-                        <option value="yahoo.com">yahoo.com</option>
-                      </select>
+                    <div class="styleInput">
+                      <input id="memberNm2" name="user_name" type="text" class="input1" placeholder="이름" />
+                      <span id="conClear" class="delBtn" style="display: none"></span>
                     </div>
-                    <p class="error" style="display: none"></p>
+                    <div class="emailInput">
+                      <div class="styleInput">
+                        <input name="email" id="memberEmail" type="text" class="inputE" placeholder="이메일" />
+                        <span id="conClear" class="delBtn" style="display: none"></span>
+                      </div>
+                      <div class="userSelect">
+                        <select id="memberEmail2" onchange="checkMemEmail()">
+                          <option value="">직접입력</option>
+                          <option value="gmail.com">gmail.com</option>
+                          <option value="hanmail.net">hanmail.net</option>
+                          <option value="hotmail.com">hotmail.com</option>
+                          <option value="nate.com">nate.com</option>
+                          <option value="naver.com">naver.com</option>
+                          <option value="yahoo.co.kr">yahoo.co.kr</option>
+                          <option value="yahoo.com">yahoo.com</option>
+                        </select>
+                      </div>
+                      <p class="error" style="display: none"></p>
+                    </div>
+                    <div class="btnArea">
+                      <button type="button" onclick="openPopup()" class="btnYellow">확인</button>
+                    </div>
                   </div>
-                  <div class="btnArea">
-                    <button type="submit" onclick="" class="btnYellow">확인</button>
-                  </div>
-                </div>
+                </form>
               </div>
             </li>
           </ul>

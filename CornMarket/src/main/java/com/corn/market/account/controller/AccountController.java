@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.corn.market.account.domain.AccountId;
+import com.corn.market.account.domain.AccountPw;
 import com.corn.market.account.domain.SearchIdMail;
 import com.corn.market.account.domain.SearchIdPhone;
+import com.corn.market.account.domain.SearchPw;
 import com.corn.market.account.service.AccountService;
 
 @Controller
@@ -24,11 +26,6 @@ public class AccountController {
 		return "account/searchid";
 	}
 	
-	//비밀번호 찾기 페이지 이동
-	@RequestMapping(value = "/account/pw", method = RequestMethod.GET)
-	public String searchPwGET() {
-		return "account/searchpw";
-	}
 	
 	//아이디 찾기 - 휴대폰번호로
 	@RequestMapping(value = "/account/id/phone", method = RequestMethod.POST)
@@ -48,6 +45,22 @@ public class AccountController {
 		return "account/id_popup";
 	}
 	
+	//비밀번호 찾기 페이지 이동
+	@RequestMapping(value = "/account/pw", method = RequestMethod.GET)
+	public String searchPwGET() {
+		return "account/searchpw";
+	}
 	
+	//비밀번호 찾기
+	@RequestMapping(value = "/account/pw", method = RequestMethod.POST)
+	public String searchPwPOST(SearchPw searchPw, Model model) {
+		System.out.println(searchPw);
+		AccountPw accountPw = service.searchPw(searchPw);
+		model.addAttribute("accountPw", accountPw);
+		return "account/pw_popup";
+	}
+	
+	//비밀번호 변경
+		
 	
 }
