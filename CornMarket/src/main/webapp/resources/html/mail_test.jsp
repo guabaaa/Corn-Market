@@ -9,6 +9,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
     <script>
       function mailBtnClick() {
         $('#mailBtn').click(() => {
+        	  alert("인증번호 전송중입니다.");
           const email = $('#mail').val(); // 이메일 주소값
           console.log('이메일 주소 : ' + email);
           const num = $('#num');
@@ -18,7 +19,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
             url: '<c:url value="/account/mail-check?email=" />' + email,
             success: function (data) {
               console.log(data);
-              num.attr('disabled', false);
+              num.attr('disabled', false); //인증번호 입력창 활성화
               code = data;
               alert('인증번호가 전송되었습니다.');
             },

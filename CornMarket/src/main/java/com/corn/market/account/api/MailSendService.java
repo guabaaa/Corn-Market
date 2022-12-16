@@ -1,6 +1,9 @@
 package com.corn.market.account.api;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +54,11 @@ public class MailSendService {
 			code = Integer.toString(mailCode);
 			
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setFrom("cornmarket22@gmail.com"); // 보낼 메일
+			try {
+				helper.setFrom(new InternetAddress("help.cornmarket.com","CornMarket","UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} // 보낸 사람 이름
 			helper.setTo(email); // 받을 메일
 			helper.setSubject("이메일 인증을 진행해주세요"); // 이메일 제목
 			// true -> html 형식으로 전송 , 작성하지 않으면 단순 텍스트로 전달.
