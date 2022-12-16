@@ -19,10 +19,12 @@ public class MailSendService {
 	private int mailCode;
 	
 	//메일 코드 생성 (난수)
-	private void makeMailCode() {
+	public String makeMailCode() {
 		int num = (int)(Math.random()*9000+1000);
 		System.out.println("인증번호: "+num);
 		mailCode = num;
+		String code = Integer.toString(num);
+		return code;
 	}
 	
 	//메일 내용
