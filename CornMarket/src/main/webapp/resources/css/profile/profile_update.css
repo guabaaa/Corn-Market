@@ -1,0 +1,170 @@
+.update_wrap{
+    width:70%;
+    margin:0px auto;
+    background-color: #fbf7f2;
+    padding: 40px;
+}
+ 
+.update_first{
+    width:450px;
+    height:500px;
+    margin:10px auto;
+    margin-bottom: 30px;
+}
+
+.update_first img{
+    width:400px;
+    height:400px;
+    border-radius: 50%;
+    background-color: red;
+    margin:0px auto;
+    display: block;
+}
+
+.update_first input{
+    width:100px;
+    height:40px;
+    margin:50px auto;
+    border-radius: 4px;
+    border-color: rgb(241, 196, 15);
+    background-color: rgb(241, 196, 15);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+}
+
+.update_second{
+    width:800px;
+    margin:80px auto;
+    padding:5px;
+    border:0.3px solid rgb(241, 196, 15);
+    border-radius: 4px;
+}
+
+.up_title{
+    width:150px;
+    height:50px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold; 
+    text-align: center;
+    line-height: 50px;
+}
+
+.update_nickname{
+    width:250px;
+    height:30px;
+    margin-top: 5px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.up_main{
+    display:flex;
+    height:50px;
+    padding:8px;
+    border-bottom:0.1px dotted rgb(241, 196, 15);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.map_zone{
+    padding:8px;
+    border-bottom:0.1px dotted rgb(241, 196, 15);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.update_map{
+    display: flex;
+    height:300px;
+    padding:8px;
+    margin-bottom: 10px;
+}
+
+.map_search{
+    width:400px;
+    display: flex;
+    margin-left: 150px;
+}
+
+.double_check{
+    width:100px;
+    height:40px;
+    margin-top: 3px;
+    border-radius: 4px;
+    border-color: rgb(241, 196, 15);
+    background-color: rgb(241, 196, 15);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+}
+.search_location{
+    width:120px;
+    height:40px;
+    margin-top: 3px;
+    border-radius: 4px;
+    border-color: rgb(241, 196, 15);
+    background-color: rgb(241, 196, 15);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+}
+
+.update_third input{
+    width:100px;
+    height:40px;
+    margin:15px auto;
+    border-radius: 4px;
+    border-color: rgb(241, 196, 15);
+    background-color: rgb(241, 196, 15);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    display: block;
+}
+
+.map{
+    width:500px;
+    height:300px;
+    margin-left: 2px;
+    background-color: blue;
+}
+
+.profile_phone{
+    width:200px;
+    height:30px;
+    margin-top: 11px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.join_first_email{
+    height:100px;
+    padding:8px;
+    border-bottom:0.1px dotted rgb(241, 196, 15);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.join_email_second{
+    display: flex;
+}
+
+.join_input_email{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    width:150px;
+    height:30px;
+}
+
+.join_email_first{
+    display: flex;
+}
+
+.email_num{
+    width:120px;
+    height:30px;
+    margin-left: 160px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
