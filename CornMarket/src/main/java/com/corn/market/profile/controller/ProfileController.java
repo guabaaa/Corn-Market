@@ -1,5 +1,8 @@
 package com.corn.market.profile.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +18,11 @@ public class ProfileController {
 	
 	//본인 프로필 기본 페이지 (판매중)
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profileOnSale() { 
+	public String profileOnSale(HttpSession session,HttpServletRequest request) { 
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		request.setAttribute("id", id);
+		
 		return "profile/profile_onsale";
 	}
 	//본인 프로필 판매완료 페이지
@@ -29,25 +36,6 @@ public class ProfileController {
 		return "profile/profile_review";
 	}
 	
-	//타인 프로필 기본 페이지 (판매중)
-	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
-	public String otherProfileOnSale(String id) { 
-		System.out.println(id);
-		return "profile/other_profile_onsale";
-	}
-	//타인 프로필 판매완료 페이지
-	@RequestMapping(value = "/profile/user/offsale", method = RequestMethod.GET)
-	public String otherProfileOffSale(String id) { 
-		System.out.println(id);
-		return "profile/other_profile_offsale";
-	}
-	//타인 프로필 거래후기 페이지
-	@RequestMapping(value = "/profile/user/review", method = RequestMethod.GET)
-	public String otherProfileReview(String id) { 
-		System.out.println(id);
-		return "profile/other_profile_review";
-	}
-
 	//본인 프로필 수정 페이지
 	@RequestMapping(value = "/profile/update", method = RequestMethod.GET)
 	public String otherProfileUpdate() { 
