@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.sql.DataSource;
 
@@ -74,8 +75,8 @@ public class ProfileDao {
 				+ "JOIN chatting_room_tbl22 c "
 				+ "ON e.room_id = c.room_id "
 				+ "JOIN user_tbl22 u "
-				+ "ON c.seller_id = u.user_id "
-				+ "WHERE u.user_id = ? "
+				+ "ON c.buyer_id = u.user_id "
+				+ "WHERE c.seller_id = ? "
 				+ "ORDER BY e.deal_id DESC";
 		 */
 		String sql = "SELECT u.nickname, e.review " //테스트용
@@ -109,9 +110,9 @@ public class ProfileDao {
 	}
 	
 	//프로필+판매내역 조회
-	public ArrayList<ProfileSale> selectProfileSale(String id,String post_status) {
-		ArrayList<ProfileSale> list = new ArrayList<ProfileSale>();
-		String sql = "SELECT u.nickname, u.temperature, t.town_name, u.join_date, u.profile_img "
+	public ProfileSale selectProfileSale(String id,String post_status) {
+		ProfileSale profileSale = null;
+		String sql = "SELECT u.nickname, u.temperature, t.town_name, TO_CHAR(u.join_date,'yyyy-mm-dd'), u.profile_img "
 				+ "FROM user_tbl22 u "
 				+ "JOIN address_tbl22 a "
 				+ "ON u.user_id = a.user_id "
@@ -126,13 +127,13 @@ public class ProfileDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, id);
 			rs = pst.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				String nickname = rs.getString(1);
 				String temperature = rs.getString(2);
 				String town_name = rs.getString(3);
-				String join_date = rs.getString(4);
+				String[] join_date = rs.getString(4).split("-");
 				String profile_img = rs.getString(5);
-				list.add(new ProfileSale(nickname, temperature, town_name, join_date, profile_img, selectOnSale(id, post_status)));
+				profileSale = new ProfileSale(nickname, temperature, town_name, join_date, profile_img, selectOnSale(id, post_status));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,13 +141,13 @@ public class ProfileDao {
 			close(rs,pst,conn);
 		}
 
-		return list;
+		return profileSale;
 	}
 	
 	//프로필+거래후기 조회
-	public ArrayList<ProfileReview> selectProfileReview(String id) {
-		ArrayList<ProfileReview> list = new ArrayList<ProfileReview>();
-		String sql = "SELECT u.nickname, u.temperature, t.town_name, u.join_date, u.profile_img "
+	public ProfileReview selectProfileReview(String id) {
+		ProfileReview profileReview = null;
+		String sql = "SELECT u.nickname, u.temperature, t.town_name, TO_CHAR(u.join_date,'yyyy-mm-dd'), u.profile_img "
 				+ "FROM user_tbl22 u "
 				+ "JOIN address_tbl22 a "
 				+ "ON u.user_id = a.user_id "
@@ -165,9 +166,9 @@ public class ProfileDao {
 				String nickname = rs.getString(1);
 				String temperature = rs.getString(2);
 				String town_name = rs.getString(3);
-				String join_date = rs.getString(4);
+				String[] join_date = rs.getString(4).split("-");
 				String profile_img = rs.getString(5);
-				list.add(new ProfileReview(nickname, temperature, town_name, join_date, profile_img, selectReview(id)));
+				profileReview = new ProfileReview(nickname, temperature, town_name, join_date, profile_img, selectReview(id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -175,7 +176,7 @@ public class ProfileDao {
 			close(rs,pst,conn);
 		}
 
-		return list;
+		return profileReview;
 	}
 
 	private void close(AutoCloseable...acs) {

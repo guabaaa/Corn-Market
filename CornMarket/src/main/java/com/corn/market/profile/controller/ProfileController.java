@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.corn.market.profile.domain.ProfileReview;
+import com.corn.market.profile.domain.ProfileSale;
 import com.corn.market.profile.service.ProfileService;
 
 @Controller
@@ -19,27 +21,36 @@ public class ProfileController {
 	//본인 프로필 기본 페이지 (판매중)
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profileOnSale(HttpSession session,HttpServletRequest request) { 
+		session.setAttribute("id", "aa11"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
-		request.setAttribute("id", id);
-		
+		ProfileSale profileSale = service.getProfileSales(id, "판매중");
+		request.setAttribute("profile", profileSale);
 		return "profile/profile_onsale";
 	}
 	//본인 프로필 판매완료 페이지
 	@RequestMapping(value = "/profile/offsale", method = RequestMethod.GET)
-	public String profileOffSale() { 
+	public String profileOffSale(HttpSession session,HttpServletRequest request) { 
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		ProfileSale profileSale = service.getProfileSales(id, "거래완료");
+		request.setAttribute("profile", profileSale);
 		return "profile/profile_offsale";
 	}
 	//본인 프로필 거래후기 페이지
 	@RequestMapping(value = "/profile/review", method = RequestMethod.GET)
-	public String profileReview() { 
+	public String profileReview(HttpSession session,HttpServletRequest request) { 
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		ProfileReview profileReview = service.getProfileReviews(id);
+		request.setAttribute("profile", profileReview);
 		return "profile/profile_review";
 	}
 	
 	//본인 프로필 수정 페이지
 	@RequestMapping(value = "/profile/update", method = RequestMethod.GET)
 	public String otherProfileUpdate() { 
-		return "profile/other_profile_review";
+		return "profile/profile_update";
 	}
 	
 }

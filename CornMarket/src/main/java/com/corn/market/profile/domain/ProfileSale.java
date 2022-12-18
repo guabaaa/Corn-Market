@@ -1,13 +1,14 @@
 package com.corn.market.profile.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProfileSale {
 	
 	String nickname;
 	String temperature;
 	String town_name;
-	String join_date;
+	String[] join_date;
 	String profile_img;
 	ArrayList<Sale> saleList;
 	
@@ -15,7 +16,7 @@ public class ProfileSale {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProfileSale(String nickname, String temperature, String town_name, String join_date, String profile_img,
+	public ProfileSale(String nickname, String temperature, String town_name, String[] join_date, String profile_img,
 			ArrayList<Sale> saleList) {
 		super();
 		this.nickname = nickname;
@@ -50,11 +51,11 @@ public class ProfileSale {
 		this.town_name = town_name;
 	}
 
-	public String getJoin_date() {
+	public String[] getJoin_date() {
 		return join_date;
 	}
 
-	public void setJoin_date(String join_date) {
+	public void setJoin_date(String[] join_date) {
 		this.join_date = join_date;
 	}
 
@@ -76,8 +77,9 @@ public class ProfileSale {
 
 	@Override
 	public String toString() {
-		return "ProfileOnSale [nickname=" + nickname + ", temperature=" + temperature + ", town_name=" + town_name
-				+ ", join_date=" + join_date + ", profile_img=" + profile_img + ", saleList=" + saleList + "]";
+		return "ProfileSale [nickname=" + nickname + ", temperature=" + temperature + ", town_name=" + town_name
+				+ ", join_date=" + Arrays.toString(join_date) + ", profile_img=" + profile_img + ", saleList="
+				+ saleList + "]";
 	}
-	
+
 }
