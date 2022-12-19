@@ -220,6 +220,7 @@ public class ProfileDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, nickname);
 			pst.setString(2, id);
+			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -239,6 +240,7 @@ public class ProfileDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, profile_img);
 			pst.setString(2, id);
+			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -248,6 +250,7 @@ public class ProfileDao {
 	
 	//프로필 닉네임 중복 확인, 중복이면 false, 중복아니면 true
 	public boolean checkNickname(String nickname) {
+		boolean check = false;
 		String sql = "SELECT nickname "
 				+ "FROM user_tbl22 "
 				+ "WHERE nickname  = ? ";
@@ -259,13 +262,14 @@ public class ProfileDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, nickname);
 			rs = pst.executeQuery();
-			if(rs.next()) return false;
+			if(rs.next()) check = false;
+			else check = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs,pst,conn);
 		}
-		return true;
+		return check;
 	}
 
 	private void close(AutoCloseable...acs) {

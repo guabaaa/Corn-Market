@@ -63,14 +63,17 @@ public class ProfileController {
 	@ResponseBody
 	@RequestMapping(value = "/profile/update/check", method = RequestMethod.GET)
 	public String checkNickname(HttpSession session, String nickname) {
+		System.out.println("중복확인: "+nickname);
 		if(service.checkNickname(nickname)) return "0"; //중복아닐때
-		return "1"; //중복일때
+		else return "1"; //중복일때
 	}
 	//닉네임 수정
 	@RequestMapping(value = "/profile/update/nickname", method = RequestMethod.POST)
 	public String modifyNickname(HttpSession session, String nickname) {
+		session.setAttribute("id", "aa11"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
+		System.out.println("닉네임수정: "+nickname);
 		service.modifyNickname(id, nickname);
 		return "redirect:/profile"; //프로필페이지 맵핑으로
 	}
