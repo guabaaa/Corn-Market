@@ -31,7 +31,7 @@ charset=UTF-8" pageEncoding="UTF-8"%>
             <div class="map"></div>
           </div>
           <div class="map_search">
-            <input type="text" class="update_nickname" />
+            <!-- <input type="text" class="update_nickname" /> -->
             <input type="button" value="현재위치로 찾기" class="search_location" />
           </div>
         </div>

@@ -5,11 +5,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.corn.market.profile.domain.ProfileReview;
 import com.corn.market.profile.domain.ProfileSale;
+import com.corn.market.profile.domain.ProfileUpdate;
 import com.corn.market.profile.service.ProfileService;
 
 @Controller
@@ -49,8 +52,35 @@ public class ProfileController {
 	
 	//본인 프로필 수정 페이지
 	@RequestMapping(value = "/profile/update", method = RequestMethod.GET)
-	public String otherProfileUpdate() { 
+	public String otherProfileUpdate(HttpSession session,HttpServletRequest request) { 
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		ProfileUpdate profileUpdate = service.getProfileInfo(id);
+		request.setAttribute("profile", profileUpdate);
 		return "profile/profile_update";
+	}
+	//닉네임 중복 확인
+	@ResponseBody
+	@RequestMapping(value = "/profile/update/check", method = RequestMethod.GET)
+	public String checkNickname(HttpSession session, String nickname) {
+		if(service.checkNickname(nickname)) return "0"; //중복아닐때
+		return "1"; //중복일때
+	}
+	//닉네임 수정
+	@RequestMapping(value = "/profile/update/nickname", method = RequestMethod.POST)
+	public String modifyNickname(HttpSession session, String nickname) {
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		service.modifyNickname(id, nickname);
+		return "redirect:/profile"; //프로필페이지 맵핑으로
+	}
+	//프로필이미지 수정
+	@RequestMapping(value = "/profile/update/image", method = RequestMethod.POST)
+	public String modifyProfileImage(HttpSession session, String profile_img) {
+		//인터셉터가 true (아이디가 세션이 있음)
+		String id = (String) session.getAttribute("id");
+		service.modifyProfileImage(id, profile_img);
+		return "redirect:/profile/update"; //프로필수정페이지 맵핑으로
 	}
 	
 }

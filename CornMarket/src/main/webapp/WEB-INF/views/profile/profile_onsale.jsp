@@ -15,13 +15,20 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       .onsale a {
         color: white;
       }
+      .profile_img img{
+      	background-image: url("${path}/resources/images/profile/profile_img_default.png");
+      	background-size: 100px;
+      	background-repeat: no-repeat;
+      	background-position: center 105%;
+      }
     </style>
   </head>
   <body>
     <div class="profile_wrap">
       <div class="profile_first">
         <div class="profile_img">
-          <img src="" />
+          <!-- <img src="${path}/resources/images/profile/profile_img_default.png" /> -->
+          <img />
           <input
             type="button"
             class="profile_update_btn"
