@@ -18,7 +18,7 @@ import com.corn.market.account.service.AccountService;
 public class AccountController {
 	
 	@Autowired
-	AccountService service;
+	private AccountService service;
 	
 	//아이디 찾기 페이지로 이동
 	@RequestMapping(value = "/account/id", method = RequestMethod.GET)

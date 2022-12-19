@@ -20,7 +20,7 @@ import com.corn.market.account.domain.SearchPw;
 public class AccountDao {
 
 	@Autowired
-	DataSource dataSource;
+	private DataSource dataSource;
 	
 	//아이디 찾기 - 휴대폰번호로
 	public AccountId selectUserId1(SearchIdPhone phone) {

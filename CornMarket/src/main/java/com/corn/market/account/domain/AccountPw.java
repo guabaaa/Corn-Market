@@ -2,7 +2,7 @@ package com.corn.market.account.domain;
 
 public class AccountPw {
 	
-	String user_pw;
+	private String user_pw;
 	
 	public AccountPw() {
 		// TODO Auto-generated constructor stub

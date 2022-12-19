@@ -2,7 +2,7 @@ package com.corn.market.account.domain;
 
 public class AccountId {
 	
-	String user_id;
+	private String user_id;
 	
 	public AccountId() {
 		// TODO Auto-generated constructor stub

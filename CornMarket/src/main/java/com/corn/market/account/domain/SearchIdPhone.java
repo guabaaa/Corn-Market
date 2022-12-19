@@ -2,8 +2,8 @@ package com.corn.market.account.domain;
 
 public class SearchIdPhone {
 	
-	String user_name;
-	String phone;
+	private String user_name;
+	private String phone;
 	
 	public SearchIdPhone() {
 		// TODO Auto-generated constructor stub

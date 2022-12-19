@@ -2,8 +2,8 @@ package com.corn.market.account.domain;
 
 public class SearchIdMail {
 
-	String user_name;
-	String email;
+	private String user_name;
+	private String email;
 	
 	public SearchIdMail() {
 		// TODO Auto-generated constructor stub

@@ -14,7 +14,7 @@ import com.corn.market.account.domain.SearchPw;
 public class AccountService {
 	
 	@Autowired
-	AccountDao dao;
+	private AccountDao dao;
 	
 	//아이디 찾기 - 휴대폰번호로
 	public AccountId searchIdPhone(SearchIdPhone phone) {
