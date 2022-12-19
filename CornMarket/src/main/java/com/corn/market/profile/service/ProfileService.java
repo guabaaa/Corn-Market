@@ -12,7 +12,7 @@ import com.corn.market.profile.domain.ProfileUpdate;
 public class ProfileService {
 
 	@Autowired
-	ProfileDao dao;
+	private ProfileDao dao;
 	
 	//프로필+판매내역 조회
 	public ProfileSale getProfileSales(String id, String post_status) {

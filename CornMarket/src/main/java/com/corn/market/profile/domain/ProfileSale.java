@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class ProfileSale {
 	
-	String nickname;
-	String temperature;
-	String town_name;
-	String[] join_date;
-	String profile_img;
-	ArrayList<Sale> saleList;
+	private String nickname;
+	private String temperature;
+	private String town_name;
+	private String[] join_date;
+	private String profile_img;
+	private ArrayList<Sale> saleList;
 	
 	public ProfileSale() {
 		// TODO Auto-generated constructor stub

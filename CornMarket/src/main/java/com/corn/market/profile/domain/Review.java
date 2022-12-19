@@ -2,8 +2,8 @@ package com.corn.market.profile.domain;
 
 public class Review {
 	
-	String nickname;
-	String review;
+	private String nickname;
+	private String review;
 	
 	public Review() {
 		// TODO Auto-generated constructor stub

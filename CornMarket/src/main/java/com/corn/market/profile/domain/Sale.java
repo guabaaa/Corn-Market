@@ -2,10 +2,10 @@ package com.corn.market.profile.domain;
 
 public class Sale {
 	
-	String post_img;
-	String title;
-	String price;
-	String town_name;
+	private String post_img;
+	private String title;
+	private String price;
+	private String town_name;
 	
 	public Sale() {
 		// TODO Auto-generated constructor stub

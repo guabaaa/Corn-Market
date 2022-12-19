@@ -2,8 +2,8 @@ package com.corn.market.profile.domain;
 
 public class ProfileUpdate {
 	
-	String profile_img;
-	String nickname;
+	private String profile_img;
+	private String nickname;
 	
 	public ProfileUpdate() {
 		// TODO Auto-generated constructor stub
