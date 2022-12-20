@@ -32,7 +32,7 @@ public class TownDao {
 		try {
 			conn = dataSource.getConnection();
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, townInfo.getTown_name());
+			pst.setString(1, townInfo.getTown_name().split(" ")[1]);
 			rs = pst.executeQuery();
 			if(rs.next()) {
 				town_code = rs.getString(1);
