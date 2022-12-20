@@ -5,11 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.corn.market.profile.api.FileUploadService;
 import com.corn.market.profile.domain.ProfileReview;
 import com.corn.market.profile.domain.ProfileSale;
 import com.corn.market.profile.domain.ProfileUpdate;
@@ -20,6 +21,8 @@ public class ProfileController {
 	
 	@Autowired
 	ProfileService service;
+	@Autowired
+	private FileUploadService uploadService;
 	
 	//본인 프로필 기본 페이지 (판매중)
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -79,10 +82,14 @@ public class ProfileController {
 	}
 	//프로필이미지 수정
 	@RequestMapping(value = "/profile/update/image", method = RequestMethod.POST)
-	public String modifyProfileImage(HttpSession session, String profile_img) {
+	public String modifyProfileImage(HttpSession session, MultipartFile file, HttpServletRequest request) {
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
-		service.modifyProfileImage(id, profile_img);
+		//서비스 메서드로 파일 업로드
+		String url = uploadService.oneFileUpload(file, request);
+		//DB에 이미지데이터 등록
+		service.modifyProfileImage(id, url);
+		
 		return "redirect:/profile/update"; //프로필수정페이지 맵핑으로
 	}
 	
