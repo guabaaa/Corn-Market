@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.corn.market.profile.api.FileUploadService;
+import com.corn.market.common.api.fileUpload.FileUploadService;
 import com.corn.market.profile.domain.ProfileReview;
 import com.corn.market.profile.domain.ProfileSale;
 import com.corn.market.profile.domain.ProfileUpdate;

@@ -22,19 +22,31 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       	background-position: center 105%;
       }
     </style>
+
+    <script>
+      function update_myinfo(){
+        window. open("popup_profile_update.jsp", "popup01", "width=680, height=700");
+      }
+
+      function change_img(){
+                  window. open("popup_profile_img.jsp", "popup02", "width=450, height=300");
+      }
+      function mytown(){
+        window. open("popup_profile_mytown.jsp", "popup01", "width=680, height=700");
+      }
+    </script>
   </head>
   <body>
     <div class="profile_wrap">
       <div class="profile_first">
         <div class="profile_img">
-          <!-- <img src="${path}/resources/images/profile/profile_img_default.png" /> -->
-          <img />
-          <input
-            type="button"
-            class="profile_update_btn"
-            value="프로필 수정"
-            onclick="location.href='<c:url value="/profile/update" />'"
-          />
+          <img src="${path}${profile_img}" />
+          <!-- <img /> -->
+          <input type="button" class="profile_update_btn" value="프로필 수정"
+            onclick="location.href='<c:url value="/profile/update" />'" />
+            <!-- onclick="update_myinfo()"  -->
+            
+         
         </div>
 
         <div class="profile_contents">

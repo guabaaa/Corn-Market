@@ -1,4 +1,4 @@
-package com.corn.market.profile.api;
+package com.corn.market.common.api.fileUpload;
 
 import java.io.File;
 import java.io.IOException;
