@@ -21,7 +21,7 @@ public class TownController {
 	}
 	
 	//동네인증 정보 받아서 테이블에 등록
-	@RequestMapping(value = "/town", method = RequestMethod.GET)
+	@RequestMapping(value = "/town", method = RequestMethod.POST)
 	public String townCertificationPOST() {
 		
 		return "town_test/test_profile";

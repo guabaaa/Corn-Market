@@ -102,6 +102,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93ce7269a8f7fe1402b282d3008199ed&libraries=services"></script>
 
     <script>
       //동네찾기 버튼
@@ -109,11 +110,42 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         $('#search_btn').click(clickEvent);
       }
       function clickEvent() {
-        //alert('dd');
         $('#town_info').show();
+        let location = geoFindMe(); //위치 정보
+        console.log(location);
+      }
+      $('document').ready(loadEvent);
+
+      //Geolocation API
+      function geoFindMe() {
+        //위치 정보 객체
+        let location = {
+          latitude: '',
+          longitude: ''
+        }
+        function success(position) {
+          alert('성공');
+          const latitude  = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          location.latitude = latitude;
+          location.longitude = longitude;
+          // console.log(location);
+          alert('Latitude:'+latitude+' °, Longitude: '+longitude+' °');
+        }
+
+        function error() {
+          alert('위치 정보를 얻을 수 없습니다.');
+        }
+
+        if(!navigator.geolocation) {
+          alert('사용중인 브라우저에서는 위치 정보를 이용할 수 없습니다.');
+        } else {
+          navigator.geolocation.getCurrentPosition(success, error);
+        }
+
+        return location;
       }
 
-      $('document').ready(loadEvent);
     </script>
   </head>
   <body>
@@ -139,5 +171,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
       </div>
     </div>
+
+    <script>
+      //Kakao Maps API 좌표로 주소를 얻어내기
+      
+    </script>
   </body>
 </html>

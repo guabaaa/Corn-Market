@@ -92,7 +92,7 @@ public class TownDao {
 		}
 	}
 	
-	//동네인증 아이디당 이전 기록 개수 체크
+	//동네인증 아이디당 이전 인증기록 개수 체크
 	public int selectCountAddress(String user_id) {
 		int count = 0;
 		String sql = "SELECT COUNT(*) "
