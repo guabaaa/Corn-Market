@@ -1,0 +1,287 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+}
+.main{
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+
+/*
+main slide css
+*/
+.swiper {
+    width: 1500px;
+    height: 600px;
+   }
+   
+.slide{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+.home-main-slide{
+    display: flex;
+    position: relative;
+    left: 0px;
+    width: 100%;
+    height: 760px;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+
+div{
+    display: block;
+}
+
+.left_btn{
+    width: 10px;
+    height: 10px;     
+    color: #ffffff;
+    position: absolute;
+    top : 250px;
+    left: 10px;
+}
+.right_btn{
+    width: 10px;
+    height: 10px;
+    color: #ffffff;   
+    position: absolute;
+    top:250px;
+    right: 10px; 
+}
+.home-main-slide-wrap{
+    width: 100%;
+    height: 760px;
+}
+.home-main-slide{
+    width: 100%;
+    height: 760px;
+}
+.slide01{
+    background-color: #fbf7f2;
+}
+.home-main-title{
+    font-size: 2.5rem;
+    line-height: 1.3;
+    padding-top: 250px;
+}
+.home-main-slide .home-main-title{
+    margin-left: 100px;
+}
+h1{
+    font-weight: 700;
+}
+.text-m{
+    font-size: 1.3rem;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+}
+.slide01 .text-m{
+    margin-left: 100px;
+}
+
+.slide02{
+    background-color: #ffffff;
+}
+.home-main-slide .slide02 .home-main-title{
+    margin-right: 100px;
+}
+.slide02 .text-m{
+    margin-right: 100px;
+}
+.slide03{
+    background-color: #E6F3E6;
+}
+.slide03 ul li{
+    margin: 1.6rem;
+}
+.slide03 li{
+    display: list-item;
+}
+.home-main-slide .slide03 .home-main-title{
+    margin-left: 100px;
+}
+.slide03 .text-m{
+    margin-left: 100px;
+}
+.home-main-slide .home-story-list .home-story-list-item{
+    margin-right: 4rem;
+    max-width: 14rem;
+    margin-left: 0px;
+}
+.home-main-slide .home-story-list .icon-story{
+    width: 56px;
+    height: 56px;
+    background-size: 56px 56px;
+}
+.home-main-slide .home-story-list{
+    list-style-type: none;
+}
+.slide03 ul{
+    display: flex;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 100px;
+}
+.slide04{
+    background-color: #ffffff;
+}
+.slide04 .home-main-title{
+    margin-right: 100px;
+}
+.slide04 .text-m{
+    margin-right: 100px;
+}
+
+
+
+/* 
+list css
+*/
+.home-main-card-wrap{
+    width: 100%;
+    height: 1200px;
+    background-color: #f8f9fa;
+}
+.home-main-card-wrap .home-card-title{
+    padding-top: 70px;
+    text-align: center;
+    margin: 50px;
+    font-size: 2.5rem;
+    line-height: 1.3;
+}
+.home-card-wrap{
+    width: 75%;
+    justify-content: space-around;
+    margin-right: 0px;
+    flex-wrap: wrap;
+    display: flex;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    padding:15px;
+}
+
+.card-top{
+    width: 220px;
+    margin-right: 44px;
+    margin-bottom: 56px;
+}
+.home-card-wrap .card-top .card-link{
+    text-decoration: none;
+    color: #212529;
+}
+.home-card-wrap .card-top .card-photo{
+    background-color: blue;
+    width: 212px;
+    height: 212px;
+    padding-top: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 0px 1px rgb(0 0 0 / 15%);
+    box-sizing: border-box;
+}
+.home-card-wrap .card-top .card-desc{
+    margin-top: 12px;
+}
+.home-card-wrap .crad-top .card-desc .card-title{
+    font-size: 16px;
+    letter-spacing: -0.02px;
+    color: #212529;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1.5;
+    font-weight: normal;
+}
+.home-card-wrap .crad-top .card-desc .card-price{
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+.home-card-wrap .crad-top .card-desc .card-region{
+    font-size: 13px;
+    color: #212529;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1.5;
+}
+.home-card-wrap .card-top .card-desc .card-counts{
+    color: #868e96;
+    font-size: 13px;
+}
+.home-main-card-wrap .card-more{
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    font-weight: bold;
+    color: #212529;
+    text-align: center;
+}
+
+
+
+/*
+keyword content css
+*/
+.home-keywords-content{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.home-keywords-content .home-keywords-title{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+.home-keywords-content .text-bold-title{
+    text-decoration: underline;
+    font-size: 1.1rem;
+    color: #212529;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+}
+.home-keywords-content .keyword-top-list{
+    display: inline-block;
+    list-style-type: none;
+    vertical-align: middle;
+    margin-left: 4rem;
+}
+.home-keywords-content ul{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.home-keywords-content .keyword-top-list .keyword-item{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+}
+.home-keywords-content ul li{
+    margin: 1.2rem;
+}
+.home-keywords-content .keyword-top-list .keyword-item .keyword-link{
+    text-decoration: none;
+    color: #212529;
+}
