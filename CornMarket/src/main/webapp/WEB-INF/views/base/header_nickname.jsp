@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/main/header.css"/>
+<link rel="stylesheet" href="${path}/resources/css/main/header_nickname.css"/>
 </head>
 <body>
 <header>
@@ -16,7 +16,8 @@
         </div>
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
-            <button onclick="location.href='../login/login.jsp'">로그인</button>
+            <p class="main_nickname">꿍디누나</p>
+            <button onclick="location.href='../login/login.jsp'">프로필보기</button>
         </div>
 </header>
 </body>

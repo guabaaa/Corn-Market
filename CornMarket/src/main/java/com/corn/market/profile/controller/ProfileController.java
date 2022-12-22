@@ -60,7 +60,7 @@ public class ProfileController {
 		String id = (String) session.getAttribute("id");
 		ProfileUpdate profileUpdate = service.getProfileInfo(id);
 		request.setAttribute("profile", profileUpdate);
-		return "profile/profile_update";
+		return "profile/popup_profile_update";
 	}
 	//닉네임 중복 확인
 	@ResponseBody
