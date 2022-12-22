@@ -24,93 +24,47 @@
 	<div class="profile_wrap">
         <div class="profile_first">
             <div class="profile_img">
-                <img>
+                <img src="${path}${profile.profile_img}">
             </div>
             <div class="profile_contents">
-                <div class="profile_nickname">나아님</div>
+                <div class="profile_nickname">${profile.nickname}</div>
                 <ul class="degree">
 	                    <li class="manner_degree">
 	                    	<div class=flexf>
 	                    		매너온도
-	                        	<div class="profile_degree">36.5℃</div>
+	                        	<div class="profile_degree">${profile.temperature}℃</div>
 	                    	</div>
 	                    </li>
 	                    <li class="manner_degree1">
-	                    		마포구 인증
+	                    		${profile.town_name} 인증
 	                    </li>
 	                    <li class="manner_degree1">
-	                        2019년 11월 15일 인증
+	                        ${profile.join_date[0]}년 ${profile.join_date[1]}월 ${profile.join_date[2]}일 가입
 	                    </li>
 	            </ul>
             </div>
         </div>
         <div class="profile_second">
             <div class="profile_nav">
-                <div class="profile_status onsale"><a href="./other_profile_onsale.jsp">판매중</a></div>
-                <div class="profile_status offsale"><a href="./other_profile_offsale.jsp">판매완료</a></div>
-                <div class="profile_status review"><a href="./other_profile_review.jsp">거래후기</a></div>
+                <div class="profile_status onsale"><a href="<c:url value="/profile/user?id=${id}" />">판매중</a></div>
+	            <div class="profile_status offsale"><a href="<c:url value="/profile/user/offsale?id=${id}" />">판매완료</a></div>
+	            <div class="profile_status review"><a href="<c:url value="/profile/user/review?id=${id}" />">거래후기</a></div>
             </div>
             <div class="home-card-wrap">
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
-                <article class="card-top">
-                    <a class="card-link">
-                        <div class="card-photo">photo</div>
-                        <div class="card-desc">
-                            <div class="card-title">ㅇㅇ판매완료</div>
-                            <div class="card-price">20,000원</div>
-                            <div class="card-region">서울시 구로구 개봉동</div>
-                        </div>
-                    </a>
-                </article>
+                
+<c:forEach var="sale" items="${profile.saleList}">
+	          <article class="card-top">
+	            <a class="card-link">
+	              <div class="card-photo" style="background-image: url('${path}${sale.post_img}');background-size:cover;background-position:center;"></div>
+	              <div class="card-desc">
+	                <div class="card-title">${sale.title}</div>
+	                <div class="card-price">${sale.price}원</div>
+	                <div class="card-region">서울시 ${sale.town_name}</div>
+	              </div>
+	            </a>
+	          </article>
+</c:forEach> 
+                
             </div>
         </div>
     </div>
