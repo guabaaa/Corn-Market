@@ -1,5 +1,7 @@
 package com.corn.market.profile.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import com.corn.market.common.api.fileUpload.FileUploadService;
 import com.corn.market.profile.domain.ProfileReview;
 import com.corn.market.profile.domain.ProfileSale;
 import com.corn.market.profile.domain.ProfileUpdate;
+import com.corn.market.profile.domain.Review;
 import com.corn.market.profile.service.ProfileService;
 
 @Controller
@@ -27,7 +30,7 @@ public class ProfileController {
 	//본인 프로필 기본 페이지 (판매중)
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profileOnSale(HttpSession session,HttpServletRequest request) { 
-		session.setAttribute("id", "aa11"); //세션 테스트
+		session.setAttribute("id", "fourkimm"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		ProfileSale profileSale = service.getProfileSales(id, "판매중");
@@ -48,7 +51,18 @@ public class ProfileController {
 	public String profileReview(HttpSession session,HttpServletRequest request) { 
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
-		ProfileReview profileReview = service.getProfileReviews(id);
+		
+		//ProfileReview profileReview = service.getProfileReviews(id);
+		
+		//  테스트용 데이터
+		ArrayList<Review> list = new ArrayList<Review>();
+		list.add(new Review("a누나", "거래후기 입니다1"));
+		list.add(new Review("b누나", "거래후기 입니다2"));
+		list.add(new Review("c누나", "거래후기 입니다3"));
+		String[] date = {"2022년","10월","18일"};
+		ProfileReview profileReview = new ProfileReview("꿍디누나", "36.5", "마포구", date, "/resources/images/profile/profile_img_default.png", list);
+		//
+		
 		request.setAttribute("profile", profileReview);
 		return "profile/profile_review";
 	}
@@ -73,12 +87,16 @@ public class ProfileController {
 	//닉네임 수정
 	@RequestMapping(value = "/profile/update/nickname", method = RequestMethod.POST)
 	public String modifyNickname(HttpSession session, String nickname) {
-		session.setAttribute("id", "aa11"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		System.out.println("닉네임수정: "+nickname);
 		service.modifyNickname(id, nickname);
 		return "redirect:/profile"; //프로필페이지 맵핑으로
+	}
+	//프로필이미지 수정페이지
+	@RequestMapping(value = "/profile/update/image", method = RequestMethod.GET)
+	public String modifyProfileImagePage() {
+		return "profile/popup_profile_img";
 	}
 	//프로필이미지 수정
 	@RequestMapping(value = "/profile/update/image", method = RequestMethod.POST)

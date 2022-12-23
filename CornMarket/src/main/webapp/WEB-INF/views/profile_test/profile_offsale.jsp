@@ -48,18 +48,18 @@ charset=UTF-8" pageEncoding="UTF-8"%>
           <div class="profile_status review"><a href="<c:url value='/profile/review' />">거래후기</a></div>
         </div>
         <div class="home-card-wrap">
-<c:forEach var="sale" items="${profile.saleList}">        
-          <article class="card-top">
-            <a class="card-link">
-              <div class="card-photo">${sale.post_img}</div>
-              <div class="card-desc">
-                <div class="card-title">${sale.title}</div>
-                <div class="card-price">${sale.price}원</div>
-                <div class="card-region">서울시 ${sale.town_name}</div>
-              </div>
-            </a>
-          </article>
-</c:forEach>          
+			<c:forEach var="sale" items="${profile.saleList}">        
+			          <article class="card-top">
+			            <a class="card-link">
+			              <div class="card-photo">${sale.post_img}</div>
+			              <div class="card-desc">
+			                <div class="card-title">${sale.title}</div>
+			                <div class="card-price">${sale.price}원</div>
+			                <div class="card-region">서울시 ${sale.town_name}</div>
+			              </div>
+			            </a>
+			          </article>
+			</c:forEach>          
         </div>
       </div>
   </body>
