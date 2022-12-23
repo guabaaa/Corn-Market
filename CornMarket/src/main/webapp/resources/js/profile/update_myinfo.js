@@ -10,13 +10,13 @@ function update_myinfo() {
 
   window.open(
     '/market/profile/update',
-    'popup01',
+    '프로필 수정',
     'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY
   );
 }
 //프로필 이미지 수정 팝업
 function change_img() {
-  //window.open("popup_profile_img.jsp", "popup02", "width=450, height=300");
+  //window.open("popup_profile_img.jsp", "프로필 이미지 등록", "width=450, height=300");
 
   //팝업창 화면 가운데로 띄우기
   let popupWidth = 450;
@@ -26,7 +26,7 @@ function change_img() {
 
   window.open(
     '/market/profile/update/image',
-    'popup02',
+    '프로필 이미지 등록',
     'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY
   );
 }

@@ -79,12 +79,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           alert('닉네임을 입력해주세요.');
           $('#update_nickname').focus();
         } else {
-          popupSubmit();
+          profilePopupSubmit();
         }
       }
 
       //닉네임 수정후 제출
-      function popupSubmit() {
+      function profilePopupSubmit() {
         window.opener.name = 'updateProfile'; // 부모창의 이름 설정
         frm.action = '<c:url value='/profile/update/nickname'/>'; //부모창에 호출될 url
         frm.method = 'POST';
