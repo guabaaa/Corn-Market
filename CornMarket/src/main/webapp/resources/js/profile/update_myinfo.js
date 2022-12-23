@@ -3,5 +3,5 @@ function update_myinfo(){
 }
 
 function change_img(){
-            window. open("popup_profile_img.jsp", "popup02", "width=450, height=300");
+    window. open("popup_profile_img.jsp", "popup02", "width=450, height=300");
 }

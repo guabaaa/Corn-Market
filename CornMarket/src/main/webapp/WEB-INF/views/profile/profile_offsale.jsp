@@ -55,9 +55,9 @@
         </div>
         <div class="profile_second">
             <div class="profile_nav">
-                <div class="profile_status onsale"><a href="./profile_onsale.jsp">판매중</a></div>
-                <div class="profile_status offsale"><a href="./profile_offsale.jsp">판매완료</a></div>
-                <div class="profile_status review"><a href="./profile_review.jsp">거래후기</a></div>
+                <div class="profile_status onsale"><a href="<c:url value='/profile' />">판매중</a></div>
+                <div class="profile_status offsale"><a href="<c:url value='/profile/offsale' />">판매완료</a></div>
+                <div class="profile_status review"><a href="<c:url value='/profile/review' />">거래후기</a></div>
             </div>
             <div class="home-card-wrap">
                 <article class="card-top">
