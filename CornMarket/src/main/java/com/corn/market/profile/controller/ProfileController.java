@@ -34,6 +34,7 @@ public class ProfileController {
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		ProfileSale profileSale = service.getProfileSales(id, "판매중");
+		System.out.println("판매글 리스트 \n"+profileSale.getSaleList());
 		request.setAttribute("profile", profileSale);
 		return "profile/profile_onsale";
 	}
