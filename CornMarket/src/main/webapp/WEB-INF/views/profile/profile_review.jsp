@@ -45,11 +45,9 @@
 	                    	</div>
 	                    </li>
 	                    <li class="manner_degree1">
-<<<<<<< HEAD
-	                        ${profile.join_date[0]} ${profile.join_date[1]} ${profile.join_date[2]} 가입
-=======
+
 	                        ${profile.join_date[0]}년 ${profile.join_date[1]}월 ${profile.join_date[2]}일 가입
->>>>>>> 8b3c2a5b5d0cd2316229e65cc5648e6a61677c81
+
 	                    </li>
 	                 </ul>
             </div>

@@ -49,7 +49,7 @@ public class OtherProfileController {
 		list.add(new Review("d누나", "거래후기 입니다1"));
 		list.add(new Review("e누나", "거래후기 입니다2"));
 		list.add(new Review("f누나", "거래후기 입니다3"));
-		String[] date = {"2022년","10월","19일"};
+		String[] date = {"2022","10","19"};
 		ProfileReview profileReview = new ProfileReview("CH", "36.5", "마포구", date, "/resources/images/profile/profile_img_default.png", list);
 		//
 		

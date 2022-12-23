@@ -34,7 +34,7 @@ public class ProfileController {
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		ProfileSale profileSale = service.getProfileSales(id, "판매중");
-		System.out.println("판매글 리스트 \n"+profileSale.getSaleList());
+		System.out.println("판매중 리스트 \n"+profileSale.getSaleList());
 		request.setAttribute("profile", profileSale);
 		return "profile/profile_onsale";
 	}
@@ -44,6 +44,7 @@ public class ProfileController {
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		ProfileSale profileSale = service.getProfileSales(id, "거래완료");
+		System.out.println("판매완료 리스트 \n"+profileSale.getSaleList());
 		request.setAttribute("profile", profileSale);
 		return "profile/profile_offsale";
 	}
@@ -60,7 +61,7 @@ public class ProfileController {
 		list.add(new Review("a누나", "거래후기 입니다1"));
 		list.add(new Review("b누나", "거래후기 입니다2"));
 		list.add(new Review("c누나", "거래후기 입니다3"));
-		String[] date = {"2022년","10월","18일"};
+		String[] date = {"2022","10","18"};
 		ProfileReview profileReview = new ProfileReview("꿍디누나", "36.5", "마포구", date, "/resources/images/profile/profile_img_default.png", list);
 		//
 		
