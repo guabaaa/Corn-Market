@@ -72,6 +72,31 @@ public class AccountDao {
 		return id;
 	}
 	
+	//이메일 찾기
+	public int selectEmail(String email) {
+		int check = 0;
+		String check_ = "";
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "SELECT email FROM user_tbl22 WHERE email = ?";
+		try {
+			conn = dataSource.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, email);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				check_ = rs.getString(1); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs,pst,conn);
+		}
+		check = (check_==""||check_==null) ? 0 : 1; //이메일이 회원정보에 없으면 0, 있으면 1
+		return check;
+	}
+	
 	//비밀번호 찾기
 	public AccountPw selectUserPw(SearchPw searchPw) {
 		String user_pw = "";

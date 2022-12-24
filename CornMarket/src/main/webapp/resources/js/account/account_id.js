@@ -63,7 +63,7 @@ function checkIdFromPhone() {
         alert('아이디 있음.');
         idFromPhone();
       } else if (data == 0) {
-        alert('이름과 휴대폰 번호를 다시 확인해주세요.');
+        alert('이름과 휴대폰 번호를 확인해주세요.');
       }
     },
     error: function (data) {
@@ -92,7 +92,7 @@ function checkIdFromMail() {
         alert('아이디 있음.');
         idFromMail();
       } else if (data == 0) {
-        alert('이름과 이메일 주소를 다시 확인해주세요.');
+        alert('이름과 이메일 주소를 확인해주세요.');
       }
     },
     error: function (data) {

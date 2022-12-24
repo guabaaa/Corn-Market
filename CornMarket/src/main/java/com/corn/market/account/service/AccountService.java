@@ -34,6 +34,9 @@ public class AccountService {
 		return accountPw;
 	}
 	
-	
-
+	//이메일 확인
+	public int checkEmail(String email) {
+		int check = dao.selectEmail(email);
+		return check;
+	}
 }

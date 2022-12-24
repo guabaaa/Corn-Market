@@ -69,6 +69,16 @@ public class AccountController {
 		return "account/pwaccount";
 	}
 	
+	//이메일 인증번호 전송전 이메일 확인
+	@ResponseBody
+	@RequestMapping(value = "/account/pw/mail/check", method = RequestMethod.POST)
+	public int checkMail(@RequestBody String email) {
+		System.out.println("이메일 전송전 확인:"+email);
+		int check = service.checkEmail(email);
+		//이메일이 회원정보에 없으면 0, 있으면 1
+		return check;
+	}
+	
 	//비밀번호 찾기 전 확인
 	@ResponseBody
 	@RequestMapping(value = "/account/pw/check", method = RequestMethod.POST)
