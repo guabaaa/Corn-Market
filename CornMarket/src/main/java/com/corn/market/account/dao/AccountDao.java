@@ -58,7 +58,7 @@ public class AccountDao {
 			conn = dataSource.getConnection();
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, mail.getUser_name());
-			pst.setString(2, mail.getEmail());
+			pst.setString(2, mail.getEmail_id()+"@"+mail.getEmail_domain());
 			rs = pst.executeQuery();
 			if(rs.next()) {
 				user_id = rs.getString(1); 
@@ -84,7 +84,7 @@ public class AccountDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, searchPw.getUser_id());
 			pst.setString(2, searchPw.getUser_name());
-			pst.setString(3, searchPw.getEmail());
+			pst.setString(3, searchPw.getEmail_id()+"@"+searchPw.getEmail_domain());
 			rs = pst.executeQuery();
 			if(rs.next()) {
 				user_pw = rs.getString(1); 
