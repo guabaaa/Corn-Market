@@ -6,83 +6,90 @@
     <title>채팅</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-      var wsocket;
+      var webSocket;
 
       function connect() {
-        wsocket = new WebSocket('ws://localhost:8090/market/chat-ws');
+        webSocket = new WebSocket('ws://localhost:8090/market/chat');
 
-        wsocket.onopen = onOpen;
-        wsocket.onmessage = onMessage;
-        wsocket.onclose = onClose;
+        webSocket.onopen = onOpen;
+        webSocket.onmessage = onMessage;
+        webSocket.onclose = onClose;
       }
 
       function disconnect() {
-        wsocket.close();
+        webSocket.close();
       }
 
+      //연결
       function onOpen(evt) {
         //  appendMessage("연결되었습니다.");
         alert('연결되었습니다');
       }
 
-      function onMessage(evt) {
-        var data = evt.data;
-        if (data.substring(0, 4) == 'msg:') {
-          appendRecvMessage(data.substring(4));
-        }
+      //메시지 전송
+      //메시지를 소켓서버로 보냄
+      function send() {
+        var nickname = $('#nickname').val();
+        var msg = $('#message').val();
+        webSocket.send(nickname + ':' + msg); //서버로 전송
+        $('#message').val(''); //입력창 초기화
+        appendSendMessage(msg); //채팅창에 자신이 쓴 메시지 추가
+      }
+      //보내는 메시지 채팅창에 추가
+      function appendSendMessage(msg) {
+        $('#chatMessageArea').append("<div class='send' > " + msg + '</div>');
+        scrollDown();
       }
 
+      //메시지 받기
+      //서버에서 메시지를 받았을 때
+      function onMessage(evt) {
+        var data = evt.data;
+        appendRecvMessage(data);
+        //if (data.substring(0, 4) == 'msg:') {
+        //appendRecvMessage(data.substring(4));
+        //}
+      }
+      //받는 메시지 채팅창에 추가
+      function appendRecvMessage(msg) {
+        $('#chatMessageArea').append("<div class='recv'>" + msg + '</div>');
+        scrollDown();
+      }
+
+      //스크롤 맨밑으로
+      function scrollDown() {
+        var chatAreaHeight = $('#chatArea').height();
+        var maxScroll = $('#chatMessageArea').height() - chatAreaHeight;
+        $('#chatArea').scrollTop(maxScroll); //숫자가 높을수록 스크롤 제일 아래
+      }
+
+      //연결 끊어짐
       function onClose(evt) {
         // appendMessage("연결을 끊었습니다.");
         alert('연결을 끊었습니다');
       }
 
-      function send() {
-        var nickname = $('#nickname').val();
-        var msg = $('#message').val();
-        wsocket.send('msg:' + nickname + ':' + msg);
-        $('#message').val('');
-
-        //채팅창에 자신이 쓴 메시지 추가
-        appendSendMessage(msg);
-      }
-
-      //받는 메시지 채팅창에 추가
-      function appendRecvMessage(msg) {
-        $('#chatMessageArea').append("<div class='recv'>" + msg + '</div>');
-        scrollTop();
-      }
-
-      function scrollTop() {
-        var chatAreaHeight = $('#chatArea').height();
-        var maxScroll = $('#chatMessageArea').height() - chatAreaHeight;
-        $('#chatArea').scrollTop(maxScroll);
-      }
-
-      //보내는 메시지 채팅창에 추가
-      function appendSendMessage(msg) {
-        $('#chatMessageArea').append("<div class='send' > " + msg + '</div>');
-        scrollTop();
-      }
-
       $(document).ready(function () {
         $('#message').keypress(function (event) {
           var keycode = event.keyCode;
-
           if (keycode == '13') {
+            //엔터 입력
             send();
           }
           event.stopPropagation(); // 상위로 이벤트 전파 막음
         });
 
         $('#sendBtn').click(function () {
-          send();
+          //전송버튼 클릭
+          send(); //메시지 전송
         });
         $('#enterBtn').click(function () {
-          connect();
+          //입장버튼 클릭
+          connect(); //소켓 연결
         });
         $('#exitBtn').click(function () {
-          disconnect();
+          //나가기버튼 클릭
+          disconnect(); //소켓 연결 끊기
         });
       });
     </script>
