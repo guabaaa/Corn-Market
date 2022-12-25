@@ -30,11 +30,13 @@
   </head>
   <body>
 
-	<a href='<c:url value="/chatting?room=1" />'>채팅방1</a>
-	<a href='<c:url value="/chatting?room=2" />'>채팅방2</a>
-	<a href='<c:url value="/chatting?room=3" />'>채팅방3</a>
+	<a href='<c:url value="/chatting?room=1" />'>채팅방1</a> <br>
+	<a href='<c:url value="/chatting?room=2" />'>채팅방2</a> <br>
+	<a href='<c:url value="/chatting?room=3" />'>채팅방3</a> <br>
+	<br>
+	<input type="button" value="채팅방 생성" id="new_room_btn"> <br>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${path}/resources/js/chatting/chatting_sample.js"></script>
+    <script src="${path}/resources/js/chatting/chatting_sample_list.js"></script>
   </body>
 </html>
