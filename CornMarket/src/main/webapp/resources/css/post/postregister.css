@@ -25,16 +25,86 @@
     margin-top: 50px;
     border: 2px solid rgb(241,196,15);
 }
-.board-img-wrap .sell-img{
+.board-img-wrap .image-show{
     vertical-align: center;
     line-height: 300px;
     margin: 0 auto;
     margin-top: 30px;
     width: 700px;
-    height: 300px;
-    background-color: yellow;   
+    height: 300px;  
 }
-.selling-img-btn{
+.board-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.image-upload {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.board-button {
+    display: flex;
+}
+
+.board-img-wrap label {
+    cursor: pointer;
+    font-size: 1em;
+}
+#chooseFile {
+    visibility: hidden;
+}
+
+.fileContainer {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    right: 10px;
+}
+
+.fileInput {
+    display: flex;
+    align-items: center;
+    border-bottom: solid 2px black;
+    width: 400px;
+    height: 30px;
+}
+
+#fileName {
+    margin-left: 5px;
+}
+
+.buttonContainer {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 0.8em;
+
+    cursor: pointer;
+}
+
+.image-show {
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    position: absolute;
+}
+.board-button label{
     position: absolute;
     width: 350px;
     height: 35px;
@@ -46,7 +116,7 @@
     font-size: 15px;
     border: none;
     color: #ffffff;
-    bottom: 10px;
+    bottom: 50px;
     right: 10px;
     cursor: pointer;
 }
@@ -149,7 +219,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.board-btn-wrap input{
+.selling-img-btn{
     display: block;
     width: 400px;
     height: 40px;
@@ -158,7 +228,7 @@
     color: #ffffff;
     margin: 0 auto;
 }
-.board-btn-wrap .board-btn{
+.selling-img-btn{
     cursor: pointer;
 }
 .board-modify-wrap{
@@ -179,4 +249,19 @@
     margin: 0 auto;
     border-top: 2px solid rgb(241,196,15);
     border-bottom: 2px solid rgb(241,196,15);
+}
+.board-btn{
+    display: block;
+    width: 400px;
+    height: 35px;
+    background-color: rgb(241, 196, 15);
+    line-height: 32px;
+    border-radius: 2px;
+    border: 1px solid rgb(241, 196, 15);
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0 auto;
 }

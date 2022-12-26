@@ -15,11 +15,35 @@
 <body>
 
 
-    <div class="board-wrap">
-        <div class="board-img-wrap">
-            <div class="sell-img">img</div>
-            <input class="selling-img-btn" type="button" value="사진등록">
-        </div>
+   <div class="board-wrap">
+        <form method="post" enctype="multipart/form-data">
+            <div class="board-img-wrap">
+                <div class="image-show" id="image-show"></div>
+                <div class="board-container">
+                    <div class="image-upload" id="image-upload">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="board-button">
+                                <label for="chooseFile">
+                                    사진올리기
+                                </label>
+                            </div>
+                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*"
+                                onchange="loadFile(this)" multiple="multiple">
+                        </form>
+
+                        <div class="fileContainer">
+                            <div class="fileInput">
+                                <p>FILE NAME: </p>
+                                <p id="fileName"></p>
+                            </div>
+                            <div class="buttonContainer">
+                                <div class="submitButton" id="submitButton">SUBMIT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="board-title-wrap">
             <h2 class="board-title">제목</h2>
             <input class="board-title-input" type="text" placeholder="제목을 입력해주세요">
@@ -39,10 +63,11 @@
         </div>
         <div class="board-sellingprice-wrap">
             <h2 class="board-sellingprice">판매가격</h2>
-            <input class="board-sellingprice-input" type="text" placeholder="가격을 입력해주세요" id="inputonchange" name="inputonchange">
+            <input class="board-sellingprice-input" type="text" placeholder="가격을 입력해주세요" id="inputonchange"
+                name="inputonchange">
             <p class="board-sellingprice-won">원</p>
             <p class="board-check">나눔</p>
-            <input type="checkbox" class="board-checkbox" id="boardcheckbox" name="boardcheckbox" value="1"/>
+            <input type="checkbox" class="board-checkbox" id="boardcheckbox" name="boardcheckbox" value="1" />
         </div>
         <div class="board-contents-wrap">
             <textarea placeholder="내용을 입력해주세요"></textarea>
@@ -51,6 +76,7 @@
             <input class="board-btn" type="button" value="등록">
         </div>
     </div>
+  
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="${path}/resources/js/post/postregister.js"></script>
