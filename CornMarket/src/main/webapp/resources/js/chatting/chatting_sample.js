@@ -14,7 +14,8 @@ function disconnect() {
 // 웹소켓 메시지 서버에 전송
 function send() {
   var msg = $('#message').val(); //메시지 입력 input
-  webSocket.send(msg); //서버로 전송
+  webSocket.send(msg); //웹소켓 서버로 전송
+  ajaxChatContent(msg); //DB에 저장
   $('#message').val(''); //입력창 초기화
   appendSendMessage(msg); //채팅창에 본인 메시지 추가
 }
@@ -22,18 +23,18 @@ function send() {
 // 웹소켓 서버에 연결되었을 때 호출되는 이벤트
 function onOpen(evt) {
   alert('연결되었습니다');
-  console.log('웹소켓 서버에 연결되었을 때 호출되는 이벤트: ' + evt);
+  //console.log('웹소켓 서버에 연결되었을 때 호출되는 이벤트: ' + evt);
 }
 // 웹소켓 서버에서 메시지를 받았을 때 호출되는 이벤트
 function onMessage(evt) {
-  console.log('웹소켓 서버에서 메시지를 받았을 때 호출되는 이벤트: ' + evt);
+  //console.log('웹소켓 서버에서 메시지를 받았을 때 호출되는 이벤트: ' + evt);
   var data = evt.data;
   appendRecvMessage(data);
 }
 // 웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트
 function onClose(evt) {
   alert('연결을 끊었습니다');
-  console.log('웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트: ' + evt);
+  //console.log('웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트: ' + evt);
 }
 
 /*   HTML 추가 메소드   */
@@ -89,3 +90,28 @@ $(document).ready(() => {
   clickSendBtn();
   clickOutBtn();
 });
+
+//ajax - 보내는 메시지 DB에 전송
+function ajaxChatContent(msg) {
+  alert('test');
+  let url = $('#chat_content_url').val();
+  let room = $('#room_id').val();
+  let id = $('#user_id').val();
+  let chattingContent = {
+    room_id: room,
+    sender_id: id,
+    chat_content: msg,
+  };
+  $.ajax({
+    type: 'POST',
+    url: url + room,
+    headers: { 'content-type': 'application/json' },
+    data: JSON.stringify(chattingContent),
+    success: function () {
+      alert('채팅 내용 전송');
+    },
+    error: function () {
+      alert('error');
+    },
+  });
+}

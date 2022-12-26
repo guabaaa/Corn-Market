@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -29,12 +29,13 @@
     </style>
   </head>
   <body>
-
-	<a href='<c:url value="/chatting?room=1" />'>채팅방1</a> <br>
-	<a href='<c:url value="/chatting?room=2" />'>채팅방2</a> <br>
-	<a href='<c:url value="/chatting?room=3" />'>채팅방3</a> <br>
-	<br>
-	<input type="button" value="채팅방 생성" id="new_room_btn"> <br>
+    <form action="<c:url value='/chatting/list'/>" id="frm" method="post">
+<c:forEach var="room" items="${list}" varStatus="st">
+      <a href='<c:url value="/chatting/list/${room.room_id}" />'>채팅방 - ${room.other_nickname}</a> <br />
+</c:forEach>
+      <input type="hidden" value="100061" id="post_id" name="post_id"/>
+      <input type="submit" value="채팅방 생성" id="new_room_btn" /> <br />
+    </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/chatting/chatting_sample_list.js"></script>
