@@ -2,7 +2,6 @@ package com.corn.market.chatting.domain;
 
 public class ChattingContent {
 	
-	private String content_id;
 	private String room_id;
 	private String sender_id;
 	private String chat_content;
@@ -11,20 +10,11 @@ public class ChattingContent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChattingContent(String content_id, String room_id, String sender_id, String chat_content) {
+	public ChattingContent(String room_id, String sender_id, String chat_content) {
 		super();
-		this.content_id = content_id;
 		this.room_id = room_id;
 		this.sender_id = sender_id;
 		this.chat_content = chat_content;
-	}
-
-	public String getContent_id() {
-		return content_id;
-	}
-
-	public void setContent_id(String content_id) {
-		this.content_id = content_id;
 	}
 
 	public String getRoom_id() {
@@ -53,8 +43,8 @@ public class ChattingContent {
 
 	@Override
 	public String toString() {
-		return "ChattingContent [content_id=" + content_id + ", room_id=" + room_id + ", sender_id=" + sender_id
-				+ ", chat_content=" + chat_content + "]";
+		return "ChattingContent [room_id=" + room_id + ", sender_id=" + sender_id + ", chat_content=" + chat_content
+				+ "]";
 	}
 
 }

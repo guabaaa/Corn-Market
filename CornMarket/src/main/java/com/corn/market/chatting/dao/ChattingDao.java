@@ -91,7 +91,7 @@ public class ChattingDao {
 	//채팅방 목록 조회
 	public ArrayList<ChattingRoomInfo> selectChattingRoom(String user_id) {
 		ArrayList<ChattingRoomInfo> list = new ArrayList<>();
-		String sql = "SELECT DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"') "
+		String sql = "SELECT r.room_id, DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"') "
 				+ "FROM chatting_room_tbl22 r "
 				+ "JOIN user_tbl22 u "
 				+ "ON DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) = u.user_id "
@@ -111,12 +111,13 @@ public class ChattingDao {
 			pst.setString(4, user_id);
 			rs = pst.executeQuery();
 			while(rs.next()) {
-				String other_user_id = rs.getString(1);
-				String other_profile_img = rs.getString(2);
-				String other_nickname = rs.getString(3);
-				String last_chat_content = rs.getString(4);
-				String last_send_date = rs.getString(5);
-				list.add(new ChattingRoomInfo(other_user_id, other_profile_img, other_nickname, last_chat_content, last_send_date));
+				String room_id = rs.getString(1);
+				String other_user_id = rs.getString(2);
+				String other_profile_img = rs.getString(3);
+				String other_nickname = rs.getString(4);
+				String last_chat_content = rs.getString(5);
+				String last_send_date = rs.getString(6);
+				list.add(new ChattingRoomInfo(room_id,other_user_id, other_profile_img, other_nickname, last_chat_content, last_send_date));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

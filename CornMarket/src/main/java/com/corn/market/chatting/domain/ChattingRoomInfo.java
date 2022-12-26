@@ -2,6 +2,7 @@ package com.corn.market.chatting.domain;
 
 public class ChattingRoomInfo {
 
+	private String room_id;
 	private String other_user_id;
 	private String other_profile_img;
 	private String other_nickname;
@@ -12,14 +13,23 @@ public class ChattingRoomInfo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChattingRoomInfo(String other_user_id, String other_profile_img, String other_nickname,
+	public ChattingRoomInfo(String room_id, String other_user_id, String other_profile_img, String other_nickname,
 			String last_chat_content, String last_send_date) {
 		super();
+		this.room_id = room_id;
 		this.other_user_id = other_user_id;
 		this.other_profile_img = other_profile_img;
 		this.other_nickname = other_nickname;
 		this.last_chat_content = last_chat_content;
 		this.last_send_date = last_send_date;
+	}
+
+	public String getRoom_id() {
+		return room_id;
+	}
+
+	public void setRoom_id(String room_id) {
+		this.room_id = room_id;
 	}
 
 	public String getOther_user_id() {
@@ -64,8 +74,8 @@ public class ChattingRoomInfo {
 
 	@Override
 	public String toString() {
-		return "ChattingRoomInfo [other_user_id=" + other_user_id + ", other_profile_img=" + other_profile_img
-				+ ", other_nickname=" + other_nickname + ", last_chat_content=" + last_chat_content
+		return "ChattingRoomInfo [room_id=" + room_id + ", other_user_id=" + other_user_id + ", other_profile_img="
+				+ other_profile_img + ", other_nickname=" + other_nickname + ", last_chat_content=" + last_chat_content
 				+ ", last_send_date=" + last_send_date + "]";
 	}
 	
