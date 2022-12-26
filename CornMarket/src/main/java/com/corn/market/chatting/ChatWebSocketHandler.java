@@ -9,43 +9,61 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class ChatWebSocketHandler extends TextWebSocketHandler {
 
-
-	private Map<String, WebSocketSession> users = new ConcurrentHashMap<>();
-	//private Map<String, Map<String, WebSocketSession>>  name;
+	//
+	private ConcurrentHashMap<WebSocketInfo, WebSocketSession> sessionList = new ConcurrentHashMap<WebSocketInfo, WebSocketSession>();
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		log(session.getId() + " 연결됨");
-
-		users.put(session.getId(), session);
 	}
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		log(session.getId() + " 연결 종료됨");
-
-		users.remove(session.getId());
 	}
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		log(session.getId() + "로 부터 메시지 수신- " + message.getPayload());
+		//JSON 객체 Map으로 변환
+		ObjectMapper objectMapper = new ObjectMapper();
+		Map<String, String> chatContent = objectMapper.readValue(message.getPayload(), Map.class);
+		String type = chatContent.get("type");
+		log(session.getId() + "데이터구분:"+type);
+		WebSocketInfo info = new WebSocketInfo(chatContent.get("room_id"), chatContent.get("sender_id"));
+		
+		//웹소켓 연결됨, 메시지 전송, 웹소켓 연결 끊어짐
+		switch (type) {
+		case "enter":
+			//클라이언트 연결, Map에 세션 저장
+			sessionList.put(info, session);
+			break;
+		case "send_msg":
+			//같은 채팅방에 메세지 전송
+			for(WebSocketInfo w : sessionList.keySet()) {
+				if(w.getRoom_id().equals(chatContent.get("room_id"))) {
+					sessionList.get(w).sendMessage(message);
+				}
+			}
+			break;
+		case "out":
+			//클라이언트 연결 해제, 세션 삭제
+			sessionList.remove(info);
+			break;
 
-		String current = session.getId(); 
-		for (WebSocketSession s : users.values()) {   
-			if(  !s.getId().equals(current)) { 
-				s.sendMessage(message);		        
-				log(s.getId() + "에 메시지 발송- " + message.getPayload());
-			}             
+		default:
+			break;
 		}
+		
 	}
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-		log(session.getId() + " 예외 발생- " + exception.getMessage());
+		log(session.getId() + "에서 예외 발생: " + exception.getMessage());
 	}
 
 	private void log(String logmsg) {
-		System.out.println(new Date() + " : " + logmsg);
+		System.out.println(new Date() + "-" + logmsg);
 	}
 
 }
