@@ -33,7 +33,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       <c:forEach var="room" items="${list}" varStatus="st">
         <a href='<c:url value="/chatting/list/${room.room_id}" />'>채팅방 - ${room.other_nickname}</a> <br />
       </c:forEach>
-      <input type="hidden" value="100006" id="post_id" name="post_id" />
+      <input type="hidden" value="100061" id="post_id" name="post_id" />
       <input type="button" value="채팅방 생성" id="new_room_btn" /> <br />
     </form>
 

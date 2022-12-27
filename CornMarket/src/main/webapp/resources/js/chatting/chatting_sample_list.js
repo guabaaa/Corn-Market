@@ -16,18 +16,17 @@ function checkChatRoom() {
     type: 'POST',
     url: url + 'check',
     data: post_id,
+    contentType: 'text/plain; charset=utf-8',
     success: function (data) {
       //조회 결과 없으면 0 있으면 방id 반환
       console.log(data);
       let check = data;
       if (check == 0) {
-        alert('check 0');
         //채팅방 생성
-        //chat_room_frm.submit();
+        chat_room_frm.submit();
       } else if (check != 0) {
-        alert('check 0아님');
         //존재하는 채팅방으로 이동
-        //location.href = url + check;
+        location.href = url + check;
       }
     },
     error: function (data) {
