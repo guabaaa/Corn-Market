@@ -210,6 +210,7 @@ h2{
 .search-wrap .id-search-wrap .inputEnter .emailInput{
     margin-top: 10px;
     display: flex;
+    margin-bottom:10px;
 }
 .search-wrap .id-search-wrap .search-type .emailInput .userSelect{
     width: 300px;
@@ -238,11 +239,12 @@ h2{
     font-size: 15px;
     color: #202020;
     display: inline-block;
+  
 }
 
-.search-wrap .codenumInput button{
+.search-wrap .codenumInput .codebtn{
     margin-left: 10px;
-    width: 200px;
+    width: 170px;
     height: 35px;
     background-color: rgb(241, 196, 15);
     line-height: 32px;
@@ -251,33 +253,42 @@ h2{
     text-align: center;
     font-size: 15px;
     color: #fff;
-}
-.search-wrap .codenumInput #code-timer{
-    width: 80px;
-    height: 35px;
-    background-color: rgb(241, 196, 15);
-    line-height: 32px;
-    border-radius: 2px;
-    border: 1px solid rgb(241, 196, 15);
-    text-align: center;
-    font-size: 13px;
-    color: #fff;
-    margin-left: 10px;
+  
 }
 .codenumInput{
+	height:35px;
     margin-bottom: 15px;
     display: flex;
     display: none;
+    align-items: center;
 }
+.search-wrap .codenumInput #code-timer{
+	display: inline-block;
+    width: 100px;
+    height: 35px;
+    background-color: #ffffff;
+    line-height: 35px;
+    text-align: center;
+    font-size: 13px;
+    color: #black;
+    margin-left: 10px;
+    justify-content: center;
+}
+
+
 
 /* error*/
 .search-wrap .error{
     width: 900px;
     height: 35px;
     text-align: left;
+    display: block;
+    color: rgb(225, 0 ,0);
+    font-size: 12px;
+    margin-top: 10px;
 }
 .search-wrap .error p{
-    color: rgb(255, 0, 0);;
+    color: rgb(255, 0, 0);
     font-size: 12px;
 }
 

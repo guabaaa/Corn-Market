@@ -55,8 +55,9 @@
 	                                        <input id="memberHp" name="phone" type="text" class="input1"
 	                                            inputmode="numeric" placeholder="휴대폰번호 (-까지 입력해주세요)">
 	                                        <span id="conClear" class="delBtn"></span>
-	                                        <p id="hperror" class="error"></p>
+	               
 	                                    </div>
+	                                    <p id="hperror" class="error" style="display:none;"></p>
 	                                </div>
 	                                <div class="btnArea">
 	                                    <button type="button" onclick="idFromPhoneBtn()" class="btnYellow" id="hpbtnYellow">확인</button>
@@ -99,8 +100,12 @@
                                                     <option value="yahoo.com">yahoo.com</option>
                                                 </select>
                                             </div>
-                                            <p id="emailerror" class="error"></p>
+                                            
                                         </div>
+                                       
+                                       	<p id="emailerror" class="error" style="display:none;"></p>
+                        
+                                        
                                         <div class="btnArea">
                                             <button type="button" onclick="idFromMailBtn()" class="btnYellow">확인</button>
                                         </div>

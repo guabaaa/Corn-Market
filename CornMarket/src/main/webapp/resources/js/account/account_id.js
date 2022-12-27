@@ -41,7 +41,6 @@ function idpopup() {
         document.getElementById("iderror").innerHTML = ""
     }
     */
-  alert('dd');
 }
 
 //찾는 아이디 있는지 확인 - 휴대폰찾기
@@ -61,10 +60,12 @@ function checkIdFromPhone() {
       console.log(data);
       if (data == 1) {
         idFromPhone();
+        $('.error').hide();
       } else if (data == 0) {
-        document.getElementById("hperror").innerHTML = "휴대폰번호 올바르지 않습니다."
+      	$('.error').show();
+        document.getElementById("hperror").innerHTML = "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요."
         check=false
-      }
+     }
     },
     error: function (data) {
     },
@@ -90,8 +91,10 @@ function checkIdFromMail() {
       console.log(data);
       if (data == 1) {
         idFromMail();
+        $('.error').hide();
       } else if (data == 0) {
-       	document.getElementById("emailerror").innerHTML = "이메일 올바르지 않습니다."
+      	$('.error').show();
+       	document.getElementById("emailerror").innerHTML = "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요."
         check=false
       }
     },

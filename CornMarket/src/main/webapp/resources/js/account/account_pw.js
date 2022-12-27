@@ -10,11 +10,13 @@ function checkEmail() {
     success: function (data) {
       console.log(data);
       if (data == 1) {
-        alert('이메일 맞음.');
         codenumshow(); //인증번호 입력창 보여주기
         sendEmail(); //인증번호 메일 전송
+        $('.error').hide();
       } else if (data == 0) {
-        alert('이메일 주소를 다시 확인해주세요.');
+      	$('.error').show();
+        document.getElementById("emailerror").innerHTML = "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요."
+        check=false
       }
     },
     error: function (data) {
@@ -45,7 +47,9 @@ function sendEmail() {
 //인증번호 받기 버튼
 function mailBtnClick() {
   $('#mailBtn').click(() => {
+    
     checkEmail();
+    mailtimer();
   }); //click
 }
 mailBtnClick();
@@ -92,23 +96,26 @@ function searchdisplayemail() {
 }
 
 // timer
-var time = 600;
-var min = '';
-var sec = '';
-/*
- */
-var x = setInterval(function () {
-  min = parseInt(time / 60);
-  sec = time % 60;
-
-  document.getElementById('code-timer').innerHTML = min + '분' + sec + '초';
-  time--;
-
-  if (time < 0) {
-    clearInterval(x);
-    document.getElementById('code-timer').innerHTML = '시간초과';
-  }
+function mailtimer(){
+	var time = 600;
+	var min = '';
+	var sec = '';
+	/*
+	 */
+	var x = setInterval(function () {
+	  min = parseInt(time / 60);
+	  sec = time % 60;
+	
+	  document.getElementById('code-timer').innerHTML = min + '분' + sec + '초';
+	  time--;
+	
+	  if (time < 0) {
+	    clearInterval(x);
+	    document.getElementById('code-timer').innerHTML = '시간초과';
+	  }
 }, 1000);
+}
+
 
 //errormessage
 

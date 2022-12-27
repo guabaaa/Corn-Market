@@ -79,16 +79,19 @@
                                                </div>
                                                <div class="codesendInput">
                                                    <button type="button" id="mailBtn">인증번호 요청</button>
-                                                   <div class="codenumInput" id="code-show-input">
+                                                   
+                                               </div>
+                                              
+                                           </div>
+                                           <div class="codenumInput" id="code-show-input">
                                                        <input id="codeNum" class="inputC" type="text"
                                                            placeholder="인증번호 네자리를 입력해주세요">
-                                                       <button type="button" class="codebtn" id="numBtn">인증번호 확인</button>
+                                                       <input type="button" class="codebtn" id="numBtn" value="인증번호 확인">
+                                                       <!-- <button type="button" class="codebtn" id="numBtn">인증번호 확인</button> -->
                                                        <div id="code-timer"></div>
-                                                   </div>
-                                               </div>
-                                               <p class="error" id="emailerror"></p>
+                                                   
                                            </div>
-
+                                           <p class="error" id="emailerror" style="display:none;"></p>
                                            <div class="btnArea">
                                                <button type="button" onclick="pwBtn()" class="btnYellow">확인</button>
                                            </div>
