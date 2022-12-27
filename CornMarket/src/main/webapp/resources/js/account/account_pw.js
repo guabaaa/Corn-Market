@@ -139,10 +139,10 @@ function checkPw() {
     success: function (data) {
       console.log(data);
       if (data == 1) {
-        alert('비밀번호 찾음.');
+      
         submitPw();
       } else if (data == 0) {
-        alert('이름과 이메일 주소를 다시 확인해주세요.');
+     
       }
     },
     error: function (data) {

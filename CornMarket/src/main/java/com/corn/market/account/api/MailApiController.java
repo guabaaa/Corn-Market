@@ -20,8 +20,8 @@ public class MailApiController {
 	@RequestMapping(value = "/account/pw/mail", method = RequestMethod.GET)
 	public void sendMail(String email,HttpServletRequest request,HttpServletResponse response) {
 		System.out.println(email);
-		//String code = mailSendService.sendMail(email); //메일 전송
-		String code = mailSendService.makeMailCode(); //인증코드만 테스트
+		String code = mailSendService.sendMail(email); //메일 전송
+		//String code = mailSendService.makeMailCode(); //인증코드만 테스트
 		//쿠키 생성 및 수정
 		Cookie cookie = new Cookie("mail_code", code);
 		cookie.setMaxAge(600); //10분

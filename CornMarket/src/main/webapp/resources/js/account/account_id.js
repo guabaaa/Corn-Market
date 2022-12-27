@@ -33,14 +33,7 @@ function idpopup() {
   } else {
     document.getElementById('hperror').innerHTML = '';
   }
-  /*
-    if(id ===""){
-        document.getElementById("iderror").innerHTML = "아이디가 올바르지 않습니다."
-        check=false
-    }else{
-        document.getElementById("iderror").innerHTML = ""
-    }
-    */
+ 
 }
 
 //찾는 아이디 있는지 확인 - 휴대폰찾기
