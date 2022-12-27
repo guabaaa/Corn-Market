@@ -43,23 +43,23 @@ charset=UTF-8" pageEncoding="UTF-8"%>
       </div>
       <div class="profile_second">
         <div class="profile_nav">
-          <div class="profile_status onsale"><a href="<c:url value="/profile" />">판매중</a></div>
-          <div class="profile_status offsale"><a href="<c:url value="/profile/offsale" />">판매완료</a></div>
-          <div class="profile_status review"><a href="<c:url value="/profile/review" />">거래후기</a></div>
+          <div class="profile_status onsale"><a href="<c:url value='/profile' />">판매중</a></div>
+          <div class="profile_status offsale"><a href="<c:out value='/profile/offsale' />">판매완료</a></div>
+          <div class="profile_status review"><a href="<c:url value='/profile/review' />">거래후기</a></div>
         </div>
         <div class="home-card-wrap">
-<c:forEach var="sale" items="${profile.saleList}">        
-          <article class="card-top">
-            <a class="card-link">
-              <div class="card-photo">${sale.post_img}</div>
-              <div class="card-desc">
-                <div class="card-title">${sale.title}</div>
-                <div class="card-price">${sale.price}원</div>
-                <div class="card-region">서울시 ${sale.town_name}</div>
-              </div>
-            </a>
-          </article>
-</c:forEach>          
+			<c:forEach var="sale" items="${profile.saleList}">        
+			          <article class="card-top">
+			            <a class="card-link">
+			              <div class="card-photo">${sale.post_img}</div>
+			              <div class="card-desc">
+			                <div class="card-title">${sale.title}</div>
+			                <div class="card-price">${sale.price}원</div>
+			                <div class="card-region">서울시 ${sale.town_name}</div>
+			              </div>
+			            </a>
+			          </article>
+			</c:forEach>          
         </div>
       </div>
   </body>

@@ -23,11 +23,12 @@ window.addEventListener("load", function () {
         ],
       },
       {
-        duration: 1000, // 위의효과가 1초간 지속되도록
+        duration: 1500, // 위의효과가 1초간 지속되도록
         fill: "forwards",
       }
     );
   }
 
-  setInterval(nextSlide, 3000);
+  setInterval(nextSlide, 5000);
+
 });

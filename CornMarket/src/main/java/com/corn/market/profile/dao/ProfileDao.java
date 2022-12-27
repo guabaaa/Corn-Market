@@ -28,19 +28,11 @@ public class ProfileDao {
 	//판매내역 조회
 	public ArrayList<Sale> selectOnSale(String id,String post_status) {
 		ArrayList<Sale> list = new ArrayList<Sale>();
-		/*
 		String sql = "SELECT post_img, title, TRIM(TO_CHAR(price,'99,999,999')), town_name "
 				+ "FROM post_tbl22 p "
 				+ "JOIN town_tbl22 t "
 				+ "ON p.town_code = t.town_code "
 				+ "WHERE p.user_id = ? AND p.post_status = ? "
-				+ "ORDER BY p.post_id DESC";
-		*/
-		String sql = "SELECT post_img, title, TRIM(TO_CHAR(price,'99,999,999')), town_name " //테스트용
-				+ "FROM post_tbl22_test p "
-				+ "JOIN town_tbl22 t "
-				+ "ON p.town_code = t.town_code "
-				+ "WHERE user_id = ? AND post_status = ? "
 				+ "ORDER BY p.post_id DESC";
 		Connection conn = null;
 		PreparedStatement pst = null;

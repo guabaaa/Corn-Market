@@ -32,7 +32,7 @@
             <a href="">아이디/비밀번호 찾기</a>
         </div>
         <div class="login_third">
-            <button>로그인</button>
+            <button type="button" onclick="login()" id="loginbtn">로그인</button>
             <button onclick="location.href='../signup/signUp.jsp'">회원가입</button>
         </div>
         <div class="login_fourth">
@@ -43,5 +43,10 @@
     </div>
 </form>
 <jsp:include page="../base/footer.jsp"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    	let loginUrl = "<c:url value='/member/login'/>";
+    	let index2Url = "<c:url value='/main/index2'/>";
+    </script>
 </body>
 </html>
