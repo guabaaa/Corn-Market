@@ -14,8 +14,9 @@
 <body>
 <jsp:include page="../base/header.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
-<form name="frm">
-<div class="h2_st">
+<form name="frm" action="" method="">
+
+	<div class="h2_st">
         <h2>회원가입</h2>
     </div>
     <div class="join_rule1">
@@ -294,32 +295,39 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
     </div>
     <div class="join_wrap">
         <div class="join_first">
-            <div class="join_main" id="name">이름</div>
-            <input type="text" class="join_input" name="">
+	            <div class="join_main" id="name">이름</div>
+	            <input type="text" class="join_input" name="member_name" id="member_name">
         </div>
         <div class="join_first">
-            <div class="join_main">아이디</div>
-            <input type="text" class="join_input" name=""><br>
-            <input type="button" class="join_check_again" value="중복확인" >
+        	<div class="non_hidden">
+            	<div class="join_main">아이디</div>
+            	<input type="text" class="join_input" name="member_id" id="member_id"><br>
+            	<input type="button" class="join_check_again" value="중복확인" id="doublecheck_id">
+        	</div>
+        	<p id="id_error" class="error"></p>
         </div>
         <div class="join_first">
             <div class="join_main">닉네임</div>
-            <input type="text" class="join_input" name="">
-            <input type="button" class="join_check_again" value="중복확인">
+            <input type="text" class="join_input" name="member_nm" id="member_nm">
+            <input type="button" class="join_check_again" value="중복확인" onclick="id_dbcheck()" id="id_dbcheck">
         </div>
         <div class="join_first">
             <div class="join_main">비밀번호</div>
-            <input type="password" class="join_input" name="">
+            <input type="password" class="join_input" name="member_pw" id="member_pw" onchange="pw_dbcheck()">
         </div>
         <div class="join_first">
-            <div class="join_main">비밀번호 확인</div>
-            <input type="password" class="join_input" name="">
+        	<div class="non_hidden1">
+	            <div class="join_main">비밀번호 확인</div>
+	            <input type="password" class="join_input" name="member_pw_db" id="member_pw_db" onchange="pw_dbcheck()">
+        	</div>
+        	<p id="pw_error" class="pw_error"></p>
         </div>
          <div class="join_first">
             <div class="join_main">이메일</div>
-            	<input type="text" class="join_input_email" name="">
+            	<input type="text" class="join_input_email" name="member_email_f" id="member_email_f">
                 <span class="join_phone">@</span>
-                <select class="join_email_sel" name="mail">
+                <select class="join_email_sel" name="mail" id="member_email_s">
+                	<option value="">선택</option>
                     <option value="gmail.com">gmail.com</option>
                     <option value="hanmail.net">hanmail.net</option>
                    	<option value="hotmail.com">hotmail.com</option>
@@ -331,10 +339,10 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         </div>
         <div class="join_first">
             <div class="join_main">휴대폰번호</div>
-            <input type="text" class="join_input" name="">
+            <input type="text" class="join_input" name="member_ph" id="member_ph">
         </div>
         <div class="join_second">
-            <button class="btn1" onclick="save()" id="joinbtn">저장</button>
+            <button type="button" class="btn1" onclick="save()" id="joinbtn">저장</button>
             <button onclick="../main/index.jsp">취소</button>
         </div>
     </div>
