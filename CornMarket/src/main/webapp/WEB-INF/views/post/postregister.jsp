@@ -14,14 +14,16 @@
 </head>
 <body>
 
-
-   <div class="board-wrap">
+	 <div class="board-wrap">
         <form method="post" enctype="multipart/form-data">
             <div class="board-img-wrap">
-                <div class="image-show" id="image-show"></div>
                 <div class="board-container">
                     <div class="image-upload" id="image-upload">
                         <form method="post" enctype="multipart/form-data">
+                            <div class="image-show" id="image-show">
+                                <div class="imgshow-leftbtn" onclick="prevImg()"></div>
+                                <div class="imgshow-rightbtn" onclick="nextImg()"></div>
+                            </div>
                             <div class="board-button">
                                 <label for="chooseFile">
                                     사진올리기
@@ -35,9 +37,6 @@
                             <div class="fileInput">
                                 <p>FILE NAME: </p>
                                 <p id="fileName"></p>
-                            </div>
-                            <div class="buttonContainer">
-                                <div class="submitButton" id="submitButton">SUBMIT</div>
                             </div>
                         </div>
                     </div>

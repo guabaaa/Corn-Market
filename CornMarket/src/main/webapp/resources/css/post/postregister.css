@@ -17,9 +17,10 @@
     color: rgb(241, 196, 15);
 }
 .board-img-wrap{
+    margin: 0 auto;
     position: relative;
     width: 900px;
-    height: 400px;
+    height: 500px;
     margin: 0 auto;
     margin-bottom: 50px;
     margin-top: 50px;
@@ -27,22 +28,31 @@
 }
 .board-img-wrap .image-show{
     vertical-align: center;
-    line-height: 300px;
+    line-height: 350px;
     margin: 0 auto;
     margin-top: 30px;
     width: 700px;
-    height: 300px;  
+    height: 350px;  
 }
 .board-container {
     display: flex;
-    height: 100%;
     flex-direction: column;
 }
-.image-upload {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.board-button label{
+    position: absolute;
+    width: 350px;
+    height: 35px;
+    background-color: rgb(241, 196, 15);
+    line-height: 32px;
+    border-radius: 2px;
+    border: 1px solid rgb(241, 196, 15);
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    color: #ffffff;
+    bottom: 50px;
+    right: 10px;
+    cursor: pointer;
 }
 
 .board-button {
@@ -67,59 +77,50 @@
 .fileInput {
     display: flex;
     align-items: center;
-    border-bottom: solid 2px black;
+    border-bottom: solid 2px rgb(241, 196, 15);
     width: 400px;
     height: 30px;
+    color: rgb(117,117,117);
 }
 
 #fileName {
     margin-left: 5px;
 }
 
-.buttonContainer {
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 30px;
-    padding: 10px;
-    font-size: 0.8em;
-
-    cursor: pointer;
-}
 
 .image-show {
     z-index: -1;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 700px;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
 }
 
-.img {
+.imgshow-leftbtn{
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./arrow-prev.png);
     position: absolute;
+    left: 20px;
+    top: 200px;
 }
-.board-button label{
-    position: absolute;
-    width: 350px;
-    height: 35px;
-    background-color: rgb(241, 196, 15);
-    line-height: 32px;
-    border-radius: 2px;
-    border: 1px solid rgb(241, 196, 15);
-    text-align: center;
-    font-size: 15px;
-    border: none;
-    color: #ffffff;
-    bottom: 50px;
-    right: 10px;
-    cursor: pointer;
+.imgshow-rightbtn{
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(./arrow-next.png);
+    position: absolute;         /* top, right, left, bottom => position 변경해야 함 */
+    top : 200px;
+    right: 5px;
 }
+
 .board-wrap .board-title-wrap{
     width: 900px;
     margin: 0 auto;
@@ -174,7 +175,7 @@
 .board-sellingprice-input{
     width: 500px;
     height: 40px;
-    border: 1px solid gray;
+    border: 1px solid rgb(117,117,117);
     padding: 2px;
     margin-right: 10px;
     border-radius: 2px;
@@ -219,6 +220,21 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.board-btn{
+    display: block;
+    width: 400px;
+    height: 35px;
+    background-color: rgb(241, 196, 15);
+    line-height: 32px;
+    border-radius: 2px;
+    border: 1px solid rgb(241, 196, 15);
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0 auto;
+}
 .selling-img-btn{
     display: block;
     width: 400px;
@@ -249,19 +265,4 @@
     margin: 0 auto;
     border-top: 2px solid rgb(241,196,15);
     border-bottom: 2px solid rgb(241,196,15);
-}
-.board-btn{
-    display: block;
-    width: 400px;
-    height: 35px;
-    background-color: rgb(241, 196, 15);
-    line-height: 32px;
-    border-radius: 2px;
-    border: 1px solid rgb(241, 196, 15);
-    text-align: center;
-    font-size: 15px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    margin: 0 auto;
 }

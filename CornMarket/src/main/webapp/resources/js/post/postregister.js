@@ -1,13 +1,13 @@
-$(document).ready(function(){
-    $("#boardcheckbox").change(function(){         
-            if($("#boardcheckbox").is(":checked")){ 
-               $("#inputonchange").val("0"); 
-            }
-        });
-    
-    
+$(document).ready(function () {
+    $("#boardcheckbox").change(function () {
+        if ($("#boardcheckbox").is(":checked")) {
+            $("#inputonchange").val("0");
+        }
     });
-    
+
+});
+
+
 function loadFile(input) {
     var file = input.files[0];
 
@@ -19,26 +19,46 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);
 
-    newImage.style.width = "70%";
-    newImage.style.height = "70%";
-    newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지를 숨긴다
+    newImage.style.width = "700px";
+    newImage.style.height = "300px";
+    //newImage.style.visibility = "hidden";
     newImage.style.objectFit = "contain";
+
 
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
 
-var submit = document.getElementById('submitButton');
-submit.onclick = showImage;    
-
-function showImage() {
-    var newImage = document.getElementById('image-show').lastElementChild;
-
-    
-    newImage.style.visibility = "visible";
 
 
-    document.getElementById('image-upload').style.visibility = 'hidden';
 
-    document.getElementById('fileName').textContent = null; 
-}
+
+let imgNames=[];
+
+        let next=0;
+        let prev=0;
+
+        // 사진 넘어가는 버튼
+        function nextImg(){
+            let gallery = document.querySelector(".image-show");       // 이미지태그
+            gallery.src=imgNames[next];
+            next++;
+            next = next % imgNames.length;
+            gallery.style.backgroundImage="url('"+imgNames[next] + "')";
+            gallery.style.backgroundPosition="center";
+            gallery.style.backgroundSize="cover";
+        }
+
+        // 이전 사진으로 돌리는 버튼
+        function prevImg(){
+            let gallery = document.querySelector(".image-show");
+            gallery.src=imgNames[prev];
+            prev = prev % imgNames.length;
+            prev--;
+            if( prev <0){
+                prev =  imgNames.length-1;
+            }
+            gallery.style.backgroundImage="url('"+imgNames[prev] + "')";
+            gallery.style.backgroundPosition="center";
+            gallery.style.backgroundSize="cover";
+        }
