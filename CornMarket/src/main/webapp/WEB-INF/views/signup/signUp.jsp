@@ -295,33 +295,31 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
     <div class="join_wrap">
         <div class="join_first">
             <div class="join_main" id="name">이름</div>
-            <input type="text" class="join_input">
+            <input type="text" class="join_input" name="">
         </div>
         <div class="join_first">
             <div class="join_main">아이디</div>
-            <input type="text" class="join_input"><br>
-            <input type="button" class="join_check_again" value="중복확인">
+            <input type="text" class="join_input" name=""><br>
+            <input type="button" class="join_check_again" value="중복확인" >
         </div>
         <div class="join_first">
             <div class="join_main">닉네임</div>
-            <input type="text" class="join_input">
+            <input type="text" class="join_input" name="">
             <input type="button" class="join_check_again" value="중복확인">
         </div>
         <div class="join_first">
             <div class="join_main">비밀번호</div>
-            <input type="password" class="join_input">
+            <input type="password" class="join_input" name="">
         </div>
         <div class="join_first">
             <div class="join_main">비밀번호 확인</div>
-            <input type="password" class="join_input">
+            <input type="password" class="join_input" name="">
         </div>
          <div class="join_first">
             <div class="join_main">이메일</div>
-            	<input type="text" class="join_input_email">
+            	<input type="text" class="join_input_email" name="">
                 <span class="join_phone">@</span>
-                <input type="text" class="join_input_email" name="mid" >
-                <select class="join_email_sel" onChange="mailcheck()" name="mail">
-                	<option value="">직접입력</option>
+                <select class="join_email_sel" name="mail">
                     <option value="gmail.com">gmail.com</option>
                     <option value="hanmail.net">hanmail.net</option>
                    	<option value="hotmail.com">hotmail.com</option>
@@ -333,7 +331,7 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         </div>
         <div class="join_first">
             <div class="join_main">휴대폰번호</div>
-            <input type="text" class="join_input">
+            <input type="text" class="join_input" name="">
         </div>
         <div class="join_second">
             <button class="btn1" onclick="save()" id="joinbtn">저장</button>
