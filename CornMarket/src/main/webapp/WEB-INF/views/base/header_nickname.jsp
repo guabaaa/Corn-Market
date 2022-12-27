@@ -16,7 +16,7 @@
         </div>
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
-            <p class="main_nickname">꿍디누나</p>
+            <p class="main_nickname">${sessionScope.id}</p>
             <button onclick="location.href='../login/login.jsp'">프로필보기</button>
         </div>
 </header>
