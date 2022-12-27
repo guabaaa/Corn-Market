@@ -35,7 +35,8 @@ public class ChattingController {
 		ArrayList<ChattingRoomInfo> list = chattingService.getChattingList(user_id);
 		for(ChattingRoomInfo chat : list) System.out.println(chat); //콘솔 테스트
 		model.addAttribute("list", list);
-		return "chatting/chatting_list_sample";
+		//return "chatting/chatting_list_sample";
+		return "chatting/chatting_room_list";
 	}
 	//채팅방 새로 등록
 	@PostMapping("/chatting/list")
@@ -55,7 +56,8 @@ public class ChattingController {
 		ChattingInfo chattingInfo = chattingService.getChattingInfo(room_id, user_id);
 		model.addAttribute("chat", chattingInfo);
 		model.addAttribute("id", user_id);
-		return "chatting/chatting_sample";
+		//return "chatting/chatting_sample";
+		return "chatting/chatting_pop";
 	}
 	//채팅 내용 등록
 	@ResponseBody
