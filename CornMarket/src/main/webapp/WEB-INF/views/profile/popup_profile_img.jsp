@@ -24,7 +24,7 @@
                   <input type="text" class="img_loader" id="file_name" readonly />
                 </div>
                 <div class="body-contentbox">
-                  <input type="file" name="file" id="input_file" style="display: none" onchange="getFileName(this)" />
+                  <input type="file" name="file" id="input_file" accept="image/*" style="display: none" onchange="getFileName(this)" />
                   <input type="button" class="serach_btn" value="불러오기" id="file_btn" />
                 </div>
               </div>
