@@ -282,14 +282,14 @@ h2{
 }
 
 .arrow-dropdown-hp{
-    background-image: url(arrow_drop_down.png);
+    background-image: url(../../images/style/arrow-drop-down.png);
     background-repeat: no-repeat;
     height: 50px;
     width: 50px;
     background-position: right center;
 }
 .arrow-dropdown-email{
-    background-image: url(arrow_drop_down.png);
+    background-image: url(../../images/style/arrow-drop-down.png);
     background-repeat: no-repeat;
     height: 50px;
     width: 50px;

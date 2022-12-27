@@ -55,22 +55,22 @@ function checkIdFromPhone() {
   $.ajax({
     type: 'POST',
     url: idPhoneUrl + '/check',
-    headers: { 'content-type': 'application/json' }, // 요청 헤더
+    headers: { 'content-type': 'application/json' }, 
     data: JSON.stringify(idPhone),
     success: function (data) {
       console.log(data);
       if (data == 1) {
-        alert('아이디 있음.');
         idFromPhone();
       } else if (data == 0) {
-        alert('이름과 휴대폰 번호를 확인해주세요.');
+        document.getElementById("hperror").innerHTML = "휴대폰번호 올바르지 않습니다."
+        check=false
       }
     },
     error: function (data) {
-      alert('오류 발생');
     },
   }); //ajax
 }
+
 //찾는 아이디 있는지 확인 - 이메일찾기
 function checkIdFromMail() {
   let name = $('#memberNm2').val();
@@ -89,14 +89,14 @@ function checkIdFromMail() {
     success: function (data) {
       console.log(data);
       if (data == 1) {
-        alert('아이디 있음.');
         idFromMail();
       } else if (data == 0) {
-        alert('이름과 이메일 주소를 확인해주세요.');
+       	document.getElementById("emailerror").innerHTML = "이메일 올바르지 않습니다."
+        check=false
       }
     },
     error: function (data) {
-      alert('오류 발생');
+      
     },
   }); //ajax
 }

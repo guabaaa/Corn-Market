@@ -74,13 +74,7 @@
                             <div class="inputEnter" style="display: block;">
                                 <form action="<c:url value='/account/id/mail'/>" method="POST" name="frmMail">
                                     <div class="inputBox">
-                                        <!-- 
-                                        <div class="styleInput">
-                                             <input id="conInput" name="sc.memberIdTmp" value type="text" class="input1"
-                                                placeholder="아이디"> 
-                                            <span id="iderror" class="delBtn"></span>
-                                        </div>
-                                         -->
+                   
                                         <div class="styleInput">
                                             <input id="memberNm2" name="user_name" type="text" class="input1"
                                                 placeholder="이름">

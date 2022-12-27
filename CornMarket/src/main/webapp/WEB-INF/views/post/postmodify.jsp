@@ -16,12 +16,6 @@
 <body>
 
     <div class="board-wrap">
-        <div class="board-modify-wrap">
-            <select>
-                <option value="ing">거래중</option>
-                <option value="fin">거래완료</option>
-            </select>
-        </div>
         <form method="post" enctype="multipart/form-data">
             <div class="board-img-wrap">
                 <div class="image-show" id="image-show"></div>
