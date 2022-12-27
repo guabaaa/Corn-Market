@@ -67,9 +67,12 @@ public class ChattingController {
 	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
 	@ResponseBody
 	@PostMapping("/chatting/list/check")
-	public CheckChattingRoom checkChatRoom(@RequestBody String post_id,HttpSession session) {
+	public String checkChatRoom(@RequestBody String post_id,HttpSession session) {
 		String user_id = (String) session.getAttribute("id");
-		//room_count 0이면 채팅방 없음, 1이면 채팅방 있음
-		return chattingService.checkChatRoom(post_id, user_id);
+		//room_count 0이면 채팅방 없음, 1이면 채팅방 있음'
+		System.out.println(user_id+","+post_id);
+		String room = chattingService.checkChatRoom(post_id, user_id);
+		System.out.println("방id:"+room);
+		return room;
 	}
 }

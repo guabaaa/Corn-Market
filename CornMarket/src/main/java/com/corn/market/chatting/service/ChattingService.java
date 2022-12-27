@@ -52,9 +52,9 @@ public class ChattingService {
 	}
 	
 	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
-	public CheckChattingRoom checkChatRoom(String post_id, String user_id) {
-		CheckChattingRoom check = dao.checkChattingRoom(post_id, user_id);
-		return check; //room_count 0이면 채팅방 없음, 1이면 채팅방 있음
+	public String checkChatRoom(String post_id, String user_id) {
+		String check = dao.checkChattingRoom(post_id, user_id);
+		return check; //조회 결과 없으면 0 있으면 방id 반환
 	}
 
 }

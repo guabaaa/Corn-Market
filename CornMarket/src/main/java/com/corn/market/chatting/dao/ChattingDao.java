@@ -193,12 +193,11 @@ public class ChattingDao {
 	}
 	
 	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
-	public CheckChattingRoom checkChattingRoom(String post_id, String user_id) {
-		CheckChattingRoom check = null;
-		String sql = "SELECT room_id, COUNT(*) "
+	public String checkChattingRoom(String post_id, String user_id) {
+		String check = "";
+		String sql = "SELECT TO_CHAR(NVL(MAX(room_id), 0)) "
 				+ "FROM chatting_room_tbl22 "
-				+ "WHERE post_id = ? AND buyer_id = ? "
-				+ "GROUP BY room_id ";
+				+ "WHERE post_id = ? AND buyer_id = ?  ";
 		Connection conn = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -209,16 +208,14 @@ public class ChattingDao {
 			pst.setString(2, user_id);
 			rs = pst.executeQuery();
 			if(rs.next()) {
-				String room_id = rs.getString(1);
-				int room_count = rs.getInt(2);
-				check = new CheckChattingRoom(room_id, room_count);
+				check = rs.getString(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs,pst,conn);
 		}
-		return check; //room_count 0이면 채팅방 없음, 1이면 채팅방 있음
+		return check; //조회 결과 없으면 0 있으면 방id 반환
 	}
 
 	private void close(AutoCloseable...acs) {
