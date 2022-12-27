@@ -14,30 +14,27 @@
 </head>
 <body>
 
-	 <div class="board-wrap">
+	<div class="board-wrap">
         <form method="post" enctype="multipart/form-data">
             <div class="board-img-wrap">
                 <div class="board-container">
-                    <div class="image-upload" id="image-upload">
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="image-show" id="image-show">
-                                <div class="imgshow-leftbtn" onclick="prevImg()"></div>
-                                <div class="imgshow-rightbtn" onclick="nextImg()"></div>
-                            </div>
-                            <div class="board-button">
-                                <label for="chooseFile">
-                                    사진올리기
-                                </label>
-                            </div>
-                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*"
-                                onchange="loadFile(this)" multiple="multiple">
-                        </form>
+                    <ul class="image-preview"></ul>
+                </div>
+                <div class="image-upload" id="image-upload">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="board-button">
+                            <input type="file" id="chooseFile" class="real-upload" name="chooseFile" accept="image/*"
+                            multiple="multiple" style="display: none;">
+                            <label for="chooseFile" class="upload">
+                                사진올리기
+                            </label>
+                        </div>
+                    </form>
 
-                        <div class="fileContainer">
-                            <div class="fileInput">
-                                <p>FILE NAME: </p>
-                                <p id="fileName"></p>
-                            </div>
+                    <div class="fileContainer">
+                        <div class="fileInput">
+                            <p>FILE NAME : </p>
+                            <p id="fileName"></p>
                         </div>
                     </div>
                 </div>

@@ -38,6 +38,21 @@
     display: flex;
     flex-direction: column;
 }
+.board-container .image-preview {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    width: 700px;
+    height: 300px;
+    display: flex;
+    padding: 5px;
+    overflow: scroll;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .image-preview{
+    list-style: none;
+  }
 .board-button label{
     position: absolute;
     width: 350px;
@@ -66,6 +81,9 @@
 #chooseFile {
     visibility: hidden;
 }
+.real-upload {
+    display: none;
+  }
 
 .fileContainer {
     position: absolute;
@@ -81,6 +99,9 @@
     width: 400px;
     height: 30px;
     color: rgb(117,117,117);
+    overflow: scroll;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 #fileName {
@@ -88,38 +109,8 @@
 }
 
 
-.image-show {
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 700px;
-    height: 300px;
-    background-position: center;
-    background-size: cover;
-    margin: 0 auto;
-}
 
-.imgshow-leftbtn{
-    width: 50px;
-    height: 50px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(./arrow-prev.png);
-    position: absolute;
-    left: 20px;
-    top: 200px;
-}
-.imgshow-rightbtn{
-    width: 50px;
-    height: 50px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url(./arrow-next.png);
-    position: absolute;         /* top, right, left, bottom => position 변경해야 함 */
-    top : 200px;
-    right: 5px;
-}
+
 
 .board-wrap .board-title-wrap{
     width: 900px;
