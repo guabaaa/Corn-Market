@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="../base/header.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
-<form action="location.href='index.jsp'" onsubmit="return login()">
+<form action="" onsubmit="return login()">
 	<div class="h2_st">
         <h2>로그인</h2>
     </div>
@@ -29,11 +29,11 @@
         </div>
         <div class="login_second">
             <input type="checkbox">아이디 저장
-            <a href="">아이디/비밀번호 찾기</a>
+            <a href="<c:url value='/account/id' />">아이디/비밀번호 찾기</a>
         </div>
         <div class="login_third">
             <button type="button" onclick="login()" id="loginbtn">로그인</button>
-            <button onclick="location.href='../signup/signUp.jsp'">회원가입</button>
+            <button onclick="<c:url value='/signup' />">회원가입</button>
         </div>
         <div class="login_fourth">
             <a href=""><div class="simple_login1"></div></a>

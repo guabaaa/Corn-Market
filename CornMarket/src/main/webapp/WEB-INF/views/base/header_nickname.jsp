@@ -12,12 +12,12 @@
 <body>
 <header>
         <div class="header_logo">
-            <a href="../main/index.jsp"><div class="header_img"></div></a>
+            <a href="<c:url value='/main/after_login' />"><div class="header_img"></div></a>
         </div>
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
             <p class="main_nickname">${sessionScope.id}</p>
-            <button onclick="location.href='../login/login.jsp'">프로필보기</button>
+            <button onclick="location.href='<c:url value="/profile"/>'">프로필보기</button>
         </div>
 </header>
 </body>

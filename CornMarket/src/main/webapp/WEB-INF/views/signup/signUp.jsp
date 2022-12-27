@@ -343,7 +343,7 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         </div>
         <div class="join_second">
             <button type="button" class="btn1" onclick="save()" id="joinbtn">저장</button>
-            <button onclick="../main/index.jsp">취소</button>
+            <button onclick="<c:url value='/main' />">취소</button>
         </div>
     </div>
 </form>
