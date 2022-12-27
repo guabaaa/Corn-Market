@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "account/joinform";
+		return "account/idaccount";
 	}
 	
 }
