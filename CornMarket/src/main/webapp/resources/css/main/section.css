@@ -3,6 +3,7 @@
     width: 100%;
 }
 
+
 * {
     padding: 0px;
     margin: 0px;
@@ -54,6 +55,7 @@
     background-image: url(../../images/style/yhmade.jpg);
     width: 700px;
     height: 600px;
+
   }
 
   .slide01 .home-main-title {

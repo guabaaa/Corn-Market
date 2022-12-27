@@ -4,17 +4,19 @@ public class SearchPw {
 	
 	private String user_id;
 	private String user_name;
-	private String email;
+	private String email_id;
+	private String email_domain;
 	
 	public SearchPw() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public SearchPw(String user_id, String user_name, String email) {
+
+	public SearchPw(String user_id, String user_name, String email_id, String email_domain) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
-		this.email = email;
+		this.email_id = email_id;
+		this.email_domain = email_domain;
 	}
 
 	public String getUser_id() {
@@ -33,17 +35,26 @@ public class SearchPw {
 		this.user_name = user_name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmail_id() {
+		return email_id;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
+	}
+
+	public String getEmail_domain() {
+		return email_domain;
+	}
+
+	public void setEmail_domain(String email_domain) {
+		this.email_domain = email_domain;
 	}
 
 	@Override
 	public String toString() {
-		return "AccountPw [user_id=" + user_id + ", user_name=" + user_name + ", email=" + email + "]";
+		return "SearchPw [user_id=" + user_id + ", user_name=" + user_name + ", email_id=" + email_id
+				+ ", email_domain=" + email_domain + "]";
 	}
 	
 }

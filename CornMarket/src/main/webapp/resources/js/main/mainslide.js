@@ -29,5 +29,6 @@ window.addEventListener("load", function () {
     );
   }
 
-  setInterval(nextSlide, 7000);
+  setInterval(nextSlide, 5000);
+
 });
