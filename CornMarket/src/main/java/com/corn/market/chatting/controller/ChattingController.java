@@ -17,6 +17,7 @@ import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
+import com.corn.market.chatting.domain.CheckChattingRoom;
 import com.corn.market.chatting.service.ChattingService;
 
 @Controller
@@ -44,7 +45,8 @@ public class ChattingController {
 		String room_id = chattingService.getChattingRoomId(); //UUID 생성
 		ChattingRoom chattingRoom = new ChattingRoom(room_id, post_id, chattingService.getSellerId(post_id), buyer_id);
 		chattingService.regNewChattingRoom(chattingRoom);
-		return "redirect:/chatting/list";
+		//채팅방으로 이동
+		return "redirect:/chatting/list/"+room_id;
 	}
 	//채팅방id로 내용 조회
 	@GetMapping("/chatting/list/{room_id}")
@@ -61,5 +63,13 @@ public class ChattingController {
 	public void chattingContentReg(@PathVariable String room_id, @RequestBody ChattingContent chattingContent) {
 		chattingService.regChattingContent(chattingContent);
 		System.out.println(chattingContent);
+	}
+	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
+	@ResponseBody
+	@PostMapping("/chatting/list/check")
+	public CheckChattingRoom checkChatRoom(@RequestBody String post_id,HttpSession session) {
+		String user_id = (String) session.getAttribute("id");
+		//room_count 0이면 채팅방 없음, 1이면 채팅방 있음
+		return chattingService.checkChatRoom(post_id, user_id);
 	}
 }

@@ -40,7 +40,7 @@ function onOpen(evt) {
 function onMessage(evt) {
   let id = $('#user_id').val();
   var data = JSON.parse(evt.data); //JSON -> 객체
-  if (data.sender_id === id) {
+  if (data.sender_id == id) {
     //본인 메시지
     appendSendMessage(data.chat_content);
   } else {

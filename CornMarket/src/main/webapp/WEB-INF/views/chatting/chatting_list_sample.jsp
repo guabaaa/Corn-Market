@@ -29,14 +29,15 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     </style>
   </head>
   <body>
-    <form action="<c:url value='/chatting/list'/>" id="frm" method="post">
-<c:forEach var="room" items="${list}" varStatus="st">
-      <a href='<c:url value="/chatting/list/${room.room_id}" />'>채팅방 - ${room.other_nickname}</a> <br />
-</c:forEach>
-      <input type="hidden" value="100061" id="post_id" name="post_id"/>
+    <form action="<c:url value='/chatting/list'/>" id="frm" method="post" name="chat_room_frm">
+      <c:forEach var="room" items="${list}" varStatus="st">
+        <a href='<c:url value="/chatting/list/${room.room_id}" />'>채팅방 - ${room.other_nickname}</a> <br />
+      </c:forEach>
       <input type="submit" value="채팅방 생성" id="new_room_btn" /> <br />
     </form>
 
+    <input type="hidden" value="100006" id="post_id" name="post_id" />
+    <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_url" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/chatting/chatting_sample_list.js"></script>
   </body>

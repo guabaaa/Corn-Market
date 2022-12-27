@@ -42,7 +42,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <input type="text" id="message" />
     <input type="button" id="sendBtn" value="전송" />
 
-    <input type="hidden" value="9fc1d207-2780-4724-ac8f-3b943de035ac" id="room_id" />
+    <input type="hidden" value="2" id="room_id" />
     <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_content_url" />
     <input type="hidden" value="fourkimm" id="user_id" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -11,6 +11,7 @@ import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
+import com.corn.market.chatting.domain.CheckChattingRoom;
 
 @Service
 public class ChattingService {
@@ -48,6 +49,12 @@ public class ChattingService {
 	public ChattingInfo getChattingInfo(String room_id, String user_id) {
 		ChattingInfo chattingInfo = dao.selectChattingInfo(room_id, user_id);
 		return chattingInfo;
+	}
+	
+	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
+	public CheckChattingRoom checkChatRoom(String post_id, String user_id) {
+		CheckChattingRoom check = dao.checkChattingRoom(post_id, user_id);
+		return check; //room_count 0이면 채팅방 없음, 1이면 채팅방 있음
 	}
 
 }

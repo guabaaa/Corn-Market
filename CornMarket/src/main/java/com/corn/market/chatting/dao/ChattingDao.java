@@ -16,6 +16,7 @@ import com.corn.market.chatting.domain.ChattingContentList;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
+import com.corn.market.chatting.domain.CheckChattingRoom;
 
 @Component
 public class ChattingDao {
@@ -189,6 +190,35 @@ public class ChattingDao {
 			close(rs,pst,conn);
 		}
 		return chattingInfo;
+	}
+	
+	//판매글id와 구매자id(세션)로 채팅방 확인 (채팅방 생성시)
+	public CheckChattingRoom checkChattingRoom(String post_id, String user_id) {
+		CheckChattingRoom check = null;
+		String sql = "SELECT room_id, COUNT(*) "
+				+ "FROM chatting_room_tbl22 "
+				+ "WHERE post_id = ? AND buyer_id = ? "
+				+ "GROUP BY room_id ";
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, post_id);
+			pst.setString(2, user_id);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				String room_id = rs.getString(1);
+				int room_count = rs.getInt(2);
+				check = new CheckChattingRoom(room_id, room_count);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs,pst,conn);
+		}
+		return check; //room_count 0이면 채팅방 없음, 1이면 채팅방 있음
 	}
 
 	private void close(AutoCloseable...acs) {
