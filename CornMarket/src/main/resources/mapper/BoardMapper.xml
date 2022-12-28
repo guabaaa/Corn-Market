@@ -23,9 +23,9 @@ insert into post_tbl22
  <!--  썸네일 제목  가격 동네정보 test. ver  -->
  <!-- 최신 조회 순  -->
  <select id="selectAll" resultType="Board">
-      SELECT post_img, title, price, user_id   
+      SELECT post_img, title, price, user_id, post_img, post_id
       FROM post_tbl22  ORDER BY 
-      created DESC, post_id DESC
+      post_id DESC
   </select>
 <!-- 최신 조회 순 + 동네정보 조인   -->
  <!--  카테고리 설정 -->

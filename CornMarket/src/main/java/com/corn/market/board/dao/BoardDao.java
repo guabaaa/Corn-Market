@@ -36,7 +36,7 @@ public class BoardDao {
  
     public BoardVO view(int post_id) throws Exception {
 
-    return session.selectOne(namespace + ".view", post_id);
+    return session.selectOne(namespace + "view", post_id);
     	}
 	
     

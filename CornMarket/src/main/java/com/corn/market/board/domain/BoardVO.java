@@ -42,25 +42,18 @@ public class BoardVO {
 	private String content; //내용 
 	private Date created; // 등록일
 	private Date updated; // 수정일
-	private int count_view; // 조회수
+	private String post_img; // 조회수
 	
 	
 	
 	
-	
-	
-	
-	@Override
-	public String toString() {
-		return "BoardVO [post_id=" + post_id + ", user_id=" + user_id + ", category_id=" + category_id + ", title="
-				+ title + ", price=" + price + ", content=" + content + ", created=" + created + ", updated=" + updated
-				+ ", count_view=" + count_view + "]";
-		
-		
+	public BoardVO() {
+		// TODO Auto-generated constructor stub
 	}
-	public BoardVO() {};
+
+
 	public BoardVO(int post_id, String user_id, String category_id, String title, int price, String content,
-			Date created, Date updated, int count_view) {
+			Date created, Date updated, String post_img) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -70,64 +63,110 @@ public class BoardVO {
 		this.content = content;
 		this.created = created;
 		this.updated = updated;
-		this.count_view = count_view;
+		this.post_img = post_img;
 	}
-	
-	
+
+
+
 	public int getPost_id() {
 		return post_id;
 	}
+
+
 	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
+
+
 	public String getUser_id() {
 		return user_id;
 	}
+
+
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+
+
 	public String getCategory_id() {
 		return category_id;
 	}
+
+
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
+
+
 	public String getTitle() {
 		return title;
 	}
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 	public int getPrice() {
 		return price;
 	}
+
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+
 	public String getContent() {
 		return content;
 	}
+
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
 	public Date getCreated() {
 		return created;
 	}
+
+
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+
+
 	public Date getUpdated() {
 		return updated;
 	}
+
+
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-	public int getCount_view() {
-		return count_view;
+
+
+	public String getPost_img() {
+		return post_img;
 	}
-	public void setCount_view(int count_view) {
-		this.count_view = count_view;
+
+
+	public void setPost_img(String post_img) {
+		this.post_img = post_img;
 	}
+
+
+	@Override
+	public String toString() {
+		return "BoardVO [post_id=" + post_id + ", user_id=" + user_id + ", category_id=" + category_id + ", title="
+				+ title + ", price=" + price + ", content=" + content + ", created=" + created + ", updated=" + updated
+				+ ", post_img=" + post_img + "]";
+	}
+
+
+	
 	
 	
 	

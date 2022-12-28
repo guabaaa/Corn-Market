@@ -18,7 +18,7 @@
 
     <div class="board-wrap">
         <div class="board-img-wrap">
-            <div class="sell-img">img</div>
+            <img class="sell-img" src="${path}${view.post_img}">
         </div>
 
         <div class="board-title-line">

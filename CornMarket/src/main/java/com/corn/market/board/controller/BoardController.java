@@ -1,6 +1,7 @@
 package com.corn.market.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,11 +29,12 @@ public class BoardController {
 	
 	/*게시판 진입*/
 	@GetMapping("/list")
-	public String list(HttpServletRequest request) throws Exception {
+	public String list(Model model) throws Exception {
 	//if(!loginCheck(request))
 	//		return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
 
-		dao.selectAll();
+		ArrayList<BoardVO> list = (ArrayList<BoardVO>) dao.selectAll();
+		model.addAttribute("list",list);
 		return "post/postlookup"; // 로그인을 한 상태이면, 게시판 화면으로 이동
 		//return "board/list"
 	} 
@@ -73,12 +75,13 @@ public class BoardController {
 	  // 게시물 조회
 		//주소는 board/view?post_id=[고유번호] 방식으로 되기 때문에, param을 이용해서 주소에서 bno의 값을 걸러내야함 
 	   @GetMapping("/view")
-		 public void getView(@RequestParam("bno") int post_id , Model model) throws Exception {
+		 public String getView(@RequestParam("post_id") int post_id , Model model) throws Exception {
 
 			BoardVO vo = dao.view (post_id);
 			// 매견변수 post_id로 서비스 받고 
 			model.addAttribute("view", vo);
 			 //뷰로 넘겨주기 
+			return "post/postotherinfo";
 		 }
 		
 		// 게시물 수정 위와동일한 방법임 jsp 가서 value값 지정해주면 값나옴 value="${view.title}"
