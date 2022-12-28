@@ -1,29 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/signup/signUp.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${path}/resources/js/signup/signUp.js"></script>
-</head>
-<body>
-<jsp:include page="../base/header.jsp"/>
-<jsp:include page="../base/nav.jsp"/>
-<form name="frm">
-<div class="h2_st">
-        <h2>회원가입</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Corn-Market 회원가입</title>
+    <link rel="stylesheet" href="${path}/resources/css/signup/signUp.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="h2_st">
+      <h2>회원가입</h2>
     </div>
     <div class="join_rule1">
-        <div class="rule1-1">안녕하세요?</div>
-        <div class="rule1-2">(주)콘마켓 서비스를 이용해 주셔서 감사합니다.<br>
-             지역 정보 모바일 서비스를 제공하는 콘마켓이 아래 준비한 약관을 읽어주시면 감사드리겠습니다.
-        </div>
-        <textarea class="rule1" cols="110" rows="10">
+      <div class="rule1-1">안녕하세요?</div>
+      <div class="rule1-2">
+        (주)콘마켓 서비스를 이용해 주셔서 감사합니다.<br />
+        지역 정보 모바일 서비스를 제공하는 콘마켓이 아래 준비한 약관을 읽어주시면 감사드리겠습니다.
+      </div>
+      <textarea class="rule1" cols="110" rows="10">
 ※계정 관련
 
 콘마켓은 모바일 서비스 특성상 별다른 비밀번호 없이 휴대전화 번호만으로 계정을 생성하실 수 있습니다. 다만, 실제 휴대전화의 소유주임을 확인하기 위해서 가입 당시 인증 절차를 거치게 됩니다. 또한, 다른 모바일 기기에서 서비스 사용을 연속하기 위해서는 기존에 가입하고 인증했던 휴대전화 번호로 재인증을 해야 합니다. 아래의 경우에는 계정 생성을 승인하지 않을 수 있습니다.
@@ -126,10 +122,11 @@
 
 공고일자: 2022년 6월 28일
 시행일자: 2022년 7월 05일
-        </textarea>
-        <input type="checkbox" id="haveto1">
-        <lable>(필수)콘마켓 약관 동의사항</lable>
-        <textarea class="rule1" cols="110" rows="10">
+        </textarea
+      >
+      <input type="checkbox" id="haveto1" />
+      <lable>(필수)콘마켓 약관 동의사항</lable>
+      <textarea class="rule1" cols="110" rows="10">
 위치기반서비스 이용약관
 제1조 (목적)
             
@@ -257,10 +254,11 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 부칙
             
 제1조 (시행일) 본 약관은 2017년 12월 1일부터 시행합니다.
-        </textarea>
-        <input type="checkbox" id="haveto2">
-        <label>(필수) 서비스 이용약관</label>
-        <textarea class="rule1" cols="110" rows="10">
+        </textarea
+      >
+      <input type="checkbox" id="haveto2" />
+      <label>(필수) 서비스 이용약관</label>
+      <textarea class="rule1" cols="110" rows="10">
 콘마켓 (이하 "회사"라 함)은 콘마켓 서비스 가입과 관련하여 아래와 같이 사용자의 개인정보를 수집, 이용합니다.
 
 수집 및 이용 항목	수집 및 이용 목적	보유 및 이용 기간
@@ -271,76 +269,94 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 앱 내 채팅 기능을 사용한 채팅 내용	이용자 간 채팅 서비스 제공, 중고거래 분쟁 조정, 법령이나 이용약관에 반하여 이용자에게 피해를 줄 수 있는 잘못된 이용행위의 방지
 검색이력/거래기록/방문기록 등 서비스이용기록, IP주소, 단말기 정보(OS, 화면사이즈, 기기식별값), 광고ID	이상행위 탐지, 부정이용 방지 및 서비스 개선을 위한 분석, 이용자의 관심, 성향에 기반한 개인 맞춤형 상품 추천 서비스(광고 포함)를 제공
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 다만 동의 거부 시 당근마켓 서비스를 이용 하실 수 없습니다.
-        </textarea>
-        <input type="checkbox" id="haveto3">
-        <label>(필수)개인정보 수집 이용 동의</label>
-        <textarea class="rule1" cols="110" rows="10">
+        </textarea
+      >
+      <input type="checkbox" id="haveto3" />
+      <label>(필수)개인정보 수집 이용 동의</label>
+      <textarea class="rule1" cols="110" rows="10">
 콘마켓 (이하 "회사"라 함)은 마케팅 정보 수신과 관련하여 아래와 같이 이용자의 개인정보를 수집, 이용합니다.
 
 수집 및 이용 항목	수집 및 이용 목적	보유 및 이용 기간
 앱 내 알림
 서비스에서 제공하는 혜택, 이벤트, 상품정보, 신규서비스 안내	회원 탈퇴 시 혹은 동의 철회 시까지
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 다만 동의 거부 시 서비스에서 제공하는 혜택, 이벤트, 상품정보 등의 안내를 받으실 수 없습니다.
-        </textarea>
-        <input type="checkbox">
-        <label>(선택)마케팅 정보 수신 동의</label>
+        </textarea
+      >
+      <input type="checkbox" />
+      <label>(선택)마케팅 정보 수신 동의</label>
     </div>
 
     <div class="join_rule2">
-        <input type="radio" name="age" class="rule2-1" checked>
-        <lable>만 14세 이상입니다</lable>
-        <input type="radio" name="age" class="rule2-2">
-        <label>만 14세 미만입니다</label>
+      <input type="radio" name="age" class="rule2-1" checked />
+      <lable>만 14세 이상입니다</lable>
+      <input type="radio" name="age" class="rule2-2" />
+      <label>만 14세 미만입니다</label>
     </div>
-    <div class="join_wrap">
+    <form name="member" action="/market/signup" method="POST">
+      <div class="join_wrap">
         <div class="join_first">
-            <div class="join_main" id="name">이름</div>
-            <input type="text" class="join_input">
+          <!-- Updated upstream
+	            <div class="join_main" id="name">이름</div>
+	            <input type="text" class="join_input" name="user_name" id="user_name">-->
+
+          <div class="join_main" id="user_name">이름</div>
+          <input type="text" class="user_name" name="user_name" />
         </div>
         <div class="join_first">
+          <div class="non_hidden">
             <div class="join_main">아이디</div>
-            <input type="text" class="join_input"><br>
-            <input type="button" class="join_check_again" value="중복확인">
+            <input type="text" class="join_input" name="user_id" id="user_id" /><br />
+            <input type="button" class="join_check_again" value="중복확인" id="doublecheck_id" />
+          </div>
+          <p id="id_error" class="error"></p>
         </div>
         <div class="join_first">
-            <div class="join_main">닉네임</div>
-            <input type="text" class="join_input">
-            <input type="button" class="join_check_again" value="중복확인">
+          <div class="join_main">닉네임</div>
+          <input type="text" class="join_input" name="nickname" id="nickname" />
+          <input type="button" class="join_check_again" value="중복확인" onclick="id_dbcheck()" id="id_dbcheck" />
         </div>
         <div class="join_first">
-            <div class="join_main">비밀번호</div>
-            <input type="password" class="join_input">
+          <div class="join_main">비밀번호</div>
+          <input type="password" class="join_input" name="user_pw" id="user_pw" onchange="pw_dbcheck()" />
         </div>
         <div class="join_first">
+          <div class="non_hidden1">
             <div class="join_main">비밀번호 확인</div>
-            <input type="password" class="join_input">
-        </div>
-         <div class="join_first">
-            <div class="join_main">이메일</div>
-            	<input type="text" class="join_input_email">
-                <span class="join_phone">@</span>
-                <input type="text" class="join_input_email" name="mid" >
-                <select class="join_email_sel" onChange="mailcheck()" name="mail">
-                	<option value="">직접입력</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="hanmail.net">hanmail.net</option>
-                   	<option value="hotmail.com">hotmail.com</option>
-                    <option value="nate.com">nate.com</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="yahoo.co.kr">yahoo.co.kr</option>
-                   	<option value="yahoo.com">yahoo.com</option>
-                </select>
+            <input type="password" class="join_input" name="member_pw_db" id="member_pw_db" onchange="pw_dbcheck()" />
+          </div>
+          <p id="pw_error" class="pw_error"></p>
+          <div class="non_hidden1">
+            <div class="join_main">비밀번호 확인</div>
+            <input type="password" class="join_input" name="member_pw_db" id="member_pw_db" onchange="pw_dbcheck()" />
+          </div>
+          <p id="pw_error" class="pw_error"></p>
         </div>
         <div class="join_first">
-            <div class="join_main">휴대폰번호</div>
-            <input type="text" class="join_input">
+          <div class="join_main">이메일</div>
+          <input type="text" class="join_input_email" name="email" id="email" />
+          <span class="join_phone">@</span>
+          <select class="join_email_sel" name="mail" id="member_email_s">
+            <option value="">선택</option>
+            <option value="gmail.com">gmail.com</option>
+            <option value="hanmail.net">hanmail.net</option>
+            <option value="hotmail.com">hotmail.com</option>
+            <option value="nate.com">nate.com</option>
+            <option value="naver.com">naver.com</option>
+            <option value="yahoo.co.kr">yahoo.co.kr</option>
+            <option value="yahoo.com">yahoo.com</option>
+          </select>
+        </div>
+        <div class="join_first">
+          <div class="join_main">휴대폰번호</div>
+          <input type="text" class="join_input" name="phone" id="member_ph" placeholder="010-xxxx-yyyy" />
         </div>
         <div class="join_second">
-            <button class="btn1" onclick="save()" id="joinbtn">저장</button>
-            <button onclick="../main/index.jsp">취소</button>
+          <button type="button" class="btn1" id="joinbtn">저장</button>
+          <button onclick="<c:url value='/main' />">취소</button>
         </div>
-    </div>
-</form>
-<jsp:include page="../base/footer.jsp"/>
-</body>
+      </div>
+    </form>
+    <jsp:include page="../base/footer.jsp" />
+    <script src="${path}/resources/js/signup/signUp.js"></script>
+  </body>
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Corn-Market</title>
 </head>
 <body>
 <jsp:include page="../base/header.jsp"/>
