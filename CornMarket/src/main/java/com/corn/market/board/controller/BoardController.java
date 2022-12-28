@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.corn.market.board.dao.BoardDao;
 import com.corn.market.board.domain.BoardVO;
 import com.corn.market.member.dao.MemberDao;
-import com.corn.market.member.domain.Member;
 
 @Controller
 public class BoardController {
