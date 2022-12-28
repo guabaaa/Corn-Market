@@ -23,21 +23,27 @@ public class BoardDao {
     	
        session.insert(namespace+"enroll",board);
     };
+
     
-    /* 게시판 목록 */
-    public List<BoardVO> getList() throws Exception {
-    	session.selectList(namespace+"getPage");
-		return null; 
-    			
-    };
+    /* 게시판 리스트  */
+    public List<BoardVO> selectAll() throws Exception {
+        return session.selectList(namespace+"selectAll");
+    } 
+    
+    
+    /*게시물  상세보기 이미지파일  제목  가격 내용 카테고리  */
+    
+ 
+    public BoardVO view(int post_id) throws Exception {
 
-    /* 게시판 조회 */
-    public void test(int post_id) throws Exception{
-    	
-    session.selectOne(namespace+"getPage", "idCheck");
-    };
-
-    /* 게시판 수정 */
+    return session.selectOne(namespace + ".view", post_id);
+    	}
+	
+    
+    
+    
+	/* 게시판 수정 */
+  
     public void modify(BoardVO board) throws Exception{
  
     session.update(namespace+"modify", board);
