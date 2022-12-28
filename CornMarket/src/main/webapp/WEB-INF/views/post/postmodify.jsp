@@ -15,31 +15,25 @@
 
 <body>
 
-    <div class="board-wrap">
+     <div class="board-wrap">
         <form method="post" enctype="multipart/form-data">
             <div class="board-img-wrap">
-                <div class="image-show" id="image-show"></div>
                 <div class="board-container">
-                    <div class="image-upload" id="image-upload">
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="board-button">
-                                <label for="chooseFile">
-                                    사진올리기
-                                </label>
-                            </div>
-                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*"
-                                onchange="loadFile(this)" multiple="multiple">
-                        </form>
-
-                        <div class="fileContainer">
-                            <div class="fileInput">
-                                <p>FILE NAME: </p>
-                                <p id="fileName"></p>
-                            </div>
-                            <div class="buttonContainer">
-                                <div class="submitButton" id="submitButton">SUBMIT</div>
-                            </div>
-                        </div>
+                    <ul class="image-preview" id="preview">
+                    </ul>
+                </div>
+                <span class="btn-delete">삭제</span>
+                <div class="board-button">
+                    <input type="file" id="chooseFile" class="real-upload" name="chooseFile" accept="image/*"
+                        multiple="multiple" style="display: none;">
+                    <label for="chooseFile" class="upload">
+                        사진올리기
+                    </label>
+                </div>
+                <div class="fileContainer">
+                    <div class="fileInput">
+                        <p>FILE NAME : </p>
+                        <p id="fileName"></p>
                     </div>
                 </div>
             </div>
@@ -58,7 +52,6 @@
                 <option value="beaty">뷰티,미용</option>
                 <option value="hobbygamemusic">취미,게임,음반</option>
                 <option value="petsupplies">반려동물용품</option>
-                <option value="etc">기타</option>
             </select>
         </div>
         <div class="board-sellingprice-wrap">
@@ -73,12 +66,12 @@
             <textarea placeholder="내용을 입력해주세요"></textarea>
         </div>
         <div class="board-btn-wrap">
-            <input class="board-btn" type="button" value="등록">
+            <input class="board-btn" type="submit" value="등록">
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="${path}/resources/js/post/postregister.js"></script>
+    <script src="${path}/resources/js/post/postmodify.js"></script>
 
 </body>
 
