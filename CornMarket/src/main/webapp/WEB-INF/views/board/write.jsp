@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 조회</title>
+<title>게시물 등록 </title>
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,14 +12,10 @@
  <%@ include file="../include/nav.jsp" %> 
 </div>
 
-<form method="post">
+<form method="post" action="/market/enroll">
 
 <label>제목</label>
 <input type="text" name="title" /><br />
-
-<label>작성자</label>
-<input type="text" name="writer" /><br />
-
 
 <label>가격</label>
 <input type="text" name="price" /><br />
@@ -28,8 +24,8 @@
 <textarea cols="50" rows="5" name="content"></textarea><br />
 
 <div>
-<a href="/board/modify?bno=${view.bno}">게시물 수정</a>
-<a href="/board/delete?bno=${view.bno}">게시물 삭제</a>
+<button type="submit" id="loginbtn">게시물등</button>
+
 </div>
 
 </form>

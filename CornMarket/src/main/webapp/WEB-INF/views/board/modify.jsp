@@ -13,19 +13,19 @@
  <%@ include file="../include/nav.jsp" %>
 </div>
 
-<form method="post">
+
+<form method="post" action="/market/modify">
 
 <label>제목</label>
-<input type="text" name="title" value="${view.title}" /><br />
+<input type="text" name="title" /><br />
 
-<label>작성자</label>
-<input type="text" name="writer" value="${view.writer}" /><br />
-
-<label>가격 </label>
-<input type="text" name="price " value="${view.price}" /><br />
+<label>가격</label>
+<input type="text" name="price" /><br />
 
 <label>내용</label>
-<textarea cols="50" rows="5" name="content" value="${view.content}"></textarea><br />
+<textarea cols="50" rows="5" name="content"></textarea><br />
+
+<div>
 
 <button type="submit">완료</button> 
 

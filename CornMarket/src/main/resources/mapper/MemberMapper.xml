@@ -43,7 +43,7 @@
   
   <!-- ===========insert============== -->
       <!-- 회원가입  -->
-  	<insert id="memberSignup">
+  	<insert id="memberSignup" parameterType="Member" >
   	<![CDATA[
   		insert into user_tbl22
   		 values(#{user_id}, #{user_pw}, #{user_name}, #{nickname}, #{email}, #{phone},DEFAULT,DEFAULT,DEFAULT )

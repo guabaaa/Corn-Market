@@ -25,41 +25,48 @@ public class BoardController {
 	BoardDao dao;
 	
 	
-	/* 게시판 등록 페이지 접속 */
-	@GetMapping("/enroll")
-	public void boardEnrollGET() {
-		
-		
+	@GetMapping("/list")
+	public String list(HttpServletRequest request) {
+	//if(!loginCheck(request))
+	//		return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
+
+		return "board/write"; // 로그인을 한 상태이면, 게시판 화면으로 이동
 	}
 	
-	/* 게시판 등록 */
-	/* 제목 글내용 가격 첨부파일 사용자가 넣는 값 */
+	/*게시물 폼  */
+
+	@GetMapping("/enroll")
+	public String mainPageGet() {
+	System.out.println("메인 페이지 ");
+	return "board/write";
+	} 
+	
+
+	/* 게시물 등록 */
+	/* 제목 글내용 가격  사용자가 넣는 값 */
 	/* 아이디 session으로 가지고와야하는 값  */
 	
 	@PostMapping("/enroll")
 	public String write(BoardVO boardVO, HttpSession session)
-			throws IllegalStateException, IOException {
+			throws Exception {
 		
 		System.out.println("수정 전 boardVO : " + boardVO);
 		
 		//글쓴이 추가 
 		String id = (String) session.getAttribute("id");
-		boardVO.getUser_id();
-		
-		//조회수0으로 셋팅 
-	    boardVO.setCount_view(0);
-	    
-	    // 글 쓴 날짜 추가
-	   boardVO.setCreated(new Date());
-	     
+		boardVO.setUser_id(id);
+  
 	   dao.enroll(boardVO);
 	   
 	   System.out.println("수정 후  boardVO : " + boardVO);
 	   
-	   
+	    return "board/List";
 	    
 	   }
+	
 	      
+	
+	
 	
 	/* 페이지 수정 */
 	@PostMapping("/modify")
