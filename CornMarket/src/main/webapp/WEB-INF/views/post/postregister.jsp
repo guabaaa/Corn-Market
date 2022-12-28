@@ -45,12 +45,12 @@
                 <h2 class="board-cate">카테고리</h2>
                 <select class="board-cate-select" name="category_id" id="registercate">
                     <option value="">선택</option>
-                    <option value="">전자기기</option>
-                    <option value="">가구,인테리어</option>
-                    <option value="">의류</option>
-                    <option value="">뷰티,미용</option>
-                    <option value="">취미,게임,음반</option>
-                    <option value="">반려동물용품</option>
+                    <option value="A1101">가구,인테리어</option>
+                    <option value="B1102">전자기기</option>
+                    <option value="C1103">의류</option>
+                    <option value="D1104">뷰티,미용</option>
+                    <option value="E1105">취미,게임,음반</option>
+                    <option value="F1106">반려동물용품</option>
                 </select>
             </div>
             <div class="board-sellingprice-wrap">
@@ -64,6 +64,8 @@
             <div class="board-contents-wrap">
                 <textarea placeholder="내용을 입력해주세요" name="content" id="registercontent"></textarea>
             </div>
+            <input type="hidden" name="town_code" value="11010">
+            <input type="hidden" name="user_id" value="ch11">
             <div class="board-btn-wrap">
                 <input class="board-btn" type="button"  value="등록" id="register-btn" onclick="registerCheck()">
             </div>

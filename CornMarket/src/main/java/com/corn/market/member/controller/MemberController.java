@@ -23,12 +23,6 @@ public class MemberController {
 	@Autowired
 	MemberDao dao;
 
-	//메인 페이지 이동
-	@GetMapping("/main")
-	public String mainPageGet() {
-		System.out.println("메인 페이지 ");
-		return "main";
-	} 
 
 	//----------------------회원가입---------------------//
 
