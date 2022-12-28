@@ -19,7 +19,7 @@
 
     <div class="board-wrap">
         <div class="board-img-wrap">
-            <div class="sell-img">img</div>
+            <div class="sell-img"></div>
         </div>
 
         <div class="board-title-line">
@@ -33,7 +33,7 @@
             </div>
             <div class="board-sellingprice-wrap">
                 <h2 class="board-sellingprice">판매가격</h2>
-                <div class="info-sellingprice">판매가격데이터</div>
+                <div class="info-sellingprice" value="">판매가격데이터</div>
                 <p class="info-won">원</p>
             </div>
         </div>
