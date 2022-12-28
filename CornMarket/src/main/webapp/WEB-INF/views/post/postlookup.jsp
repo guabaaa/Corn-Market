@@ -39,7 +39,7 @@
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region"></div>
+                        <div class="board-card-region">${post. }</div>
                     </div>
                 </a>
             </article>

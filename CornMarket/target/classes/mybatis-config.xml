@@ -9,4 +9,5 @@
 		
 		<typeAlias alias="Board" type="com.corn.market.board.domain.BoardVO"/>
 	</typeAliases>
+
 </configuration>

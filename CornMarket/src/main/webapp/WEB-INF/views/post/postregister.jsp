@@ -45,12 +45,12 @@
                 <h2 class="board-cate">카테고리</h2>
                 <select class="board-cate-select" name="category_id" id="registercate">
                     <option value="">선택</option>
-                    <option value="electronics">전자기기</option>
-                    <option value="furniture">가구,인테리어</option>
-                    <option value="clothes">의류</option>
-                    <option value="beaty">뷰티,미용</option>
-                    <option value="hobbygamemusic">취미,게임,음반</option>
-                    <option value="petsupplies">반려동물용품</option>
+                    <option value="">전자기기</option>
+                    <option value="">가구,인테리어</option>
+                    <option value="">의류</option>
+                    <option value="">뷰티,미용</option>
+                    <option value="">취미,게임,음반</option>
+                    <option value="">반려동물용품</option>
                 </select>
             </div>
             <div class="board-sellingprice-wrap">
