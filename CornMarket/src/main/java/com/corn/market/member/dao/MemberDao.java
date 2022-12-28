@@ -39,6 +39,10 @@ public class MemberDao {
   	   /*로그인시 아이디 존재유무 확인 
   	  public Member getMemberById(String user_id) throws  Exception{};
   	  */
+  	   //아이디 유무 
+   	  public Member getMemberById(String id) throws  Exception{
+   		 return session.selectOne(namespace + "select",id);
+  	   };
 
   	  //로그인 확인 비번+아이디 일치 확인 
 	   public  Member memberLogin(Member member) throws Exception{

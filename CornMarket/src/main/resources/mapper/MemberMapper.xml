@@ -23,20 +23,18 @@
   	</select>	
   	
   	<!--  로그인시 아아디 존재 시  로그인화면으로 이동  -->
-  	<!-- 아이디 유무확인  -->
-	<select id="getMemberById" resultType="int">
+      <select id="getMemberById" resultType="Member">
 		<![CDATA[
-			SELECT count(*)
-			FROM user_tbl22
+			SELECT *
+			FROM member
 			WHERE user_id = #{user_id}
-			
 		]]>
 	</select>
 	
 	<!-- 로그인 -->
-      <select id="memberLogin" resultType="Member">
+      <select id="memberLogin" resultType="int">
       
-         select user_id,nickname,temperature,profile_img,join_date FROM USER_TBL22 
+         select count(*) FROM USER_TBL22 
           where user_id = #{user_id} and user_pw = #{user_pw}
       
       </select>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Corn-Market my프로필</title>
 <link rel="stylesheet" href="${path}/resources/css/profile/profile.css"/>
 <script src="${path}/resources/js/town/town.js"></script>
 <script src="${path}/resources/js/profile/update_myinfo.js"></script>
@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../base/header.jsp"/>
+<jsp:include page="../base/header_nickname.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
 	<div class="profile_wrap">
         <div class="profile_first">
@@ -50,7 +50,7 @@
 	                 </ul>
             </div>
             <div class="chat_area">
-            	<input type="button" value="채팅방" class="chatting">
+            	<input type="button" value="채팅방" class="chatting" onclick="location.href='/chatting_list'">
             </div>
         </div>
         <div class="profile_second">

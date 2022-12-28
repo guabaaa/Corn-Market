@@ -6,15 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Corn-Market 로그인</title>
 <link rel="stylesheet" href="${path}/resources/css/login/login.css">
 <script src="${path}/resources/js/login/login.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+function a(){
+	 
+	
+	window.location.href='/market/signup';
+}
+</script>
+
 </head>
 <body>
 <jsp:include page="../base/header.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
-<form name="frm" action="/login" method="POST">
+<form name="frm" action="/market/login" method="POST">
 	<div class="h2_st">
         <h2>로그인</h2>
     </div>
@@ -28,12 +37,12 @@
             <input type="password" id="pw" name="user_pw">
         </div>
         <div class="login_second">
-            <input type="checkbox">아이디 저장
+            <input type="checkbox" name="rememberMe">로그인 유지
             <a href="<c:url value='/account/id' />">아이디/비밀번호 찾기</a>
         </div>
         <div class="login_third">
             <button type="button" id="loginbtn">로그인</button>
-            <button onclick="<c:url value='/signup' />">회원가입</button>
+            <button type="button" onclick="a();">회원가입</button>
         </div>
         <div class="login_fourth">
             <a href=""><div class="simple_login1"></div></a>

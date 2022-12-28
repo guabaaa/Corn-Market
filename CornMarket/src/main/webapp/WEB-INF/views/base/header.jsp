@@ -16,7 +16,7 @@
         </div>
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
-            <button onclick="<c:url value='/login' />">로그인</button>
+            <button onclick="location.href='${path}/member/login'">로그인</button>
         </div>
 </header>
 </body>
