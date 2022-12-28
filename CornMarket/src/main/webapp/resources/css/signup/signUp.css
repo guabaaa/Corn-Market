@@ -61,6 +61,18 @@ h2{
     margin-bottom: 10px;
 }
 
+.non_hidden{
+	display:flex;
+	width:550px;
+	height:40px;
+}
+
+.non_hidden1{
+	display:flex;
+	width:430px;
+	height:40px;
+}
+
 .join_first_email{
     height:100px;
     padding:8px;
@@ -94,7 +106,7 @@ h2{
     margin-right: 10px;
     margin-top: 2px;  
     width:160px;
-    height:32px;
+    height:35px;
 }
 
 .join_input{
@@ -196,6 +208,7 @@ h2{
     margin-left: 400px;
 }
 
-.error{
-	display:none;
+.pw_error{
+	font-size:13px;
+	margin-top:10px;
 }

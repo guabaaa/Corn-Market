@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corn-Market</title>
+    <title>Corn-Market 아이디/비밀번호 찾기</title>
     <c:set var="path" value="${pageContext.request.contextPath}"/>
     <link rel="stylesheet" href="${path}/resources/css/account/account.css"/>
     

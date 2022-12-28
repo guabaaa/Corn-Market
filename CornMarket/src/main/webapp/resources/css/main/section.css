@@ -1,13 +1,7 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    outline: none;
-}
 .main{
     margin: 0 auto;
     width: 100%;
 }
-
 
 
 * {
@@ -56,9 +50,12 @@
   }
   .home-main-slide-img-01 {
     margin-top: 25px;
-    background-color: red;
-    width: 500px;
-    height: 550px;
+   	background-position: center;
+    background-size: cover;
+    background-image: url(../../images/style/yhmade.jpg);
+    width: 700px;
+    height: 600px;
+
   }
 
   .slide01 .home-main-title {
@@ -69,6 +66,7 @@
   .slide01 .text-m {
     margin-right: 350px;
     margin-left: 100px;
+    width:420px;
   }
 
   /*slide02*/
@@ -77,12 +75,14 @@
     background-color: #ffffff;
   }
   .home-main-slide-img-02 {
-    background-color: blue;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../images/style/slide2.jpg);
     margin-top: 25px;
     margin-left: 100px;
     margin-right: 200px;
-    width: 500px;
-    height: 550px;
+    width: 600px;
+    height: 500px;
   }
 
   .slide02 .home-main-title {
@@ -102,10 +102,12 @@
     background-color: #e4f3e5;
   }
   .home-main-slide-img-03 {
-    background-color: green;
+   	background-position: center;
+    background-size: cover;
+    background-image: url(../../images/style/slide3.jpg);
     margin-top: 25px;
-    width: 500px;
-    height: 550px;
+    width: 600px;
+    height: 500px;
   }
 
   .slide03 .home-main-title {
@@ -146,12 +148,31 @@
     max-width: 14rem;
     margin-left: 0px;
   }
-  .home-story-list .icon-story {
+  
+  .home-story-list .icon-story1 {
     width: 56px;
     height: 56px;
-    background-color: green;
-    background-size: 56px 56px;
+    background-position:center;
+    background-size: cover;
+    background-image: url(../../images/style/s3-1.png);
   }
+  
+  .home-story-list .icon-story2 {
+    width: 56px;
+    height: 56px;
+    background-position:center;
+    background-size: cover;
+    background-image: url(../../images/style/s3-2.png);
+  }
+  
+  .home-story-list .icon-story3 {
+    width: 56px;
+    height: 56px;
+    background-position:center;
+    background-size: cover;
+    background-image: url(../../images/style/s3-3.png);
+  }
+
   .home-story-list {
     list-style-type: none;
   }
@@ -167,11 +188,13 @@
   }
   .home-main-slide-img-04 {
     margin-top: 25px;
-    background-color: yellow;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../images/style/slide4.png);
     margin-left: 100px;
     margin-right: 200px;
-    width: 500px;
-    height: 550px;
+    width: 350px;
+    height: 500px;
   }
   .slide04 .home-main-title {
     font-size: 2.5rem;
@@ -283,13 +306,10 @@ keyword content css
 */
 .home-keywords-content{
     width: 100%;
-    margin: 0 auto;
     text-align: center;
 }
 .home-keywords-content .home-keywords-title{
     display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 0;
 }
 .home-keywords-content .text-bold-title{
     text-decoration: underline;

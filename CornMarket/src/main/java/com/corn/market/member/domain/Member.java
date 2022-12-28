@@ -13,10 +13,6 @@ public class Member {
 	private String email2;	
 	private String phone;
 	
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		return "Member [user_name=" + user_name + ", user_id=" + user_id + ", nickname=" + nickname + ", user_pw="

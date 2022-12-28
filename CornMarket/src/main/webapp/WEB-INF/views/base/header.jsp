@@ -7,16 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/main/index.css"/>
+<link rel="stylesheet" href="${path}/resources/css/main/header.css"/>
 </head>
 <body>
 <header>
         <div class="header_logo">
-            <a href="../main/index.jsp"><div class="header_img"></div></a>
+            <a href="<c:url value='/main' />"><div class="header_img"></div></a>
         </div>
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
-            <button onclick="location.href='../login/login.jsp'">로그인</button>
+            <button onclick="location.href='${path}/member/login'">로그인</button>
         </div>
 </header>
 </body>
