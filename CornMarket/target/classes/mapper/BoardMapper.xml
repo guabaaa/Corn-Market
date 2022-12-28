@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.corn.market.BoardMapper">
+
+
+ <!-- ===========select============== -->
+ 
+ 
+ 
+ 
+  <!-- ===========insert============== -->
+  
+  <!-- 게시판 등록 -->
+	<insert id="enroll">
+		
+ insert into post_tbl22
+ values (post_sq.nextval,#{user_id}, #{category_id}, 11190, #{title}
+ #{price},#{content},DEFAULT,DEFAULT,DEFAULT,#{post_img},0)
+		
+	</insert>
+  
+  
+   <!-- ===========delete============== -->
+   
+   
+   
+   
+    <!-- ===========delete============== -->
+ 
+ 
+
+  	
+  
+  	
+  </mapper>

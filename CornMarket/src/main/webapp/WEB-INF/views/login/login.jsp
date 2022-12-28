@@ -12,28 +12,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<jsp:include page="../base/header.jsp"/>
-<jsp:include page="../base/nav.jsp"/>
-<form action="location.href='index.jsp'" onsubmit="return login()">
+
+<form action="/market/login" method="post">
 	<div class="h2_st">
         <h2>로그인</h2>
     </div>
     <div class="login_wrap">
         <div class="login_first">
             <div class="login_main">아이디</div>
-            <input type="text" id="id">
+            <input type="text" id="user_id">
         </div>
         <div class="login_first">
             <div class="login_main">비밀번호</div>
-            <input type="password" id="pw">
+            <input type="password" id="user_pw">
         </div>
         <div class="login_second">
             <input type="checkbox">아이디 저장
-            <a href="">아이디/비밀번호 찾기</a>
+            <a href="<c:url value='/account/id' />">아이디/비밀번호 찾기</a>
         </div>
         <div class="login_third">
-            <button>로그인</button>
-            <button onclick="location.href='../signup/signUp.jsp'">회원가입</button>
+            <button type="submit" id="loginbtn">로그인</button>
+            <button onclick="<c:url value='/signup' />">회원가입</button>
         </div>
         <div class="login_fourth">
             <a href=""><div class="simple_login1"></div></a>
@@ -42,6 +41,11 @@
         </div>
     </div>
 </form>
-<jsp:include page="../base/footer.jsp"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    	let loginUrl = "<c:url value='/member/login'/>";
+    	let index2Url = "<c:url value='/main/index2'/>";
+    </script>
 </body>
 </html>
