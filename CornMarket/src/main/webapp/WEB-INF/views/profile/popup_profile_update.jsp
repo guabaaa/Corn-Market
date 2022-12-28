@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>Corn-Market 프로필수정</title>
     <link rel="stylesheet" href="${path}/resources/css/profile/popup_update.css" />
     <script src="${path}/resources/js/profile/update_myinfo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

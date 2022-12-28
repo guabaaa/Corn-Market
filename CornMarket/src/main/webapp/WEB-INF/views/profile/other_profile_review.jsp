@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Corn-Market 프로필</title>
 <link rel="stylesheet" href="${path}/resources/css/profile/other_profile.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../base/header.jsp"/>
+<jsp:include page="../base/header_nickname.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
 	<div class="profile_wrap">
         <div class="profile_first">

@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>Corn-Market 프로필 사진변경 popup</title>
     <link rel="stylesheet" href="${path}/resources/css/profile/popup.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>

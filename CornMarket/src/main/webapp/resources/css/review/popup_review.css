@@ -116,3 +116,9 @@
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 rgb(241, 196, 15); /* 마우스 클릭 체크 */
 }
+
+.reviewbox{
+	border:2px solid rgb(241, 196, 15);
+    border-radius: 5px;
+    padding:5px;
+}

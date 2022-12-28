@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>Corn-Market 채팅방</title>
     <link rel="stylesheet" href="${path}/resources/css/chat/popup_chat.css" />
     <script src="${path}/resources/js/profile/update_myinfo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,7 +24,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 	<div class="titlebox1">
 	           			<img class="chat_profile">
 	           			<p>꿍디누나</p>
-	           			<input type="button" class="chatlist_btn" value="채팅목록">
+	           			<input type="button" class="chatlist_btn" value="채팅목록" onclick="<c:url value='/chat/chatlist' />">
            			</div>
            			<div class="titlebox2">
            				<div class="chat_object"></div>
@@ -63,7 +63,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 		<div class="other_say">
                 			판매자가 거래를 완료했습니다<br>
                 			거래후기를 남겨주세요<br>
-                			<input type="button" value="거래후기 작성하러 가기" class="goto_review">
+                			<input type="button" value="거래후기 작성하러 가기" class="goto_review" onclick="<c:url value='/review' />">
                 		</div>
                 		<div class="other_time">14:32</div>
                 	</div>
