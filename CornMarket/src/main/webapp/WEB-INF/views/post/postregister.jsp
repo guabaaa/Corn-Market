@@ -18,24 +18,21 @@
         <form method="post" enctype="multipart/form-data">
             <div class="board-img-wrap">
                 <div class="board-container">
-                    <ul class="image-preview"></ul>
+                    <ul class="image-preview" id="preview">
+                    </ul>
                 </div>
-                <div class="image-upload" id="image-upload">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="board-button">
-                            <input type="file" id="chooseFile" class="real-upload" name="chooseFile" accept="image/*"
-                            multiple="multiple" style="display: none;">
-                            <label for="chooseFile" class="upload">
-                                사진올리기
-                            </label>
-                        </div>
-                    </form>
-
-                    <div class="fileContainer">
-                        <div class="fileInput">
-                            <p>FILE NAME : </p>
-                            <p id="fileName"></p>
-                        </div>
+                <span class="btn-delete">삭제</span>
+                <div class="board-button">
+                    <input type="file" id="chooseFile" class="real-upload" name="chooseFile" accept="image/*"
+                        multiple="multiple" style="display: none;">
+                    <label for="chooseFile" class="upload">
+                        사진올리기
+                    </label>
+                </div>
+                <div class="fileContainer">
+                    <div class="fileInput">
+                        <p>FILE NAME : </p>
+                        <p id="fileName"></p>
                     </div>
                 </div>
             </div>
