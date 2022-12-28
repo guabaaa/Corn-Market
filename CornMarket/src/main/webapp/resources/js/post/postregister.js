@@ -112,37 +112,31 @@ function registerCheck() {
 }
 
 // 유효성 검사
-function checkRegister(){
-	let title = $("#registertitle").val();
-    let cate = $("#registercate").val();
-    let price = $("#registerprice").val();
-    let content = $("#registercontent").val();
+function checkRegister() {
+	
+    let title = $('#registertitle').val();
+    let cate = $('#registercate').val();
+    let price = $('#inputonchange').val();
+    let content = $('#registercontent').val();
 
-	};
-	$.ajax({
-    type: 'POST',
-    url:,
-    data:JSON.stringify(),
-    success: function checkRegister() {
-        if ( title == 1 && cate ==1 && price ==1 && content ==1){
-            alert('등록이 완료되었습니다.');
-            //넘어갈 페이지
-        }
-        else if ( title == null || title ==""){
-            alert('제목을 입력해주세요.');
-            $("#registertitle").focus();    
-           }
-        else if (cate == null || cate == "") {
-	        alert('카테고리를 선택해주세요.');
-	        $("#registercate").focus();
-        }
-        else if (price == null || price=="") {
-            alert('가격을 입력해주세요.');
-            $("#inputonchange").focus();
-        }
-        else if (content == null || content =="") {
-            alert('내용을 입력해주세요.');
-            $("#registercontent").focus();
-        }
-    },
-});
+    if (title == null || title == "") {
+        alert('제목을 입력해주세요.');
+        $('#registertitle').focus();
+    }
+    else if (cate == null || cate == "") {
+        alert('카테고리를 선택해주세요.');
+        $('#registercate').focus();
+    }
+    else if (price == null || price == "") {
+        alert('가격을 입력해주세요.');
+        $('#inputonchange').focus();
+    }
+    else if (content == null || content == "") {
+        alert('내용을 입력해주세요.');
+        $('#registercontent').focus();
+    }
+    else {
+        frmregister.submit();
+        alert('등록이 완료되었습니다.');
+    }
+};

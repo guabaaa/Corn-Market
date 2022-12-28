@@ -23,11 +23,11 @@ window.addEventListener("load", function () {
             });
         } else if (key == "카테고리") {
             select.카테고리.forEach(function (item) {
-                $("#sortchoice2").append(`<option> ${item}</option>`);
+                $("#sortchoice2").append(`<option value="${item}"> ${item}</option>`);
             });
         } else if (key == "지역") {
             select.지역.forEach(function (item) {
-                $("#sortchoice2").append(`<option> ${item}</option>`);
+                $("#sortchoice2").append(`<option value="${item}"> ${item}</option>`);
             });
         }
     });

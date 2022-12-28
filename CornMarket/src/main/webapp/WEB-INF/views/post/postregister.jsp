@@ -39,11 +39,11 @@
 
             <div class="board-title-wrap">
                 <h2 class="board-title">제목</h2>
-                <input class="board-title-input" name="registertitle" type="text" placeholder="제목을 입력해주세요">
+                <input class="board-title-input" name="registertitle" id="registertitle" type="text" placeholder="제목을 입력해주세요">
             </div>
             <div class="board-cate-wrap">
                 <h2 class="board-cate">카테고리</h2>
-                <select class="board-cate-select" name="registercate">
+                <select class="board-cate-select" name="registercate" id="registercate">
                     <option value="">선택</option>
                     <option value="electronics">전자기기</option>
                     <option value="furniture">가구,인테리어</option>
@@ -62,7 +62,7 @@
                 <input type="checkbox" class="board-checkbox" id="boardcheckbox" name="boardcheckbox" value="1" />
             </div>
             <div class="board-contents-wrap">
-                <textarea placeholder="내용을 입력해주세요" name="registercontent"></textarea>
+                <textarea placeholder="내용을 입력해주세요" name="registercontent" id="registercontent"></textarea>
             </div>
             <div class="board-btn-wrap">
                 <input class="board-btn" type="button"  value="등록" id="register-btn" onclick="registerCheck()">

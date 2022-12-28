@@ -13,13 +13,20 @@
   <!-- ===========insert============== -->
   
   <!-- 게시판 등록 -->
-	<insert id="enroll">
-		
+	<insert id="enroll" parameterType="Board">
+	<![CDATA[
  insert into post_tbl22
- values (post_sq.nextval,#{user_id}, #{category_id}, 11190, #{title}
- #{price},#{content},DEFAULT,DEFAULT,DEFAULT,#{post_img},0)
+ values (post_sq.nextval,'yooda','A1101',11080,#{title},
+ #{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)
+	]]>	
+	</insert>		
 		
-	</insert>
+
+<!-- 진짜 쿼리임 
+insert into post_tbl22
+ 	values (post_sq.nextval,#{user_id}, ,#{category_id}, #{title},#{town_code}
+ 	#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)	 -->	
+
   
   
    <!-- ===========delete============== -->
