@@ -9,12 +9,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/signup/signUp.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${path}/resources/js/signup/signUp.js"></script>
+
 </head>
 <body>
 <jsp:include page="../base/header.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
-<form name="frm" action="" method="">
+<form name="member" action="/market/signup" method="POST"> 
 
 	<div class="h2_st">
         <h2>회원가입</h2>
@@ -296,24 +296,24 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
     <div class="join_wrap">
         <div class="join_first">
 	            <div class="join_main" id="name">이름</div>
-	            <input type="text" class="join_input" name="member_name" id="member_name">
+	            <input type="text" class="join_input" name="user_name" id="member_name">
         </div>
         <div class="join_first">
         	<div class="non_hidden">
             	<div class="join_main">아이디</div>
-            	<input type="text" class="join_input" name="member_id" id="member_id"><br>
+            	<input type="text" class="join_input" name="user_id" id="member_id"><br>
             	<input type="button" class="join_check_again" value="중복확인" id="doublecheck_id">
         	</div>
         	<p id="id_error" class="error"></p>
         </div>
         <div class="join_first">
             <div class="join_main">닉네임</div>
-            <input type="text" class="join_input" name="member_nm" id="member_nm">
+            <input type="text" class="join_input" name="nickname" id="member_nm">
             <input type="button" class="join_check_again" value="중복확인" onclick="id_dbcheck()" id="id_dbcheck">
         </div>
         <div class="join_first">
             <div class="join_main">비밀번호</div>
-            <input type="password" class="join_input" name="member_pw" id="member_pw" onchange="pw_dbcheck()">
+            <input type="password" class="join_input" name="user_pw" id="member_pw" onchange="pw_dbcheck()">
         </div>
         <div class="join_first">
         	<div class="non_hidden1">
@@ -324,29 +324,19 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         </div>
          <div class="join_first">
             <div class="join_main">이메일</div>
-            	<input type="text" class="join_input_email" name="member_email_f" id="member_email_f">
-                <span class="join_phone">@</span>
-                <select class="join_email_sel" name="mail" id="member_email_s">
-                	<option value="">선택</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="hanmail.net">hanmail.net</option>
-                   	<option value="hotmail.com">hotmail.com</option>
-                    <option value="nate.com">nate.com</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="yahoo.co.kr">yahoo.co.kr</option>
-                   	<option value="yahoo.com">yahoo.com</option>
-                </select>
+            	<input type="text" class="join_input" name="email" id="member_email_f" placeholder="ex)cornmarket@gmail.com">
         </div>
         <div class="join_first">
             <div class="join_main">휴대폰번호</div>
-            <input type="text" class="join_input" name="member_ph" id="member_ph">
+            <input type="text" class="join_input" name="phone" id="member_ph" placeholder="010-xxxx-yyyy">
         </div>
         <div class="join_second">
-            <button type="button" class="btn1" onclick="save()" id="joinbtn">저장</button>
+            <button type="button" class="btn1" id="joinbtn">저장</button>
             <button onclick="<c:url value='/main' />">취소</button>
         </div>
     </div>
 </form>
 <jsp:include page="../base/footer.jsp"/>
+<script src="${path}/resources/js/signup/signUp.js"></script>
 </body>
 </html>

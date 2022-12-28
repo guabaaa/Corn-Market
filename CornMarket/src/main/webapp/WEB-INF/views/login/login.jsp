@@ -14,25 +14,25 @@
 <body>
 <jsp:include page="../base/header.jsp"/>
 <jsp:include page="../base/nav.jsp"/>
-<form action="" onsubmit="return login()">
+<form name="frm" action="/login" method="POST">
 	<div class="h2_st">
         <h2>로그인</h2>
     </div>
     <div class="login_wrap">
         <div class="login_first">
             <div class="login_main">아이디</div>
-            <input type="text" id="id">
+            <input type="text" id="id" name="user_id">
         </div>
         <div class="login_first">
             <div class="login_main">비밀번호</div>
-            <input type="password" id="pw">
+            <input type="password" id="pw" name="user_pw">
         </div>
         <div class="login_second">
             <input type="checkbox">아이디 저장
             <a href="<c:url value='/account/id' />">아이디/비밀번호 찾기</a>
         </div>
         <div class="login_third">
-            <button type="button" onclick="login()" id="loginbtn">로그인</button>
+            <button type="button" id="loginbtn">로그인</button>
             <button onclick="<c:url value='/signup' />">회원가입</button>
         </div>
         <div class="login_fourth">
@@ -46,7 +46,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     	let loginUrl = "<c:url value='/member/login'/>";
-    	let index2Url = "<c:url value='/main/index2'/>";
+    	let index2Url = "<c:url value='/main/after_login'/>";
     </script>
 </body>
 </html>
