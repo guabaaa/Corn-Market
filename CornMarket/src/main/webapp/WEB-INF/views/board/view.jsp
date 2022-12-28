@@ -15,18 +15,14 @@
 <!-- 여기서 주의해야할 부분은, 입력 엘리먼트인 <input> 과 <textarea>의 이름(name) 속성의 값이 BoardVO와 동일해야한다는것 입니다. -->
 <form method="post">
 
-
-<label>번호 </label>
-${view.post_id}<br/>
-
-<label>이미지</label>
-${view.post_img}<br/>
-
-<label></label>
+<label>제목</label>
 ${view.title}<br />
 
+<label>작성자</label>
+${view.writer}<br />
+
 <label>가격</label>
-${view.category_id}<br />
+${view.price}<br />
 
 <label>내용</label><br />
 ${view.content}<br />

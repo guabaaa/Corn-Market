@@ -33,7 +33,7 @@ public class BoardController {
 	//		return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
 
 		dao.selectAll();
-		return "board/view"; // 로그인을 한 상태이면, 게시판 화면으로 이동
+		return "post/postlookup"; // 로그인을 한 상태이면, 게시판 화면으로 이동
 		//return "board/list"
 	} 
 	
@@ -43,7 +43,7 @@ public class BoardController {
 	@GetMapping("/enroll")
 	public String mainPageGet() {
 	System.out.println("메인 페이지 ");
-	return "board/list";
+	return "post/postregister";
 	} 
 	
 
@@ -65,7 +65,7 @@ public class BoardController {
 	   
 	   System.out.println("수정 후  boardVO : " + boardVO);
 	   
-	    return "board/list";
+	    return "post/postlookup";		// 수정필요
 	    
 	   }
 	
@@ -98,7 +98,7 @@ public class BoardController {
 		  dao.modify(vo);
 		    
 		  //수정한 bno  조회페이지로 넘어오게함 
-		  return "redirect:/board/view?post_id=" + vo.getPost_id();
+		  return "redirect:/post/postinfo?post_id=" + vo.getPost_id();
 		 }
 	
 		 

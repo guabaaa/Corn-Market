@@ -30,15 +30,15 @@
                 </select>
             </div>
         </div>
-
+        
         <div class="board-card-wrap">
             <article class="board-card-top">
-                <a class="board-card-link">
-                    <div class="board-card-photo">photo</div>
+                <a class="board-card-link" href="<c:url value='/post/postotherinfo'/>" >
+                    <div class="board-card-photo">${ }</div>
                     <div class="board-card-desc">
-                        <div class="board-card-title">ㅇㅇ판매합니다</div>
-                        <div class="board-card-price">20,000원</div>
-                        <div class="board-card-region">서울시 구로구 개봉동</div>
+                        <div class="board-card-title"></div>
+                        <div class="board-card-price"></div>
+                        <div class="board-card-region"></div>
                     </div>
                 </a>
             </article>

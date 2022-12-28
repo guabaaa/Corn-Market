@@ -5,36 +5,61 @@
 <mapper namespace="com.corn.market.BoardMapper">
 
 
- <!-- ===========select============== -->
- 
- 
- 
- 
-  <!-- ===========insert============== -->
-  
-  <!-- 게시판 등록 -->
+
+ <!-- 게시판 등록 -->
 	<insert id="enroll" parameterType="Board">
 	<![CDATA[
  insert into post_tbl22
  values (post_sq.nextval,'yooda','A1101',11080,#{title},
  #{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)
 	]]>	
-	</insert>		
-		
-
+	</insert>
 <!-- 진짜 쿼리임 
 insert into post_tbl22
  	values (post_sq.nextval,#{user_id}, ,#{category_id}, #{title},#{town_code}
  	#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)	 -->	
 
+
+ <!--  썸네일 제목  가격 동네정보 test. ver  -->
+ <!-- 최신 조회 순  -->
+ <select id="selectAll" resultType="Board">
+      SELECT post_img, title, price, user_id   
+      FROM post_tbl22  ORDER BY 
+      created DESC, post_id DESC
+  </select>
+<!-- 최신 조회 순 + 동네정보 조인   -->
+ <!--  카테고리 설정 -->
+ <!--  지역별  설정  -->
+
+
+
+ <!--  게시글 상세보기  -->
+ <select id="view" resultType="Board">
+	select post_id,post_img, title, price, category_id, content from  post_tbl22 where post_id = #{post_id}
+</select> 
+
+	
+
+<update id="modify" parameterType="Board">
+   UPDATE board SET   
+   title = #{title}
+  , content = #{content}
+  , price = #{price}
+ WHERE post_id = #{post_id}and user_id = #{user_id}
+    </update>
   
   
-   <!-- ===========delete============== -->
+   
+  	<!--  본인의 게시물 삭제   -->
+ <delete id="delete" parameterType="map">
+        DELETE FROM board WHERE post_id = #{post_id} and user_id = #{user_id}
+    </delete>  
+  
+ 
+	
    
    
-   
-   
-    <!-- ===========delete============== -->
+ 
  
  
 
