@@ -1,59 +1,74 @@
 @charset "UTF-8";
 
-*{
+* {
     padding: 0px;
     margin: 0px;
     outline: none;
 }
 
-.board-wrap{
+.board-wrap {
     margin: 0 auto;
     width: 100%;
     border: 1px solid rgb(241, 196, 15);
     border-radius: 2px;
     margin-bottom: 50px;
 }
-.board-wrap h2{
+
+.board-wrap h2 {
     color: rgb(241, 196, 15);
 }
-.board-img-wrap{
+
+.board-img-wrap {
     margin: 0 auto;
     position: relative;
     width: 900px;
-    height: 500px;
+    height: 600px;
     margin: 0 auto;
     margin-bottom: 50px;
     margin-top: 50px;
-    border: 2px solid rgb(241,196,15);
+    border: 2px solid rgb(241, 196, 15);
 }
-.board-img-wrap .image-show{
-    vertical-align: center;
-    line-height: 350px;
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 700px;
-    height: 350px;  
-}
+
 .board-container {
     display: flex;
     flex-direction: column;
 }
+
+
 .board-container .image-preview {
     position: absolute;
     left: 100px;
     top: 50px;
     width: 700px;
-    height: 300px;
+    height: 350px;
     display: flex;
     padding: 5px;
     overflow: scroll;
     overflow: auto;
     white-space: nowrap;
-  }
-  .image-preview{
+}
+
+.image-preview {
     list-style: none;
-  }
-.board-button label{
+}
+.btn-delete{
+    position: absolute;
+    width: 350px;
+    height: 35px;
+    background-color: rgb(241, 196, 15);
+    line-height: 32px;
+    border-radius: 2px;
+    border: 1px solid rgb(241, 196, 15);
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    color: #ffffff;
+    bottom: 100px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.board-button label {
     position: absolute;
     width: 350px;
     height: 35px;
@@ -78,12 +93,14 @@
     cursor: pointer;
     font-size: 1em;
 }
+
 #chooseFile {
     visibility: hidden;
 }
+
 .real-upload {
     display: none;
-  }
+}
 
 .fileContainer {
     position: absolute;
@@ -98,7 +115,7 @@
     border-bottom: solid 2px rgb(241, 196, 15);
     width: 400px;
     height: 30px;
-    color: rgb(117,117,117);
+    color: rgb(117, 117, 117);
     overflow: scroll;
     overflow: auto;
     white-space: nowrap;
@@ -108,110 +125,123 @@
     margin-left: 5px;
 }
 
-
-
-
-
-.board-wrap .board-title-wrap{
+.board-wrap .board-title-wrap {
     width: 900px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 30px;
 }
-.board-title{
+
+.board-title {
     width: 200px;
     height: 44px;
     margin-right: 40px;
     line-height: 44px;
 }
-.board-title-input{
+
+.board-title-input {
     width: 650px;
     height: 40px;
-    border: 1px solid rgb(117,117,117);
+    border: 1px solid rgb(117, 117, 117);
     padding: 2px;
     border-radius: 2px;
-    color: rgb(117,117,117);
+    color: rgb(117, 117, 117);
 }
-.board-wrap .board-cate-wrap{
+
+.board-wrap .board-cate-wrap {
     width: 900px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 30px;
 }
-.board-cate{
+
+.board-cate {
     width: 200px;
     height: 44px;
     margin-right: 40px;
     line-height: 44px;
 }
-.board-cate-wrap select{
+
+.board-cate-wrap select {
     width: 656px;
     height: 44px;
-    border: 1px solid rgb(117,117,117);
-    color: rgb(117,117,117);
+    border: 1px solid rgb(117, 117, 117);
+    color: rgb(117, 117, 117);
     border-radius: 2px;
 }
-.board-wrap .board-sellingprice-wrap{
+
+.board-wrap .board-sellingprice-wrap {
     width: 900px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 50px;
 }
-.board-sellingprice{
+
+.board-sellingprice {
     width: 200px;
     height: 44px;
     margin-right: 40px;
     line-height: 44px;
 }
-.board-sellingprice-input{
+
+.board-sellingprice-input {
     width: 500px;
     height: 40px;
-    border: 1px solid rgb(117,117,117);
+    border: 1px solid rgb(117, 117, 117);
     padding: 2px;
     margin-right: 10px;
     border-radius: 2px;
 }
-.board-sellingprice-won{
+
+.board-sellingprice-won {
     width: 30px;
     line-height: 44px;
     color: #202020;
     margin-right: 25px;
 }
-.board-sellingprice-wrap .board-sellingprice-won p{
+
+.board-sellingprice-wrap .board-sellingprice-won p {
     font-size: 14px;
 }
-.board-sellingprice-wrap .board-check{
+
+.board-sellingprice-wrap .board-check {
     width: 40px;
     line-height: 44px;
     color: #202020;
 }
-.board-sellingprice-wrap .board-check p{
+
+.board-sellingprice-wrap .board-check p {
     font-size: 14px;
 }
-.board-sellingprice-wrap .board-checkbox{
+
+.board-sellingprice-wrap .board-checkbox {
     width: 45px;
     height: 45px;
 }
-.board-wrap .board-contents-wrap{
+
+.board-wrap .board-contents-wrap {
     width: 900px;
     margin: 0 auto;
     display: flex;
     margin-bottom: 30px;
     margin-top: 50px;
 }
-.board-contents-wrap textarea{
+
+.board-contents-wrap textarea {
     width: 900px;
     height: 300px;
     padding: 10px;
 }
-.board-btn-wrap{
+
+.board-btn-wrap {
     display: block;
     width: 900px;
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.board-btn{
+
+.board-btn {
     display: block;
     width: 400px;
     height: 35px;
@@ -226,7 +256,8 @@
     cursor: pointer;
     margin: 0 auto;
 }
-.selling-img-btn{
+
+.selling-img-btn {
     display: block;
     width: 400px;
     height: 40px;
@@ -235,25 +266,15 @@
     color: #ffffff;
     margin: 0 auto;
 }
-.selling-img-btn{
+
+.selling-img-btn {
     cursor: pointer;
 }
-.board-modify-wrap{
-    width: 900px;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    margin-top: 50px;
-}
-.board-modify-wrap select{
-    width: 200px;
-    height: 44px;
-    border: 1.5px solid rgb(241,196,15); 
-    border-radius: 5px;
-}
-.board-title-line{
-    padding-top:50px;
+
+.board-title-line {
+    padding-top: 50px;
     width: 910px;
     margin: 0 auto;
-    border-top: 2px solid rgb(241,196,15);
-    border-bottom: 2px solid rgb(241,196,15);
+    border-top: 2px solid rgb(241, 196, 15);
+    border-bottom: 2px solid rgb(241, 196, 15);
 }

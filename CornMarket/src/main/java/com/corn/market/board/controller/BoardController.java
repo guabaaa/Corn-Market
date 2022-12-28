@@ -55,6 +55,8 @@ public class BoardController {
 	   dao.enroll(boardVO);
 	   
 	   System.out.println("수정 후  boardVO : " + boardVO);
+	   
+	   
 	    
 	   }
 	      
