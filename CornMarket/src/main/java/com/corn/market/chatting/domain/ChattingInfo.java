@@ -10,6 +10,7 @@ public class ChattingInfo {
 	private String post_img;
 	private String other_profile_img;
 	private String other_nickname;
+	private String post_price;
 	private List<ChattingContentList> chatlist;
 	
 	public ChattingInfo() {
@@ -17,7 +18,7 @@ public class ChattingInfo {
 	}
 
 	public ChattingInfo(String room_id, String post_id, String post_title, String post_img, String other_profile_img,
-			String other_nickname, List<ChattingContentList> chatlist) {
+			String other_nickname, String post_price, List<ChattingContentList> chatlist) {
 		super();
 		this.room_id = room_id;
 		this.post_id = post_id;
@@ -25,8 +26,10 @@ public class ChattingInfo {
 		this.post_img = post_img;
 		this.other_profile_img = other_profile_img;
 		this.other_nickname = other_nickname;
+		this.post_price = post_price;
 		this.chatlist = chatlist;
 	}
+
 
 	public String getRoom_id() {
 		return room_id;
@@ -75,6 +78,14 @@ public class ChattingInfo {
 	public void setOther_nickname(String other_nickname) {
 		this.other_nickname = other_nickname;
 	}
+	
+	public String getPost_price() {
+		return post_price;
+	}
+
+	public void setPost_price(String post_price) {
+		this.post_price = post_price;
+	}
 
 	public List<ChattingContentList> getChatlist() {
 		return chatlist;
@@ -88,7 +99,7 @@ public class ChattingInfo {
 	public String toString() {
 		return "ChattingInfo [room_id=" + room_id + ", post_id=" + post_id + ", post_title=" + post_title
 				+ ", post_img=" + post_img + ", other_profile_img=" + other_profile_img + ", other_nickname="
-				+ other_nickname + ", chatlist=" + chatlist + "]";
+				+ other_nickname + ", post_price=" + post_price + ", chatlist=" + chatlist + "]";
 	}
-	
+
 }

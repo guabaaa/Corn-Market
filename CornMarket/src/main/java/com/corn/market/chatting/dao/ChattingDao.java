@@ -11,10 +11,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.corn.market.chatting.domain.ChatUserInfo;
 import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.ChattingContentList;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
+import com.corn.market.chatting.domain.ChattingRoomDeleteInfo;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
 import com.corn.market.chatting.domain.CheckChattingRoom;
 
@@ -92,14 +94,18 @@ public class ChattingDao {
 	//채팅방 목록 조회
 	public ArrayList<ChattingRoomInfo> selectChattingRoom(String user_id) {
 		ArrayList<ChattingRoomInfo> list = new ArrayList<>();
-		String sql = "SELECT r.room_id, DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"') "
+		String sql = "SELECT r.room_id, DECODE(? ,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"'), t.town_name "
 				+ "FROM chatting_room_tbl22 r "
 				+ "JOIN user_tbl22 u "
 				+ "ON DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) = u.user_id "
 				+ "JOIN chatting_content_tbl22 c "
 				+ "ON r.room_id = c.room_id "
-				+ "WHERE (r.seller_id = ? OR r.buyer_id = ?) AND c.send_date IN(SELECT MAX(send_date) FROM chatting_content_tbl22 GROUP BY room_id) "
-				+ "ORDER BY r.created DESC, c.send_date DESC";
+				+ "JOIN post_tbl22 p "
+				+ "ON r.post_id = p.post_id "
+				+ "JOIN town_tbl22 t "
+				+ "ON p.town_code = t.town_code "
+				+ "WHERE r.chatting_status IN(0,DECODE(?, seller_id, 2, buyer_id, 1)) AND(r.seller_id = ? OR r.buyer_id = ?) AND c.send_date IN(SELECT MAX(send_date) FROM chatting_content_tbl22 GROUP BY room_id) "
+				+ "ORDER BY c.send_date DESC";
 		Connection conn = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -110,6 +116,7 @@ public class ChattingDao {
 			pst.setString(2, user_id);
 			pst.setString(3, user_id);
 			pst.setString(4, user_id);
+			pst.setString(5, user_id);
 			rs = pst.executeQuery();
 			while(rs.next()) {
 				String room_id = rs.getString(1);
@@ -118,7 +125,8 @@ public class ChattingDao {
 				String other_nickname = rs.getString(4);
 				String last_chat_content = rs.getString(5);
 				String last_send_date = rs.getString(6);
-				list.add(new ChattingRoomInfo(room_id,other_user_id, other_profile_img, other_nickname, last_chat_content, last_send_date));
+				String post_town_name = rs.getString(7);
+				list.add(new ChattingRoomInfo(room_id,other_user_id, other_profile_img, other_nickname, last_chat_content, last_send_date, post_town_name));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -160,7 +168,7 @@ public class ChattingDao {
 	//채팅창 정보 조회
 	public ChattingInfo selectChattingInfo(String room_id, String user_id) {
 		ChattingInfo chattingInfo = null;
-		String sql = "SELECT r.post_id, p.title, p.post_img, u.profile_img, u.nickname "
+		String sql = "SELECT r.post_id, p.title, p.post_img, u.profile_img, u.nickname, TRIM(TO_CHAR(p.price,'99,999,999')) "
 				+ "FROM chatting_room_tbl22 r "
 				+ "JOIN post_tbl22 p "
 				+ "ON r.post_id = p.post_id "
@@ -182,7 +190,8 @@ public class ChattingDao {
 				String post_img = rs.getString(3);
 				String other_profile_img = rs.getString(4);
 				String other_nickname = rs.getString(5);
-				chattingInfo = new ChattingInfo(room_id, post_id, post_title, post_img, other_profile_img, other_nickname, selectChattingContent(room_id));
+				String post_price = rs.getString(6);
+				chattingInfo = new ChattingInfo(room_id, post_id, post_title, post_img, other_profile_img, other_nickname, post_price, selectChattingContent(room_id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -216,6 +225,53 @@ public class ChattingDao {
 			close(rs,pst,conn);
 		}
 		return check; //조회 결과 없으면 0 있으면 방id 반환
+	}
+	
+	//채팅방 삭제
+	public void updateChattingStatus (ChattingRoomDeleteInfo deleteInfo) {
+		String sql = "UPDATE chatting_room_tbl22 "
+				+ "SET chatting_status = DECODE(?, seller_id, 1, buyer_id, 2) "
+				+ "WHERE room_id = ? ";
+		Connection conn = null;
+		PreparedStatement pst = null;
+		try {
+			conn = dataSource.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, deleteInfo.getUser_id());
+			pst.setString(2, deleteInfo.getRoom_id());
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pst,conn);
+		}
+	}
+	
+	//사용자 프로필 이미지, 닉네임 조회
+	public ChatUserInfo selectUserInfo(String user_id) {
+		ChatUserInfo chatUserInfo = null;
+		String sql = "SELECT nickname, profile_img "
+				+ "FROM user_tbl22 "
+				+ "WHERE user_id = ?";
+		Connection conn = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			conn = dataSource.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, user_id);
+			rs = pst.executeQuery();
+			if(rs.next()) {
+				String user_name = rs.getString(1);
+				String profile_img  = rs.getString(2);
+				chatUserInfo = new ChatUserInfo(user_name, profile_img);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs,pst,conn);
+		}
+		return chatUserInfo;
 	}
 
 	private void close(AutoCloseable...acs) {

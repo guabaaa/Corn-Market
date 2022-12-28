@@ -8,13 +8,14 @@ public class ChattingRoomInfo {
 	private String other_nickname;
 	private String last_chat_content;
 	private String last_send_date;
+	private String post_town_name;
 	
 	public ChattingRoomInfo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ChattingRoomInfo(String room_id, String other_user_id, String other_profile_img, String other_nickname,
-			String last_chat_content, String last_send_date) {
+			String last_chat_content, String last_send_date, String post_town_name) {
 		super();
 		this.room_id = room_id;
 		this.other_user_id = other_user_id;
@@ -22,6 +23,7 @@ public class ChattingRoomInfo {
 		this.other_nickname = other_nickname;
 		this.last_chat_content = last_chat_content;
 		this.last_send_date = last_send_date;
+		this.post_town_name = post_town_name;
 	}
 
 	public String getRoom_id() {
@@ -72,11 +74,19 @@ public class ChattingRoomInfo {
 		this.last_send_date = last_send_date;
 	}
 
+	public String getPost_town_name() {
+		return post_town_name;
+	}
+
+	public void setPost_town_name(String post_town_name) {
+		this.post_town_name = post_town_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ChattingRoomInfo [room_id=" + room_id + ", other_user_id=" + other_user_id + ", other_profile_img="
 				+ other_profile_img + ", other_nickname=" + other_nickname + ", last_chat_content=" + last_chat_content
-				+ ", last_send_date=" + last_send_date + "]";
+				+ ", last_send_date=" + last_send_date + ", post_town_name=" + post_town_name + "]";
 	}
 	
 }

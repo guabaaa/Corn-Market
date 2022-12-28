@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.corn.market.chatting.domain.ChatUserInfo;
 import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
+import com.corn.market.chatting.domain.ChattingRoomDeleteInfo;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
 import com.corn.market.chatting.domain.CheckChattingRoom;
 import com.corn.market.chatting.service.ChattingService;
@@ -35,6 +37,7 @@ public class ChattingController {
 		ArrayList<ChattingRoomInfo> list = chattingService.getChattingList(user_id);
 		for(ChattingRoomInfo chat : list) System.out.println(chat); //콘솔 테스트
 		model.addAttribute("list", list);
+		model.addAttribute("user_id", user_id);
 		//return "chatting/chatting_list_sample";
 		return "chatting/chatting_room_list";
 	}
@@ -54,9 +57,10 @@ public class ChattingController {
 	public String chattingRoom(@PathVariable String room_id,Model model,HttpSession session) {
 		String user_id = (String) session.getAttribute("id");
 		ChattingInfo chattingInfo = chattingService.getChattingInfo(room_id, user_id);
+		ChatUserInfo userInfo = chattingService.getUserInfo(user_id);
 		model.addAttribute("chat", chattingInfo);
 		model.addAttribute("id", user_id);
-		//return "chatting/chatting_sample";
+		model.addAttribute("info", userInfo);
 		return "chatting/chatting_pop";
 	}
 	//채팅 내용 등록
@@ -76,5 +80,14 @@ public class ChattingController {
 		String room = chattingService.checkChatRoom(post_id, user_id);
 		System.out.println("방id:"+room);
 		return room;
+	}
+	//채팅방 삭제
+	@PostMapping("/chatting/list/delete")
+	public String deleteChatRoom(@RequestBody String room_id,HttpSession session) {
+		String user_id = (String) session.getAttribute("id");
+		//room_count 0이면 채팅방 없음, 1이면 채팅방 있음'
+		chattingService.deleteChatRoom(new ChattingRoomDeleteInfo(user_id, room_id));
+		System.out.println("방id:"+room_id);
+		return "redirect:/chatting/list";
 	}
 }

@@ -1,4 +1,4 @@
-package com.corn.market.chatting;
+package com.corn.market.chatting.api;
 
 import java.util.Date;
 import java.util.Map;
@@ -9,6 +9,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.corn.market.chatting.domain.WebSocketInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ChatWebSocketHandler extends TextWebSocketHandler {

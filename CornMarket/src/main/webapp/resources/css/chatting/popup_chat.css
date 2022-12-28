@@ -43,14 +43,22 @@
   width: 550px;
   margin: 0 auto;
 }
-
-.body-contentbox {
+#chatArea{
   width: 550px;
   height: 407px;
-  box-sizing: border-box;
-  overflow: auto;
   margin: 0 auto;
   padding: 15px 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#chatArea::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.body-contentbox {
+  width: 550px;
+  box-sizing: border-box;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -70,19 +78,21 @@
   border-bottom: 1px solid rgb(241, 196, 15);
   display: flex;
   align-items: center;
+  justify-content: flex-start
 }
 
 .chat_profile {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgb(241, 196, 15);
+  background-color: rgb(238, 230, 198);
   margin: 5px;
 }
 
 .titlebox1 p {
   margin-left: 10px;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .chatlist_btn {
@@ -95,7 +105,7 @@
   font-weight: bold;
   display: block;
   cursor: pointer;
-  margin-left: 330px;
+  margin-left: auto;
 }
 
 .titlebox2 {
@@ -128,7 +138,7 @@
 .chat_date {
   font-size: 10px;
   color: gray;
-  width: 80px;
+  width: 100px;
   hight: 20px;
   margin: 5px auto;
 }
@@ -142,7 +152,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(238, 230, 198);
 }
 
 .other_say {
@@ -156,7 +166,7 @@
 .other_time {
   width: 30px;
   height: 17px;
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 8px;
   margin-top: 10px;
 }
@@ -170,7 +180,7 @@
 .my_time {
   width: 30px;
   height: 17px;
-  margin-right: 10px;
+  margin-right: 5px;
   font-size: 8px;
   margin-top: 10px;
   position: relative;

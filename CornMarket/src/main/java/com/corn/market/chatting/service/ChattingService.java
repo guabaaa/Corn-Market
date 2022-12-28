@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.corn.market.chatting.dao.ChattingDao;
+import com.corn.market.chatting.domain.ChatUserInfo;
 import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
+import com.corn.market.chatting.domain.ChattingRoomDeleteInfo;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
 import com.corn.market.chatting.domain.CheckChattingRoom;
 
@@ -55,6 +57,16 @@ public class ChattingService {
 	public String checkChatRoom(String post_id, String user_id) {
 		String check = dao.checkChattingRoom(post_id, user_id);
 		return check; //조회 결과 없으면 0 있으면 방id 반환
+	}
+	
+	//채팅방 삭제
+	public void deleteChatRoom(ChattingRoomDeleteInfo deleteInfo) {
+		dao.updateChattingStatus(deleteInfo);
+	}
+	
+	//채팅 사용자 정보
+	public ChatUserInfo getUserInfo(String user_id) {
+		return dao.selectUserInfo(user_id);
 	}
 
 }

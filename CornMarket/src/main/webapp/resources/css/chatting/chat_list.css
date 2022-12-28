@@ -49,9 +49,10 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background-color: rgb(241, 196, 15);
+  background-color: rgb(238, 230, 198);
   margin: 0 15px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .chat_content_wrap {

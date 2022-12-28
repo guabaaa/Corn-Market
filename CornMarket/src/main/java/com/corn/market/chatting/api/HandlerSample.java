@@ -1,4 +1,4 @@
-package com.corn.market.chatting;
+package com.corn.market.chatting.api;
 
 import java.util.Date;
 import java.util.Map;

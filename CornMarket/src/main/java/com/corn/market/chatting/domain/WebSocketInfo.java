@@ -1,4 +1,4 @@
-package com.corn.market.chatting;
+package com.corn.market.chatting.domain;
 
 import java.util.Objects;
 

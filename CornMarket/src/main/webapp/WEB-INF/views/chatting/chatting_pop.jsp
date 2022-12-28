@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -20,134 +21,68 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <div class="body-content">
                 <div class="body-titlebox">
                   <div class="titlebox1">
-                    <img class="chat_profile" />
-                    <p>꿍디누나</p>
-                    <input type="button" class="chatlist_btn" value="채팅목록" />
+                    <img class="chat_profile" src="${path}${info.profile_img}" />
+                    <p>${info.user_name}</p>
+                    <input type="button" class="chatlist_btn" value="채팅목록" onclick="location.href='<c:url value="/chatting/list"/>'"/>
                   </div>
-                  <div class="titlebox2" onclick="">
-                    <div class="chat_object"></div>
+                  <div class="titlebox2" onclick="location.href='<c:url value="/postinfo/get?post_id=${chat.post_id}"/>'">
+                    <img class="chat_object" src="${path}${chat.post_img}"></img>
                     <div class="titlebox2-2">
-                      <p>아이폰 팝니다</p>
-                      <p>300,000원</p>
+                      <p>${chat.post_title}</p>
+                      <p>${chat.post_price}원</p>
                     </div>
                   </div>
                 </div>
-                <div class="body-contentbox">
-                  <div class="chat_date">2022년12월27일</div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">안녕하세요</div>
-                    <div class="other_time">14:12</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:30</div>
-                    <div class="my_say">네 하이염</div>
-                  </div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">구매하고싶어서요~</div>
-                    <div class="other_time">14:32</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:35</div>
-                    <div class="my_say">네에 직거래해요</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:37</div>
-                    <div class="my_say">거래를 완료했습니다.</div>
-                  </div>
-                  <div class="chat_date">2022년12월27일</div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">안녕하세요</div>
-                    <div class="other_time">14:12</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:30</div>
-                    <div class="my_say">네 하이염</div>
-                  </div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">구매하고싶어서요~</div>
-                    <div class="other_time">14:32</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:35</div>
-                    <div class="my_say">네에 직거래해요</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:37</div>
-                    <div class="my_say">거래를 완료했습니다.</div>
-                  </div>
-                  <div class="chat_date">2022년12월27일</div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">안녕하세요</div>
-                    <div class="other_time">14:12</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:30</div>
-                    <div class="my_say">네 하이염</div>
-                  </div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">구매하고싶어서요~</div>
-                    <div class="other_time">14:32</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:35</div>
-                    <div class="my_say">네에 직거래해요</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:37</div>
-                    <div class="my_say">거래를 완료했습니다.</div>
-                  </div>
-                  <div class="chat_date">2022년12월27일</div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">안녕하세요</div>
-                    <div class="other_time">14:12</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:30</div>
-                    <div class="my_say">네 하이염</div>
-                  </div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">구매하고싶어서요~</div>
-                    <div class="other_time">14:32</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:35</div>
-                    <div class="my_say">네에 직거래해요</div>
-                  </div>
-                  <div class="my_profile">
-                    <div class="my_time">14:37</div>
-                    <div class="my_say">거래를 완료했습니다.</div>
-                  </div>
-                  <div class="other_profile">
-                    <img class="other_img" />
-                    <div class="other_say">
-                      판매자가 거래를 완료했습니다<br />
-                      거래후기를 남겨주세요<br />
-                      <input type="button" value="거래후기 작성하러 가기" class="goto_review" />
-                    </div>
-                    <div class="other_time">14:32</div>
-                  </div>
+                <div id="chatArea">
+                	<div class="body-contentbox" id="chatMessageArea">
+                	<c:set var="dt" value="${chat.chatlist[0].date}"/>
+                	<c:set var="ct" value="0"/>
+	              	<c:forEach var="content" items="${chat.chatlist}" varStatus="st">
+	              	  <c:if test="${st.index == 0}">
+	                    <div class="chat_date" id="chat_date_${st.count}">${content.date}</div>
+			          </c:if>
+			          <c:if test="${st.index!=0 && content.date!=dt}">
+	                    <div class="chat_date" id="chat_date_${st.count}">${content.date}</div>
+	                    <c:set var="dt" value="${content.date}"/>
+	                    <c:set var="ct" value="${st.count}"/>
+			          </c:if>     
+	                  
+	                  <c:if test="${content.sender_id != id}">
+	                	<!-- 타인이 보낸 메시지 -->
+	                  <div class="other_profile">
+	                    <img class="other_img" src="${path}${chat.other_profile_img}" />
+	                    <div class="other_say">${content.chat_content}</div>
+	                    <div class="other_time">${content.time}</div>
+	                  </div>
+	                	</c:if>
+	                	<c:if test="${content.sender_id == id}">
+	                	<!-- 본인이 보낸 메시지 -->
+	                  <div class="my_profile">
+	                    <div class="my_time">${content.time}</div>
+	                    <div class="my_say">${content.chat_content}</div>
+	                  </div>
+	                	</c:if>
+	              	</c:forEach>
+	                </div>
+					<input type="hidden" value="${ct}" id="list_size" />
                 </div>
               </div>
             </div>
             <div class="popup-foot">
               <input type="button" value="거래완료" class="deal_end" />
-              <input type="text" class="chatting" />
-              <input type="button" value="입력" class="chat_send" />
+              <input type="text" class="chatting" id="message" />
+              <input type="button" value="입력" class="chat_send" id="sendBtn" />
             </div>
           </form>
         </div>
       </div>
     </div>
 
-    <script src="${path}/resources/js/"></script>
+	<input type="hidden" value="${chat.room_id}" id="room_id" />
+    <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_content_url" />
+    <input type="hidden" value="${id}" id="user_id" />
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${path}/resources/js/chatting/chatting_pop.js"></script>
   </body>
 </html>
