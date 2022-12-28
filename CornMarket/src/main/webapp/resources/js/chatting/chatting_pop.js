@@ -13,15 +13,16 @@ function disconnect() {
 }
 // 메시지 전송
 function sendMsg() {
-  send('send_msg');
-  ajaxChatContent(); //DB에 저장
+  var msg = $('#message').val();
+  send('send_msg', msg);
+  ajaxChatContent(msg); //DB에 저장
   $('#message').val(''); //입력창 초기화
 }
 // 웹소켓에 데이터 전송
-function send(type) {
+function send(type, msg) {
   let room = $('#room_id').val();
   let id = $('#user_id').val();
-  var msg = $('#message').val(); //메시지 입력 input
+  //var msg = $('#message').val(); //메시지 입력 input
   let chattingContent = {
     type: type, // 'enter':웹소켓 연결시, 'send_msg':메시지 전송시, 'out':웹소켓 끊어질시
     room_id: room,
@@ -33,7 +34,7 @@ function send(type) {
 
 // 웹소켓 서버에 연결되었을 때 호출되는 이벤트
 function onOpen(evt) {
-  send('enter');
+  send('enter', '');
   //alert('연결되었습니다');
 }
 // 웹소켓 서버에서 메시지를 받았을 때 호출되는 이벤트
@@ -58,9 +59,9 @@ function onMessage(evt) {
 }
 // 웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트
 function onClose(evt) {
-  send('out');
+  send('out', '');
   //alert('연결을 끊었습니다');
-  console.log('Socket is closed. Reconnect will be attempted in 1 second.', e);
+  console.log('Socket is closed. Reconnect will be attempted in 1 second.');
   setTimeout(function () {
     connect();
   }, 1000);
@@ -146,14 +147,16 @@ $(document).ready(() => {
   enterKey();
   clickSendBtn();
   scrollDown();
+  $('#revBtn').click(openReview);
+  $('#deal_end').click(dealEndBtn);
 });
 
 //ajax - 보내는 메시지 DB에 전송
-function ajaxChatContent() {
+function ajaxChatContent(msg) {
   let url = $('#chat_content_url').val();
   let room = $('#room_id').val();
   let id = $('#user_id').val();
-  var msg = $('#message').val(); //메시지 입력 input
+  //var msg = $('#message').val(); //메시지 입력 input
   let chattingContent = {
     room_id: room,
     sender_id: id,
@@ -171,4 +174,58 @@ function ajaxChatContent() {
       alert('error');
     },
   });
+}
+
+//거래 완료 버튼
+function dealEndBtn() {
+  //판매글id로 판매글 상태 거래완료로 변경
+  let endUrl = $('#dealEndUrl').val();
+  let post_id = $('#post_id').val();
+  let endMsg =
+    '판매자가 거래를 완료했습니다<br>' +
+    '거래후기를 남겨주세요<br>' +
+    '<input type="button" value="거래후기 작성하러 가기" class="goto_review other_review" id="revBtn">';
+  $.ajax({
+    type: 'POST',
+    url: endUrl,
+    dataType: 'text',
+    data: post_id,
+    contentType: 'text/plain; charset=utf-8',
+    success: function (data) {
+      //alert('성공');
+      let status = data;
+      console.log(status);
+      if (status == '거래완료') {
+        $('#deal_end').attr('disabled', 'true');
+        $('#deal_end').css('cursor', 'default');
+      } else if (status == '판매중') {
+        //채팅창에 거래완료 메시지 추가
+        send('send_msg', endMsg);
+        ajaxChatContent(endMsg); //DB에 저장
+        $('#deal_end').attr('disabled', 'true');
+        $('#deal_end').css('cursor', 'default');
+      }
+    },
+    error: function (data) {
+      alert('error');
+    },
+  });
+}
+
+//거래 후기 페이지 revBtn
+//거래후기창 팝업으로 열기
+function openReview() {
+  alert('리뷰창');
+  let url = $('#reviewUrl').val();
+
+  let popupWidth = 650;
+  let popupHeight = 750;
+  let popupX = Math.ceil((window.screen.width - popupWidth) / 2);
+  let popupY = Math.ceil((window.screen.height - popupHeight) / 2);
+  window.name = 'chatWindow';
+  window.open(
+    url,
+    'RegReview',
+    'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY
+  );
 }

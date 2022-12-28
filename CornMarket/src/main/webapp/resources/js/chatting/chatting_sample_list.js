@@ -34,3 +34,20 @@ function checkChatRoom() {
     },
   });
 }
+
+//채팅창 팝업으로 열기
+function openChatList() {
+  let url = $('#chatUrl').val();
+  //팝업창 화면 가운데로 띄우기
+  let popupWidth = 650;
+  let popupHeight = 700;
+  let popupX = Math.ceil((window.screen.width - popupWidth) / 2);
+  let popupY = Math.ceil((window.screen.height - popupHeight) / 2);
+
+  window.open(
+    url,
+    'ChattingList',
+    'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY
+  );
+  //<input type="hidden" value="<c:url value='/chatting/list'/>" id="chatUrl" />
+}

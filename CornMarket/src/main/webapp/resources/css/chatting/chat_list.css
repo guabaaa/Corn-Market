@@ -81,12 +81,17 @@
   margin: 0 5px;
 }
 .chat_contents {
+  height:28px;
+  box-sizing: border-box;
   font-size: 14px;
   padding: 5px 10px;
   border-radius: 5px;
   background-color: rgb(241, 196, 15);
   color: white;
   margin: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 
 .chat_delete {

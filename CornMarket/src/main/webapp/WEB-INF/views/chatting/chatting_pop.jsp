@@ -6,7 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>채팅방 - ${chat.other_nickname}</title>
     <link rel="stylesheet" href="${path}/resources/css/chatting/popup_chat.css" />
   </head>
   <body>
@@ -69,16 +69,20 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               </div>
             </div>
             <div class="popup-foot">
-              <input type="button" value="거래완료" class="deal_end" />
+              <input type="button" value="거래완료" class="deal_end" id="deal_end" />
               <input type="text" class="chatting" id="message" />
               <input type="button" value="입력" class="chat_send" id="sendBtn" />
             </div>
-          </form>
+       		</form>
         </div>
       </div>
     </div>
 
-	<input type="hidden" value="${chat.room_id}" id="room_id" />
+	  <input type="hidden" value="${chat.other_nickname}" id="nickname" />
+	  <input type="hidden" value="${chat.post_id}" id="post_id" />
+	  <input type="hidden" value="${chat.room_id}" id="room_id" />
+    <input type="hidden" value="<c:url value='/review/post-end'/>" id="dealEndUrl" />
+    <input type="hidden" value="<c:url value='/review'/>" id="reviewUrl" />
     <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_content_url" />
     <input type="hidden" value="${id}" id="user_id" />
     
