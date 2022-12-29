@@ -17,7 +17,7 @@
         <div class="header_search">
             <input type="text" placeholder="물품이나 동네를 찾아보세요">
             <p class="main_nickname">${sessionScope.id}</p>
-            <button class="btn1" onclick="location.href='<c:url value="/profile"/>'">프로필보기</button>
+            <button class="btn1" onclick="location.href='<c:url value="/profile"/>'">프로필</button>
             <button class="btn2" onclick="location.href='<c:url value="/logout"/>'">로그아웃</button>
         </div>
 </header>
