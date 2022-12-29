@@ -1,8 +1,6 @@
 package com.corn.market.board.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,20 +10,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.corn.market.board.dao.BoardDao;
 import com.corn.market.board.domain.BoardVO;
-import com.corn.market.member.dao.MemberDao;
-import com.corn.market.member.domain.Member;
+import com.corn.market.common.api.fileUpload.FileUploadService;
 
 @Controller
 public class BoardController {
 	
 	@Autowired
 	BoardDao dao;
+	
+	@Autowired
+	private FileUploadService service;
 	
 	/*게시판 진입*/
 	@GetMapping("/list")
@@ -144,6 +144,19 @@ public class BoardController {
 	return "redirect:/board/list";
 	}
 	
+	
+	//사진 DB에 업데이트
+	@PostMapping("/post/images")
+	public void updatePostImg(HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request) {
+		
+		String url = service.multiFileUpload(files, request);
+		System.out.println("파일 이름:"+url);
+		BoardVO board = new BoardVO();
+		board.setPost_id(0);
+		board.setPost_img(url);
+		dao.updateImg(board);
+		
+	}
 	
 	
 	

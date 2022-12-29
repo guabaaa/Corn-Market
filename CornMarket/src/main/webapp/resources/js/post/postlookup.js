@@ -54,9 +54,9 @@ window.addEventListener('load', function () {
         $('#middle').append(`<option> ${item}</option>`);
       });
     } else if (key == '카테고리') {
-      select.카테고리[0].forEach(function (item) {
-        $('#sortchoice2').append(`<option value="${item}"> ${item}</option>`);
-      });
+      for (let i = 0; i < select.카테고리[0].length; i++) {
+        $('#sortchoice2').append(`<option value="${select.카테고리[0][i]}"> ${select.카테고리[1][i]}</option>`);
+      }
     } else if (key == '지역') {
       select.지역.forEach(function (item) {
         $('#sortchoice2').append(`<option value="${item}"> ${item}</option>`);

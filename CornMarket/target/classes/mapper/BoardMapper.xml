@@ -59,7 +59,10 @@ insert into post_tbl22
     </delete>  
   
  
-	
+	<update id="updateImg" parameterType="Board">
+	  UPDATE post_tbl22 SET post_img = #{post_img}
+	  WHERE post_id = #{post_id};
+	</update>
    
    
  
