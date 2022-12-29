@@ -40,10 +40,17 @@
         <div class="board-contents-wrap">
             <div class="info-contents">${post.content }</div>
         </div>
+        <form action="<c:url value='/chatting/list'/>" id="frm" method="post" name="chat_room_frm">
         <div class="board-chat-btn-wrap">
-            <input class="board-chat-btn" type="button" value="채팅하기" onclick="chattingSub()" id="chattingsub_btn">
+            <input class="board-chat-btn" type="button" value="채팅하기" id="chattingsub_btn">
+		    <input type="hidden" value="${view.post_id}" id="post_id" name="post_id" />
         </div>
+        </form>
     </div>
+    
+    <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_url" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${path}/resources/js/chatting/chatting_create.js"></script>
 
 <jsp:include page="../base/footer.jsp" />
 </body>

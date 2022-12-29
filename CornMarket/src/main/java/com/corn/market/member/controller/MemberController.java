@@ -42,7 +42,7 @@ public class MemberController {
 		// 회원가입 실행
 		dao.memberSignup(member);
 		System.out.println(" signup service 성공   ");
-		return "market/login/login";
+		return "redirect:/login";
 	}
 
 
@@ -104,6 +104,7 @@ public class MemberController {
 			System.out.println(dbMember);
 			if (dbMember == null) { // 존재하지 않는 아이디
 				System.out.println("아이디 비밀번호 확인바랍니다."); 
+				return "redirect:/login";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -127,7 +128,15 @@ public class MemberController {
 		// 5. 로그인 성공 메세지 띄우고, 메인화면으로 이동
 		System.out.println("로그인성공 ");
 
-		return "redirect:/";
+		return "redirect:/main";
+	}
+	
+	//로그인
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("id");
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 

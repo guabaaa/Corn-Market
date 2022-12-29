@@ -45,7 +45,7 @@ public class BoardController {
 	@GetMapping("/enroll")
 	public String mainPageGet() {
 	System.out.println("메인 페이지 ");
-	return "post/postregister";
+	return "redirect:/list";
 	} 
 	
 
@@ -75,11 +75,12 @@ public class BoardController {
 	  // 게시물 조회
 		//주소는 board/view?post_id=[고유번호] 방식으로 되기 때문에, param을 이용해서 주소에서 bno의 값을 걸러내야함 
 	   @GetMapping("/view")
-		 public String getView(@RequestParam("post_id") int post_id , Model model) throws Exception {
-
+		 public String getView(@RequestParam("post_id") int post_id , Model model,HttpSession session) throws Exception {
+		   String id = (String) session.getAttribute("id");
 			BoardVO vo = dao.view (post_id);
 			// 매견변수 post_id로 서비스 받고 
 			model.addAttribute("view", vo);
+			model.addAttribute(id);
 			 //뷰로 넘겨주기 
 			return "post/postotherinfo";
 		 }
