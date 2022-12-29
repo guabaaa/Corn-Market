@@ -31,7 +31,7 @@ public class ChattingController {
 	//채팅방 목록
 	@GetMapping("/chatting/list")
 	public String chattingRoomList(Model model,HttpSession session) {
-		session.setAttribute("id", "ch11"); //테스트용
+		//session.setAttribute("id", "ch11"); //테스트용
 		//세션의 아이디로 채팅방 목록 가져오기
 		String user_id = (String) session.getAttribute("id");
 		ArrayList<ChattingRoomInfo> list = chattingService.getChattingList(user_id);

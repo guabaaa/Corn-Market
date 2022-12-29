@@ -29,7 +29,7 @@ public class TownController {
 	@RequestMapping(value = "/town", method = RequestMethod.POST)
 	public String townCertificationPOST(@RequestBody TownInfo townInfo, HttpSession session) {
 		System.out.println(townInfo);
-		session.setAttribute("id", "fourkimm"); //세션 테스트
+		//session.setAttribute("id", "fourkimm"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		String town_code = townService.getTownCode(townInfo);
