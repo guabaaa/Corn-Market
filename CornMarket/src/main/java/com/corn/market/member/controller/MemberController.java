@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.corn.market.member.dao.MemberDao;
 import com.corn.market.member.domain.LoginMember;
@@ -41,10 +42,44 @@ public class MemberController {
 		// 회원가입 실행
 		dao.memberSignup(member);
 		System.out.println(" signup service 성공   ");
-		return "redirect:/login/login";
+		return "market/login/login";
 	}
 
 
+	@ResponseBody
+	@GetMapping("/idcheck")
+	public String idcheck(String user_id) {
+		
+		System.out.print(user_id);
+		
+		int result=0;
+		
+		try {
+			result = dao.idCheck(user_id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return String.valueOf(result) ;
+	} // loginForm
+	
+	
+	@ResponseBody
+	@GetMapping("/nickcheck")
+	public String nickcheck(String nickname) {
+		
+		int result=0;
+		
+		try {
+			result = dao.idCheck(nickname);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return String.valueOf(result) ;
+	} // loginForm
+	
+	
 	//----------------------로그인 --------------------//
 
 

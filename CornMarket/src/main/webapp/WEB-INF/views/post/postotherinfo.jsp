@@ -16,7 +16,7 @@
 
 <body>
 <c:if test="${sessionScope.id!=null}"><jsp:include page="../base/header_nickname.jsp" /></c:if>
-<c:if test="${sessionScope.id=null}"><jsp:include page="../base/header.jsp" /></c:if>
+<c:if test="${sessionScope.id==null}"><jsp:include page="../base/header.jsp" /></c:if>
     <div class="board-wrap">
         <div class="board-img-wrap">
             <img class="sell-img" src="${path}${view.post_img}">

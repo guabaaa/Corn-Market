@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
       let email_f = $("#member_email_f").val();
       let phone = $("#member_ph").val();
    
-      if(haveto1, haveto2, haveto3 == false){
+       if(haveto1, haveto2, haveto3 == false){
          alert("필수약관에 동의해주세요");
          $("#haveto1").focus();
       } else if(name == ""){
@@ -68,54 +68,58 @@ window.addEventListener("load", function() {
        
    } 
    
-   /*id유효성체크
-   function id_dbcheck(){
-      let id = $("#member_id").val();
-      $.ajax({
-       type: 'POST',
-       url: ,
-       headers: { 'content-type': 'application/json' }, 
-       data: JSON.stringify(),
-       success: function (data) {
-         console.log(data);
-         if (data == 0) {
-           $('.error').show();
-           document.getElementById("id_error").innerHTML = "중복된 아이디입니다."
-           check=false;
-         } else if (data == 1) {
-            $('.error').hide();
-           alert("사용가능한 아이디입니다.");
-        }
-       },
-       error: function (data) {
-       },
-     }); //ajax
-   }
-   */
    
-   /*닉네임유효성체크
-   function id_dbcheck(){
-      let id = $("#member_id").val();
-      $.ajax({
-       type: 'POST',
-       url: ,
-       headers: { 'content-type': 'application/json' }, 
-       data: JSON.stringify(),
-       success: function (data) {
-         console.log(data);
-         if (data == 0) {
-           $('.error').show();
-           document.getElementById("id_error").innerHTML = "중복된 아이디입니다."
-           check=false;
-         } else if (data == 1) {
-            $('.error').hide();
-           alert("사용가능한 아이디입니다.");
-        }
-       },
-       error: function (data) {
-       },
-     }); //ajax
-   }
-   */
+//아이디  중복확인
+	function idcheck(){
+	   
+	 let user_id= $('#user_id').val();
 
+	  $.ajax({
+	url: '/market/idcheck',
+   data: {user_id:user_id},
 
+   success:function(data){
+   console.log(data);
+		if(data == "0"){
+		alert("사용 가능한 아이디입니다.");
+		}
+	    else{
+			alert("사용중인 아이디입니다. ");
+	    }
+		},
+		
+		error: function(){
+		alert("에러입니다.");
+			}
+		
+			});
+
+	     }
+	     
+	 //닉네임  중복확인
+	function nickcheck(){
+	   
+	 let nickname= $('#nickname').val();
+
+	  $.ajax({
+	url: '/market/nickcheck',
+   data: {nickname:nickname},
+
+   success:function(data){
+   console.log(data);
+		if(data == "0"){
+		alert("사용 가능한  닉네임입니다.");
+		}
+	    else{
+			alert("사용중인  닉네임입니다. ");
+	    }
+		},
+		
+	error: function(){
+		alert("에러입니다.");
+			}
+		
+			});
+
+	     }
+	 

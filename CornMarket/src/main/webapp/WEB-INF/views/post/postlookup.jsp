@@ -16,7 +16,7 @@
 
 <body>
 <c:if test="${sessionScope.id!=null}"><jsp:include page="../base/header_nickname.jsp" /></c:if>
-<c:if test="${sessionScope.id=null}"><jsp:include page="../base/header.jsp" /></c:if>
+<c:if test="${sessionScope.id==null}"><jsp:include page="../base/header.jsp" /></c:if>
 <jsp:include page="../base/nav.jsp" />
     <!-- 상품 리스트 -->
     <section class="board-lookup-wrap">

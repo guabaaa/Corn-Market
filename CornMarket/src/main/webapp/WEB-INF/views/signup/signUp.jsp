@@ -302,14 +302,14 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         	<div class="non_hidden">
             	<div class="join_main">아이디</div>
             	<input type="text" class="join_input" name="user_id" id="member_id"><br>
-            	<input type="button" class="join_check_again" value="중복확인" id="doublecheck_id">
+            	<input type="button" class="join_check_again" value="중복확인" id="doublecheck_id" onclick="idcheck()">
         	</div>
         	<p id="id_error" class="error"></p>
         </div>
         <div class="join_first">
             <div class="join_main">닉네임</div>
             <input type="text" class="join_input" name="nickname" id="member_nm">
-            <input type="button" class="join_check_again" value="중복확인" onclick="id_dbcheck()" id="id_dbcheck">
+            <input type="button" class="join_check_again" value="중복확인" onclick="nickcheck()" id="id_dbcheck">
         </div>
         <div class="join_first">
             <div class="join_main">비밀번호</div>
@@ -332,11 +332,7 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         </div>
         <div class="join_second">
             <button type="button" class="btn1" id="joinbtn">저장</button>
-<<<<<<< Updated upstream
-            <button onclick="<c:url value='/main' />">취소</button>
-=======
             <button type="button" onclick="location.href='${path}/main'">취소</button>
->>>>>>> Stashed changes
         </div>
     </div>
 </form>
