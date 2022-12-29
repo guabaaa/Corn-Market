@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corn-Market</title>
+    <title>Corn-Market 내 게시글 상세보기</title>
     <c:set var="path" value="${pageContext.request.contextPath}"/>
     <link rel="stylesheet" href="${path}/resources/css/post/postinfo.css"/>
     
@@ -16,7 +16,8 @@
 </head>
 
 <body>
-
+<jsp:include page="../base/header_nickname.jsp" />
+<jsp:include page="../base/nav.jsp" />
     <div class="board-wrap">
         <div class="board-img-wrap">
             <div class="sell-img"></div>
@@ -46,6 +47,7 @@
         </div>
     </div>
 
+<jsp:include page="../base/footer.jsp" />
 </body>
 
 </html>

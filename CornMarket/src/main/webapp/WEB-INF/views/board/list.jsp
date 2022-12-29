@@ -10,10 +10,8 @@
 <title>게시물목록</title>
 </head>
 <body>
-
-<div id="nav">
- <%@ include file="../include/nav.jsp" %>
-</div>
+<jsp:include page="../base/header.jsp" />
+<jsp:include page="../base/nav.jsp" />
 
 <table>
  <thead>
@@ -48,6 +46,6 @@
  </tbody>
 
 </table>
-
+  <jsp:include page="../base/footer.jsp" />
 </body>
 </html>

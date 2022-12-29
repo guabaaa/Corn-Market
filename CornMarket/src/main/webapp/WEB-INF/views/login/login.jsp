@@ -39,7 +39,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
         <div class="login_third">
           <button type="button" id="loginbtn" onclick="login()">로그인</button>
-          <button onclick="<c:url value='/signup' />">회원가입</button>
+          <button type="button" onclick="location.href='${path}/signup'">회원가입</button>
         </div>
         <div class="login_fourth">
           <a href=""><div class="simple_login1"></div></a>
@@ -55,5 +55,6 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       let loginUrl = "<c:url value='/member/login'/>";
       let index2Url = "<c:url value='/main/index2'/>";
     </script>
+  <jsp:include page="../base/footer.jsp" />
   </body>
 </html>

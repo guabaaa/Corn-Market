@@ -8,11 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<div id="nav">
- <%@ include file="../include/nav.jsp" %>
-</div>
-
+<jsp:include page="../base/header_nickname.jsp" />
+<jsp:include page="../base/nav.jsp" />
 
 <form method="post" action="/market/modify">
 
@@ -31,5 +28,6 @@
 
 </form>
 
+<jsp:include page="../base/footer.jsp" />
 </body>
 </html>

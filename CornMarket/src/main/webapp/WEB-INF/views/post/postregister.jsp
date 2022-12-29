@@ -7,13 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corn-Market</title>
+    <title>Corn-Market 게시글 등록</title>
     <c:set var="path" value="${pageContext.request.contextPath}"/>
     <link rel="stylesheet" href="${path}/resources/css/post/postregister.css"/>
 
 </head>
 <body>
-
+<jsp:include page="../base/header_nickname.jsp" />
+<jsp:include page="../base/nav.jsp" />
 	<div class="board-wrap">
         <form method="post" action="<c:url value='enroll'/>" enctype="multipart/form-data" name="frmregister">
             <div class="board-img-wrap">
@@ -76,5 +77,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="${path}/resources/js/post/postregister.js"></script>
 
+<jsp:include page="../base/footer.jsp" />
 </body>
 </html>

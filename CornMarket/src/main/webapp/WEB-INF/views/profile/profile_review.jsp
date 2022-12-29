@@ -52,7 +52,7 @@
 	                 </ul>
             </div>
             <div class="chat_area">
-            	<input type="button" value="채팅방" class="chatting" onclick="location.href='/chatting_list'">
+            	<input type="button" value="채팅방" class="chatting" onclick="location.href='${path}/chatting/list'">
             </div>
         </div>
         <div class="profile_second">
