@@ -1,62 +1,25 @@
-package com.corn.market.board.domain;
+package com.corn.market.post.domain;
 
-import java.util.Date;
+public class PostVO {
 
-public class BoardVO {
-	/*
-	DROP TABLE post_tbl22;
-	CREATE TABLE post_tbl22(
-	  post_id NUMBER(6) 
-	    CONSTRAINT post_id_pk PRIMARY KEY,
-	  user_id VARCHAR2(20) 
-	    CONSTRAINT post_user_id_nn NOT NULL 
-	    CONSTRAINT post_user_id_fk REFERENCES user_tbl22(user_id),
-	  category_id VARCHAR2(20) 
-	    CONSTRAINT post_category_id_nn NOT NULL 
-	    CONSTRAINT post_category_id_fk REFERENCES category_tbl22(category_id),
-	  town_code NUMBER(5) 
-	    CONSTRAINT post_town_code_nn NOT NULL 
-	    CONSTRAINT post_town_code_fk REFERENCES town_tbl22(town_code),
-	  title VARCHAR2(90) 
-	    CONSTRAINT post_title_nn NOT NULL,
-	  price NUMBER(8) 
-	    CONSTRAINT post_price_nn NOT NULL,
-	  content VARCHAR2(900),
-	  created TIMESTAMP DEFAULT SYSTIMESTAMP 
-	    CONSTRAINT post_created_nn NOT NULL,
-	  updated TIMESTAMP DEFAULT SYSTIMESTAMP,
-	  post_status VARCHAR2(15) DEFAULT '판매중' 
-	    CONSTRAINT post_status_ck CHECK(post_status IN('판매중','거래완료','삭제'))
-	    CONSTRAINT post_status_nn NOT NULL,
-	  post_img VARCHAR2(900) DEFAULT '/resources/images/profile/post_img_thumbnail.png',
-	  count_view NUMBER(5)
-	);
-		 */
-	
-	
-	private int post_id; // 게시글 번호
+	private String post_id; // 게시글 번호
 	private String user_id; // 글쓴이   
 	private String category_id; //카테고리 아이디 
-	private String town_code; //
+	private String town_code; //지역 코드
 	private String title; // 제목
-	private int price; // 가격
+	private String price; // 가격
 	private String content; //내용 
-	private Date created; // 등록일
-	private Date updated; // 수정일
-	private String post_img; // 
-	
-	
-	
-	
-	public BoardVO() {
+	private String created; // 등록일
+	private String updated; // 수정일
+	private String post_status; // 상태 (기본 '판매중')
+	private String post_img; // 이미지주소 (기본 '/resources/images/post/post_img_thumbnail.png')
+
+	public PostVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-
-	public BoardVO(int post_id, String user_id, String category_id, String town_code, String title, int price,
-			String content, Date created, Date updated, String post_img) {
+	public PostVO(String post_id, String user_id, String category_id, String town_code, String title, String price,
+			String content, String created, String updated, String post_status, String post_img) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
@@ -67,160 +30,103 @@ public class BoardVO {
 		this.content = content;
 		this.created = created;
 		this.updated = updated;
+		this.post_status = post_status;
 		this.post_img = post_img;
 	}
 
-
-
-
-	public int getPost_id() {
+	public String getPost_id() {
 		return post_id;
 	}
 
-
-
-
-	public void setPost_id(int post_id) {
+	public void setPost_id(String post_id) {
 		this.post_id = post_id;
 	}
-
-
-
 
 	public String getUser_id() {
 		return user_id;
 	}
 
-
-
-
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-
-
-
 
 	public String getCategory_id() {
 		return category_id;
 	}
 
-
-
-
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
-
-
-
 
 	public String getTown_code() {
 		return town_code;
 	}
 
-
-
-
 	public void setTown_code(String town_code) {
 		this.town_code = town_code;
 	}
-
-
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
-
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
-
-
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-
-
-
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
-
-
-
 
 	public String getContent() {
 		return content;
 	}
 
-
-
-
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-
-
-
-	public Date getCreated() {
+	public String getCreated() {
 		return created;
 	}
 
-
-
-
-	public void setCreated(Date created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 
-
-
-
-	public Date getUpdated() {
+	public String getUpdated() {
 		return updated;
 	}
 
-
-
-
-	public void setUpdated(Date updated) {
+	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
 
+	public String getPost_status() {
+		return post_status;
+	}
 
-
+	public void setPost_status(String post_status) {
+		this.post_status = post_status;
+	}
 
 	public String getPost_img() {
 		return post_img;
 	}
 
-
-
-
 	public void setPost_img(String post_img) {
 		this.post_img = post_img;
 	}
-
-
-
 
 	@Override
 	public String toString() {
 		return "BoardVO [post_id=" + post_id + ", user_id=" + user_id + ", category_id=" + category_id + ", town_code="
 				+ town_code + ", title=" + title + ", price=" + price + ", content=" + content + ", created=" + created
-				+ ", updated=" + updated + ", post_img=" + post_img + "]";
+				+ ", updated=" + updated + ", post_status=" + post_status + ", post_img=" + post_img + "]";
 	}
-
-	
-	
 
 }
