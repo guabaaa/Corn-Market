@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.corn.market.PostMapper">
+	
+	<!-- post_id, user_id, category_id, town_code, title, price, content, created, updated, post_status, post_img   -->
+	
+	<!-- 판매글 전체 조회 - 최신글 (기본) -->
+	<select id="selectAll" resultType="PostList">
+		SELECT post_id, p.user_id, u.nickname, category_id, t.town_name, title, price, post_img  
+		FROM post_tbl22 p 
+		JOIN town_tbl22 t 
+		ON p.town_code = t.town_code 
+		JOIN user_tbl22 u
+		ON p.user_id = u.user_id  
+		WHERE post_status = '판매중' 
+		ORDER BY created DESC
+	</select>
+	<!-- 판매글 카테고리별 조회 -->
+	<select id="selectCategory" resultType="PostList">
+		SELECT post_id, p.user_id, u.nickname, category_id, t.town_name, title, price, post_img  
+		FROM post_tbl22 p 
+		JOIN town_tbl22 t 
+		ON p.town_code = t.town_code 
+		JOIN user_tbl22 u
+		ON p.user_id = u.user_id  
+		WHERE category_id = #{category_id} AND post_status = '판매중' 
+		ORDER BY created DESC
+	</select>
+	<!-- 판매글 지역별 조회 -->
+	<select id="selectTown" resultType="PostList">
+		SELECT post_id, p.user_id, u.nickname, category_id, t.town_name, title, price, post_img   
+		FROM post_tbl22 p 
+		JOIN town_tbl22 t 
+		ON p.town_code = t.town_code 
+		JOIN user_tbl22 u
+		ON p.user_id = u.user_id  
+		WHERE t.town_code = #{town_code} AND post_status = '판매중' 
+		ORDER BY created DESC
+	</select>
+	
+	<!-- 판매글 상세 조회 -->
+	<select id="selectOne" resultType="Post">
+		select post_id,post_img, title,
+		price, category_id, content from post_tbl22
+		where post_id = #{post_id} AND post_status = '판매중' 
+	</select>
+	
+	
+	<!-- 게시판 등록 -->
+	<insert id="enroll" parameterType="Post">
+		insert into post_tbl22
+		values
+		(post_sq.nextval,#{user_id},#{category_id}, #{town_code},#{title},
+		#{price},#{content},DEFAULT,NULL,DEFAULT,DEFAULT)
+	</insert>
+	<!-- 진짜 쿼리임 <![CDATA[ insert into post_tbl22 values (post_sq.nextval,'yooda','A1101',11080,#{title}, 
+		#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0) ]]> insert into post_tbl22 
+		values (post_sq.nextval,#{user_id}, ,#{category_id}, #{title},#{town_code} 
+		#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0) -->
+
+	<!-- 썸네일 제목 가격 동네정보 test. ver -->
+	<!-- 최신 조회 순 + 동네정보 조인 -->
+	<!-- 카테고리 설정 -->
+	<!-- 지역별 설정 -->
+
+
+	<update id="modify" parameterType="Post">
+		UPDATE board SET
+		title =
+		#{title}
+		, content = #{content}
+		, price = #{price}
+		WHERE post_id =
+		#{post_id}and user_id = #{user_id}
+	</update>
+
+	<!-- 본인의 게시물 삭제 -->
+	<delete id="delete" parameterType="map">
+		DELETE FROM board WHERE
+		post_id = #{post_id} and user_id = #{user_id}
+	</delete>
+
+	<update id="updateImg" parameterType="Post">
+		UPDATE post_tbl22 SET
+		post_img = #{post_img}
+		WHERE post_id = #{post_id};
+	</update>
+	
+</mapper>
