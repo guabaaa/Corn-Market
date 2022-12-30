@@ -1,4 +1,4 @@
-package com.corn.market.board.dao;
+package com.corn.market.post.dao;
 
 import java.util.List;
 
@@ -6,65 +6,56 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.corn.market.board.domain.BoardVO;
-import com.corn.market.member.domain.Member;
+import com.corn.market.post.domain.PostList;
+import com.corn.market.post.domain.PostVO;
 
 @Repository
-public class BoardDao {
-    @Autowired
-    private SqlSession session;
-    private static String namespace = "com.corn.market.BoardMapper.";
-    
-    
+public class PostDao {
 
-  
-	/* 게시물  등록 */
-    public void enroll(BoardVO board) throws Exception {
-    	
-       session.insert(namespace+"enroll",board);
-    };
+	@Autowired
+	private SqlSession session;
+	private static String namespace = "com.corn.market.PostMapper.";
 
-    
-    /* 게시판 리스트  */
-    public List<BoardVO> selectAll() throws Exception {
-        return session.selectList(namespace+"selectAll");
-    } 
-    
-    
-    /*게시물  상세보기 이미지파일  제목  가격 내용 카테고리  */
-    
- 
-    public BoardVO view(int post_id) throws Exception {
-
-    return session.selectOne(namespace + "view", post_id);
-    	}
+	// 판매글 전체 조회 - 최신글 (기본)
+	public List<PostList> selectAll() throws Exception {
+		return session.selectList(namespace+"selectAll");
+	} 
+	// 판매글 카테고리별 조회
+	public List<PostList> selectCategory(String category_id) throws Exception {
+		return session.selectList(namespace+"selectCategory", category_id);
+	} 
+	// 판매글 지역별 조회
+	public List<PostList> selectTown(String town_code) throws Exception {
+		return session.selectList(namespace+"selectTown", town_code);
+	} 
 	
-    
-    
-    
+	// 판매글 상세 조회
+	public PostVO selectOne(String post_id) throws Exception {
+		return session.selectOne(namespace + "selectOne", post_id);
+	}
+	
+	/* 게시물  등록 */
+	public void enroll(PostVO board) throws Exception {
+		session.insert(namespace+"enroll",board);
+	}
+
+
+
 	/* 게시판 수정 */
-  
-    public void modify(BoardVO board) throws Exception{
- 
-    session.update(namespace+"modify", board);
-    
-    };
-    
-    
-    /* 게시판 삭제 */
-    public  void delete(int post_id) throws Exception{
-    	
-    session.delete(namespace+"delete", post_id); 
-    	
-    };
-    
-    
-    //사진 업로드
-    public void updateImg(BoardVO board) {
+	public void modify(PostVO board) throws Exception{
+		session.update(namespace+"modify", board);
+	}
+
+	/* 게시판 삭제 */
+	public  void delete(int post_id) throws Exception{
+		session.delete(namespace+"delete", post_id); 
+	}
+
+	//사진 업로드
+	public void updateImg(PostVO board) {
 		session.update(namespace+"updateImg",board);
 	}
-    
-    
+
 }
     
     
