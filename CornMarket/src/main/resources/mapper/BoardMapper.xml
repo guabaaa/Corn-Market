@@ -8,13 +8,16 @@
 
  <!-- 게시판 등록 -->
 	<insert id="enroll" parameterType="Board">
+	insert into post_tbl22
+ 	values (post_sq.nextval,#{user_id},#{category_id}, #{town_code},#{title},
+ 	#{price},#{content},DEFAULT,NULL,DEFAULT,DEFAULT)
+	</insert>
+<!-- 진짜 쿼리임 
 	<![CDATA[
  insert into post_tbl22
  values (post_sq.nextval,'yooda','A1101',11080,#{title},
  #{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)
 	]]>	
-	</insert>
-<!-- 진짜 쿼리임 
 insert into post_tbl22
  	values (post_sq.nextval,#{user_id}, ,#{category_id}, #{title},#{town_code}
  	#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0)	 -->	
@@ -56,7 +59,10 @@ insert into post_tbl22
     </delete>  
   
  
-	
+	<update id="updateImg" parameterType="Board">
+	  UPDATE post_tbl22 SET post_img = #{post_img}
+	  WHERE post_id = #{post_id};
+	</update>
    
    
  

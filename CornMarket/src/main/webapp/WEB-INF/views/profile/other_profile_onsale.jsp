@@ -19,7 +19,8 @@
 </style>
 </head>
 <body>
-<jsp:include page="../base/header_nickname.jsp"/>
+<c:if test="${sessionScope.id!=null}"><jsp:include page="../base/header_nickname.jsp" /></c:if>
+<c:if test="${sessionScope.id=null}"><jsp:include page="../base/header.jsp" /></c:if>
 <jsp:include page="../base/nav.jsp"/>
 	<div class="profile_wrap">
         <div class="profile_first">

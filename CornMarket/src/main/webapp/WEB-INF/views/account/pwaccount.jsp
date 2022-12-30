@@ -16,7 +16,8 @@
 
 
 <body>
-    
+<jsp:include page="../base/header.jsp"/>
+<jsp:include page="../base/nav.jsp"/>
        <div class="search-idpw-title">
            <h2>아이디/비밀번호 찾기</h2>
        </div>
@@ -112,6 +113,7 @@
     	let pwMailUrl = "<c:url value='/account/pw/mail?email='/>";
     	let pwMailCodeUrl = "<c:url value='/account/pw/mail/code?mail_code='/>";
     </script>
+<jsp:include page="../base/footer.jsp"/>
 </body>
 
 </html>

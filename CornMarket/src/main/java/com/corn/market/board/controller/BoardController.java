@@ -1,8 +1,6 @@
 package com.corn.market.board.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,20 +10,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.corn.market.board.dao.BoardDao;
 import com.corn.market.board.domain.BoardVO;
-import com.corn.market.member.dao.MemberDao;
-import com.corn.market.member.domain.Member;
+import com.corn.market.common.api.fileUpload.FileUploadService;
 
 @Controller
 public class BoardController {
 	
 	@Autowired
 	BoardDao dao;
+	
+	@Autowired
+	private FileUploadService service;
 	
 	/*게시판 진입*/
 	@GetMapping("/list")
@@ -75,11 +75,12 @@ public class BoardController {
 	  // 게시물 조회
 		//주소는 board/view?post_id=[고유번호] 방식으로 되기 때문에, param을 이용해서 주소에서 bno의 값을 걸러내야함 
 	   @GetMapping("/view")
-		 public String getView(@RequestParam("post_id") int post_id , Model model) throws Exception {
-
+		 public String getView(@RequestParam("post_id") int post_id , Model model,HttpSession session) throws Exception {
+		   String id = (String) session.getAttribute("id");
 			BoardVO vo = dao.view (post_id);
 			// 매견변수 post_id로 서비스 받고 
 			model.addAttribute("view", vo);
+			model.addAttribute(id);
 			 //뷰로 넘겨주기 
 			return "post/postotherinfo";
 		 }
@@ -144,6 +145,19 @@ public class BoardController {
 	return "redirect:/board/list";
 	}
 	
+	
+	//사진 DB에 업데이트
+	@PostMapping("/post/images")
+	public void updatePostImg(HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request) {
+		
+		String url = service.multiFileUpload(files, request);
+		System.out.println("파일 이름:"+url);
+		BoardVO board = new BoardVO();
+		board.setPost_id(0);
+		board.setPost_img(url);
+		dao.updateImg(board);
+		
+	}
 	
 	
 	

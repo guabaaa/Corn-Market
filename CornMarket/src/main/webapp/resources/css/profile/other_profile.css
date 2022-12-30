@@ -24,7 +24,7 @@
     width:120px;
     height:120px;
     border-radius: 50%;;
-    background-color: blue;
+    background-color: white;
     background-position: center;
     background-size: cover;
     position:absolute;
@@ -157,7 +157,7 @@
     color: #212529;
 }
 .home-card-wrap .card-top .card-photo{
-    background-color: blue;
+    background-color: white;
     width: 212px;
     height: 212px;
     padding-top: 20px;

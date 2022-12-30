@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.corn.market.member.dao.MemberDao;
 import com.corn.market.member.domain.LoginMember;
@@ -23,12 +24,6 @@ public class MemberController {
 	@Autowired
 	MemberDao dao;
 
-	//메인 페이지 이동
-	@GetMapping("/main")
-	public String mainPageGet() {
-		System.out.println("메인 페이지 ");
-		return "main";
-	} 
 
 	//----------------------회원가입---------------------//
 
@@ -47,10 +42,44 @@ public class MemberController {
 		// 회원가입 실행
 		dao.memberSignup(member);
 		System.out.println(" signup service 성공   ");
-		return "redirect:/login/login";
+		return "redirect:/login";
 	}
 
 
+	@ResponseBody
+	@GetMapping("/idcheck")
+	public String idcheck(String user_id) {
+		
+		System.out.print(user_id);
+		
+		int result=0;
+		
+		try {
+			result = dao.idCheck(user_id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return String.valueOf(result) ;
+	} // loginForm
+	
+	
+	@ResponseBody
+	@GetMapping("/nickcheck")
+	public String nickcheck(String nickname) {
+		
+		int result=0;
+		
+		try {
+			result = dao.idCheck(nickname);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return String.valueOf(result) ;
+	} // loginForm
+	
+	
 	//----------------------로그인 --------------------//
 
 
@@ -75,6 +104,7 @@ public class MemberController {
 			System.out.println(dbMember);
 			if (dbMember == null) { // 존재하지 않는 아이디
 				System.out.println("아이디 비밀번호 확인바랍니다."); 
+				return "redirect:/login";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -98,7 +128,15 @@ public class MemberController {
 		// 5. 로그인 성공 메세지 띄우고, 메인화면으로 이동
 		System.out.println("로그인성공 ");
 
-		return "redirect:/";
+		return "redirect:/main";
+	}
+	
+	//로그인
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("id");
+		session.invalidate();
+		return "redirect:/login";
 	}
 
 

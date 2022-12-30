@@ -21,11 +21,11 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <div class="body-content">
                 <div class="body-titlebox">
                   <div class="titlebox1">
-                    <img class="chat_profile" src="${path}${info.profile_img}" />
+                    <a href="location.href='${path}/profile/user'"><img class="chat_profile" src="${path}${info.profile_img}" /></a>
                     <p>${info.user_name}</p>
                     <input type="button" class="chatlist_btn" value="채팅목록" onclick="location.href='<c:url value="/chatting/list"/>'"/>
                   </div>
-                  <div class="titlebox2" onclick="location.href='<c:url value="/postinfo/get?post_id=${chat.post_id}"/>'">
+                  <div class="titlebox2" onclick="location.href='<c:url value="/view?post_id=${chat.post_id}"/>'">
                     <img class="chat_object" src="${path}${chat.post_img}"></img>
                     <div class="titlebox2-2">
                       <p>${chat.post_title}</p>

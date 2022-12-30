@@ -2,11 +2,12 @@
 // 채팅방이 없는 경우 생성 후 이동
 // 채팅방이 있으면 바로 이동
 function createNewChatRoom() {
-  $('#new_room_btn').click(() => {
+  $('#chattingsub_btn').click(() => {
     checkChatRoom();
   });
 }
 createNewChatRoom();
+//<input type="button" value="채팅방 생성" id="new_room_btn" /> <br />
 
 //판매글id와 구매자id(세션)로 채팅방 확인
 function checkChatRoom() {
@@ -23,10 +24,12 @@ function checkChatRoom() {
       let check = data;
       if (check == 0) {
         //채팅방 생성
+        openChatList();
         chat_room_frm.submit();
       } else if (check != 0) {
         //존재하는 채팅방으로 이동
-        location.href = url + check;
+        //location.href = url;
+        openChatList();
       }
     },
     error: function (data) {
@@ -37,10 +40,10 @@ function checkChatRoom() {
 
 //채팅창 팝업으로 열기
 function openChatList() {
-  let url = $('#chatUrl').val();
+  let url = $('#chat_url').val();
   //팝업창 화면 가운데로 띄우기
-  let popupWidth = 650;
-  let popupHeight = 700;
+  let popupWidth = 600;
+  let popupHeight = 650;
   let popupX = Math.ceil((window.screen.width - popupWidth) / 2);
   let popupY = Math.ceil((window.screen.height - popupHeight) / 2);
 

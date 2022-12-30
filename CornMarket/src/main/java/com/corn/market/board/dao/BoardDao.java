@@ -59,6 +59,12 @@ public class BoardDao {
     };
     
     
+    //사진 업로드
+    public void updateImg(BoardVO board) {
+		session.update(namespace+"updateImg",board);
+	}
+    
+    
 }
     
     

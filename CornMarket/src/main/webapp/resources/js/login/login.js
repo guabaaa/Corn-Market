@@ -41,7 +41,7 @@ function right_login(){
 	   
 	$.ajax({
     type: 'POST',
-    url: '/login',
+    url: '/market/login',
     headers: { 'content-type': 'application/json' }, 
     data: JSON.stringify(member),
     success: function (data) {

@@ -30,7 +30,7 @@ public class ProfileController {
 	//본인 프로필 기본 페이지 (판매중)
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profileOnSale(HttpSession session,HttpServletRequest request) { 
-		session.setAttribute("id", "fourkimm"); //세션 테스트
+		//session.setAttribute("id", "fourkimm"); //세션 테스트
 		//인터셉터가 true (아이디가 세션이 있음)
 		String id = (String) session.getAttribute("id");
 		ProfileSale profileSale = service.getProfileSales(id, "판매중");

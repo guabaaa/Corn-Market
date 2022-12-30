@@ -37,12 +37,13 @@ public class BoardVO {
 	private int post_id; // 게시글 번호
 	private String user_id; // 글쓴이   
 	private String category_id; //카테고리 아이디 
+	private String town_code; //
 	private String title; // 제목
 	private int price; // 가격
 	private String content; //내용 
 	private Date created; // 등록일
 	private Date updated; // 수정일
-	private String post_img; // 조회수
+	private String post_img; // 
 	
 	
 	
@@ -52,12 +53,15 @@ public class BoardVO {
 	}
 
 
-	public BoardVO(int post_id, String user_id, String category_id, String title, int price, String content,
-			Date created, Date updated, String post_img) {
+
+
+	public BoardVO(int post_id, String user_id, String category_id, String town_code, String title, int price,
+			String content, Date created, Date updated, String post_img) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
 		this.category_id = category_id;
+		this.town_code = town_code;
 		this.title = title;
 		this.price = price;
 		this.content = content;
@@ -65,6 +69,7 @@ public class BoardVO {
 		this.updated = updated;
 		this.post_img = post_img;
 	}
+
 
 
 
@@ -73,9 +78,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
+
+
 
 
 	public String getUser_id() {
@@ -83,9 +92,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+
+
 
 
 	public String getCategory_id() {
@@ -93,9 +106,27 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
+
+
+
+
+	public String getTown_code() {
+		return town_code;
+	}
+
+
+
+
+	public void setTown_code(String town_code) {
+		this.town_code = town_code;
+	}
+
+
 
 
 	public String getTitle() {
@@ -103,9 +134,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 
 
 	public int getPrice() {
@@ -113,9 +148,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+
 
 
 	public String getContent() {
@@ -123,9 +162,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
 
 
 	public Date getCreated() {
@@ -133,9 +176,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setCreated(Date created) {
 		this.created = created;
 	}
+
+
 
 
 	public Date getUpdated() {
@@ -143,9 +190,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+
+
 
 
 	public String getPost_img() {
@@ -153,22 +204,22 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setPost_img(String post_img) {
 		this.post_img = post_img;
 	}
 
 
+
+
 	@Override
 	public String toString() {
-		return "BoardVO [post_id=" + post_id + ", user_id=" + user_id + ", category_id=" + category_id + ", title="
-				+ title + ", price=" + price + ", content=" + content + ", created=" + created + ", updated=" + updated
-				+ ", post_img=" + post_img + "]";
+		return "BoardVO [post_id=" + post_id + ", user_id=" + user_id + ", category_id=" + category_id + ", town_code="
+				+ town_code + ", title=" + title + ", price=" + price + ", content=" + content + ", created=" + created
+				+ ", updated=" + updated + ", post_img=" + post_img + "]";
 	}
 
-
-	
-	
-	
 	
 	
 
