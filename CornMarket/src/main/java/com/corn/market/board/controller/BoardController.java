@@ -45,7 +45,7 @@ public class BoardController {
 	@GetMapping("/enroll")
 	public String mainPageGet() {
 	System.out.println("메인 페이지 ");
-	return "redirect:/list";
+	return "post/postregister";
 	} 
 	
 
