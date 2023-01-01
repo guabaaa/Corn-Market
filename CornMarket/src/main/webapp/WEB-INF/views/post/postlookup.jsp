@@ -24,8 +24,8 @@
             <h1 class="board-lookup-title" id="onchange" name="onchange">사기</h1>
             <div class="board-select-wrap">
                 <p class="sort-way" id="sortway" name="sortway">최신글로 조회하기</p>
-                <select class="sort-way-select1" id="sortchoice1" name="sortchoice1" onchange="setSelectBox(this)">
-                    <option value="">최신글</option>
+                <select class="sort-way-select1" id="sortchoice1" name="sortchoice1" onchange="categoryChange(this)">
+                    <option value="recent">최신글</option>
                     <option value="category">카테고리별</option>
                     <option value="town">지역별</option>
                 </select>
@@ -34,7 +34,9 @@
             </div>
         </div>
         
-        <div class="board-card-wrap">
+        <div class="board-card-wrap" id="category_list" style="display: none"></div>
+        <div class="board-card-wrap" id="town_list" style="display: none"></div>
+        <div class="board-card-wrap" id="recent_list">
         	<c:forEach items="${list}" var="post">
             <article class="board-card-top">
                 <a class="board-card-link" href="<c:url value='/view?post_id=${post.post_id}'/>" >
@@ -42,7 +44,7 @@
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region"></div>
+                        <div class="board-card-region">${post.town }</div>
                     </div>
                 </a>
             </article>
@@ -53,6 +55,8 @@
         </div>
 
     </section>
+    <input type="hidden" id="path_url" value="${path}" />
+	<input type="hidden" id="post_url" value="<c:url value='/post'/>" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
