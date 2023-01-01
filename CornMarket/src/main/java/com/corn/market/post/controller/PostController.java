@@ -60,13 +60,18 @@ public class PostController {
 		return "post/postregister";
 	} 
 	
-	// 판매글 등록
+	// 판매글 등록 + 이미지 등록
 	@PostMapping("/post/enroll")
-	public String write(PostVO post, HttpSession session)
+	public String write(PostVO post, HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request)
 			throws Exception {
 		String id = (String) session.getAttribute("id");
 		post.setUser_id(id);
-		postService.registerPost(post);
+		//  사진등록
+		//서비스 메서드로 파일 업로드
+		String url = fileService.multiFileUpload(files, request);
+		post.setPost_img(url);
+		System.out.println("이미지 test: "+post.getPost_img());
+		postService.registerPost(post); //등록
 		return "redirect:/post";
 	}
 	

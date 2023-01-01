@@ -53,7 +53,7 @@
 		VALUES(post_sq.NEXTVAL,#{user_id},#{category_id},
 		  (SELECT town_code FROM address_tbl22 WHERE user_id = #{user_id}
 		  AND addr_id = (SELECT MAX(addr_id) FROM address_tbl22 WHERE user_id = #{user_id}))
-		,#{title},#{price},#{content},DEFAULT,NULL,DEFAULT,DEFAULT)
+		,#{title},#{price},#{content},DEFAULT,NULL,DEFAULT,#{post_img})
 	</insert>
 
 	<update id="modify" parameterType="Post">
