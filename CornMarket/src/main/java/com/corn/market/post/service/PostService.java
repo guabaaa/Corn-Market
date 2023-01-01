@@ -35,8 +35,8 @@ public class PostService {
 		return list;
 	}
 	//판매글 상세 조회
-	public PostVO getOnePost(String post_id) throws Exception {
-		PostVO post = dao.selectOne(post_id);
+	public PostList getOnePost(String post_id) throws Exception {
+		PostList post = dao.selectOne(post_id);
 		return post;
 	}
 	
@@ -63,6 +63,12 @@ public class PostService {
 		}
 	}
 	
+	//판매글 등록시 내용 부분 줄바꿈 처리
+	public String replaceLine(String content) {
+		if(content.contains("\n"))
+			return content.replace("\n", "<br>");
+		return content;
+	}
 	
 
 }

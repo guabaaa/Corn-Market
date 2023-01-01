@@ -52,9 +52,9 @@ public class PostController {
 	@GetMapping("/post/{post_id}")
 	public String getView(@PathVariable String post_id, Model model, HttpSession session) throws Exception {
 		String id = (String) session.getAttribute("id");
-		PostVO post = postService.getOnePost(post_id);
+		PostList post = postService.getOnePost(post_id);
 		model.addAttribute("post", post);
-		model.addAttribute(id);
+		//model.addAttribute(id);
 		return "post/postotherinfo";
 	}
 	
@@ -69,6 +69,7 @@ public class PostController {
 			throws Exception {
 		String id = (String) session.getAttribute("id");
 		post.setUser_id(id);
+		post.setContent(postService.replaceLine(post.getContent()));
 		String url = fileService.multiFileUpload(files, request);  //파일 업로드
 		post.setPost_img(url);  //사진등록
 		System.out.println("이미지 등록: "+post.getPost_img());
@@ -80,7 +81,7 @@ public class PostController {
 	@GetMapping("/post/{post_id}/modify")
 	public String boardModifyGET(@PathVariable String post_id, Model model, HttpSession session) throws Exception {
 		String id = (String) session.getAttribute("id");
-		PostVO post = postService.getOnePost(post_id);
+		PostList post = postService.getOnePost(post_id);
 		model.addAttribute("post", post);
 		model.addAttribute(id);
 		return "post/postmodify";
@@ -90,6 +91,7 @@ public class PostController {
 	public String postModify(@PathVariable String post_id, PostVO post, HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request) throws Exception {
 		String id = (String) session.getAttribute("id");
 		post.setUser_id(id);
+		post.setContent(postService.replaceLine(post.getContent()));
 		String url = fileService.multiFileUpload(files, request);  //파일 업로드
 		post.setPost_img(url);  //사진등록
 		System.out.println("이미지 수정: "+post.getPost_img());
@@ -98,7 +100,7 @@ public class PostController {
 	}
 	
 	// 판매글 삭제
-	@PostMapping("/post/{post_id}/delete")
+	@GetMapping("/post/{post_id}/delete")
 	public String deletePost(@PathVariable String post_id) throws Exception {
 		postService.deletePost(post_id);
 		return "redirect:/post";

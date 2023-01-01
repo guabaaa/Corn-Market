@@ -30,7 +30,7 @@ public class PostDao {
 	} 
 	
 	// 판매글 상세 조회
-	public PostVO selectOne(String post_id) throws Exception {
+	public PostList selectOne(String post_id) throws Exception {
 		return session.selectOne(namespace + "selectOne", post_id);
 	}
 	

@@ -41,8 +41,16 @@
 	</select>
 	
 	<!-- 판매글 상세 조회 -->
-	<select id="selectOne" resultType="Post" parameterType="String">
-		SELECT * FROM post_tbl22 WHERE post_id = #{post_id}
+	<select id="selectOne" resultType="PostList" parameterType="String">
+		SELECT post_id, p.user_id, u.nickname, p.category_id, c.category_name, t.town_name, title, price, content, post_img 
+		FROM post_tbl22 p 
+		JOIN town_tbl22 t  
+		ON p.town_code = t.town_code  
+		JOIN user_tbl22 u 
+		ON p.user_id = u.user_id 
+		JOIN category_tbl22 c 
+		ON p.category_id= c.category_id 
+		WHERE post_id = #{post_id} 
 	</select>
 	
 	<!-- 판매글 등록 -->
