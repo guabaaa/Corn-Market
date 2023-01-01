@@ -24,10 +24,10 @@
             <h1 class="board-lookup-title" id="onchange" name="onchange">사기</h1>
             <div class="board-select-wrap">
                 <p class="sort-way" id="sortway" name="sortway">최신글로 조회하기</p>
-                <select class="sort-way-select1" id="sortchoice1" name="sortchoice1">
-                    <option value="최신글">최신글</option>
-                    <option value="카테고리">카테고리별</option>
-                    <option value="지역">지역별</option>
+                <select class="sort-way-select1" id="sortchoice1" name="sortchoice1" onchange="setSelectBox(this)">
+                    <option value="">최신글</option>
+                    <option value="category">카테고리별</option>
+                    <option value="town">지역별</option>
                 </select>
                 <select class="sort-way-select2" name="sortchoice2" id="sortchoice2" onchange="showValue(this)">
                 </select>
