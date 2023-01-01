@@ -35,6 +35,7 @@ public class PostController {
 	@GetMapping("/post")
 	public String postRecentList(Model model) throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostList();
+		System.out.println(list);
 		model.addAttribute("list",list);
 		return "post/postlookup";
 	} 

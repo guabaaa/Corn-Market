@@ -60,6 +60,7 @@ list css
     width: 1200px;
     justify-content: space-around;
     flex-wrap: wrap;
+   	flex-direction: column;
     display: flex;
     margin: 0 auto;
     border-bottom: 2px solid rgb(241,196,15);
@@ -81,7 +82,6 @@ list css
     border: none;
     width: 212px;
     height: 212px;
-    padding-top: 20px;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: inset 0px 0px 0px 1px rgb(0 0 0 / 15%);

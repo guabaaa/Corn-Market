@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corn-Market 게시판</title>
-     <c:set var="path" value="${pageContext.request.contextPath}"/>
+    <c:set var="path" value="${pageContext.request.contextPath}"/>
      
     <link rel="stylesheet" href="${path}/resources/css/post/postlookup.css">
 </head>
@@ -44,7 +44,7 @@
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region">${post.town }</div>
+                        <div class="board-card-region">${post.town_name }</div>
                     </div>
                 </a>
             </article>
