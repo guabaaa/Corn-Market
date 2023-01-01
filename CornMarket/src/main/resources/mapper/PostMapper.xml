@@ -47,24 +47,14 @@
 		where post_id = #{post_id} AND post_status = '판매중' 
 	</select>
 	
-	
-	<!-- 게시판 등록 -->
+	<!-- 판매글 등록 -->
 	<insert id="enroll" parameterType="Post">
-		insert into post_tbl22
-		values
-		(post_sq.nextval,#{user_id},#{category_id}, #{town_code},#{title},
-		#{price},#{content},DEFAULT,NULL,DEFAULT,DEFAULT)
+		INSERT INTO post_tbl22
+		VALUES(post_sq.NEXTVAL,#{user_id},#{category_id},
+		  (SELECT town_code FROM address_tbl22 WHERE user_id = #{user_id}
+		  AND addr_id = (SELECT MAX(addr_id) FROM address_tbl22 WHERE user_id = #{user_id}))
+		,#{title},#{price},#{content},DEFAULT,NULL,DEFAULT,DEFAULT)
 	</insert>
-	<!-- 진짜 쿼리임 <![CDATA[ insert into post_tbl22 values (post_sq.nextval,'yooda','A1101',11080,#{title}, 
-		#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0) ]]> insert into post_tbl22 
-		values (post_sq.nextval,#{user_id}, ,#{category_id}, #{title},#{town_code} 
-		#{price},#{content},DEFAULT,DEFAULT,DEFAULT,DEFAULT,0) -->
-
-	<!-- 썸네일 제목 가격 동네정보 test. ver -->
-	<!-- 최신 조회 순 + 동네정보 조인 -->
-	<!-- 카테고리 설정 -->
-	<!-- 지역별 설정 -->
-
 
 	<update id="modify" parameterType="Post">
 		UPDATE board SET

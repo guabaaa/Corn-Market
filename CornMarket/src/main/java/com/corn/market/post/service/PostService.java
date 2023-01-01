@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.corn.market.post.dao.PostDao;
 import com.corn.market.post.domain.PostList;
+import com.corn.market.post.domain.PostVO;
 
 @Service
 public class PostService {
@@ -34,6 +35,10 @@ public class PostService {
 		return list;
 	}
 	
+	//판매글 등록
+	public void registerPost(PostVO post) throws Exception {
+		dao.enroll(post);
+	}
 	
 	
 	//판매글 이미지 썸네일 가져오기

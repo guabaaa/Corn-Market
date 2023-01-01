@@ -51,7 +51,25 @@ public class PostController {
 	public ArrayList<PostList> postTownList(@PathVariable("town_code") String town_code) throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostTownList(town_code);
 		return list;
+	}
+	
+	
+	// 판매글 등록 페이지 이동
+	@GetMapping("/post/enroll")
+	public String mainPageGet() {
+		return "post/postregister";
 	} 
+	
+	// 판매글 등록
+	@PostMapping("/post/enroll")
+	public String write(PostVO post, HttpSession session)
+			throws Exception {
+		String id = (String) session.getAttribute("id");
+		post.setUser_id(id);
+		postService.registerPost(post);
+		return "redirect:/post";
+	}
+	
 	/*
 	// 판매글 상세 조회 (기본)
 	@GetMapping("/post/{post_id}")
@@ -64,30 +82,6 @@ public class PostController {
 	}
 	
 	
-	//게시물 작성 폼
-	@GetMapping("/post/enroll")
-	public String mainPageGet() {
-		System.out.println("메인 페이지 ");
-		return "post/postregister";
-	} 
-
-	//게시물 등록
-	@PostMapping("/post/enroll")
-	public String write(PostVO boardVO, HttpSession session)
-			throws Exception {
-
-		System.out.println("수정 전 boardVO : " + boardVO);
-
-		//글쓴이 추가 
-		String id = (String) session.getAttribute("id");
-		boardVO.setUser_id(id);
-
-		dao.enroll(boardVO);
-
-		System.out.println("수정 후  boardVO : " + boardVO);
-
-		return "post/postlookup";		// 수정필요
-	}
 
 
 	// 게시물 수정 위와동일한 방법임 jsp 가서 value값 지정해주면 값나옴 value="${view.title}"

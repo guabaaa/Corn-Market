@@ -34,12 +34,10 @@ public class PostDao {
 		return session.selectOne(namespace + "selectOne", post_id);
 	}
 	
-	/* 게시물  등록 */
-	public void enroll(PostVO board) throws Exception {
-		session.insert(namespace+"enroll",board);
+	// 판매글 등록
+	public void enroll(PostVO post) throws Exception {
+		session.insert(namespace+"enroll", post);
 	}
-
-
 
 	/* 게시판 수정 */
 	public void modify(PostVO board) throws Exception{
