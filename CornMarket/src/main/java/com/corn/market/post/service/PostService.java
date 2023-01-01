@@ -34,12 +34,26 @@ public class PostService {
 		getPostImgThumbnail(list);
 		return list;
 	}
+	//판매글 상세 조회
+	public PostVO getOnePost(String post_id) throws Exception {
+		PostVO post = dao.selectOne(post_id);
+		return post;
+	}
 	
 	//판매글 등록
 	public void registerPost(PostVO post) throws Exception {
 		dao.enroll(post);
 	}
 	
+	//판매글 수정
+	public void modifyPost(PostVO post) throws Exception {
+		dao.update(post);
+	}
+	
+	//판매글 삭제
+	public void deletePost(String post_id) throws Exception {
+		dao.delete(post_id);
+	}
 	
 	//판매글 이미지 썸네일 가져오기
 	public void getPostImgThumbnail(List<PostList> postList) {

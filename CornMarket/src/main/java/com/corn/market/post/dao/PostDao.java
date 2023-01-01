@@ -39,19 +39,14 @@ public class PostDao {
 		session.insert(namespace+"enroll", post);
 	}
 
-	/* 게시판 수정 */
-	public void modify(PostVO board) throws Exception{
-		session.update(namespace+"modify", board);
+	// 판매글 수정
+	public void update(PostVO post) throws Exception{
+		session.update(namespace+"modify", post);
 	}
 
-	/* 게시판 삭제 */
-	public  void delete(int post_id) throws Exception{
-		session.delete(namespace+"delete", post_id); 
-	}
-
-	//사진 업로드
-	public void updateImg(PostVO board) {
-		session.update(namespace+"updateImg",board);
+	// 판매글 상태 삭제로 변경
+	public void delete(String post_id) throws Exception{
+		session.update(namespace+"delete", post_id); 
 	}
 
 }

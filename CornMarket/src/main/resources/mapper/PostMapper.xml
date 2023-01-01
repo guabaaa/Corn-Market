@@ -18,7 +18,7 @@
 		ORDER BY created DESC
 	</select>
 	<!-- 판매글 카테고리별 조회 -->
-	<select id="selectCategory" resultType="PostList">
+	<select id="selectCategory" resultType="PostList" parameterType="String">
 		SELECT post_id, p.user_id, u.nickname, category_id, t.town_name, title, price, post_img  
 		FROM post_tbl22 p 
 		JOIN town_tbl22 t 
@@ -29,7 +29,7 @@
 		ORDER BY created DESC
 	</select>
 	<!-- 판매글 지역별 조회 -->
-	<select id="selectTown" resultType="PostList">
+	<select id="selectTown" resultType="PostList" parameterType="String">
 		SELECT post_id, p.user_id, u.nickname, category_id, t.town_name, title, price, post_img   
 		FROM post_tbl22 p 
 		JOIN town_tbl22 t 
@@ -41,10 +41,8 @@
 	</select>
 	
 	<!-- 판매글 상세 조회 -->
-	<select id="selectOne" resultType="Post">
-		select post_id,post_img, title,
-		price, category_id, content from post_tbl22
-		where post_id = #{post_id} AND post_status = '판매중' 
+	<select id="selectOne" resultType="Post" parameterType="String">
+		SELECT * FROM post_tbl22 WHERE post_id = #{post_id}
 	</select>
 	
 	<!-- 판매글 등록 -->
@@ -56,26 +54,18 @@
 		,#{title},#{price},#{content},DEFAULT,NULL,DEFAULT,#{post_img})
 	</insert>
 
+	<!-- 판매글 수정 -->
 	<update id="modify" parameterType="Post">
-		UPDATE board SET
-		title =
-		#{title}
-		, content = #{content}
-		, price = #{price}
-		WHERE post_id =
-		#{post_id}and user_id = #{user_id}
+		UPDATE post_tbl22 
+		SET category_id = #{category_id}, title = #{title}, price = #{price}, content = #{content}, updated = DEFAULT, post_img = #{post_img} 
+		WHERE post_id = #{post_id}
 	</update>
 
-	<!-- 본인의 게시물 삭제 -->
-	<delete id="delete" parameterType="map">
-		DELETE FROM board WHERE
-		post_id = #{post_id} and user_id = #{user_id}
-	</delete>
-
-	<update id="updateImg" parameterType="Post">
-		UPDATE post_tbl22 SET
-		post_img = #{post_img}
-		WHERE post_id = #{post_id};
+	<!-- 판매글 삭제 -->
+	<update id="delete" parameterType="String">
+		UPDATE post_tbl22 
+		SET post_status = '삭제' 
+		WHERE post_id = #{post_id}
 	</update>
-	
+
 </mapper>
