@@ -92,7 +92,7 @@ function categoryChange(e) {
       //console.log(a + category[i][a]);
       var opt = document.createElement("option");
       opt.value = a;
-      console.log(opt.value);
+      //console.log(opt.value);
       opt.innerHTML = category[i][a];
     }
   }
