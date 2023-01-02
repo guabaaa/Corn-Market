@@ -38,6 +38,7 @@ public class PostController {
 		System.out.println(list);
 		model.addAttribute("list",list);
 		return "post/postlookup";
+		
 	} 
 	// 판매글 카테고리별 조회
 	@ResponseBody

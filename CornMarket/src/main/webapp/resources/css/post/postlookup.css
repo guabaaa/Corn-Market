@@ -60,7 +60,6 @@ list css
     width: 1200px;
     justify-content: space-around;
     flex-wrap: wrap;
-   	flex-direction: column;
     display: flex;
     margin: 0 auto;
     border-bottom: 2px solid rgb(241,196,15);

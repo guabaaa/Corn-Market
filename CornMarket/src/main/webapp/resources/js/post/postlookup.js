@@ -22,6 +22,7 @@ function categoryChange(e) {
     { F1106: '반려동물용품' },
   ];
   var town = [
+  	{ '': '선택하세요' },
     { 11010: '종로구' },
     { 11020: '중구' },
     { 11030: '용산구' },
@@ -102,6 +103,7 @@ function categoryList() {
         let list = data;
         console.log(list[0]);
         $('#recent_list').hide(); //기존 리스트 숨기기
+    	$('#town_list').hide();
         $('#category_list').empty(); //카테고리 목록 초기화
         list.forEach((post) => {
           var categoryContent =
@@ -131,7 +133,60 @@ function categoryList() {
         $('#category_list').show();
       },
       error: function () {
-        alert('error');
+        alert('올바르게 선택해주세요.');
+      },
+    });
+  }
+}
+
+function townList() {
+  let select1 = $('#sortchoice1 option:selected').val();
+  let select2 = $('#sortchoice2 option:selected').val();
+  let postUrl = $('#post_url').val();
+  let pathUrl = $('#path_url').val();
+  console.log(select1);
+  if ((select1 = 'town')) {
+    console.log(select2);
+    $.ajax({
+      type: 'GET',
+      url: postUrl + '/town/' + select2, //townid url로 전송
+      dataType: 'json',
+      success: function (data) {
+        //alert('카테고리id 전송 성공');
+        let list = data;
+        console.log(list[0]);
+        $('#recent_list').hide(); //기존 리스트 숨기기
+    	$('#category_list').hide();
+        $('#town_list').empty(); //카테고리 목록 초기화
+        list.forEach((post) => {
+          var townContent =
+            '<article class="board-card-top">' +
+            '<a class="board-card-link" href="' +
+            postUrl +
+            '/' +
+            post.post_id +
+            '">' +
+            '<img class="board-card-photo" src="' +
+            pathUrl +
+            post.post_img +
+            '" />' +
+            '<div class="board-card-desc">' +
+            '<div class="board-card-title">' +
+            post.title +
+            '</div>' +
+            '<div class="board-card-price">' +
+            post.price +
+            '</div>' +
+            '<div class="board-card-region">서울시 ' +
+            post.town_name +
+            '</div>' +
+            '</div> </a> </article>';
+          $('#town_list').append(townContent); //판매글 하나씩 추가
+        });
+        $('#town_list').show();
+      },
+      error: function () {
+        alert('올바르게 선택해주세요.');
       },
     });
   }
@@ -139,6 +194,7 @@ function categoryList() {
 
 function showValue() {
   categoryList(); //카테고리별 데이터 가져오기 ajax
+  townList();	  //지역별 데이터 가져오기 ajax
 }
 
 /*

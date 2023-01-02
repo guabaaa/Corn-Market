@@ -12,6 +12,7 @@
     <c:set var="path" value="${pageContext.request.contextPath}"/>
      
     <link rel="stylesheet" href="${path}/resources/css/post/postlookup.css">
+    
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region">${post.town_name }</div>
+                        <div class="board-card-region">${post.town_code}</div>
                     </div>
                 </a>
             </article>
