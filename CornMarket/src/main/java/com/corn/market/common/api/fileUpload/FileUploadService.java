@@ -22,6 +22,7 @@ public class FileUploadService {
 
 	//파일 한개
 	public String oneFileUpload(MultipartFile file, HttpServletRequest request) {
+		if(file==null) return "/resources/images/profile/profile_img_default.png";
 		//파일명 얻기
 		String fileName = file.getOriginalFilename();
 		//파일 확장자 구하기 ".png"
@@ -56,8 +57,9 @@ public class FileUploadService {
 	
 	//파일 여러개
 	public String multiFileUpload(MultipartHttpServletRequest files, HttpServletRequest request) {
+		if(files==null) return "/resources/images/post/post_img_thumbnail.png";
 		//파일 저장 프로젝트 내 경로
-		String path = "/resources/images/profile/";
+		String path = "/resources/images/post/";
 		//파일 저장 실제 위치 경로
 		String folderPath = request.getSession().getServletContext().getRealPath(path); 
 		System.out.println("파일실제위치: "+folderPath);
@@ -76,6 +78,8 @@ public class FileUploadService {
 			String fileName = list.get(i).getOriginalFilename();
 			System.out.println("파일"+(i+1)+": "+fileName);
 			//파일 확장자 구하기 ".png"
+			
+			if(fileName.length() < 5 || fileName.lastIndexOf(".") < 1) return "/resources/images/post/post_img_thumbnail.png";
 			String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
 			
 			//파일 이름 변경 (profile_날짜+시간+랜덤숫자)

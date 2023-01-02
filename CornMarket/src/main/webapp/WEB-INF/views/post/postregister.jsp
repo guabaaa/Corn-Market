@@ -13,10 +13,8 @@
 
 </head>
 <body>
-<jsp:include page="../base/header_nickname.jsp" />
-<jsp:include page="../base/nav.jsp" />
 	<div class="board-wrap">
-        <form method="post" action="<c:url value='enroll'/>" enctype="multipart/form-data" name="frmregister">
+        <form method="post" action="<c:url value='/post/enroll'/>" enctype="multipart/form-data" name="frmregister">
             <div class="board-img-wrap">
                 <div class="board-container">
                     <ul class="image-preview" id="preview">
@@ -24,7 +22,7 @@
                 </div>
                 <span class="btn-delete">삭제</span>
                 <div class="board-button">
-                    <input type="file" id="chooseFile" class="real-upload" name="chooseFile" accept="image/*"
+                    <input type="file" id="chooseFile" class="real-upload" name="files" accept="image/*"
                         multiple="multiple" style="display: none;">
                     <label for="chooseFile" class="upload">
                         사진올리기
@@ -77,6 +75,5 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="${path}/resources/js/post/postregister.js"></script>
 
-<jsp:include page="../base/footer.jsp" />
 </body>
 </html>
