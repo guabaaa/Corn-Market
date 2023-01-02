@@ -6,6 +6,7 @@ public class PostList {
 	private String user_id; // 사용자id  
 	private String nickname; // 닉네임
 	private String category_id; //카테고리id
+	private String category_name; //카테고리id
 	private String town_code; //지역 코드
 	private String town_name; //지역 이름
 	private String title; // 제목
@@ -20,14 +21,15 @@ public class PostList {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostList(String post_id, String user_id, String nickname, String category_id, String town_code,
-			String town_name, String title, String price, String content, String created, String updated,
-			String post_status, String post_img) {
+	public PostList(String post_id, String user_id, String nickname, String category_id, String category_name,
+			String town_code, String town_name, String title, String price, String content, String created,
+			String updated, String post_status, String post_img) {
 		super();
 		this.post_id = post_id;
 		this.user_id = user_id;
 		this.nickname = nickname;
 		this.category_id = category_id;
+		this.category_name = category_name;
 		this.town_code = town_code;
 		this.town_name = town_name;
 		this.title = title;
@@ -69,6 +71,14 @@ public class PostList {
 
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
+	}
+	
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 
 	public String getTown_code() {
@@ -146,9 +156,9 @@ public class PostList {
 	@Override
 	public String toString() {
 		return "PostList [post_id=" + post_id + ", user_id=" + user_id + ", nickname=" + nickname + ", category_id="
-				+ category_id + ", town_code=" + town_code + ", town_name=" + town_name + ", title=" + title
-				+ ", price=" + price + ", content=" + content + ", created=" + created + ", updated=" + updated
-				+ ", post_status=" + post_status + ", post_img=" + post_img + "]";
+				+ category_id + ", category_name=" + category_name + ", town_code=" + town_code + ", town_name="
+				+ town_name + ", title=" + title + ", price=" + price + ", content=" + content + ", created=" + created
+				+ ", updated=" + updated + ", post_status=" + post_status + ", post_img=" + post_img + "]";
 	}
 
 }
