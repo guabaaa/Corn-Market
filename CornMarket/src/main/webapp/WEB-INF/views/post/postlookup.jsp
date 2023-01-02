@@ -45,7 +45,7 @@
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region">${post.town_code}</div>
+                        <div class="board-card-region">${post.town_name}</div>
                     </div>
                 </a>
             </article>

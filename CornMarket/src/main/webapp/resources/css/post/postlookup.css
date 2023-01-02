@@ -75,6 +75,10 @@ list css
     text-decoration: none;
     color: #212529;
 }
+.board-card-top a{
+	text-decoration: none;
+	color: #000000;
+}
 .board-lookup-wrap .board-card-wrap .board-card-top .board-card-photo{
     background-color: #ffffff;
     object-fit: cover;

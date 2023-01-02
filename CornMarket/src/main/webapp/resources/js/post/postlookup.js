@@ -92,7 +92,7 @@ function categoryList() {
   let postUrl = $('#post_url').val();
   let pathUrl = $('#path_url').val();
   console.log(select1);
-  if ((select1 = 'category')) {
+  if ((select1 == 'category')) {
     console.log(select2);
     $.ajax({
       type: 'GET',
@@ -125,7 +125,7 @@ function categoryList() {
             post.price +
             '</div>' +
             '<div class="board-card-region">서울시 ' +
-            post.town_name +
+            post.town_name + 
             '</div>' +
             '</div> </a> </article>';
           $('#category_list').append(categoryContent); //판매글 하나씩 추가
@@ -145,7 +145,7 @@ function townList() {
   let postUrl = $('#post_url').val();
   let pathUrl = $('#path_url').val();
   console.log(select1);
-  if ((select1 = 'town')) {
+  if ((select1 == 'town')) {
     console.log(select2);
     $.ajax({
       type: 'GET',
@@ -193,8 +193,10 @@ function townList() {
 }
 
 function showValue() {
-  categoryList(); //카테고리별 데이터 가져오기 ajax
-  townList();	  //지역별 데이터 가져오기 ajax
+  let select1 = $('#sortchoice1 option:selected').val();
+  console.log('대분류:' + select1);
+  if (select1 == 'category') categoryList(); //카테고리별 데이터 가져오기 ajax
+  if (select1 == 'town') townList(); //지역별 데이터 가져오기 ajax
 }
 
 /*
