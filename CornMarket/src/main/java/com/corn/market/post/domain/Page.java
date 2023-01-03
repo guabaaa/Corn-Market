@@ -2,6 +2,8 @@ package com.corn.market.post.domain;
 
 public class Page {
 	
+
+	
 	/* 시작 페이지 */
     private int startPage;
     

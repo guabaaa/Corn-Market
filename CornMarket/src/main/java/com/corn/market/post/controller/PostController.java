@@ -31,7 +31,7 @@ public class PostController {
 	@Autowired
 	private FileUploadService fileService;
 
-	// 판매글 전체 조회 페이지 (기본 최신순)
+	/* 판매글 전체 조회 페이지 (기본 최신순)
 	@GetMapping("/post")
 	public String postRecentList(Model model) throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostList();
@@ -39,7 +39,19 @@ public class PostController {
 		model.addAttribute("list",list);
 		return "post/postlookup";
 		
-	} 
+	} */
+	
+	/* 판매글 전체 조회 페이지(페이징 적용) */
+    @GetMapping("/post/postlookup")
+    public void boardListGET(Model model, Criteria cri) throws Exception {
+        
+        model.addAttribute( "list", postService.getListPaging(cri) );            
+        int total = postService.getTotal();
+        Page pageMake = new Page(cri, total);
+        model.addAttribute("pageMaker", pageMake);    
+    } 
+    
+    
 	// 판매글 카테고리별 조회
 	@ResponseBody
 	@GetMapping("/post/category/{category_id}")
@@ -113,19 +125,7 @@ public class PostController {
 	}
 	
 
-	/* 게시판 목록 페이지 접속(페이징 적용) */
-    @GetMapping("/post/postlookup")
-    public void boardListGET(Model model, Criteria cri) throws Exception {
-        
-        model.addAttribute("list", postService.getListPaging(cri)     );            
-        
-        int total = postService.getTotal();
-        
-        Page pageMake = new Page(cri, total);
-        
-        model.addAttribute("pageMaker", pageMake);
-        
-    }    
+	   
 	
 	
 	

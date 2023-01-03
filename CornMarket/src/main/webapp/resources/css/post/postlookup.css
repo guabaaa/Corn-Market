@@ -138,7 +138,7 @@ list css
     padding: 7px;
     font-weight: 500;
   }
- a:link {color:black; text-decoration: none;}
- a:visited {color:black; text-decoration: none;}
- a:hover {color:black; text-decoration: underline;}
+ .pageInfo_area .a:link {color:black; text-decoration: none;}
+ .pageInfo_area .a:visited {color:black; text-decoration: none;}
+ .pageInfo_area .a:hover {color:black; text-decoration: underline;}
 

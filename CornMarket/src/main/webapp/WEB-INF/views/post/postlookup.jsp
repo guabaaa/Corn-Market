@@ -59,7 +59,7 @@
 				
 				<!-- 각 번호 페이지 버튼 -->
 				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
+					<li class="pageInfo_btn"><a href="?PageNum=${num}">${num}</a></li>
 				</c:forEach>
 				
 				<!-- 다음페이지 버튼 -->
@@ -86,14 +86,7 @@
     <script src="${path}/resources/js/post/postlookup.js"></script>
    <script>
 
-		$(".pageInfo a").on("click", function(e){ //page info  a 태그 클릭시 
-	 
-		    e.preventDefault();
-		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		    moveForm.attr("action", "/post/postlookup");
-		    moveForm.submit();
-    
-		});
+		
 </script>
 </body>
 

@@ -166,3 +166,14 @@ function showValue() {
   if (select1 == 'category') categoryList(); //카테고리별 데이터 가져오기 ajax
   if (select1 == 'town') townList(); //지역별 데이터 가져오기 ajax
 }
+
+
+//페이지 이동 
+$(".pageInfo a").on("click", function(e){ 
+	 
+		    e.preventDefault();
+		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		    moveForm.attr("action", "/post/postlookup");
+		    moveForm.submit();
+    
+		});
