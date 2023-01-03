@@ -3,66 +3,54 @@ package com.corn.market.post.domain;
 
 public class Criteria
 {
-   private int page;
-   private int perPageNum;
-   private int rowStart;
-   private int rowEnd;
-   
-   public Criteria()
-   {
-    this.page = 1;
-    this.perPageNum = 10;
-   }
-
-   public void setPage(int page)
-   {
-    if (page <= 0)
-    {
-     this.page = 1;
-     return;
+	/* 현재 페이지 */
+    private int pageNum;
+    
+    /* 한 페이지 당 보여질 게시물 갯수 */
+    private int amount;
+    
+    /* 스킵 할 게시물 수( (pageNum-1) * amount ) */
+    private int skip;
+    
+    /* 기본 생성자 -> 기봅 세팅 : pageNum = 1, amount = 10 */
+    public Criteria() {
+        this(1,10);
+        this.skip = 0;
     }
-    this.page = page;
-   }
-
-   public void setPerPageNum(int perPageNum)
-   {
-    if (perPageNum <= 0 || perPageNum > 100)
-    {
-     this.perPageNum = 10;
-     return;
+    
+    /* 생성자 => 원하는 pageNum, 원하는 amount */
+    public Criteria(int pageNum, int amount) {
+        this.pageNum = pageNum;
+        this.amount = amount;
+        this.skip = (pageNum-1)*amount;
     }
-    this.perPageNum = perPageNum;
-   }
 
-   public int getPage()
-   {
-    return page;
-   }
+	public int getPageNum() {
+		return pageNum;
+	}
 
-   public int getPageStart()
-   {
-    return (this.page - 1) * perPageNum;
-   }
+	public void setPageNum(int pageNum) {
+		this.skip= (pageNum-1)*this.amount;
+		this.pageNum = pageNum;
+	}
 
-   public int getPerPageNum()
-   {
-    return this.perPageNum;
-   }
+	public int getAmount() {
+		return amount;
+	}
 
-   @Override
-   public String toString() {
-    return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ""
-      + ", rowStart=" +  getRowStart() + ", rowEnd=" + getRowEnd()
-      + "]";
-   }
+	public void setAmount(int amount) {
+		this.skip= (this.pageNum-1)*amount;
+		this.amount = amount;
+	}
 
-   public int getRowStart() {
-    rowStart = ((page - 1) * perPageNum) + 1;
-    return rowStart;
-   }
+	public int getSkip() {
+		return skip;
+	}
 
-   public int getRowEnd() {
-    rowEnd = rowStart + perPageNum - 1;
-    return rowEnd;
-   }
+	public void setSkip(int skip) {
+		this.skip = skip;
+	}
+
+    
+    
 }

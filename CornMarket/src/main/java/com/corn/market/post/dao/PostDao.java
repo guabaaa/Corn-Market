@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.corn.market.post.domain.Criteria;
 import com.corn.market.post.domain.PostList;
 import com.corn.market.post.domain.PostVO;
 
@@ -50,22 +51,20 @@ public class PostDao {
 		session.update(namespace+"delete", post_id); 
 	}
 
-
-  	//판매글 총 갯수 
-	public int count() throws Exception {
-	 return session.selectOne(namespace + "count"); 
-	}
 	
-	//페이징
-	public List listPage(int displayPost, int postNum) throws Exception {
+	
 
-	HashMap data = new HashMap();
-		  
-	data.put("displayPost", displayPost);
- 	data.put("postNum", postNum);
-		  
- 	return session.selectList(namespace + "listPage", data);
+	//판매글 전체 조회 - 최신글 (기본)+페이징 
+	public List<PostList> getListPaging(Criteria cri) throws Exception {
+		
+ 	return session.selectList(namespace + "getListPaging", cri);
 		}
+	
+	//판매글 총 갯수 
+	public int getTotal() throws Exception {
+		 return session.selectOne(namespace + "getTotal"); 
+		}
+	 
     
 	
 }

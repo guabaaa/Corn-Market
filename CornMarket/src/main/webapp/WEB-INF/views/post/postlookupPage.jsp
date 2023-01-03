@@ -49,31 +49,20 @@
 			</c:forEach>
 		</div>
 		
-		<c:if test="${page.prev}">
-		 <span>[ <a href="/post/postlookupPage?num=${page.startPageNum - 1}">이전</a> ]</span>
-		</c:if>
+		<div class="pageInfo_wrap" >
+        	<div class="pageInfo_area">	
+      			<!-- 각 번호 페이지 버튼 -->
+                <c:forEach var="num" begin="${page.startPage}" end="${page.endPage}">
+                <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+                </c:forEach>
+        	</div>
+    	</div>
+		
 
-			<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
- 			<span>
- 
-	 			 <c:if test="${select != num}">
-	  					<a href="/post/postlookupPage?num=${num}">${num}</a>
-	  			 </c:if>    
-	  
-				  <c:if test="${select == num}">
-				   <b>${num}</b>
-				  </c:if>
-    
-			 </span>
-			</c:forEach>
-
-		<c:if test="${page.next}">
- 		<span>[ <a href="/post/postlookupPage?num=${page.endPageNum + 1}">다음</a> ]</span>
-		</c:if>
-
-        <div class="board-pagination-wrap clearfix">
-            <ul class="board-pagination float--right" id="pages"></ul>
-        </div>
+        <form id="moveForm"action="get">
+        	<input type="hidden" name="pageNum" value="${page.cri.pageNum }">
+        	<input type="hidden" name="amount" value="${page.cri.amount }"> 
+       </form>
 
     </section>
 
