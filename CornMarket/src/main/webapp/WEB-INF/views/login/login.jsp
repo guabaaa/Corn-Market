@@ -24,7 +24,7 @@
 	<section>
 		<form name="frm" action="/market/login" method="POST">
 			<div class="h2_st">
-				<h2>LOGIN</h2>
+				<h2>로그인</h2>
 			</div>
 			<div class="login_wrap">
 				<div class="login_first">
