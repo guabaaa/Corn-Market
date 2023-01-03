@@ -24,12 +24,12 @@
 
 
 	<!-- 로그인 -->
-	<select id="memberLogin" resultType="LoginMember">
-
-		select user_id,user_pw FROM USER_TBL22
-		where user_id = #{user_id} and user_pw = #{user_pw}
-
-	</select>
+   <select id="Login" parameterType="Member" resultType="Int">
+        SELECT COUNT(*)
+          FROM user_tbl22
+         WHERE user_id = #{user_id}
+           AND user_pw = #{user_pw}
+    </select>
 
 
 	<!-- 로그인시 아아디 유무 확인 -->

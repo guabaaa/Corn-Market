@@ -1,5 +1,6 @@
 package com.corn.market.post.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -49,12 +50,24 @@ public class PostDao {
 		session.update(namespace+"delete", post_id); 
 	}
 
-}
-    
-    
-   // 게시판 목록(페이징 적용) 
-   // public List<BoardVO> getListPaging(Criteria cri)throws Exception{
-    	
-   // };
 
+  	//판매글 총 갯수 
+	public int count() throws Exception {
+	 return session.selectOne(namespace + "count"); 
+	}
+	
+	//페이징
+	public List listPage(int displayPost, int postNum) throws Exception {
+
+	HashMap data = new HashMap();
+		  
+	data.put("displayPost", displayPost);
+ 	data.put("postNum", postNum);
+		  
+ 	return session.selectList(namespace + "listPage", data);
+		}
+    
+	
+}
+ 
   

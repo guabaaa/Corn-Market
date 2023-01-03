@@ -70,21 +70,20 @@ window.addEventListener("load", function() {
    
    
 //아이디  중복확인
-	function idcheck(){
-	   
+function idcheck(){
 	 let user_id= $('#user_id').val();
 
-	  $.ajax({
-	url: '/market/idcheck',
-   data: {user_id:user_id},
-
+	$.ajax({
+ 	url: '/market/idcheck',
+    data: {user_id:user_id},
+    
    success:function(data){
    console.log(data);
 		if(data == "0"){
 		alert("사용 가능한 아이디입니다.");
 		}
-	    else{
-			alert("사용중인 아이디입니다. ");
+	    else {
+			alert("사용중인 아이디입니다.");
 	    }
 		},
 		

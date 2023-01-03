@@ -302,9 +302,9 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
         	<div class="non_hidden">
             	<div class="join_main">아이디</div>
             	<input type="text" class="join_input" name="user_id" id="member_id"><br>
-            	<input type="button" class="join_check_again" value="중복확인" id="doublecheck_id" onclick="idcheck()">
         	</div>
-        	<p id="id_error" class="error"></p>
+        	<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+			<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
         </div>
         <div class="join_first">
             <div class="join_main">닉네임</div>

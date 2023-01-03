@@ -1,6 +1,7 @@
 package com.corn.market.post.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.corn.market.common.api.fileUpload.FileUploadService;
+import com.corn.market.post.domain.Page;
 import com.corn.market.post.domain.PostList;
 import com.corn.market.post.domain.PostVO;
 import com.corn.market.post.service.PostService;
@@ -107,5 +110,37 @@ public class PostController {
 		postService.deletePost(post_id);
 		return "redirect:/post";
 	}
+	
+
+	// 판매글 전체 조회 페이지 (기본 최신순) + 페이징 추가
+	@GetMapping("/postlookupPage")
+	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+		 
+	Page page =new Page();
+	
+	page.setNum(num);
+	page.setCount(postService.count());  
+
+	List<PostList> list = null; 
+	list = postService.listPage(page.getDisplayPost(), page.getPostNum());
+
+	
+	model.addAttribute("list", list);   
+	/*
+	model.addAttribute("pageNum", page.getPageNum());
+
+	model.addAttribute("startPageNum", page.getStartPageNum());
+	model.addAttribute("endPageNum", page.getEndPageNum());
+	 
+	model.addAttribute("prev", page.getPrev());
+	model.addAttribute("next", page.getNext());  
+   */
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+		
+	}
+
+	 
+
 
 }
