@@ -27,7 +27,7 @@
 			</div>
 		</nav>
 		<a class="header-img-wrap" href="<c:url value='/main' />"><img
-			src="${path }/resources/images/header/logo.png"></a>
+			src="${path }/resources/images/header/logo.png" width="250px" height="120px"></a>
 		<div class="header-search-wrap">
 			<input class="searchbar" type="search" placeholder="물품이나 동네를 검색해보세요." />
 			<img src="${path }/resources/images/header/searchbtn.png"
