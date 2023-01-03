@@ -127,6 +127,13 @@
     cursor: pointer;
     color: #757576;
 }
+.header-logout{
+	position: absolute;
+	top: 5px;
+	right: 0px;
+    cursor: pointer;
+    color: #757576;
+}
 .sellprochat-wrap{
     display: flex;
     position: absolute;
