@@ -10,7 +10,6 @@
 </head>
 <body>
 <jsp:include page="../base/header.jsp"/>
-<jsp:include page="../base/nav.jsp"/>
 <jsp:include page="section.jsp"/>
 <jsp:include page="../base/footer.jsp"/>
 </body>
