@@ -5,10 +5,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Corn-Market 프로필수정</title>
+    <title>프로필 수정</title>
     <link rel="stylesheet" href="${path}/resources/css/profile/popup_update.css" />
-    <script src="${path}/resources/js/profile/update_myinfo.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -30,8 +28,20 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                   <div class="update_second">
                     <div class="up_main">
                       <div class="up_title">닉네임</div>
-                      <input type="text" placeholder="${profile.nickname}" class="update_nickname" name="nickname" id="update_nickname" />
-                      <input type="button" value="중복확인" class="double_check" id="check_btn" onclick="checkNickname()" />
+                      <input
+                        type="text"
+                        placeholder="${profile.nickname}"
+                        class="update_nickname"
+                        name="nickname"
+                        id="update_nickname"
+                      />
+                      <input
+                        type="button"
+                        value="중복확인"
+                        class="double_check"
+                        id="check_btn"
+                        onclick="checkNickname()"
+                      />
                     </div>
                   </div>
                 </div>
@@ -45,6 +55,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="${path}/resources/js/profile/update_myinfo.js"></script>
     <script type="text/javascript">
       //닉네임 중복확인
       function checkNickname() {

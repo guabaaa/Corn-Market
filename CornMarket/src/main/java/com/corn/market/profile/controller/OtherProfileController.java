@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,27 +23,27 @@ public class OtherProfileController {
 	ProfileService service;
 			
 	//타인 프로필 기본 페이지 (판매중)
-	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
-	public String otherProfileOnSale(String id,HttpServletRequest request) { 
-		System.out.println("타인 아이디:"+id);
-		request.setAttribute("id", id);
-		ProfileSale profileSale = service.getProfileSales(id, "판매중");
-		request.setAttribute("profile", profileSale);
-		return "profile/other_profile_onsale";
+	@RequestMapping(value = "/profile/{user_id}", method = RequestMethod.GET)
+	public String otherProfileOnSale(@PathVariable String user_id, Model model) { 
+		System.out.println("타인 아이디:"+user_id);
+		model.addAttribute("id", user_id);
+		ProfileSale profileSale = service.getProfileSales(user_id, "판매중");
+		model.addAttribute("profile", profileSale);
+		return "profile/profile_page";
 	}
 	//타인 프로필 판매완료 페이지
-	@RequestMapping(value = "/profile/user/offsale", method = RequestMethod.GET)
-	public String otherProfileOffSale(String id,HttpServletRequest request) { 
-		System.out.println("타인 아이디:"+id);
-		request.setAttribute("id", id);
-		ProfileSale profileSale = service.getProfileSales(id, "거래완료");
-		request.setAttribute("profile", profileSale);
-		return "profile/other_profile_offsale";
+	@RequestMapping(value = "/profile/{user_id}/offsale", method = RequestMethod.GET)
+	public String otherProfileOffSale(@PathVariable String user_id, Model model) { 
+		System.out.println("타인 아이디:"+user_id);
+		model.addAttribute("id", user_id);
+		ProfileSale profileSale = service.getProfileSales(user_id, "거래완료");
+		model.addAttribute("profile", profileSale);
+		return "profile/profile_page";
 	}
 	//타인 프로필 거래후기 페이지
-	@RequestMapping(value = "/profile/user/review", method = RequestMethod.GET)
-	public String otherProfileReview(String id,HttpServletRequest request) { 
-		System.out.println("타인 아이디:"+id);
+	@RequestMapping(value = "/profile/{user_id}/review", method = RequestMethod.GET)
+	public String otherProfileReview(@PathVariable String user_id, Model model) { 
+		System.out.println("타인 아이디:"+user_id);
 		//ProfileReview profileReview = service.getProfileReviews(id);
 		
 		//  테스트용 데이터
@@ -53,9 +55,9 @@ public class OtherProfileController {
 		ProfileReview profileReview = new ProfileReview("CH", "36.5", "마포구", date, "/resources/images/profile/profile_img_default.png", list);
 		//
 		
-		request.setAttribute("id", id);
-		request.setAttribute("profile", profileReview);
-		return "profile/other_profile_review";
+		model.addAttribute("id", user_id);
+		model.addAttribute("profile", profileReview);
+		return "profile/profile_review";
 	}
 	
 }
