@@ -69,6 +69,7 @@
   font-size: 15px;
   font-weight: 300;
   display: block;
+  cursor: pointer;
 }
 
 .body-contentbox {
@@ -118,6 +119,7 @@
   font-size: 15px;
   font-weight: 300;
   display: block;
+  cursor: pointer;
 }
 
 .popup-foot {

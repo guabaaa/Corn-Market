@@ -20,16 +20,21 @@ function checkChatRoom() {
     contentType: 'text/plain; charset=utf-8',
     success: function (data) {
       //조회 결과 없으면 0 있으면 방id 반환
-      console.log(data);
+      //alert(data);
       let check = data;
       if (check == 0) {
         //채팅방 생성
-        openChatList();
+        let chatAction = $('#chat_url').val();
+        openChatList('');
+        chat_room_frm.action = chatAction;
+        chat_room_frm.method = 'POST';
+        chat_room_frm.target = 'chatting';
         chat_room_frm.submit();
       } else if (check != 0) {
         //존재하는 채팅방으로 이동
-        //location.href = url;
-        openChatList();
+        //<input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_url" />
+        let url = $('#chat_url').val() + '/' + check;
+        openChatList(url);
       }
     },
     error: function (data) {
@@ -39,18 +44,12 @@ function checkChatRoom() {
 }
 
 //채팅창 팝업으로 열기
-function openChatList() {
-  let url = $('#chat_url').val();
-  //팝업창 화면 가운데로 띄우기
-  let popupWidth = 600;
-  let popupHeight = 650;
+function openChatList(url) {
+  let targetUrl = url;
+  let popupWidth = 630;
+  let popupHeight = 691;
   let popupX = Math.ceil((window.screen.width - popupWidth) / 2);
   let popupY = Math.ceil((window.screen.height - popupHeight) / 2);
-
-  window.open(
-    url,
-    'ChattingList',
-    'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY
-  );
-  //<input type="hidden" value="<c:url value='/chatting/list'/>" id="chatUrl" />
+  let features = 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupX + ', top=' + popupY;
+  window.open(targetUrl, 'chatting', features);
 }

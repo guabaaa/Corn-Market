@@ -37,12 +37,12 @@
         <div class="board-card-wrap" id="recent_list">
         	<c:forEach items="${list}" var="post">
             <article class="board-card-top">
-                <a class="board-card-link" href="<c:url value='/view?post_id=${post.post_id}'/>" >
+                <a class="board-card-link" href="<c:url value='/post/${post.post_id}'/>" >
                     <img class="board-card-photo" src="${path}${post.post_img}"/>
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region">서울시 ${post.town_name}]</div>
+                        <div class="board-card-region">서울시 ${post.town_name}</div>
                     </div>
                 </a>
             </article>

@@ -9,6 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <link rel="stylesheet" href="${path}/resources/css/profile/profile.css" />
   </head>
   <body>
+  <jsp:include page="../base/header.jsp"/>
     <section class="profile-section">
       <div class="profile_wrap">
         <div class="profile_first">
@@ -87,6 +88,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
       </div>
     </section>
+<jsp:include page="../base/footer.jsp"/>
     <!-- profile.user_id -->
     <input type="hidden" id="id_info" value="${profile.user_id}" />
     <input type="hidden" id="sessionId" value="${sessionScope.id}" />

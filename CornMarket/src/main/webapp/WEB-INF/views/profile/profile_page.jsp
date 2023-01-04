@@ -9,6 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <link rel="stylesheet" href="${path}/resources/css/profile/profile.css" />
   </head>
   <body>
+  <jsp:include page="../base/header.jsp"/>
     <section class="profile-section">
       <div class="profile_wrap">
         <div class="profile_first">
@@ -29,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                   type="button"
                   value="채팅하기"
                   class="chatting-btn info-btn"
-                  onclick="location.href='${path}/chatting/list'"
+                  onclick="chatListPop()"
                 />
               </c:if>
             </div>
@@ -91,6 +92,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
       </div>
     </section>
+<jsp:include page="../base/footer.jsp"/>
     <!-- profile.user_id -->
     <input type="hidden" id="id_info" value="${profile.user_id}" />
     <input type="hidden" id="sessionId" value="${sessionScope.id}" />
@@ -98,6 +100,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/town/town.js"></script>
     <script src="${path}/resources/js/profile/update_myinfo.js"></script>
+    <script src="${path}/resources/js/chatting/chat_list_popup.js"></script>
     <script>
       var id_info = $('#id_info').val(); //해당 프로필 아이디
       var session_id = $('#sessionId').val(); //로그인 아이디
