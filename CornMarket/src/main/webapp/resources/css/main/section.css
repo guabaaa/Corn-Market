@@ -99,7 +99,7 @@
   /* slide03*/
 
   .slide03 {
-    background-color: #e4f3e5;
+    background-color: hsl(141deg 45% 91%);
   }
   .home-main-slide-img-03 {
    	background-position: center;
@@ -152,6 +152,7 @@
   .home-story-list .icon-story1 {
     width: 56px;
     height: 56px;
+    background-color: hsl(141deg 45% 91%);
     background-position:center;
     background-size: cover;
     background-image: url(../../images/style/s3-1.png);
@@ -160,6 +161,7 @@
   .home-story-list .icon-story2 {
     width: 56px;
     height: 56px;
+   	background-color: hsl(141deg 45% 91%);
     background-position:center;
     background-size: cover;
     background-image: url(../../images/style/s3-2.png);
@@ -168,6 +170,7 @@
   .home-story-list .icon-story3 {
     width: 56px;
     height: 56px;
+    background-color: hsl(141deg 45% 91%);
     background-position:center;
     background-size: cover;
     background-image: url(../../images/style/s3-3.png);

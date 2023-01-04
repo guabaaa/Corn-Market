@@ -17,7 +17,6 @@
 
 <body>
 <jsp:include page="../base/header.jsp"/>
-<jsp:include page="../base/nav.jsp"/>
        <div class="search-idpw-title">
            <h2>아이디/비밀번호 찾기</h2>
        </div>
