@@ -26,7 +26,7 @@
 				<li><a href="">반려동물용품</a></li>
 			</div>
 		</nav>
-		<a class="header-img-wrap" href="<c:url value='/main' />"><img
+		<a class="header-img-wrap" onclick="location.href='<c:url value="/main/"/>'"><img
 			src="${path }/resources/images/header/logo.png" width="250px" height="120px"></a>
 		<div class="header-search-wrap">
 			<input class="searchbar" type="search" placeholder="물품이나 동네를 검색해보세요." />
@@ -44,24 +44,23 @@
 
 				<c:if test="${sessionScope.id!=null}">
 					<!-- 로그인 했을때 -->
-					<a class="header-logout">LOGOUT</a>
+					<a class="header-logout" onclick="location.href='${path }/logout'">LOGOUT</a>
 				</c:if>
 			</div>
 			<div class="sellprochat-wrap">
-				<a class="header-selling"> <img
+				<a class="header-selling" onclick="location.href='<c:url value="/post/enroll"/>'"> <img
 					src="${path }/resources/images/header/sellingbtn.png" width="25px"
 					height="25px" />
 					<p class="header-selling-text">판매하기</p>
 				</a>
 				<p class="sellprochat-text">|</p>
-				<a class="header-profile"
-					onclick="location.href='<c:url value="/profile"/>'"> <img
-					src="${path }/resources/images/header/profilebtn.png" width="25px"
-					height="25px" />
+				<a class="header-profile" onclick="location.href='${path }/profile'">
+					<img src="${path }/resources/images/header/profilebtn.png" width="25px"
+						height="25px" />
 					<p class="header-profile-text">내 정보</p>
 				</a>
 				<p class="sellprochat-text">|</p>
-				<a class="header-chatting"> <img
+				<a class="header-chatting" onclick="location.href='<c:url value="/chatting/list"/>'"> <img
 					src="${path }/resources/images/header/chattingbtn.png" width="25px"
 					height="25px" />
 					<p class="header-chatting-text">채팅하기</p>
