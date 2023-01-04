@@ -2,6 +2,8 @@ package com.corn.market.profile.domain;
 
 public class Review {
 	
+	private String user_id ;
+	private String profile_img ;
 	private String nickname;
 	private String review;
 	
@@ -9,10 +11,28 @@ public class Review {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Review(String nickname, String review) {
+	public Review(String user_id, String profile_img, String nickname, String review) {
 		super();
+		this.user_id = user_id;
+		this.profile_img = profile_img;
 		this.nickname = nickname;
 		this.review = review;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getProfile_img() {
+		return profile_img;
+	}
+
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
 	}
 
 	public String getNickname() {
@@ -33,7 +53,8 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [nickname=" + nickname + ", review=" + review + "]";
+		return "Review [user_id=" + user_id + ", profile_img=" + profile_img + ", nickname=" + nickname + ", review="
+				+ review + "]";
 	}
-	
+
 }

@@ -4,6 +4,7 @@
 }
 .popup-wrap {
   background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
   padding: 15px;
 }
 .chatlist_wrap {
@@ -23,7 +24,6 @@
 }
 
 .chatlist_wrap h2 {
-  font-family: 'Gaegu', cursive;
   font-size: 35px;
   font-weight: bold;
   text-align: center;
@@ -37,9 +37,14 @@
 .chatlist_wrap li {
   width: 550px;
   height: 70px;
-  border: 2px solid rgb(241, 196, 15);
-  border-radius: 3px;
-  margin: 10px auto;
+  /* border: 2px solid rgb(241, 196, 15); */
+  border-top: 0.3px solid rgba(241, 196, 15, 0.4);
+  border-bottom: 0.3px solid rgba(241, 196, 15, 0.4);
+  padding: 15px 0;
+  margin: 0 auto;
+  margin-top: -1px;
+  /* border-radius: 3px; */
+  /* margin: 10px auto; */
   display: flex;
   align-items: center;
 }
@@ -48,7 +53,7 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background-color: rgb(238, 230, 198);
+  background-color: rgba(241, 196, 15, 0.2);
   margin: 0 15px;
   box-sizing: border-box;
   cursor: pointer;
@@ -80,7 +85,7 @@
   margin: 0 5px;
 }
 .chat_contents {
-  height:28px;
+  height: 28px;
   box-sizing: border-box;
   font-size: 14px;
   padding: 5px 10px;
@@ -90,7 +95,7 @@
   margin: 5px;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .chat_delete {
@@ -101,4 +106,5 @@
   background-image: url(../../images/style/delete_icon.png);
   cursor: pointer;
   margin: 0 20px;
+  filter: invert(29%) sepia(0%) saturate(0%) hue-rotate(217deg) brightness(94%) contrast(87%);
 }

@@ -1,4 +1,4 @@
-package com.corn.market.common.api.fileUpload;
+package com.corn.market.common.fileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 
