@@ -16,7 +16,7 @@
 	<section>
 		<form name="member" action="/market/signup" method="POST">
 			<div class="h2_st">
-				<h2>회원가</h2>
+				<h2>회원가입</h2>
 			</div>
 			<div class="join_rule1">
 				<p class="rule1-1">
