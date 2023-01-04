@@ -14,22 +14,24 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <div class="profile_first">
           <div class="profile_img-wrap">
             <div class="prf-img" style="background-image: url('${path}${profile.profile_img}')"></div>
-            <!-- 본인 프로필 sessionScope.id==profile.user_id -->
-            <!-- <c:if test="${sessionScope.id!=null}"> </c:if> -->
-            <input type="button" class="profile_update_btn info-btn" value="프로필 수정" onclick="update_myinfo()" />
+            <!-- 본인 프로필 -->
+            <c:if test="${sessionScope.id == profile.user_id}">
+              <input type="button" class="profile_update_btn info-btn" value="프로필 수정" onclick="update_myinfo()" />
+            </c:if>
           </div>
 
           <div class="profile_contents">
             <div class="nickname-wrap">
               <div class="profile_nickname">${profile.nickname}</div>
               <!-- 본인 프로필 -->
-              <!-- <c:if test="${sessionScope.id!=null}"> </c:if> -->
-              <input
-                type="button"
-                value="채팅하기"
-                class="chatting-btn info-btn"
-                onclick="location.href='${path}/chatting/list'"
-              />
+              <c:if test="${sessionScope.id == profile.user_id}">
+                <input
+                  type="button"
+                  value="채팅하기"
+                  class="chatting-btn info-btn"
+                  onclick="location.href='${path}/chatting/list'"
+                />
+              </c:if>
             </div>
 
             <ul class="profile-info-wrap">
@@ -43,19 +45,18 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <div class="flexf">
                   <div class="town-info flexf-items">${profile.town_name} 인증</div>
                   <!-- 본인 프로필 -->
-                  <!-- <c:if test="${sessionScope.id!=null}"> </c:if> -->
-                  <input
-                    type="button"
-                    class="town-confirm-btn info-btn flexf-items"
-                    value="동네 인증하기"
-                    onclick="mytown()"
-                  />
+                  <c:if test="${sessionScope.id == profile.user_id}">
+                    <input
+                      type="button"
+                      class="town-confirm-btn info-btn flexf-items"
+                      value="동네 인증하기"
+                      onclick="mytown()"
+                    />
+                  </c:if>
                 </div>
               </li>
               <li class="join-date profile-info">
-                <div class="flexf">
-                  ${profile.join_date[0]}년 ${profile.join_date[1]}월 ${profile.join_date[2]}일 가입
-                </div>
+                <div class="flexf">${profile.join_date} 가입</div>
               </li>
             </ul>
           </div>
@@ -63,17 +64,15 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
         <div class="profile_second">
           <div class="profile_nav">
-            <c:if test="${sessionScope.id==id}">
-              <!-- profile.user_id -->
+            <c:if test="${sessionScope.id == profile.user_id}">
               <div class="profile_status onsale"><a href="<c:url value='/profile' />">판매중</a></div>
               <div class="profile_status offsale"><a href="<c:url value='/profile/offsale' />">판매완료</a></div>
               <div class="profile_status review"><a href="<c:url value='/profile/review' />">거래후기</a></div>
             </c:if>
-            <c:if test="${sessionScope.id!=id}">
-              <!-- profile.user_id -->
-              <div class="profile_status onsale"><a href="<c:url value='/profile/' />${id}">판매중</a></div>
-              <div class="profile_status offsale"><a href="<c:url value='/profile/' />${id}/offsale">판매완료</a></div>
-              <div class="profile_status review"><a href="<c:url value='/profile/' />${id}/review">거래후기</a></div>
+            <c:if test="${sessionScope.id != profile.user_id}">
+              <div class="profile_status onsale"><a href="<c:url value='/profile/' />${profile.user_id}">판매중</a></div>
+              <div class="profile_status offsale"><a href="<c:url value='/profile/' />${profile.user_id}/offsale">판매완료</a></div>
+              <div class="profile_status review"><a href="<c:url value='/profile/' />${profile.user_id}/review">거래후기</a></div>
             </c:if>
           </div>
           <!-- 리뷰 리스트 -->
@@ -89,7 +88,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </div>
     </section>
     <!-- profile.user_id -->
-    <input type="hidden" id="id_info" value="${id}" />
+    <input type="hidden" id="id_info" value="${profile.user_id}" />
     <input type="hidden" id="sessionId" value="${sessionScope.id}" />
     <input type="hidden" id="urlBtn" value="${path}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

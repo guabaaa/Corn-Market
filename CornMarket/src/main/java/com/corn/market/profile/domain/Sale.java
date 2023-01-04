@@ -2,6 +2,7 @@ package com.corn.market.profile.domain;
 
 public class Sale {
 	
+	private String post_id;
 	private String post_img;
 	private String title;
 	private String price;
@@ -11,12 +12,21 @@ public class Sale {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sale(String post_img, String title, String price, String town_name) {
+	public Sale(String post_id, String post_img, String title, String price, String town_name) {
 		super();
+		this.post_id = post_id;
 		this.post_img = post_img;
 		this.title = title;
 		this.price = price;
 		this.town_name = town_name;
+	}
+	
+	public String getPost_id() {
+		return post_id;
+	}
+
+	public void setPost_id(String post_id) {
+		this.post_id = post_id;
 	}
 
 	public String getPost_img() {
@@ -53,8 +63,7 @@ public class Sale {
 
 	@Override
 	public String toString() {
-		return "Sale [post_img=" + post_img + ", title=" + title + ", price=" + price + ", town_name=" + town_name
-				+ "]";
+		return "Sale [post_id=" + post_id + ", post_img=" + post_img + ", title=" + title + ", price=" + price
+				+ ", town_name=" + town_name + "]";
 	}
-	
 }
