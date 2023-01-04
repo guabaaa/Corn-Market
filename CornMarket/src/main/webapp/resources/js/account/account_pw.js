@@ -1,11 +1,18 @@
 //전송할 이메일 맞는지 확인
+//이메일,이름,아이디 셋 다 맞아야 인증번호 전
 function checkEmail() {
   let email = $('#memberEmail').val() + '@' + $('#memberEmail2').val();
   console.log(email);
+  let id = $('#conInput').val();
+  let name = $('#memberNm2').val();
+  let searchPw = {
+    user_id: id,
+    user_name: name,
+  };
   $.ajax({
     type: 'POST',
     url: pwUrl + '/mail/check',
-    data: email,
+    data: email + JSON.stringify(searchPw),
     contentType: 'text/plain; charset=utf-8',
     success: function (data) {
       console.log(data);
