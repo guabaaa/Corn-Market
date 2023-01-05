@@ -44,9 +44,17 @@
 					<button type="button" onclick="location.href='${path}/signup'">회원가입</button>
 				</div>
 				<div class="login_fourth">
-					<a href=""><div class="simple_login1"></div></a> <a href=""><div
-							class="simple_login2"></div></a> <a href=""><div
-							class="simple_login3"></div></a>
+					<a class="naver-wrap" href="">
+					  <img src="${path}/resources/images/style/naver_login_btn.png" class="simple_login2 login-btn">
+					  <span>네이버 로그인</span>
+					</a> 
+					<a class="kakao-wrap" href=""><img src="${path}/resources/images/style/kakao_login_btn.png" class="simple_login1 login-btn"></a>
+					<a class="google-wrap" href="">
+					  <img src="${path}/resources/images/style/google_login_btn.png" class="simple_login3 login-btn">
+					  <span>구글 로그인</span>
+					</a> 
+					  <div class="google-box">
+					  </div>
 				</div>
 			</div>
 		</form>
