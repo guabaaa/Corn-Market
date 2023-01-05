@@ -20,31 +20,21 @@ public class MemberDao {
 		session.insert (namespace+"memberSignup" ,member);
 	};
 
-	// 아이디 중복 검사
+	//아이디 중복 검사
 	public int idCheck(Member member) throws Exception{
 	int result=session.selectOne(namespace + "idCheck", member);
     return  result;	//아이디가 있으면 1 없으면 0
 	};
 
-	// 닉네임 중복 검사
+	//닉네임 중복 검사
 	public int nicknameCheck(String nickname) throws Exception{
 	return session.selectOne(namespace + "nicknameCheck", nickname);
 	};
 	
 	
-	 
-	
-
-	//아이디 유무 
-	public Member getMemberById(LoginMember member) throws  Exception{
-		return session.selectOne(namespace + "getMemberById",member);
-	};
-
-	//로그인 확인 비번+아이디 일치 확인 
-	public  Member memberLogin(LoginMember member) throws Exception{
-
-		return session.selectOne(namespace + "memberLogin", member);
-
+	//로그인 
+	public  Member memberLogin(Member member) throws Exception{
+    return session.selectOne(namespace + "memberLogin", member);
 	};
 
 }

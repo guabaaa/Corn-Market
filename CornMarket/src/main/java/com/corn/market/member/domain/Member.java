@@ -10,7 +10,6 @@ public class Member {
 	private String nickname;
 	private String user_pw;
 	private String email;
-	private String email2;	
 	private String phone;
 	
 	@Override

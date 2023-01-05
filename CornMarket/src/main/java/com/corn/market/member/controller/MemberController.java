@@ -1,14 +1,23 @@
 package com.corn.market.member.controller;
 
-import java.net.http.HttpHeaders;
+
+
+import java.io.IOException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,12 +25,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.corn.market.account.domain.AccountId;
 import com.corn.market.account.domain.SearchIdMail;
 import com.corn.market.member.dao.MemberDao;
+import com.corn.market.member.domain.KakaoToken;
 import com.corn.market.member.domain.LoginMember;
 import com.corn.market.member.domain.Member;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
  
 
 @Controller
@@ -53,11 +67,9 @@ public class MemberController {
 		
 	    int result= dao.idCheck(member);	
 	    System.out.println(result);
-		return result ;
-		
+		return result ;	
 	} 
-	
-	
+
 	//닉네임 중복체크 
 	@ResponseBody
 	@GetMapping("/nickcheck")
@@ -65,23 +77,61 @@ public class MemberController {
 		int result=dao.nicknameCheck(nickname);
 	    return result ;
 	} 
-	
-	
+
 	//----------------------로그인 --------------------//
 
-	
-	//카카오 로그인 
-	@GetMapping("/market/kakaoLogin")
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
-	  if(code!=null) {
-		System.out.println("code = " + code);
-	  }
+	//카카오 로그인
+	@GetMapping("/oauth/callback")
+	public @ResponseBody String kakaoCallback(String code) { //Data를 리턴해준느 컨트롤러 함수
 		
-		return "member/testPage";
-    	}
-
-
-
+	  //1. 토큰을 받기위해 post방식으로 key=value형식으로 사용자 정보 요청 
+	  //Retrofit2 
+	  //OkHttp
+	   RestTemplate rt = new RestTemplate();
+	   HttpHeaders headers = new HttpHeaders(); //헤더에는 컨텐츠 타입을 담을거임 
+	   headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+	   
+	  MultiValueMap<String,String> params =new LinkedMultiValueMap();//body data 담아야함 
+	  params.add("grant_type", "authorization_code");
+	  params.add("client_id", "d2d3eda3457799ca1d69cf37f8cbfaf8");
+	  params.add("redirect_uri", "http://localhost:8188/oauth/callback");
+	  params.add("code", code);
+	  //원래 변수화 시켜야지 코드가 이쁜데 .. 나중에..	  
+	  
+	 HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest=
+        new HttpEntity<>(params,headers);
+	 //kakaoTokenRequest 는 body와header값을 가지고있는 엔티티가된다. 
+	 //exchanger가 HttpEntity를 받게되어있어서 만듬 
+	   ResponseEntity<String> response = rt.exchange(
+			  "https://kauth.kakao.com/oauth/token",
+			   HttpMethod.POST,
+			   kakaoTokenRequest,
+			   String.class
+			   );
+		
+	   //json정보를 온걸 자바에어 다루기위해 처리하는것 ( json라이브러리추가 )
+	   ObjectMapper objectMapper = new ObjectMapper ();
+	   KakaoToken kakaoToken=null;
+	  try {
+		kakaoToken = objectMapper.readValue(response.getBody(), KakaoToken.class);
+		///받아온 response.getBody()를  KakaoToken클래스에 담아줄거임 변수명이 일치해야함 
+	} catch (JsonParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (JsonMappingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	  
+	   
+		
+		return "카카오 토큰 요청 완료, 토큰요청에 대한 응답  :"+response.getBody(); 
+		
+	}
+	
 	
 	
 
@@ -89,48 +139,40 @@ public class MemberController {
 	@GetMapping("/login")
 	public String loginForm() {
 	return "login/login";
-	} // loginForm   
+	}  
 
+	//로그인 진행 
 	@PostMapping("/login")
-	public String login(LoginMember member, boolean rememberMe, 
-	HttpServletResponse response,HttpServletRequest request) {
+	public String login(Member member, boolean rememberMe, 
+	HttpServletResponse response,HttpServletRequest request) throws Exception {
 
 		System.out.println("id : " + member.getUser_id());
 		System.out.println("passwd : " + member.getUser_pw());
 		System.out.println("rememberMe : " + rememberMe);
 
-	// 1. id 존재여부
-		try {
-		Member	dbMember = dao.getMemberById(member);
+
+		//1.아이디 패스워드확인 
+		Member	dbMember = dao.memberLogin(member);
 		System.out.println(dbMember);
-		if (dbMember == null) { // 존재하지 않는 아이디
-				System.out.println("아이디 비밀번호 확인바랍니다."); 
-				return "redirect:/login";
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} // 데이터에있는 아이디 가져와 
-
-
-		// 3. 로그인 유지 체크했는지
-		if (rememberMe == true) { // 로그인 유지에 체크 했을 때
-			// 쿠키등록하기
+		if (dbMember == null) {
+			System.out.println("아이디 비밀번호 확인바랍니다."); 
+		   return "redirect:/login";
+		//2. 로그인 유지 체크 확인 
+		}else if (rememberMe == true) { 
+			
 			Cookie cookie = new Cookie("userId", member.getUser_id());
-			cookie.setMaxAge(60 * 60 * 24 * 7); // 쿠키 수명 설정 초단위
-			cookie.setPath("/"); // 모든경로에 적용
-
-			response.addCookie(cookie); //HttpServletResponse response,
-		}
-		// 4. 세션 등록
+			cookie.setMaxAge(60 * 60 * 24 * 7);
+			cookie.setPath("/"); 
+			response.addCookie(cookie);
+			}
+		//3. 아이디 섹션 등록 
 		HttpSession session= request.getSession(); // 섹션 얻어오는거임 
 		session.setAttribute("id", member.getUser_id());
-
-		// 5. 로그인 성공 메세지 띄우고, 메인화면으로 이동
-		System.out.println("로그인성공 ");
-
+        //4. 메인화면으로 이동 
 		return "redirect:/main";
-	}
+	   }
+	
+	
 	
 	//로그아웃 
 	@GetMapping("/logout")
@@ -138,12 +180,7 @@ public class MemberController {
 		session.removeAttribute("id");
 		session.invalidate();
 		return "redirect:/login";
-	}
-
-
+	 }
 
 }
-
-	 
-
 

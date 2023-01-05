@@ -18,30 +18,39 @@
 		window.location.href = '/market/signup';
 	}
 </script>
-
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 
-<!-- 카카오 스크립트-->
-Kakao.init('3617a988a010320e26dd65909b80af5d'); //발급받은 키 중 javascript키를 사용해준다.
-console.log(Kakao.isInitialized()); // sdk초기화여부판단
 //카카오로그인
 function kakaoLogin() {
-    Kakao.Auth.login({
-    scope : 'profile_nickname, account_email'
-      success: function (authObj) {
-    	  //console.log(autObj)
-        	Kakao.API.request({
-          	url: '/v2/user/me',
-         	 success: res => {
-          	
-         		  const id = res. authObj.id;
-         		  const nickname = res.profile_ninkname;
-         		  const email = res.kakao_account.email;
-          
-        	
-        	
-    })
-  }
+
+  $.ajax({
+      url: '/login/getKakaoAuthUrl',
+      type: 'get',
+      async: false,
+      dataType: 'text',
+      success: function (res) {
+          location.href = res;
+      }
+  });
+
+}
+
+$(document).ready(function() {
+
+    var kakaoInfo = '${kakaoInfo}';
+
+    if(kakaoInfo != ""){
+        var data = JSON.parse(kakaoInfo);
+
+        alert("카카오로그인 성공 \n accessToken : " + data['accessToken']);
+        alert(
+        "user : \n" + "email : "
+        + data['email']  
+        + "\n nickname : " 
+        + data['nickname']);
+    }
+});  
 
 
 </script>
@@ -75,10 +84,9 @@ function kakaoLogin() {
 					<div class="login_fourth">
 
 					<!-- 카카오 로그인 -->
-					<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=d2d3eda3457799ca1d69cf37f8cbfaf8&redirect_uri=http://localhost:8188/market/kakaoLogin&response_type=code">
-				     <img src="/resources/style/kakao_login_medium_narrow.png" style="height:60px">
-				
-					</a>
+					 <a href="https://kauth.kakao.com/oauth/authorize?client_id=d2d3eda3457799ca1d69cf37f8cbfaf8&redirect_uri=http://localhost:8188/oauth/callback&response_type=code">
+					 <img src= "/resource/images/style/kakao_login_large_narrow.png"/>
+					 </a>
 
 					</div>
 			</div>

@@ -75,5 +75,7 @@
 		SET post_status = '삭제' 
 		WHERE post_id = #{post_id}
 	</update>
-
+	
+ 
+  
 </mapper>
