@@ -69,32 +69,7 @@ window.addEventListener("load", function() {
    } 
    
    
-//아이디  중복확인
-	function idcheck(){
-	   
-	 let user_id= $('#user_id').val();
 
-	  $.ajax({
-	url: '/market/idcheck',
-   data: {user_id:user_id},
-
-   success:function(data){
-   console.log(data);
-		if(data == "0"){
-		alert("사용 가능한 아이디입니다.");
-		}
-	    else{
-			alert("사용중인 아이디입니다. ");
-	    }
-		},
-		
-		error: function(){
-		alert("에러입니다.");
-			}
-		
-			});
-
-	     }
 	     
 	 //닉네임  중복확인
 	function nickcheck(){

@@ -3,6 +3,12 @@
 		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+ <settings>
+  <setting name="jdbcTypeForNull" value="NULL"/>
+ </settings>
+
+
 	<typeAliases>
 		<typeAlias alias="Member" type="com.corn.market.member.domain.Member"/>
 		<typeAlias alias="LoginMember" type="com.corn.market.member.domain.LoginMember"/>
@@ -10,5 +16,7 @@
 		<typeAlias alias="Post" type="com.corn.market.post.domain.PostVO"/>
 		<typeAlias alias="PostList" type="com.corn.market.post.domain.PostList"/>
 	</typeAliases>
+
+
 
 </configuration>

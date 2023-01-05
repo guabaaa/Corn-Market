@@ -16,23 +16,24 @@ public class MemberDao {
 	private static String namespace = "com.corn.market.MemberMapper.";
 
 	//회원가입
-
 	public void memberSignup(Member member) throws Exception{
 		session.insert (namespace+"memberSignup" ,member);
-
 	};
 
 	// 아이디 중복 검사
-	public int idCheck(String id) throws Exception{
-
-		return session.selectOne(namespace + "idCheck", id);
-		//아이디가 있으면 1 없으면 0
+	public int idCheck(Member member) throws Exception{
+	int result=session.selectOne(namespace + "idCheck", member);
+    return  result;	//아이디가 있으면 1 없으면 0
 	};
 
 	// 닉네임 중복 검사
 	public int nicknameCheck(String nickname) throws Exception{
-		return session.selectOne(namespace + "nicknameCheck", nickname);
+	return session.selectOne(namespace + "nicknameCheck", nickname);
 	};
+	
+	
+	 
+	
 
 	//아이디 유무 
 	public Member getMemberById(LoginMember member) throws  Exception{

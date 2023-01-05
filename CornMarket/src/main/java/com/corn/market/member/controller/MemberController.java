@@ -11,8 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.corn.market.account.domain.AccountId;
+import com.corn.market.account.domain.SearchIdMail;
 import com.corn.market.member.dao.MemberDao;
 import com.corn.market.member.domain.LoginMember;
 import com.corn.market.member.domain.Member;
@@ -30,79 +36,74 @@ public class MemberController {
 	// 회원가입 페이지 이동 
 	@GetMapping("/signup")
 	public String signupForm() {
-		System.out.println("회원가입 페이지 ");
-		return "signup/signUp";
-	} // loginForm
+	return "signup/signUp";
+	} 
 
-	//회원가입 db 전달  
+	//회원가입 완료  
 	@PostMapping("/signup")
 	public String signupPOST(Member member) throws Exception {
-
-		System.out.println(" signupform 호출  ");
-		// 회원가입 실행
-		dao.memberSignup(member);
-		System.out.println(" signup service 성공   ");
-		return "redirect:/login";
+	dao.memberSignup(member);
+    return "redirect:/login";
 	}
 
-
+    //아이디 중복체크 
 	@ResponseBody
-	@GetMapping("/idcheck")
-	public String idcheck(String user_id) {
+	@PostMapping("/idcheck")
+	public int idcheck(Member member) throws Exception {
 		
-		System.out.print(user_id);
+	    int result= dao.idCheck(member);	
+	    System.out.println(result);
+		return result ;
 		
-		int result=0;
-		
-		try {
-			result = dao.idCheck(user_id);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return String.valueOf(result) ;
-	} // loginForm
+	} 
 	
 	
+	//닉네임 중복체크 
 	@ResponseBody
 	@GetMapping("/nickcheck")
-	public String nickcheck(String nickname) {
-		
-		int result=0;
-		
-		try {
-			result = dao.idCheck(nickname);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return String.valueOf(result) ;
-	} // loginForm
+		public int nickcheck(String nickname) throws Exception {
+		int result=dao.nicknameCheck(nickname);
+	    return result ;
+	} 
 	
 	
 	//----------------------로그인 --------------------//
 
+	
+	//카카오 로그인 
+	@GetMapping("/market/kakaoLogin")
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+	  if(code!=null) {
+		System.out.println("code = " + code);
+	  }
+		
+		return "member/testPage";
+    	}
+
+
+
+	
+	
 
 	// 로그인페이지  
 	@GetMapping("/login")
 	public String loginForm() {
-		System.out.println("로그인 페이지 ");
-		return "login/login";
+	return "login/login";
 	} // loginForm   
 
 	@PostMapping("/login")
 	public String login(LoginMember member, boolean rememberMe, 
-			HttpServletResponse response,HttpServletRequest request) {
+	HttpServletResponse response,HttpServletRequest request) {
 
 		System.out.println("id : " + member.getUser_id());
 		System.out.println("passwd : " + member.getUser_pw());
 		System.out.println("rememberMe : " + rememberMe);
 
-		// 1. id 존재여부
+	// 1. id 존재여부
 		try {
-			Member	dbMember = dao.getMemberById(member);
-			System.out.println(dbMember);
-			if (dbMember == null) { // 존재하지 않는 아이디
+		Member	dbMember = dao.getMemberById(member);
+		System.out.println(dbMember);
+		if (dbMember == null) { // 존재하지 않는 아이디
 				System.out.println("아이디 비밀번호 확인바랍니다."); 
 				return "redirect:/login";
 			}
@@ -131,7 +132,7 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
-	//로그인
+	//로그아웃 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("id");

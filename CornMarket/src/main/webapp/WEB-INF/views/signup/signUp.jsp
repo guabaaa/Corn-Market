@@ -311,8 +311,8 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 						<div class="join_main">아이디</div>
 						<input type="text" class="join_input" name="user_id"
 							id="member_id" /><br /> <input type="button"
-							class="join_check_again" value="중복확인" id="doublecheck_id"
-							onclick="idcheck()" />
+							class="join_check_again" value="중복확인" id="idCheck" type="button" />
+							<!--   id값변경 doublecheck_id-> idCheck -->
 					</div>
 					<p id="id_error" class="error"></p>
 				</div>
@@ -355,6 +355,33 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 		</form>
 	</section>
 	<jsp:include page="../base/footer.jsp" />
+	
+	<script>
+	//아이디  중복확인
+	$("#idCheck").click(function(){
+		//alert('test1')
+		
+	var id = $('.join_input').val();     // .join_input에 입력되는 값
+	var data = {id : id}                // controller에 넘길 데이터 
+		$.ajax({
+			
+			type : "post",
+			url : "/market/idcheck",
+			data : data,
+			
+		success: function (data) {
+		if(data == 1) {
+			alert("사용중인 아이디입니다.");
+			}else {
+				alert("사용 가능한 아이디입니다.");
+			
+			}
+			}
+		})
+		});
+
+	
+	</script>
 	<script src="${path}/resources/js/signup/signUp.js"></script>
 </body>
 </html>
