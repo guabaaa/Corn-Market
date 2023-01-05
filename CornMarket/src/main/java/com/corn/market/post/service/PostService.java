@@ -77,6 +77,11 @@ public class PostService {
 	 return dao.getListPaging(cri);
 	}
 	
+	// 판매글 카테고리별 조회 + 페이징
+		public List<PostList> selectCategoryList(Criteria cri ) throws Exception {
+		 return dao.getListPaging(cri);
+		}
+	
 	//판매물 총 갯수 
 	public int getTotal() throws Exception {
 		 return dao.getTotal();

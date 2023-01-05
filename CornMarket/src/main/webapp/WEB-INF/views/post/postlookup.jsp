@@ -74,13 +74,25 @@
         <form id="moveForm"action="get">
         	<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum }">
         	<input type="hidden" name="amount" value="${pageMake.cri.amount }"> 
-       </form>
+        </form>
 
 	
     </section>
     <input type="hidden" id="path_url" value="${path}" />
-	<input type="hidden" id="post_url" value="<c:url value='/post'/>" />
+	<input type="hidden" id="post_url" value="<c:url value='/post/'/>" />
 
+<script>
+//페이지 이동 
+$(".pageInfo a").on("click", function(e){ 
+	 
+		    e.preventDefault();
+		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		    moveForm.attr("action", "/post/postlookup");
+		    moveForm.submit();
+    
+		});
+
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="${path}/resources/js/post/postlookup.js"></script>

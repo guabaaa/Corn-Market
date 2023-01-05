@@ -168,12 +168,4 @@ function showValue() {
 }
 
 
-//페이지 이동 
-$(".pageInfo a").on("click", function(e){ 
-	 
-		    e.preventDefault();
-		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		    moveForm.attr("action", "/post/postlookup");
-		    moveForm.submit();
-    
-		});
+

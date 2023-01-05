@@ -42,13 +42,14 @@ public class PostController {
 	} */
 	
 	/* 판매글 전체 조회 페이지(페이징 적용) */
-    @GetMapping("/post/postlookup")
-    public void boardListGET(Model model, Criteria cri) throws Exception {
+    @GetMapping("/post")
+    public String boardListGET(Model model, Criteria cri) throws Exception {
         
         model.addAttribute( "list", postService.getListPaging(cri) );            
         int total = postService.getTotal();
         Page pageMake = new Page(cri, total);
-        model.addAttribute("pageMaker", pageMake);    
+        model.addAttribute("pageMaker", pageMake);  
+        return "post/postlookup";
     } 
     
     
@@ -59,6 +60,8 @@ public class PostController {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostCategoryList(category_id);
 		return list;
 	} 
+	
+	
 	// 판매글 지역별 조회
 	@ResponseBody
 	@GetMapping("/post/town/{town_code}")

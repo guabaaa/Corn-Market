@@ -92,6 +92,13 @@ public class Page {
 	public void setCri(Criteria cri) {
 		this.cri = cri;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "Page [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
+				+ ", total=" + total + ", cri=" + cri + "]";
+	}
     
     
  
