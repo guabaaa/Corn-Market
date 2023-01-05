@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../base/header_nickname.jsp" />
 <jsp:include page="../base/nav.jsp" />
 <!-- 여기서 주의해야할 부분은, 입력 엘리먼트인 <input> 과 <textarea>의 이름(name) 속성의 값이 BoardVO와 동일해야한다는것 입니다. -->
 <form method="post">

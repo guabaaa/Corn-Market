@@ -59,6 +59,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </div>
     </div>
     <input type="hidden" value="<c:url value='/chatting/list/'/>" id="chatUrl" />
+    <input type="hidden" value="${path}" id="url" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/review/review.js"></script>

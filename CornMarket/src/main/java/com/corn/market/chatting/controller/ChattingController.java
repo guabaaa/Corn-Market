@@ -31,14 +31,11 @@ public class ChattingController {
 	//채팅방 목록
 	@GetMapping("/chatting/list")
 	public String chattingRoomList(Model model,HttpSession session) {
-		//session.setAttribute("id", "ch11"); //테스트용
-		//세션의 아이디로 채팅방 목록 가져오기
 		String user_id = (String) session.getAttribute("id");
 		ArrayList<ChattingRoomInfo> list = chattingService.getChattingList(user_id);
 		for(ChattingRoomInfo chat : list) System.out.println(chat); //콘솔 테스트
 		model.addAttribute("list", list);
 		model.addAttribute("user_id", user_id);
-		//return "chatting/chatting_list_sample";
 		return "chatting/chatting_room_list";
 	}
 	//채팅방 새로 등록

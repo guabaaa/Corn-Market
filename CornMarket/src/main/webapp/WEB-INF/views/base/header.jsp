@@ -60,7 +60,7 @@
 					<p class="header-profile-text">내 정보</p>
 				</a>
 				<p class="sellprochat-text">|</p>
-				<a class="header-chatting" onclick="location.href='<c:url value="/chatting/list"/>'"> <img
+				<a class="header-chatting" onclick="chatListPop()"> <img
 					src="${path }/resources/images/header/chattingbtn.png" width="25px"
 					height="25px" />
 					<p class="header-chatting-text">채팅하기</p>
@@ -68,10 +68,11 @@
 			</div>
 		</div>
 	</header>
-
+	
+	<input type="hidden" id="urlBtn" value="${path}" />
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="${path}/resources/js/main/header.js"></script>
-
+	<script src="${path}/resources/js/chatting/chat_list_popup.js"></script>
 </body>
 </html>

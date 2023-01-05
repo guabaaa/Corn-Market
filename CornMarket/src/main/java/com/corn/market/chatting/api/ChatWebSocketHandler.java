@@ -4,18 +4,24 @@ import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.corn.market.chatting.domain.ChattingContent;
 import com.corn.market.chatting.domain.WebSocketInfo;
+import com.corn.market.chatting.service.ChattingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ChatWebSocketHandler extends TextWebSocketHandler {
 
 	//
 	private ConcurrentHashMap<WebSocketInfo, WebSocketSession> sessionList = new ConcurrentHashMap<WebSocketInfo, WebSocketSession>();
+	//
+	@Autowired
+	private ChattingService service;
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -47,6 +53,13 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 					sessionList.get(w).sendMessage(message);
 				}
 			}
+			//데이터 저장
+			String room_id = chatContent.get("room_id");
+			String sender_id = chatContent.get("sender_id");
+			String chat_content = chatContent.get("chat_content");
+			ChattingContent chattingContent = new ChattingContent(room_id, sender_id, chat_content);
+			service.regChattingContent(chattingContent);
+			System.out.println("데이터 저장");
 			break;
 		case "out":
 			//클라이언트 연결 해제, 세션 삭제

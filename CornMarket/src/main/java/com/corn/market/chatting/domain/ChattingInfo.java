@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ChattingInfo {
 	
+	private String seller_id;
 	private String room_id;
 	private String post_id;
 	private String post_title;
@@ -17,9 +18,10 @@ public class ChattingInfo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ChattingInfo(String room_id, String post_id, String post_title, String post_img, String other_profile_img,
-			String other_nickname, String post_price, List<ChattingContentList> chatlist) {
+	public ChattingInfo(String seller_id, String room_id, String post_id, String post_title, String post_img,
+			String other_profile_img, String other_nickname, String post_price, List<ChattingContentList> chatlist) {
 		super();
+		this.seller_id = seller_id;
 		this.room_id = room_id;
 		this.post_id = post_id;
 		this.post_title = post_title;
@@ -30,6 +32,13 @@ public class ChattingInfo {
 		this.chatlist = chatlist;
 	}
 
+	public String getSeller_id() {
+		return seller_id;
+	}
+
+	public void setSeller_id(String seller_id) {
+		this.seller_id = seller_id;
+	}
 
 	public String getRoom_id() {
 		return room_id;
@@ -97,9 +106,9 @@ public class ChattingInfo {
 
 	@Override
 	public String toString() {
-		return "ChattingInfo [room_id=" + room_id + ", post_id=" + post_id + ", post_title=" + post_title
-				+ ", post_img=" + post_img + ", other_profile_img=" + other_profile_img + ", other_nickname="
-				+ other_nickname + ", post_price=" + post_price + ", chatlist=" + chatlist + "]";
+		return "ChattingInfo [seller_id=" + seller_id + ", room_id=" + room_id + ", post_id=" + post_id
+				+ ", post_title=" + post_title + ", post_img=" + post_img + ", other_profile_img=" + other_profile_img
+				+ ", other_nickname=" + other_nickname + ", post_price=" + post_price + ", chatlist=" + chatlist + "]";
 	}
 
 }

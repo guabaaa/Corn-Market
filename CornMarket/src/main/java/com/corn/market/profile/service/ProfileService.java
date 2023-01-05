@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.corn.market.post.domain.PostList;
 import com.corn.market.profile.dao.ProfileDao;
 import com.corn.market.profile.domain.ProfileReview;
 import com.corn.market.profile.domain.ProfileSale;
@@ -27,6 +28,7 @@ public class ProfileService {
 		saleMap.put("user_id", user_id);
 		saleMap.put("post_status", post_status);
 		ArrayList<Sale> list = (ArrayList<Sale>) dao.selectSale(saleMap);
+		getPostImgThumbnail(list);
 		ProfileSale profileSale = dao.selectProfileSale(user_id);
 		profileSale.setSaleList(list);
 		return profileSale;
@@ -67,4 +69,11 @@ public class ProfileService {
 		return dao.checkNickname(nickname);
 	}
 	
+	//프로필의 판매글 이미지 썸네일 가져오기
+	public void getPostImgThumbnail(ArrayList<Sale> saleList) {
+		for (Sale sale : saleList) {
+			String[] imgs = sale.getPost_img().split(",");
+			sale.setPost_img(imgs[0]);
+		}
+	}
 }
