@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<jsp:include page="../base/header.jsp"/>
     <!-- 상품 리스트 -->
     <section class="board-lookup-wrap">
         <div>
@@ -60,6 +61,7 @@
 
     <script src="${path}/resources/js/post/postlookup.js"></script>
 
+	<jsp:include page="../base/footer.jsp"/>
 </body>
 
 </html>

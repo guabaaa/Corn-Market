@@ -1,11 +1,14 @@
 //전송할 이메일 맞는지 확인
+
 function checkEmail() {
   let email = $('#memberEmail').val() + '@' + $('#memberEmail2').val();
   console.log(email);
   $.ajax({
     type: 'POST',
     url: pwUrl + '/mail/check',
+
     data: email,
+
     contentType: 'text/plain; charset=utf-8',
     success: function (data) {
       console.log(data);
@@ -16,7 +19,7 @@ function checkEmail() {
       } else if (data == 0) {
       	$('.error').show();
         document.getElementById("emailerror").innerHTML = "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요."
-        check=false
+        check=false;
       }
     },
     error: function (data) {
@@ -48,7 +51,7 @@ function sendEmail() {
 function mailBtnClick() {
   $('#mailBtn').click(() => {
     
-    checkEmail();
+    checkPw();
     mailtimer();
   }); //click
 }
@@ -139,10 +142,14 @@ function checkPw() {
     success: function (data) {
       console.log(data);
       if (data == 1) {
-      
-        submitPw();
+      	codenumshow(); //인증번호 입력창 보여주기
+        sendEmail(); //인증번호 메일 전송
+        $('.error').hide();
+        
       } else if (data == 0) {
-     
+     		$('.error').show();
+	        document.getElementById("emailerror").innerHTML = "입력하신 정보가 올바르지 않습니다. 다시 확인해주세요."
+	        check=false
       }
     },
     error: function (data) {
@@ -169,6 +176,6 @@ function submitPw() {
 }
 //비밀번호 찾기 버튼
 function pwBtn() {
-  if ($('#mailBtn').text() === '인증완료') checkPw();
+  if ($('#mailBtn').text() === '인증완료') submitPw();
   else alert('메일 인증을 진행해 주세요.');
 }
