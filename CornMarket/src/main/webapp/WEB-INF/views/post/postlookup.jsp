@@ -56,7 +56,7 @@ prefix="c" %>
               <img class="board-card-photo" src="${path}${post.post_img}" />
               <div class="board-card-desc">
                 <div class="board-card-title">${post.title}</div>
-                <div class="board-card-price">${post.post_id}</div>
+                <div class="board-card-price">${post.price}원</div>
                 <div class="board-card-region">서울시 ${post.town_name}</div>
               </div>
             </a>

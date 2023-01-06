@@ -17,13 +17,13 @@
 				height="40px" filter: invert(75%) sepia(54%) saturate(2306%)hue-rotate(2deg)brightness(110%)contrast(89%); >
 			<input type="hidden" id="headerjs" value="${path }">
 			<div class="nav-sidemenu" id="sidemenu">
-				<li><a class="nav-active" href="">전체 카테고리</a></li>
-				<li><a href="">전자기기</a></li>
-				<li><a href="">가구,인테리어</a></li>
-				<li><a href="">의류</a></li>
-				<li><a href="">뷰티,미용</a></li>
-				<li><a href="">취미,게임,음반</a></li>
-				<li><a href="">반려동물용품</a></li>
+				<li><a class="nav-active" href="${path}/post">전체 카테고리</a></li>
+				<li><a href="${path}/post/category?id=A1101">가구,인테리어</a></li>
+				<li><a href="${path}/post/category?id=B1102">전자기기</a></li>
+				<li><a href="${path}/post/category?id=C1103">의류</a></li>
+				<li><a href="${path}/post/category?id=D1104">뷰티,미용</a></li>
+				<li><a href="${path}/post/category?id=E1105">취미,게임,음반</a></li>
+				<li><a href="${path}/post/category?id=F1106">반려동물용품</a></li>
 			</div>
 		</nav>
 		<a class="header-img-wrap" onclick="location.href='<c:url value="/main/"/>'"><img

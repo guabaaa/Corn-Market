@@ -1,7 +1,9 @@
 package com.corn.market.post.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,13 +82,23 @@ public class PostService {
 	}
 
 	// 판매글 카테고리별 조회 + 페이징
-	public List<PostList> selectCategoryList(Criteria cri) throws Exception {
-		return dao.getListPaging(cri);
+	public List<PostList> getCategoryList(Criteria cri, String category_id) throws Exception {
+		Map<String, Object> cateMap = new HashMap<String, Object>();
+		cateMap.put("category_id", category_id);
+		cateMap.put("pageNum", cri.getPageNum());
+		cateMap.put("amount", cri.getAmount());
+		List<PostList> list = (ArrayList<PostList>) dao.selectCategoryList(cateMap);
+		getPostImgThumbnail(list);
+		return list;
 	}
 
 	//판매글 총 갯수 
 	public int getTotal() throws Exception {
 		return dao.getTotal();
+	}
+	//판매글 카테고리별 총 갯수 
+	public int getCategoryTotal(String category_id) throws Exception {
+		return dao.getCategoryTotal(category_id);
 	}
 
 }

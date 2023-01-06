@@ -1,6 +1,7 @@
 package com.corn.market.post.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,19 +52,23 @@ public class PostDao {
 	}
 
 
-	//판매글 전체 조회 - 최신글 (기본)+페이징 
+	//판매글 전체 조회 - 최신글 (기본) + 페이징 
 	public List<PostList> getListPaging(Criteria cri) throws Exception {
 		return session.selectList(namespace + "getListPaging", cri);
 	}
 
-	// 판매글 카테고리별 조회+페이징 
-	public List<PostList> selectCategoryList(String category_id) throws Exception {
-		return session.selectList(namespace+"selectCategoryList", category_id);
+	// 판매글 카테고리별 조회 + 페이징 
+	public List<PostList> selectCategoryList(Map<String, Object> cateMap) throws Exception {
+		return session.selectList(namespace+"selectCategoryList", cateMap);
 	} 
 
 	//판매글 총 갯수 
 	public int getTotal() throws Exception {
 		return session.selectOne(namespace + "getTotal"); 
+	}
+	//판매글 카테고리별 총 갯수 
+	public int getCategoryTotal(String category_id) throws Exception {
+		return session.selectOne(namespace + "getCategoryTotal", category_id); 
 	}
 
 
