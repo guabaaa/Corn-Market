@@ -73,7 +73,6 @@
               <li class="home-story-list-item">
 
                 <div class="icon-story3"></div>
-
                 <div class="text-s text-bold">동네모임</div>
                 <div class="text-xs">
                   관심사가 비슷한 이웃과 온오프라인으로 만나요.

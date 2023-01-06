@@ -94,7 +94,7 @@ public class ChattingDao {
 	//채팅방 목록 조회
 	public ArrayList<ChattingRoomInfo> selectChattingRoom(String user_id) {
 		ArrayList<ChattingRoomInfo> list = new ArrayList<>();
-		String sql = "SELECT r.room_id, DECODE(? ,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"'), t.town_name "
+		String sql = "SELECT r.room_id, DECODE(? ,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) id, u.profile_img, u.nickname, c.chat_content, TO_CHAR(c.send_date,'YYYY\"년 \"FMMM\"월 \"DD\"일\"'), t.town_name "
 				+ "FROM chatting_room_tbl22 r "
 				+ "JOIN user_tbl22 u "
 				+ "ON DECODE(?,r.seller_id,r.buyer_id,r.buyer_id,r.seller_id) = u.user_id "
@@ -139,9 +139,9 @@ public class ChattingDao {
 	//채팅내용 조회
 	public ArrayList<ChattingContentList> selectChattingContent(String room_id) {
 		ArrayList<ChattingContentList> list = new ArrayList<>();
-		String sql = "SELECT sender_id, TO_CHAR(send_date,'YYYY\"년 \"MM\"월 \"DD\"일\"'), chat_content, TO_CHAR(send_date, 'HH24:MI') "
+		String sql = "SELECT sender_id, TO_CHAR(send_date,'YYYY\"년 \"FMMM\"월 \"DD\"일\"'), chat_content, TO_CHAR(send_date, 'HH24:MI') "
 				+ "FROM chatting_content_tbl22 "
-				+ "WHERE room_id = ? ";
+				+ "WHERE room_id = ?  ORDER BY send_date";
 		Connection conn = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -168,7 +168,7 @@ public class ChattingDao {
 	//채팅창 정보 조회
 	public ChattingInfo selectChattingInfo(String room_id, String user_id) {
 		ChattingInfo chattingInfo = null;
-		String sql = "SELECT r.post_id, p.title, p.post_img, u.profile_img, u.nickname, TRIM(TO_CHAR(p.price,'99,999,999')) "
+		String sql = "SELECT r.seller_id, r.post_id, p.title, p.post_img, u.profile_img, u.nickname, TRIM(TO_CHAR(p.price,'99,999,999')) "
 				+ "FROM chatting_room_tbl22 r "
 				+ "JOIN post_tbl22 p "
 				+ "ON r.post_id = p.post_id "
@@ -185,13 +185,14 @@ public class ChattingDao {
 			pst.setString(2, room_id);
 			rs = pst.executeQuery();
 			if(rs.next()) {
-				String post_id = rs.getString(1);
-				String post_title = rs.getString(2);
-				String post_img = rs.getString(3);
-				String other_profile_img = rs.getString(4);
-				String other_nickname = rs.getString(5);
-				String post_price = rs.getString(6);
-				chattingInfo = new ChattingInfo(room_id, post_id, post_title, post_img, other_profile_img, other_nickname, post_price, selectChattingContent(room_id));
+				String seller_id = rs.getString(1);
+				String post_id = rs.getString(2);
+				String post_title = rs.getString(3);
+				String post_img = rs.getString(4);
+				String other_profile_img = rs.getString(5);
+				String other_nickname = rs.getString(6);
+				String post_price = rs.getString(7);
+				chattingInfo = new ChattingInfo(seller_id, room_id, post_id, post_title, post_img, other_profile_img, other_nickname, post_price, selectChattingContent(room_id));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

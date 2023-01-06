@@ -12,9 +12,4 @@ public class MainController {
 		return "/main/index";
 	}
 	
-	@RequestMapping(value = "/main/after_login", method = RequestMethod.GET)
-	public String mainPage2() {
-		return "/main/index2";
-	}
-	
 }

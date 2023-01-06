@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.corn.market.common.api.fileUpload.FileUploadService;
 import com.corn.market.post.domain.Criteria;
 import com.corn.market.post.domain.Page;
+import com.corn.market.common.fileUpload.FileUploadService;
 import com.corn.market.post.domain.PostList;
 import com.corn.market.post.domain.PostVO;
 import com.corn.market.post.service.PostService;

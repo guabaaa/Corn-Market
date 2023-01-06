@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>채팅방 목록</title>
+<title>채팅 목록</title>
 <link rel="stylesheet" href="${path}/resources/css/chatting/chat_list.css" />
 
 </head>
@@ -17,7 +17,7 @@
 			<ul>
 			<c:forEach var="room" items="${list}" varStatus="st">
 				<li>
-					<img class="chat_profile" src="${path}${room.other_profile_img}" onclick="location.href='<c:url value="/profile/user?id=${room.other_user_id}"/>'"/></img>
+					<img class="chat_profile" src="${path}${room.other_profile_img}" onclick="window.opener.location.href='<c:url value="/profile/${room.other_user_id}"/>'"/></img>
 					<div class="chat_content_wrap" onclick="location.href='<c:url value="/chatting/list/${room.room_id}"/>'">
 						<div class="chat_info">
 							<div class="chat_nickname">${room.other_nickname}</div>

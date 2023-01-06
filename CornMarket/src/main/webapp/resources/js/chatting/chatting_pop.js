@@ -2,6 +2,7 @@
 var webSocket;
 function connect() {
   webSocket = new WebSocket('ws://localhost:8090/market/chat');
+  //webSocket = new WebSocket('ws://192.168.219.107:8090/market/chat');
 
   webSocket.onopen = onOpen;
   webSocket.onmessage = onMessage;
@@ -15,7 +16,7 @@ function disconnect() {
 function sendMsg() {
   var msg = $('#message').val();
   send('send_msg', msg);
-  ajaxChatContent(msg); //DB에 저장
+  //ajaxChatContent(msg); //DB에 저장
   $('#message').val(''); //입력창 초기화
 }
 // 웹소켓에 데이터 전송
@@ -42,13 +43,7 @@ function onMessage(evt) {
   let id = $('#user_id').val();
   var data = JSON.parse(evt.data); //JSON -> 객체
   //날짜 표시
-  let size = $('#list_size').val();
-  let last_date = $('#chat_date_' + size).text();
-  if (last_date != showDate()) {
-    console.log(size);
-    console.log(last_date);
-    appendNowDate();
-  }
+  appendNowDate();
   if (data.sender_id == id) {
     //본인 메시지
     appendSendMessage(data.chat_content);
@@ -60,11 +55,8 @@ function onMessage(evt) {
 // 웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트
 function onClose(evt) {
   send('out', '');
-  //alert('연결을 끊었습니다');
+  alert('연결을 끊었습니다');
   console.log('Socket is closed. Reconnect will be attempted in 1 second.');
-  setTimeout(function () {
-    connect();
-  }, 1000);
 }
 
 /*   HTML 추가 메소드   */
@@ -93,9 +85,16 @@ function appendRecvMessage(msg) {
 }
 //현재날짜 채팅창에 추가
 function appendNowDate() {
-  let today = showDate();
-  $('#chatMessageArea').append(`<div class="chat_date">${today}</div>`);
-  scrollDown();
+  let today = showDate(); //오늘 날짜
+  let lastDateArr = $('.chat_date');
+  let index = lastDateArr.length - 1;
+  let lastDate;
+  if (lastDateArr.length) lastDate = lastDateArr[index].innerText;
+  console.log(lastDate);
+  if (lastDate != showDate() || !lastDate) {
+    $('#chatMessageArea').append(`<div class="chat_date">${today}</div>`);
+    scrollDown();
+  }
 }
 //현재시간 표시
 function showTime() {
@@ -124,7 +123,9 @@ function scrollDown() {
 function enterKey() {
   $('#message').keypress(function (event) {
     var keycode = event.keyCode;
-    if (keycode == '13') sendMsg(); //메시지 전송
+    if (keycode == '13') {
+      sendMsg(); //메시지 전송
+    }
     event.stopPropagation(); // 상위로 이벤트 전파 막음
   });
 }
@@ -151,6 +152,8 @@ $(document).ready(() => {
   $('#deal_end').click(dealEndBtn);
 });
 
+/*
+   => 핸들러에서 처리
 //ajax - 보내는 메시지 DB에 전송
 function ajaxChatContent(msg) {
   let url = $('#chat_content_url').val();
@@ -175,15 +178,17 @@ function ajaxChatContent(msg) {
     },
   });
 }
+*/
 
 //거래 완료 버튼
 function dealEndBtn() {
+  alert('거래완료');
   //판매글id로 판매글 상태 거래완료로 변경
   let endUrl = $('#dealEndUrl').val();
   let post_id = $('#post_id').val();
   let endMsg =
-    '판매자가 거래를 완료했습니다<br>' +
-    '거래후기를 남겨주세요<br>' +
+    '판매자가 거래를 완료했습니다.<br>' +
+    '거래후기를 남겨주세요.<br>' +
     '<input type="button" value="거래후기 작성하러 가기" class="goto_review other_review" id="revBtn">';
   $.ajax({
     type: 'POST',
@@ -201,7 +206,7 @@ function dealEndBtn() {
       } else if (status == '판매중') {
         //채팅창에 거래완료 메시지 추가
         send('send_msg', endMsg);
-        ajaxChatContent(endMsg); //DB에 저장
+        //ajaxChatContent(endMsg); //DB에 저장
         $('#deal_end').attr('disabled', 'true');
         $('#deal_end').css('cursor', 'default');
       }
@@ -215,7 +220,10 @@ function dealEndBtn() {
 //거래 후기 페이지 revBtn
 //거래후기창 팝업으로 열기
 function openReview() {
-  alert('리뷰창');
+  if ($('#seller_id').val() == $('#user_id').val()) {
+    alert('구매자가 후기를 작성할 때까지 기다려주세요.');
+    return;
+  }
   let url = $('#reviewUrl').val();
 
   let popupWidth = 650;
