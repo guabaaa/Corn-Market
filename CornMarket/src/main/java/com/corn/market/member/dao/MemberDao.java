@@ -1,5 +1,7 @@
 package com.corn.market.member.dao;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,5 +38,11 @@ public class MemberDao {
 	public  Member memberLogin(Member member) throws Exception{
     return session.selectOne(namespace + "memberLogin", member);
 	};
+
+	//로그인 확인 비번+아이디 일치 확인 
+	
+	 public int Login(Member vo) throws Exception {
+	        return session.selectOne(namespace + "Login",vo);
+	    };
 
 }

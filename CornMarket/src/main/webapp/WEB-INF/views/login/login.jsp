@@ -80,15 +80,18 @@ $(document).ready(function() {
 					<button type="button" id="loginbtn" onclick="login()">로그인</button>
 					<button type="button" onclick="location.href='${path}/signup'">회원가입</button>
 				</div>
-				
-					<div class="login_fourth">
 
-					<!-- 카카오 로그인 -->
-					 <a href="https://kauth.kakao.com/oauth/authorize?client_id=d2d3eda3457799ca1d69cf37f8cbfaf8&redirect_uri=http://localhost:8188/oauth/callback&response_type=code">
-					 <img src= "/resource/images/style/kakao_login_large_narrow.png"/>
-					 </a>
-
-					</div>
+				<div class="login_fourth">
+					<a class="naver-wrap" href="">
+					  <img src="${path}/resources/images/style/naver_login_btn.png" class="simple_login2 login-btn">
+					  <span>네이버 로그인</span>
+					</a> 
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=d2d3eda3457799ca1d69cf37f8cbfaf8&redirect_uri=http://localhost:8188/oauth/callback&response_type=code" class="kakao-wrap" href=""><img src="${path}/resources/images/style/kakao_login_btn.png" class="simple_login1 login-btn"></a>
+					<a class="google-wrap" href="">
+					  <img src="${path}/resources/images/style/google_login_btn.png" class="simple_login3 login-btn">
+					  <span>구글 로그인</span>
+					</a> 
+				</div>
 			</div>
 				
 				

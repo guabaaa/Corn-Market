@@ -1,4 +1,4 @@
-package com.corn.market.common.api.fileUpload;
+package com.corn.market.common.fileUpload;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

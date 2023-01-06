@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.corn.market.post.dao.PostDao;
+import com.corn.market.post.domain.Criteria;
 import com.corn.market.post.domain.PostList;
 import com.corn.market.post.domain.PostVO;
 
@@ -70,5 +71,20 @@ public class PostService {
 		return content;
 	}
 	
-
+	
+	// 판매물  목록 + 페이징
+	public List<PostList> getListPaging(Criteria cri ) throws Exception {
+	 return dao.getListPaging(cri);
+	}
+	
+	// 판매글 카테고리별 조회 + 페이징
+		public List<PostList> selectCategoryList(Criteria cri ) throws Exception {
+		 return dao.getListPaging(cri);
+		}
+	
+	//판매물 총 갯수 
+	public int getTotal() throws Exception {
+		 return dao.getTotal();
+	}
+	
 }

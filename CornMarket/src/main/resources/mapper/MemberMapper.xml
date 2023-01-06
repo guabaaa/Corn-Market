@@ -20,6 +20,21 @@
 	 FROM USER_TBL22
 	where user_id = #{user_id}
 	  and user_pw = #{user_pw}
+   <select id="Login" parameterType="Member" resultType="Int">
+        SELECT COUNT(*)
+          FROM user_tbl22
+         WHERE user_id = #{user_id}
+           AND user_pw = #{user_pw}
+    </select>
+
+
+	<!-- 로그인시 아아디 유무 확인 -->
+	<select id="getMemberById" resultType="Member">
+		<![CDATA[
+			SELECT *
+			FROM user_tbl22 
+			WHERE user_id = #{user_id} and user_pw =#{user_pw}
+		]]>
 	</select>
 	
 	

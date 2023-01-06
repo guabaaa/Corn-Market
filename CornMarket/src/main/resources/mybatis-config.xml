@@ -15,6 +15,13 @@
 		
 		<typeAlias alias="Post" type="com.corn.market.post.domain.PostVO"/>
 		<typeAlias alias="PostList" type="com.corn.market.post.domain.PostList"/>
+		
+		<!-- 프로필 -->
+		<typeAlias alias="Sale" type="com.corn.market.profile.domain.Sale"/>
+		<typeAlias alias="Review" type="com.corn.market.profile.domain.Review"/>
+		<typeAlias alias="ProfileSale" type="com.corn.market.profile.domain.ProfileSale"/>
+		<typeAlias alias="ProfileReview" type="com.corn.market.profile.domain.ProfileReview"/>
+		<typeAlias alias="ProfileUpdate" type="com.corn.market.profile.domain.ProfileUpdate"/>
 	</typeAliases>
 
 

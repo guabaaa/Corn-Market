@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 .popup-wrap {
   background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
@@ -17,7 +21,6 @@
   overflow: hidden;
   background-color: rgb(241, 196, 15);
   font-size: 17px;
-  font-weight: bold;
   box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, 0.3);
   margin: 0 auto;
 }
@@ -28,6 +31,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .popup-body {
@@ -41,11 +47,10 @@
   text-align: center;
   width: 500px;
   height: 350px;
-  background-color: lightgoldenrodyellow;
+  background-color: rgba(241, 196, 15, 0.2);
   margin: 10px auto;
 }
 .body-contentbox {
-  /* width: 360px; */
   width: 500px;
   height: 100px;
   margin: 10px auto;
@@ -66,26 +71,30 @@
   align-items: center;
   float: left;
   color: rgb(255, 255, 255);
+  font-size: 17px;
+  font-weight: 300;
   cursor: pointer;
 }
-.pop-btn.confirm {
-  border-right: 1px solid black;
+.confirm {
+  border-right: 1px solid #ede0ab;
 }
 
 .search_btn {
   width: 100px;
   height: 40px;
-  border-radius: 4px;
-  border-color: rgb(241, 196, 15);
+  border-radius: 2px;
+  border: none;
   background-color: rgb(241, 196, 15);
   color: rgb(255, 255, 255);
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 300;
   display: block;
   margin: 20px auto;
 }
 
 .body_contentbox h3 {
   text-align: center;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .town_location {
@@ -93,5 +102,5 @@
   text-align: center;
 }
 .town_location .town_info {
-  color: rgb(61, 0, 202);
+  color: rgb(55, 186, 238);
 }

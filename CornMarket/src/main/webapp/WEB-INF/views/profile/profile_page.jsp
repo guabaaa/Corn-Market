@@ -30,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                   type="button"
                   value="채팅하기"
                   class="chatting-btn info-btn"
-                  onclick="location.href='${path}/chatting/list'"
+                  onclick="chatListPop()"
                 />
               </c:if>
             </div>
@@ -76,13 +76,17 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <div class="profile_status review"><a href="<c:url value='/profile/' />${profile.user_id}/review">거래후기</a></div>
             </c:if>
           </div>
-          <!-- 리뷰 리스트 -->
-          <div class="profile_review_wrap card-wrap">
-            <c:forEach var="rv" items="${profile.reviewList}">
-              <div class="review_part">
-                <div class="review_nickname">${rv.nickname}</div>
-                <div class="real_review">${rv.review}</div>
-              </div>
+          <!-- 판매중, 판매완료 리스트 -->
+          <div class="home-card-wrap card-wrap">
+            <c:forEach var="sale" items="${profile.saleList}">
+              <article class="card-top" onclick="location.href='<c:url value="/post/"/>${sale.post_id}'">
+                <img class="card-photo" src="${path}${sale.post_img}" />
+                <div class="card-desc">
+                  <div class="card-title">${sale.title}</div>
+                  <div class="card-price">${sale.price}원</div>
+                  <div class="card-region">서울시 ${sale.town_name}</div>
+                </div>
+              </article>
             </c:forEach>
           </div>
         </div>
@@ -96,9 +100,10 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/town/town.js"></script>
     <script src="${path}/resources/js/profile/update_myinfo.js"></script>
+    <script src="${path}/resources/js/chatting/chat_list_popup.js"></script>
     <script>
-      var id_info = $('#id_info').val();
-      var session_id = $('#sessionId').val();
+      var id_info = $('#id_info').val(); //해당 프로필 아이디
+      var session_id = $('#sessionId').val(); //로그인 아이디
       var url = 'http://localhost:8090' + $('#urlBtn').val();
       var link = document.location.href;
       if (session_id == id_info) {

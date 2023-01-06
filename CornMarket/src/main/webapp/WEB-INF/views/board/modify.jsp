@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../base/header_nickname.jsp" />
 <jsp:include page="../base/nav.jsp" />
 
 <form method="post" action="/market/modify">

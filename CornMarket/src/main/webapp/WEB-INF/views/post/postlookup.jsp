@@ -38,30 +38,69 @@
         <div class="board-card-wrap" id="recent_list">
         	<c:forEach items="${list}" var="post">
             <article class="board-card-top">
-                <a class="board-card-link" href="<c:url value='/view?post_id=${post.post_id}'/>" >
+                <a class="board-card-link" href="<c:url value='/post/${post.post_id}'/>" >
                     <img class="board-card-photo" src="${path}${post.post_img}"/>
                     <div class="board-card-desc">
                         <div class="board-card-title">${post.title}</div>
                         <div class="board-card-price">${post.post_id}</div>
-                        <div class="board-card-region">서울시 ${post.town_name}]</div>
+                        <div class="board-card-region">서울시 ${post.town_name}</div>
                     </div>
                 </a>
             </article>
 			</c:forEach>
-        </div>
-        <div class="board-pagination-wrap clearfix">
-            <ul class="board-pagination float--right" id="pages"></ul>
-        </div>
+			
+       <div class="pageInfo_wrap" >
+		<div class="pageInfo_area">
+			<ul id="pageInfo" class="pageInfo">
+			
+				<!-- 이전페이지 버튼 -->
+				<c:if test="${pageMaker.prev}">
+					<li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+				</c:if>
+				
+				<!-- 각 번호 페이지 버튼 -->
+				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					<li class="pageInfo_btn"><a href="?PageNum=${num}">${num}</a></li>
+				</c:forEach>
+				
+				<!-- 다음페이지 버튼 -->
+				<c:if test="${pageMaker.next}">
+					<li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+				</c:if>	
+				
+			</ul>
+		 </div>
+		</div>
 
+        <form id="moveForm"action="get">
+        	<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum }">
+        	<input type="hidden" name="amount" value="${pageMake.cri.amount }"> 
+        </form>
+
+	
     </section>
     <input type="hidden" id="path_url" value="${path}" />
-	<input type="hidden" id="post_url" value="<c:url value='/post'/>" />
+	<input type="hidden" id="post_url" value="<c:url value='/post/'/>" />
 
+<script>
+//페이지 이동 
+$(".pageInfo a").on("click", function(e){ 
+	 
+		    e.preventDefault();
+		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		    moveForm.attr("action", "/post/postlookup");
+		    moveForm.submit();
+    
+		});
+
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="${path}/resources/js/post/postlookup.js"></script>
+   
 
 	<jsp:include page="../base/footer.jsp"/>
+
 </body>
 
 </html>

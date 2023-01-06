@@ -54,6 +54,7 @@ public class MemberController {
 	} 
 
 	//회원가입 완료  
+
 	@PostMapping("/signup")
 	public String signupPOST(Member member) throws Exception {
 	dao.memberSignup(member);
@@ -125,15 +126,9 @@ public class MemberController {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	  
-	   
 		
 		return "카카오 토큰 요청 완료, 토큰요청에 대한 응답  :"+response.getBody(); 
-		
 	}
-	
-	
-	
 
 	// 로그인페이지  
 	@GetMapping("/login")
@@ -149,7 +144,6 @@ public class MemberController {
 		System.out.println("id : " + member.getUser_id());
 		System.out.println("passwd : " + member.getUser_pw());
 		System.out.println("rememberMe : " + rememberMe);
-
 
 		//1.아이디 패스워드확인 
 		Member	dbMember = dao.memberLogin(member);
@@ -169,10 +163,9 @@ public class MemberController {
 		HttpSession session= request.getSession(); // 섹션 얻어오는거임 
 		session.setAttribute("id", member.getUser_id());
         //4. 메인화면으로 이동 
+
 		return "redirect:/main";
 	   }
-	
-	
 	
 	//로그아웃 
 	@GetMapping("/logout")

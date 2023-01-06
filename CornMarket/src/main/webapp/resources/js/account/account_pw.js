@@ -1,14 +1,17 @@
 //전송할 이메일 맞는지 확인
-
 function checkEmail() {
   let email = $('#memberEmail').val() + '@' + $('#memberEmail2').val();
   console.log(email);
+  let id = $('#conInput').val();
+  let name = $('#memberNm2').val();
+  let searchPw = {
+    user_id: id,
+    user_name: name,
+  };
   $.ajax({
     type: 'POST',
     url: pwUrl + '/mail/check',
-
     data: email,
-
     contentType: 'text/plain; charset=utf-8',
     success: function (data) {
       console.log(data);
