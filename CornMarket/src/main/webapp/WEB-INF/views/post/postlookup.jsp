@@ -69,9 +69,13 @@ prefix="c" %>
             <!-- 이전페이지 버튼 -->
             <c:if test="${pageMaker.prev}">
               <li class="pageInfo_btn previous">
-                <a href="${path}/post?PageNum=${pageMaker.startPage-1}"
-                  >Previous</a
-                >
+                <a href="${path}/post?PageNum=${pageMaker.startPage-1}">
+                  <img
+                    class="post_btn"
+                    src="${path }/resources/images/post/prev.png"
+                    width="28px"
+                    height="28px"
+                /></a>
               </li>
             </c:if>
 
@@ -82,14 +86,22 @@ prefix="c" %>
               end="${pageMaker.endPage}"
             >
               <li class="pageInfo_btn">
-                <a href="${path}/post?PageNum=${num}">${num}</a>
+                <a href="${path}/post?PageNum=${num}" id="clickPage${num }"
+                  >${num}</a
+                >
               </li>
             </c:forEach>
 
             <!-- 다음페이지 버튼 -->
             <c:if test="${pageMaker.next}">
               <li class="pageInfo_btn next">
-                <a href="${path}/post?PageNum=${pageMaker.endPage + 1}">Next</a>
+                <a href="${path}/post?PageNum=${pageMaker.endPage + 1}">
+                  <img
+                    class="post_btn"
+                    src="${path }/resources/images/post/next.png"
+                    width="28px"
+                    height="28px"
+                /></a>
               </li>
             </c:if>
           </ul>
@@ -97,7 +109,13 @@ prefix="c" %>
       </div>
 
       <form id="moveForm" action="get">
-        <input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}" />
+        <input
+          type="hidden"
+          name="pageNum"
+          id="loadPage"
+          value="${pageMaker.cri.pageNum}"
+        />
+
         <input type="hidden" name="amount" value="${pageMake.cri.amount}" />
       </form>
     </section>

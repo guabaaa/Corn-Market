@@ -156,13 +156,45 @@ list css
 
 .pageInfo li {
     float: left;
-    font-size: 20px;
+
     margin-left: 18px;
-    padding: 7px;
-    font-weight: 500;
+
+
+}
+
+.post_btn {
+    width: 30px;
+    height: 30px;
+}
+
+.pageInfo_wrap img {
+    filter: invert(75%) sepia(54%) saturate(2306%) hue-rotate(2deg) brightness(110%) contrast(89%);
 }
 
 .pageInfo_area a {
     color: black;
     text-decoration: none;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.pageInfo_btn a {
+    line-height: 30px;
+}
+
+.pageInfo_btn a.on {
+    color: #ffffff;
+    background-color: rgb(241, 196, 15);
+    border-radius: 2px;
+}
+
+.pageInfo_btn a:hover {
+    color: rgb(241, 196, 15);
+}
+
+.pageInfo_btn a:focus {
+    color: #ffffff;
+    background-color: rgb(241, 196, 15);
+    border-radius: 2px;
 }
