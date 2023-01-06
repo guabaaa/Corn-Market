@@ -14,14 +14,14 @@ public class Criteria
     
     /* 기본 생성자 -> 기봅 세팅 : pageNum = 1, amount = 10 */
     public Criteria() {
-        this(1,10);
+        this(1);
         this.skip = 0;
     }
     
     /* 생성자 => 원하는 pageNum, 원하는 amount */
-    public Criteria(int pageNum, int amount) {
+    public Criteria(int pageNum) {
         this.pageNum = pageNum;
-        this.amount = amount;
+        this.amount = 12;
         this.skip = (pageNum-1)*amount;
     }
 

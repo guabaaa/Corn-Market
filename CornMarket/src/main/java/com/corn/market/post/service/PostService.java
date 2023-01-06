@@ -70,21 +70,23 @@ public class PostService {
 			return content.replace("\n", "<br>");
 		return content;
 	}
-	
-	
+
+
 	// 판매물  목록 + 페이징
-	public List<PostList> getListPaging(Criteria cri ) throws Exception {
-	 return dao.getListPaging(cri);
+	public List<PostList> getListPaging(Criteria cri) throws Exception {
+		List<PostList> list = (ArrayList<PostList>) dao.getListPaging(cri);
+		getPostImgThumbnail(list);
+		return list;
 	}
-	
+
 	// 판매글 카테고리별 조회 + 페이징
-		public List<PostList> selectCategoryList(Criteria cri ) throws Exception {
-		 return dao.getListPaging(cri);
-		}
-	
-	//판매물 총 갯수 
-	public int getTotal() throws Exception {
-		 return dao.getTotal();
+	public List<PostList> selectCategoryList(Criteria cri) throws Exception {
+		return dao.getListPaging(cri);
 	}
-	
+
+	//판매글 총 갯수 
+	public int getTotal() throws Exception {
+		return dao.getTotal();
+	}
+
 }
