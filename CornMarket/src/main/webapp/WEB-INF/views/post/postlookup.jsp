@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<jsp:include page="../base/header.jsp"/>
     <!-- 상품 리스트 -->
     <section class="board-lookup-wrap">
         <div>
@@ -96,11 +97,10 @@ $(".pageInfo a").on("click", function(e){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="${path}/resources/js/post/postlookup.js"></script>
-   <script>
+   
 
-		
-</script>
+	<jsp:include page="../base/footer.jsp"/>
+
 </body>
-
 
 </html>

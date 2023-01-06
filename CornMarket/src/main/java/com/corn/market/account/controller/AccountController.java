@@ -69,7 +69,7 @@ public class AccountController {
 		return "account/pwaccount";
 	}
 	
-	//이메일 인증번호 전송전 이메일 확인
+	//이메일 인증번호 전송전 이메일 확인 checkEmail()
 	@ResponseBody
 	@RequestMapping(value = "/account/pw/mail/check", method = RequestMethod.POST)
 	public int checkMail(@RequestBody String email) {
@@ -79,7 +79,7 @@ public class AccountController {
 		return check;
 	}
 	
-	//비밀번호 찾기 전 확인
+	//비밀번호 찾기 전 확인 checkPw()
 	@ResponseBody
 	@RequestMapping(value = "/account/pw/check", method = RequestMethod.POST)
 	public int checkSearchPw(@RequestBody SearchPw searchPw) {

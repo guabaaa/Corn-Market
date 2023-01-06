@@ -68,7 +68,7 @@ window.addEventListener("load", function() {
        
    } 
    
-   
+ 
 //아이디  중복확인
 function idcheck(){
 	 let user_id= $('#user_id').val();
@@ -92,10 +92,8 @@ function idcheck(){
 			}
 		
 			});
-
-	     }
 	     
-	 //닉네임  중복확인
+	//닉네임  중복확인
 	function nickcheck(){
 	   
 	 let nickname= $('#nickname').val();
