@@ -1,6 +1,7 @@
 package com.corn.market.post.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.corn.market.post.domain.Criteria;
+import com.corn.market.post.domain.Page;
 import com.corn.market.common.fileUpload.FileUploadService;
 import com.corn.market.post.domain.PostList;
 import com.corn.market.post.domain.PostVO;
@@ -27,7 +31,7 @@ public class PostController {
 	@Autowired
 	private FileUploadService fileService;
 
-	// 판매글 전체 조회 페이지 (기본 최신순)
+	/* 판매글 전체 조회 페이지 (기본 최신순)
 	@GetMapping("/post")
 	public String postRecentList(Model model) throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostList();
@@ -35,7 +39,20 @@ public class PostController {
 		model.addAttribute("list",list);
 		return "post/postlookup";
 		
-	} 
+	} */
+	
+	/* 판매글 전체 조회 페이지(페이징 적용) */
+    @GetMapping("/post")
+    public String boardListGET(Model model, Criteria cri) throws Exception {
+        
+        model.addAttribute( "list", postService.getListPaging(cri) );            
+        int total = postService.getTotal();
+        Page pageMake = new Page(cri, total);
+        model.addAttribute("pageMaker", pageMake);  
+        return "post/postlookup";
+    } 
+    
+    
 	// 판매글 카테고리별 조회
 	@ResponseBody
 	@GetMapping("/post/category/{category_id}")
@@ -43,6 +60,8 @@ public class PostController {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostCategoryList(category_id);
 		return list;
 	} 
+	
+	
 	// 판매글 지역별 조회
 	@ResponseBody
 	@GetMapping("/post/town/{town_code}")
@@ -107,5 +126,18 @@ public class PostController {
 		postService.deletePost(post_id);
 		return "redirect:/post";
 	}
+	
 
-}
+	   
+	
+	
+	
+
+        
+    }
+ 
+     
+
+
+	 
+

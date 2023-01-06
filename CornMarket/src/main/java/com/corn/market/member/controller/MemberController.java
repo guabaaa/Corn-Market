@@ -30,54 +30,52 @@ public class MemberController {
 	// 회원가입 페이지 이동 
 	@GetMapping("/signup")
 	public String signupForm() {
-		System.out.println("회원가입 페이지 ");
-		return "signup/signUp";
+	System.out.println("회원가입 페이지 ");
+	return "signup/signUp";
 	} // loginForm
 
-	//회원가입 db 전달  
+
+	//회원가입 완료 
+
 	@PostMapping("/signup")
 	public String signupPOST(Member member) throws Exception {
-
-		System.out.println(" signupform 호출  ");
-		// 회원가입 실행
-		dao.memberSignup(member);
-		System.out.println(" signup service 성공   ");
-		return "redirect:/login";
+	dao.memberSignup(member);
+    return "redirect:/login";
 	}
 
 
+	//아이디 중복확인 
 	@ResponseBody
 	@GetMapping("/idcheck")
-	public String idcheck(String user_id) {
-		
-		System.out.print(user_id);
-		
-		int result=0;
-		
-		try {
-			result = dao.idCheck(user_id);
+	public String idcheck(String user_id) throws Exception {
+	
+	int result=dao.idCheck(user_id) ;  
+
+
+	try {
+		result = dao.idCheck(user_id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 		}
-		return String.valueOf(result) ;
-	} // loginForm
+	return String.valueOf(result);
+	} 
 	
-	
+	//닉네임 중복확인 
 	@ResponseBody
 	@GetMapping("/nickcheck")
-	public String nickcheck(String nickname) {
+	public String nickcheck(String nickname) throws Exception {
 		
-		int result=0;
+	int result=dao.nicknameCheck(nickname);
 		
-		try {
-			result = dao.idCheck(nickname);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	try {
+		result = dao.idCheck(nickname);
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 		}
-		return String.valueOf(result) ;
-	} // loginForm
+	return String.valueOf(result);
+	} 
 	
 	
 	//----------------------로그인 --------------------//
@@ -98,7 +96,7 @@ public class MemberController {
 		System.out.println("passwd : " + member.getUser_pw());
 		System.out.println("rememberMe : " + rememberMe);
 
-		// 1. id 존재여부
+		// 1. 아이디 + 비밀번호  로그인 가능 여부 
 		try {
 			Member	dbMember = dao.getMemberById(member);
 			System.out.println(dbMember);
@@ -112,7 +110,7 @@ public class MemberController {
 		} // 데이터에있는 아이디 가져와 
 
 
-		// 3. 로그인 유지 체크했는지
+		// 2. 로그인 유지 체크했는지
 		if (rememberMe == true) { // 로그인 유지에 체크 했을 때
 			// 쿠키등록하기
 			Cookie cookie = new Cookie("userId", member.getUser_id());
@@ -121,19 +119,19 @@ public class MemberController {
 
 			response.addCookie(cookie); //HttpServletResponse response,
 		}
-		// 4. 세션 등록
+		// 3. 세션 등록
 		HttpSession session= request.getSession(); // 섹션 얻어오는거임 
 		session.setAttribute("id", member.getUser_id());
 
-		// 5. 로그인 성공 메세지 띄우고, 메인화면으로 이동
+		// 4. 로그인 성공 메세지 띄우고, 메인화면으로 이동
 		System.out.println("로그인성공 ");
 
 		return "redirect:/main";
 	}
 	
-	//로그인
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
+		//로그아웃
+		@GetMapping("/logout")
+		public String logout(HttpSession session) {
 		session.removeAttribute("id");
 		session.invalidate();
 		return "redirect:/login";
