@@ -71,15 +71,16 @@ window.addEventListener("load", function() {
  
 //아이디  중복확인
 function idcheck(){
-	 let user_id= $('#user_id').val();
+	let user_id= $('#member_id').val();
 
 	$.ajax({
+	type: 'POST',
  	url: '/market/idcheck',
-    data: {user_id:user_id},
-    
-   success:function(data){
-   console.log(data);
-		if(data == "0"){
+    data: user_id,
+    datatype: 'json',
+   	success:function(data){
+   		console.log(data);
+		if(data == 0){
 		alert("사용 가능한 아이디입니다.");
 		}
 	    else {
@@ -100,11 +101,11 @@ function idcheck(){
 
 	  $.ajax({
 	url: '/market/nickcheck',
-   data: {nickname:nickname},
-
+  	data: {nickname:nickname},
+	datatype: 'json',
    success:function(data){
    console.log(data);
-		if(data == "0"){
+		if(data == 0){
 		alert("사용 가능한  닉네임입니다.");
 		}
 	    else{

@@ -311,7 +311,7 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 						<div class="join_main">아이디</div>
 						<input type="text" class="join_input" name="user_id"
 							id="member_id" /><br /> <input type="button"
-							class="join_check_again" value="중복확인" id="idCheck" type="button" />
+							class="join_check_again" onclick="idcheck()" value="중복확인" id="idCheck" type="button" />
 							<!--   id값변경 doublecheck_id-> idCheck -->
 					</div>
 					<p id="id_error" class="error"></p>

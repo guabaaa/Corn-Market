@@ -65,9 +65,8 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("/idcheck")
 	public int idcheck(Member member) throws Exception {
-		
 	    int result= dao.idCheck(member);	
-	    System.out.println(result);
+	    System.out.println(member);
 		return result ;	
 	} 
 

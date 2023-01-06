@@ -106,6 +106,7 @@ h2{
 	display: block;
 	width: 300px;
 	height: 45px;
+	font-weight: bold;
     cursor:pointer;
 }
 /* 네이버 로그인 버튼 */
