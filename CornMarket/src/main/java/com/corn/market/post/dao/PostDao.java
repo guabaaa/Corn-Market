@@ -70,6 +70,15 @@ public class PostDao {
 	public int getCategoryTotal(String category_id) throws Exception {
 		return session.selectOne(namespace + "getCategoryTotal", category_id); 
 	}
+	
+	//판매글 검색 (페이징)
+	public List<PostList> selectSearchResult(Map<String, Object> searchMap) {
+		return session.selectList(namespace + "selectSearchResult", searchMap);
+	}
+	//판매글 검색 총 갯수 
+	public int getSearchTotal(String keyword) throws Exception {
+		return session.selectOne(namespace + "getSearchTotal", keyword); 
+	}
 
 
 

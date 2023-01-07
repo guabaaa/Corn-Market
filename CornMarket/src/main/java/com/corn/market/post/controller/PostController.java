@@ -39,13 +39,24 @@ public class PostController {
 		
 	} */
 	
+	//판매글 검색
+	@GetMapping("/post/search")
+	public String getSearchResult(String keyword, Model model, Criteria cri) throws Exception {
+        model.addAttribute("list", postService.getSearchResult(cri, keyword));            
+        int total = postService.getSearchTotal(keyword);
+        Page pageMake = new Page(cri, total);
+        System.out.println(cri.getPageNum());
+        model.addAttribute("pageMaker", pageMake);  
+        model.addAttribute("keyword",keyword);
+        return "post/postlookup_search";
+    } 
+	
 	/* 판매글 전체 조회 페이지(페이징 적용) */
     @GetMapping("/post")
     public String boardListGET(Model model, Criteria cri) throws Exception {
         model.addAttribute( "list", postService.getListPaging(cri) );            
         int total = postService.getTotal();
         Page pageMake = new Page(cri, total);
-        System.out.println(cri.getPageNum());
         model.addAttribute("pageMaker", pageMake);  
         return "post/postlookup";
     } 
@@ -56,7 +67,6 @@ public class PostController {
     	ArrayList<PostList> list = (ArrayList<PostList>) postService.getCategoryList(cri, id);
     	model.addAttribute("list",list);
     	Page pageMake = new Page(cri, postService.getCategoryTotal(id));
-    	System.out.println(postService.getCategoryTotal(id));
     	model.addAttribute("pageMaker", pageMake);
     	return "post/postlookup_category";
 	}
@@ -68,7 +78,7 @@ public class PostController {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostCategoryList(category_id);
 		return list;
 	} 
-	// 판매글 지역별 조회
+	// 판매글 지역별 조회 (ajax)
 	@ResponseBody
 	@GetMapping("/post/town/{town_code}")
 	public ArrayList<PostList> postTownList(@PathVariable("town_code") String town_code) throws Exception {

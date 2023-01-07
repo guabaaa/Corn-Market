@@ -100,5 +100,20 @@ public class PostService {
 	public int getCategoryTotal(String category_id) throws Exception {
 		return dao.getCategoryTotal(category_id);
 	}
+	//판매글 검색 총 갯수 
+	public int getSearchTotal(String keyword) throws Exception {
+		return dao.getSearchTotal(keyword);
+	}
+	
+	//판매글 검색 (페이징)
+	public List<PostList> getSearchResult(Criteria cri, String keyword) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("keyword", keyword);
+		searchMap.put("pageNum", cri.getPageNum());
+		searchMap.put("amount", cri.getAmount());
+		List<PostList> list = (ArrayList<PostList>) dao.selectSearchResult(searchMap);
+		getPostImgThumbnail(list);
+		return list;
+	}
 
 }

@@ -19,7 +19,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       <div>
         <h1 class="board-lookup-title" id="onchange" name="onchange">사기</h1>
         <div class="board-select-wrap">
-          <p class="sort-way" id="sortway" name="sortway">${list[0].category_name}</p>
+          <p class="sort-way" id="sortway" name="sortway">${keyword} 검색 결과</p>
           <select class="sort-way-select1" id="sortchoice1" name="sortchoice1" onchange="categoryChange(this)">
             <option value="recent">최신글</option>
             <option value="category">카테고리별</option>
@@ -52,8 +52,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <!-- 이전페이지 버튼 -->
               <c:if test="${pageMaker.prev}">
                 <li class="pageInfo_btn previous">
-                  <a href="${path}/post/category?id=${list[0].category_id}&PageNum=${pageMaker.startPage-1}">
-                    <img
+                  <a href="${path}/post/search?keyword=${keyword}&PageNum=${pageMaker.startPage-1}">
+                  	<img
                     class="post_btn"
                     src="${path }/resources/images/post/prev.png"
                     width="28px"
@@ -65,13 +65,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
               <!-- 각 번호 페이지 버튼 -->
               <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                <li class="pageInfo_btn"><a href="${path}/post/category?id=${list[0].category_id}&PageNum=${num}" id="clickPage${num}">${num}</a></li>
+                <li class="pageInfo_btn"><a href="${path}/post/search?keyword=${keyword}&PageNum=${num}" id="clickPage${num}">${num}</a></li>
               </c:forEach>
 
               <!-- 다음페이지 버튼 -->
               <c:if test="${pageMaker.next}">
-                <li class="pageInfo_btn next"><a href="${path}/post/category?id=${list[0].category_id}&PageNum=${pageMaker.endPage + 1}">
-					<img
+                <li class="pageInfo_btn next"><a href="${path}/post/search?keyword=${keyword}&PageNum=${pageMaker.endPage + 1}">
+                	<img
                     class="post_btn"
                     src="${path }/resources/images/post/next.png"
                     width="28px"
