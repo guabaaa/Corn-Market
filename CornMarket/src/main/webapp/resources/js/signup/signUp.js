@@ -71,20 +71,20 @@ window.addEventListener("load", function() {
  
 //아이디  중복확인
 function idcheck(){
-	let user_id= $('#member_id').val();
+	let user_id= $('#user_id').val();
 
 	$.ajax({
 	type: 'POST',
  	url: '/market/idcheck',
     data: user_id,
-    datatype: 'json',
+    contentType: 'text/plain; charset=utf-8',
    	success:function(data){
    		console.log(data);
 		if(data == 0){
-		alert("사용 가능한 아이디입니다.");
+			alert("사용 가능한 닉네임입니다.");
 		}
-	    else {
-			alert("사용중인 아이디입니다.");
+	    else if(data == 1) {
+			alert("사용중인 닉네임입니다.");
 	    }
 		},
 		
@@ -93,18 +93,20 @@ function idcheck(){
 			}
 		
 			});
-	     
-	//닉네임  중복확인
+	}
+	
+//닉네임  중복확인
 	function nickcheck(){
 	   
 	 let nickname= $('#nickname').val();
 
 	  $.ajax({
-	url: '/market/nickcheck',
-  	data: {nickname:nickname},
-	datatype: 'json',
-   success:function(data){
-   console.log(data);
+	  	type: 'GET',
+		url: '/market/nickcheck',
+	  	data: nickname,
+		contentType: 'text/plain; charset=utf-8',
+	   	success:function(data){
+	   	console.log(data);
 		if(data == 0){
 		alert("사용 가능한  닉네임입니다.");
 		}
@@ -121,5 +123,4 @@ function idcheck(){
 
 	     }
 	     
-	}
 	 
