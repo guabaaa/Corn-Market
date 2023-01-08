@@ -122,9 +122,18 @@ public class MemberController {
 	@GetMapping("/login")
 	public String loginForm() {
 		return "login/login";
-	}  
+	} 
+	
+	// 로그인 전 아이디, 비밀번호 확인
+	@ResponseBody
+	@PostMapping("/login/checklogin")
+	public int checkLogin(@RequestBody Member member) throws Exception {
+		// 아이디 비밀번호 확인
+		int result = dao.checkLogin(member); 
+		return result; //아이디 비밀번호 일치하면 1, 아니면 0
+	}
 
-	//로그인 진행 
+	// 로그인 진행 
 	@PostMapping("/login")
 	public String login(Member member, boolean rememberMe, 
 			HttpServletResponse response,HttpServletRequest request) throws Exception {
@@ -133,29 +142,21 @@ public class MemberController {
 		System.out.println("passwd : " + member.getUser_pw());
 		System.out.println("rememberMe : " + rememberMe);
 
-		//1.아이디 패스워드확인 
-		Member dbMember = dao.memberLogin(member);
-		System.out.println(dbMember);
-		if (dbMember == null) {
-			System.out.println("아이디 비밀번호 확인바랍니다."); 
-			return "redirect:/login";
-			//2. 로그인 유지 체크 확인 
-		}else if (rememberMe == true) { 
-
+		// 로그인 유지 체크 확인 
+		if (rememberMe == true) { 
 			Cookie cookie = new Cookie("userId", member.getUser_id());
 			cookie.setMaxAge(60 * 60 * 24 * 7);
 			cookie.setPath("/"); 
 			response.addCookie(cookie);
 		}
-		//3. 아이디 섹션 등록 
+		// 아이디 세션 등록 
 		HttpSession session= request.getSession(); // 섹션 얻어오는거임 
 		session.setAttribute("id", member.getUser_id());
-		//4. 메인화면으로 이동 
-
+		// 메인화면으로 이동 
 		return "redirect:/main";
 	}
 
-	//로그아웃 
+	// 로그아웃 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("id");

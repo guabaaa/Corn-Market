@@ -29,12 +29,12 @@ public class MemberDao {
 	}
 
 	//로그인 
-	public  Member memberLogin(Member member) throws Exception{
+	public Member memberLogin(Member member) throws Exception{
 		return session.selectOne(namespace + "memberLogin", member);
 	}
 	//로그인 확인 비번+아이디 일치 확인 
-	public int Login(Member vo) throws Exception {
-		return session.selectOne(namespace + "Login",vo);
+	public int checkLogin(Member member) throws Exception {
+		return session.selectOne(namespace + "checkLogin", member);
 	}
 
 }

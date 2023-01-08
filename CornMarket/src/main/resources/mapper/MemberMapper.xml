@@ -23,13 +23,13 @@
 	</insert>
 
 	<!-- 로그인 -->
-	<select id="memberLogin" resultType="Member">
+	<select id="memberLogin" parameterType="Member" resultType="Member">
 		SELECT user_id, user_pw
 		FROM USER_TBL22
 		WHERE user_id = #{user_id} AND user_pw = #{user_pw}
 	</select>
 	<!-- 로그인시 아이디 비밀번호 확인 -->
-	<select id="Login" parameterType="Member" resultType="Int">
+	<select id="checkLogin" parameterType="Member" resultType="Int">
 		SELECT COUNT(*)
 		FROM user_tbl22
 		WHERE user_id = #{user_id} AND user_pw = #{user_pw}
