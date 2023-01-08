@@ -8,6 +8,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/main/header.css" />
+<script type="text/javascript">
+function enterSearch(){
+	if(event.keyCode == 13){
+		searchItem();
+	}
+}
+function searchItem(){
+	var x = document.getElementById("text").value;
+	window.location.href = "${path}/post/search?keyword=" + x;
+}
+</script>
 </head>
 <body>
 	<header class="header-wrap">
@@ -29,9 +40,9 @@
 		<a class="header-img-wrap" onclick="location.href='<c:url value="/main/"/>'"><img
 			src="${path }/resources/images/header/logo.png" width="250px" height="120px"></a>
 		<div class="header-search-wrap">
-			<input class="searchbar" type="search" placeholder="물품이나 동네를 검색해보세요." />
+			<input id="text" class="searchbar" type="search" placeholder="물품이나 동네를 검색해보세요." onkeydown="enterSearch()"/>
 			<img src="${path }/resources/images/header/searchbtn.png"
-				width="40px" height="40px" />
+				width="40px" height="40px" onclick="searchItem()"/>
 		</div>
 		<div class="header-icon-wrap">
 			<div class="loginsignup-wrap">
