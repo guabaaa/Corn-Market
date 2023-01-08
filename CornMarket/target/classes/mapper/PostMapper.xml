@@ -75,52 +75,76 @@
 		SET post_status = '삭제' 
 		WHERE post_id = #{post_id}
 	</update>
-
 	
 	<!-- 게시물 목록(페이징) -->
 	<select id="getListPaging" parameterType="Criteria" resultType="PostList">
     <![CDATA[ 
 		SELECT rn, post_id,user_id,nickname, category_id, town_name, title, price, post_img FROM
 		(
-			SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ rownum AS rn, p.post_id, p.user_id, u.nickname, p.category_id, t.town_name, p.title, p.price, p.post_img 
+			SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ ROW_NUMBER() OVER (ORDER BY created DESC) AS rn, p.post_id, p.user_id, u.nickname, p.category_id, t.town_name, p.title, p.price, p.post_img 
 			FROM post_tbl22 p 
 			LEFT OUTER JOIN town_tbl22 t ON p.town_code = t.town_code
 			LEFT OUTER JOIN user_tbl22 u ON p.user_id = u.user_id   
-			WHERE post_status = '판매중' AND rownum <= #{pageNum} * #{amount}
+			WHERE post_status = '판매중'
 	    )
-		WHERE rn > (#{pageNum} - 1) * #{amount}
+		WHERE rn BETWEEN (#{pageNum} - 1) * #{amount} + 1 AND #{pageNum} * #{amount}
     ]]>
     </select>
 
-	<!-- 게시물 목록(페이징) -->
-	<select id="selectCategoryList" parameterType="String" resultType="PostList">
+	<!-- 게시물 카테고리별 목록(페이징) -->
+	<select id="selectCategoryList" parameterType="Map" resultType="PostList">
     <![CDATA[ 
-		SELECT rn, post_id,user_id, nickname, category_id, town_name, title, price, post_img FROM
+		SELECT rn, post_id, user_id, nickname, category_id, category_name, town_name, title, price, post_img FROM
 		(
-			SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ rownum AS rn, 
-				p.post_id, p.user_id, u.nickname, p.category_id,t.town_name, p.title, p.price, p.post_img 
+			SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ ROW_NUMBER() OVER (ORDER BY created DESC) AS rn, 
+				p.post_id, p.user_id, u.nickname, p.category_id, c.category_name, t.town_name, p.title, p.price, p.post_img 
 			FROM post_tbl22 p 
-			LEFT OUTER JOIN town_tbl22 t ON p.town_code = t.town_code
-			LEFT OUTER JOIN user_tbl22 u ON p.user_id = u.user_id   
-			WHERE category_id = #{category_id} AND post_status = '판매중' AND rownum <= #{pageNum} * #{amount}
+			LEFT OUTER JOIN town_tbl22 t ON p.town_code = t.town_code 
+			LEFT OUTER JOIN user_tbl22 u ON p.user_id = u.user_id 
+			LEFT OUTER JOIN category_tbl22 c ON p.category_id= c.category_id 
+			WHERE p.category_id = #{category_id} AND post_status = '판매중' 
 		)
-		WHERE rn > (#{pageNum} -1) * #{amount}
+		WHERE rn BETWEEN (#{pageNum} - 1) * #{amount} + 1 AND #{pageNum} * #{amount}
     ]]>
 	</select>
 
-	<!-- 게시물 총 갯수 -->
+	<!-- 게시물 총 개수 -->
 	<select id="getTotal" resultType="int">
-
-		select count(*) from post_tbl22 WHERE post_status = '판매중'
-
+		SELECT count(*) FROM post_tbl22 WHERE post_status = '판매중'
+	</select>
+	<!-- 카테고리별 게시물 총 개수 -->
+	<select id="getCategoryTotal" parameterType="String" resultType="int">
+		SELECT count(*) FROM post_tbl22 WHERE post_status = '판매중' AND category_id = #{category_id}
 	</select>
 
-	<!-- 페이징 쿼리 2 SELECT rn, post_id,user_id,nickname, category_id, town_name, 
-		title, price, post_img from( SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ 
-		rownum AS rn, p.post_id, p.user_id, u.nickname, p.category_id, t.town_name, 
-		p.title, p.price, p.post_img FROM post_tbl22 p LEFT OUTER JOIN town_tbl22 
-		t ON p.town_code = t.town_code LEFT OUTER JOIN user_tbl22 u ON p.user_id 
-		= u.user_id WHERE post_status = '판매중' order by post_id) WHERE rn BETWEEN 
-		(#{pageNum} -1) * #{amount} AND #{pageNum} * #{amount} -->
-
+	<!-- 판매글 검색 (페이징) -->
+	<select id="selectSearchResult" parameterType="Map" resultType="PostList">
+	<![CDATA[
+		SELECT rn, post_id, user_id, nickname, category_id, category_name, town_name, title, price, post_img FROM
+		(
+			SELECT /*+INDEX_DESC(post_tbl22 pk_board) */ ROW_NUMBER() OVER (ORDER BY created DESC) AS rn, 
+				p.post_id, p.user_id, u.nickname, p.category_id, c.category_name, t.town_name, p.title, p.price, p.post_img 
+			FROM post_tbl22 p 
+			LEFT OUTER JOIN town_tbl22 t ON p.town_code = t.town_code 
+			LEFT OUTER JOIN user_tbl22 u ON p.user_id = u.user_id 
+			LEFT OUTER JOIN category_tbl22 c ON p.category_id= c.category_id 
+			WHERE post_status = '판매중' AND (category_name LIKE '%'||#{keyword}||'%' OR town_name LIKE '%'||#{keyword}||'%' OR title LIKE '%'||#{keyword}||'%' OR content LIKE '%'||#{keyword}||'%')
+		)
+		WHERE rn BETWEEN (#{pageNum} - 1) * #{amount} + 1 AND #{pageNum} * #{amount}
+	]]>
+	</select>
+	
+	<!-- 판매글 검색 총 개수 -->
+	<select id="getSearchTotal" parameterType="String" resultType="int">
+		SELECT count(*) 
+		FROM post_tbl22 p 
+		JOIN town_tbl22 t  
+		ON p.town_code = t.town_code  
+		JOIN user_tbl22 u 
+		ON p.user_id = u.user_id 
+		JOIN category_tbl22 c 
+		ON p.category_id= c.category_id 
+		WHERE post_status = '판매중' AND (category_name LIKE '%'||#{keyword}||'%' OR town_name LIKE '%'||#{keyword}||'%' OR title LIKE '%'||#{keyword}||'%' OR content LIKE '%'||#{keyword}||'%')
+	</select>
+	
 </mapper>

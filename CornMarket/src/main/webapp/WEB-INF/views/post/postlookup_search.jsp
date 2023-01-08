@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,39 +19,22 @@ prefix="c" %>
       <div>
         <h1 class="board-lookup-title" id="onchange" name="onchange">사기</h1>
         <div class="board-select-wrap">
-          <p class="sort-way" id="sortway" name="sortway">최신글로 조회하기</p>
-          <select
-            class="sort-way-select1"
-            id="sortchoice1"
-            name="sortchoice1"
-            onchange="categoryChange(this)"
-          >
+          <p class="sort-way" id="sortway" name="sortway">${keyword} 검색 결과</p>
+          <select class="sort-way-select1" id="sortchoice1" name="sortchoice1" onchange="categoryChange(this)">
             <option value="recent">최신글</option>
             <option value="category">카테고리별</option>
             <option value="town">지역별</option>
           </select>
-          <select
-            class="sort-way-select2"
-            name="sortchoice2"
-            id="sortchoice2"
-            onchange="showValue(this)"
-          ></select>
+          <select class="sort-way-select2" name="sortchoice2" id="sortchoice2" onchange="showValue(this)"></select>
         </div>
       </div>
 
-      <div
-        class="board-card-wrap"
-        id="category_list"
-        style="display: none"
-      ></div>
+      <div class="board-card-wrap" id="category_list" style="display: none"></div>
       <div class="board-card-wrap" id="town_list" style="display: none"></div>
       <div class="board-card-wrap" id="recent_list">
         <c:forEach items="${list}" var="post">
           <article class="board-card-top">
-            <a
-              class="board-card-link"
-              href="<c:url value='/post/${post.post_id}'/>"
-            >
+            <a class="board-card-link" href="<c:url value='/post/${post.post_id}'/>">
               <img class="board-card-photo" src="${path}${post.post_img}" />
               <div class="board-card-desc">
                 <div class="board-card-title">${post.title}</div>
@@ -63,50 +45,43 @@ prefix="c" %>
           </article>
         </c:forEach>
       </div>
-      <div class="pageInfo_wrap">
-        <div class="pageInfo_area">
-          <ul id="pageInfo" class="pageInfo">
-            <!-- 이전페이지 버튼 -->
-            <c:if test="${pageMaker.prev}">
-              <li class="pageInfo_btn previous">
-                <a href="${path}/post?PageNum=${pageMaker.startPage-1}">
-                  <img
+      
+        <div class="pageInfo_wrap">
+          <div class="pageInfo_area">
+            <ul id="pageInfo" class="pageInfo">
+              <!-- 이전페이지 버튼 -->
+              <c:if test="${pageMaker.prev}">
+                <li class="pageInfo_btn previous">
+                  <a href="${path}/post/search?keyword=${keyword}&PageNum=${pageMaker.startPage-1}">
+                  	<img
                     class="post_btn"
                     src="${path }/resources/images/post/prev.png"
                     width="28px"
                     height="28px"
-                /></a>
-              </li>
-            </c:if>
+                	/>
+				  </a>
+                </li>
+              </c:if>
 
-            <!-- 각 번호 페이지 버튼 -->
-            <c:forEach
-              var="num"
-              begin="${pageMaker.startPage}"
-              end="${pageMaker.endPage}"
-            >
-              <li class="pageInfo_btn">
-                <a href="${path}/post?PageNum=${num}" id="clickPage${num }"
-                  >${num}</a
-                >
-              </li>
-            </c:forEach>
+              <!-- 각 번호 페이지 버튼 -->
+              <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                <li class="pageInfo_btn"><a href="${path}/post/search?keyword=${keyword}&PageNum=${num}" id="clickPage${num}">${num}</a></li>
+              </c:forEach>
 
-            <!-- 다음페이지 버튼 -->
-            <c:if test="${pageMaker.next}">
-              <li class="pageInfo_btn next">
-                <a href="${path}/post?PageNum=${pageMaker.endPage + 1}">
-                  <img
+              <!-- 다음페이지 버튼 -->
+              <c:if test="${pageMaker.next}">
+                <li class="pageInfo_btn next"><a href="${path}/post/search?keyword=${keyword}&PageNum=${pageMaker.endPage + 1}">
+                	<img
                     class="post_btn"
                     src="${path }/resources/images/post/next.png"
                     width="28px"
                     height="28px"
-                /></a>
-              </li>
-            </c:if>
-          </ul>
+                	/>
+				</a></li>
+              </c:if>
+            </ul>
+          </div>
         </div>
-      </div>
 
       <form id="moveForm" action="get">
         <input
@@ -115,8 +90,7 @@ prefix="c" %>
           id="loadPage"
           value="${pageMaker.cri.pageNum}"
         />
-
-        <input type="hidden" name="amount" value="${pageMake.cri.amount}" />
+        <input type="hidden" name="amount" value="${pageMaker.cri.amount}" />
       </form>
     </section>
     <input type="hidden" id="path_url" value="${path}" />
@@ -124,7 +98,6 @@ prefix="c" %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/post/postlookup.js"></script>
-
     <jsp:include page="../base/footer.jsp" />
   </body>
 </html>

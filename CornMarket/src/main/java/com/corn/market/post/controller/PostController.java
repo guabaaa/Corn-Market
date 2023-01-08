@@ -1,7 +1,6 @@
 package com.corn.market.post.controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -41,10 +39,21 @@ public class PostController {
 		
 	} */
 	
+	//판매글 검색
+	@GetMapping("/post/search")
+	public String getSearchResult(String keyword, Model model, Criteria cri) throws Exception {
+        model.addAttribute("list", postService.getSearchResult(cri, keyword));            
+        int total = postService.getSearchTotal(keyword);
+        Page pageMake = new Page(cri, total);
+        System.out.println(cri.getPageNum());
+        model.addAttribute("pageMaker", pageMake);  
+        model.addAttribute("keyword",keyword);
+        return "post/postlookup_search";
+    } 
+	
 	/* 판매글 전체 조회 페이지(페이징 적용) */
     @GetMapping("/post")
     public String boardListGET(Model model, Criteria cri) throws Exception {
-        
         model.addAttribute( "list", postService.getListPaging(cri) );            
         int total = postService.getTotal();
         Page pageMake = new Page(cri, total);
@@ -52,17 +61,24 @@ public class PostController {
         return "post/postlookup";
     } 
     
+    // 판매글 카테고리별 조회 - 메인 (페이징)
+    @GetMapping("/post/category")
+    public String postCategoryListMain(String id, Model model, Criteria cri) throws Exception {
+    	ArrayList<PostList> list = (ArrayList<PostList>) postService.getCategoryList(cri, id);
+    	model.addAttribute("list",list);
+    	Page pageMake = new Page(cri, postService.getCategoryTotal(id));
+    	model.addAttribute("pageMaker", pageMake);
+    	return "post/postlookup_category";
+	}
     
-	// 판매글 카테고리별 조회
+	// 판매글 카테고리별 조회 (ajax)
 	@ResponseBody
-	@GetMapping("/post/category/{category_id}")
+	@PostMapping("/post/category/{category_id}")
 	public ArrayList<PostList> postCategoryList(@PathVariable("category_id") String category_id) throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostCategoryList(category_id);
 		return list;
 	} 
-	
-	
-	// 판매글 지역별 조회
+	// 판매글 지역별 조회 (ajax)
 	@ResponseBody
 	@GetMapping("/post/town/{town_code}")
 	public ArrayList<PostList> postTownList(@PathVariable("town_code") String town_code) throws Exception {
@@ -126,18 +142,5 @@ public class PostController {
 		postService.deletePost(post_id);
 		return "redirect:/post";
 	}
-	
 
-	   
-	
-	
-	
-
-        
-    }
- 
-     
-
-
-	 
-
+}

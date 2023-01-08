@@ -69,7 +69,7 @@ function categoryList() {
   let postUrl = $('#post_url').val();
   let pathUrl = $('#path_url').val();
   $.ajax({
-    type: 'GET',
+    type: 'POST',
     url: postUrl + '/category/' + select2, //카테고리id url로 전송
     dataType: 'json',
     success: function (data) {
@@ -167,5 +167,12 @@ function showValue() {
   if (select1 == 'town') townList(); //지역별 데이터 가져오기 ajax
 }
 
-
-
+$(document).ready(function () {
+  let loadpage = $('#loadPage').val();
+  console.log(loadpage);
+  $('#clickPage' + loadpage).css({
+    color: '#ffffff',
+    'background-color': 'rgb(241, 196, 15)',
+    'border-radius': '2px',
+  });
+});

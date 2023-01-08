@@ -186,6 +186,7 @@ h2{
     background-color: rgb(241, 196, 15);
     color: rgb(255, 255, 255);
     display: block;
+    cursor: pointer;
 }
 
 .join_num{

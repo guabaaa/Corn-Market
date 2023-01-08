@@ -20,6 +20,7 @@
 	 FROM USER_TBL22
 	where user_id = #{user_id}
 	  and user_pw = #{user_pw}
+	</select>
    <select id="Login" parameterType="Member" resultType="Int">
         SELECT COUNT(*)
           FROM user_tbl22

@@ -1,7 +1,9 @@
 package com.corn.market.post.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,21 +72,48 @@ public class PostService {
 			return content.replace("\n", "<br>");
 		return content;
 	}
-	
-	
+
+
 	// 판매물  목록 + 페이징
-	public List<PostList> getListPaging(Criteria cri ) throws Exception {
-	 return dao.getListPaging(cri);
+	public List<PostList> getListPaging(Criteria cri) throws Exception {
+		List<PostList> list = (ArrayList<PostList>) dao.getListPaging(cri);
+		getPostImgThumbnail(list);
+		return list;
 	}
-	
+
 	// 판매글 카테고리별 조회 + 페이징
-		public List<PostList> selectCategoryList(Criteria cri ) throws Exception {
-		 return dao.getListPaging(cri);
-		}
-	
-	//판매물 총 갯수 
+	public List<PostList> getCategoryList(Criteria cri, String category_id) throws Exception {
+		Map<String, Object> cateMap = new HashMap<String, Object>();
+		cateMap.put("category_id", category_id);
+		cateMap.put("pageNum", cri.getPageNum());
+		cateMap.put("amount", cri.getAmount());
+		List<PostList> list = (ArrayList<PostList>) dao.selectCategoryList(cateMap);
+		getPostImgThumbnail(list);
+		return list;
+	}
+
+	//판매글 총 갯수 
 	public int getTotal() throws Exception {
-		 return dao.getTotal();
+		return dao.getTotal();
+	}
+	//판매글 카테고리별 총 갯수 
+	public int getCategoryTotal(String category_id) throws Exception {
+		return dao.getCategoryTotal(category_id);
+	}
+	//판매글 검색 총 갯수 
+	public int getSearchTotal(String keyword) throws Exception {
+		return dao.getSearchTotal(keyword);
 	}
 	
+	//판매글 검색 (페이징)
+	public List<PostList> getSearchResult(Criteria cri, String keyword) {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("keyword", keyword);
+		searchMap.put("pageNum", cri.getPageNum());
+		searchMap.put("amount", cri.getAmount());
+		List<PostList> list = (ArrayList<PostList>) dao.selectSearchResult(searchMap);
+		getPostImgThumbnail(list);
+		return list;
+	}
+
 }
