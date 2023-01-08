@@ -354,7 +354,7 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 		</form>
 	</section>
 	<jsp:include page="../base/footer.jsp" />
-	
+	<input type="hidden" id="url" value="${path}">
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="${path}/resources/js/signup/signUp.js"></script>

@@ -71,11 +71,15 @@ window.addEventListener("load", function() {
  
 //아이디  중복확인
 function idcheck(){
-	let user_id= $('#user_id').val();
-
+	let user_id= $('#member_id').val();
+	let url=$('#url').val();
+	if(user_id == ''){
+		alert("사용할 아이디를 입력해주세요.");
+		return;
+	};
 	$.ajax({
 	type: 'POST',
- 	url: '/market/idcheck',
+ 	url: url + '/idcheck',
     data: user_id,
     contentType: 'text/plain; charset=utf-8',
    	success:function(data){
@@ -98,11 +102,16 @@ function idcheck(){
 //닉네임  중복확인
 	function nickcheck(){
 	   
-	 let nickname= $('#nickname').val();
+	 let nickname= $('#member_nm').val();
+	 let url=$('#url').val();
+		if(nickname == ''){
+			alert("사용할 아이디를 입력해주세요.");
+			return;
+		};
 
 	  $.ajax({
 	  	type: 'GET',
-		url: '/market/nickcheck',
+		url: url + '/nickcheck',
 	  	data: nickname,
 		contentType: 'text/plain; charset=utf-8',
 	   	success:function(data){
