@@ -107,16 +107,17 @@
     display: flex;
     position: absolute;
     right: 10px;
-    top: 30px;
+    top: 20px;
     width: 100px;
     height: 20px;
 }
 .loginsignup-wrap p{
     color: #757576;
+    font-size: 11px;
 }
 .loginsignup-wrap .loginsignup-text{
     margin: 5px;
-    font-size: 13px;
+    font-size: 11px;
     color: #757576;
     line-height: 10px;
 }
