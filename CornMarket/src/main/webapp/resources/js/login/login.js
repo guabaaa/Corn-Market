@@ -1,35 +1,22 @@
-window.addEventListener('load', function () {
-  $('#loginbtn').click(login);
+function login(){
 
-  function login() {
-    let id = $('#id').val();
-    let pw = $('#pw').val();
+	let id = $('#user_id').val();
+    let pw = $('#user_pw').val();
 
     if (id == '') {
       alert('아이디를 입력해주세요');
-      user_id.focus();
+      $('#user_id').focus();
       return false;
     } else if (pw == '') {
       alert('비밀번호를 입력해주세요');
-      user_pw.focus();
+      $('#user_pw').focus();
       return false;
     } else {
+      right_login();
       frm.submit();
-      if (id == '') {
-        alert('아이디를 입력해주세요');
-        $('#id').focus();
-        return false;
-      } else if (pw == '') {
-        alert('비밀번호를 입력해주세요');
-        $('#pw').focus();
-        return false;
-      } else {
-        frm.submit();
-      }
     }
-  }
-});
-/*
+}
+
 function right_login(){
 	
 	let id = $("#id").val();
@@ -59,4 +46,4 @@ function right_login(){
   }); 
   
 }
-*/
+

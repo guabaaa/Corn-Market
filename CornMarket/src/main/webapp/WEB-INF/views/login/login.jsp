@@ -10,17 +10,9 @@
 <link rel="stylesheet" href="${path}/resources/css/login/login.css" />
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="${path}/resources/js/login/login.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<script>
-	function a() {
-		window.location.href = '/market/signup';
-	}
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-
 //카카오로그인
 function kakaoLogin() {
 
