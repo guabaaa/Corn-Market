@@ -35,14 +35,12 @@ public class MemberController {
 	@Autowired
 	MemberDao dao;
 
-
 	//----------------------회원가입---------------------//
-
 	// 회원가입 페이지 이동 
 	@GetMapping("/signup")
 	public String signupForm() {
 		return "signup/signUp";
-	} 
+	}
 
 	//회원가입 완료  
 	@PostMapping("/signup")
@@ -62,7 +60,7 @@ public class MemberController {
 
 	//닉네임 중복체크 
 	@ResponseBody
-	@GetMapping("/nickcheck")
+	@PostMapping("/nickcheck")
 	public int nickcheck(@RequestBody String nickname) throws Exception {
 		int result=dao.nicknameCheck(nickname);
 		System.out.println(nickname + " : " + result);
