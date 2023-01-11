@@ -78,6 +78,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </div>
     </div>
 
+	  <input type="hidden" value="${path}${chat.other_profile_img}" id="other_prf_img" />
 	  <input type="hidden" value="${chat.seller_id}" id="seller_id" />
 	  <input type="hidden" value="${chat.other_nickname}" id="nickname" />
 	  <input type="hidden" value="${chat.post_id}" id="post_id" />

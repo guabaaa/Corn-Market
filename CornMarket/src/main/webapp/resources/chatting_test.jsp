@@ -6,7 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>채팅 - ${chat.other_nickname}</title>
+    <title>채팅 - g누나</title>
     <link rel="stylesheet" href="${path}/resources/css/chatting/popup_chat.css" />
   </head>
   <body>
@@ -20,55 +20,29 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <div class="body-content">
               <div class="body-titlebox">
                 <div class="titlebox1">
-                  <img class="chat_profile" src="${path}${info.profile_img}"  onclick="window.opener.location.href='${path}/profile'"/>
-                  <p>${info.user_name}</p>
+                  <img class="chat_profile" src="${path}/resources/images/profile/profile_img_default.png"  onclick="window.opener.location.href='${path}/profile'"/>
+                  <p>g누나</p>
                   <input type="button" class="chatlist_btn" value="채팅목록" onclick="location.href='<c:url value="/chatting/list"/>'"/>
                 </div>
-                <div class="titlebox2" onclick=" window.opener.location.href='<c:url value="/post/${chat.post_id}"/>'">
-                  <img class="chat_object" src="${path}${chat.post_img}"></img>
+                <div class="titlebox2" onclick=" window.opener.location.href='<c:url value="/post/100249"/>'">
+                  <img class="chat_object" src="${path}/resources/images/post/post_img_09.jpeg"></img>
                   <div class="titlebox2-2">
-                    <p>${chat.post_title}</p>
-                    <p>${chat.post_price}원</p>
+                    <p>한율 토너 나눔해요</p>
+                    <p>0원</p>
                   </div>
                 </div>
               </div>
               <div id="chatArea">
                 <div class="body-contentbox" id="chatMessageArea">
-                <c:set var="dt" value="${chat.chatlist[0].date}"/>
-                <c:set var="ct" value="0"/>
-                <c:forEach var="content" items="${chat.chatlist}" varStatus="st">
-                  <c:if test="${st.index == 0}">
-                    <div class="chat_date" id="chat_date_${st.count}">${content.date}</div>
-              </c:if>
-              <c:if test="${st.index!=0 && content.date!=dt}">
-                    <div class="chat_date" id="chat_date_${st.count}">${content.date}</div>
-                    <c:set var="dt" value="${content.date}"/>
-                    <c:set var="ct" value="${st.count}"/>
-              </c:if>     
-                  
-                  <c:if test="${content.sender_id != id}">
-                  <!-- 타인이 보낸 메시지 -->
-                  <div class="other_profile">
-                    <img class="other_img" src="${path}${chat.other_profile_img}" onclick="window.opener.location.href='${path}/profile/${content.sender_id}'"/>
-                    <div class="other_say">${content.chat_content}</div>
-                    <div class="other_time">${content.time}</div>
-                  </div>
-                  </c:if>
-                  <c:if test="${content.sender_id == id}">
-                  <!-- 본인이 보낸 메시지 -->
-                  <div class="my_profile">
-                    <div class="my_time">${content.time}</div>
-                    <div class="my_say">${content.chat_content}</div>
-                  </div>
-                  </c:if>
-                </c:forEach>
+                
                 </div>
-        <input type="hidden" value="${ct}" id="list_size" />
               </div>
             </div>
           </div>
           <div class="popup-foot">
-          <c:if test="${chat.seller_id == id}">
+          <c:set var="sellid" value="gggg"></c:set>
+          <c:set var="id" value="gggg"></c:set>
+          <c:if test="${sellid == id}">
             <input type="button" value="거래완료" class="deal_end" id="deal_end" />
           </c:if>
             <input type="text" class="chatting" id="message" />
@@ -78,16 +52,16 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       </div>
     </div>
 
-	  <input type="hidden" value="${chat.seller_id}" id="seller_id" />
-	  <input type="hidden" value="${chat.other_nickname}" id="nickname" />
-	  <input type="hidden" value="${chat.post_id}" id="post_id" />
-	  <input type="hidden" value="${chat.room_id}" id="room_id" />
+	  <input type="hidden" value="gggg" id="seller_id" />
+	  <input type="hidden" value="CH" id="nickname" />
+	  <input type="hidden" value="100249" id="post_id" />
+	  <input type="hidden" value="1ee1d151-e2ab-4b97-ae25-8a885167a91a" id="room_id" />
     <input type="hidden" value="<c:url value='/review/post-end'/>" id="dealEndUrl" />
     <input type="hidden" value="<c:url value='/review'/>" id="reviewUrl" />
     <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_content_url" />
-    <input type="hidden" value="${id}" id="user_id" />
+    <input type="hidden" value="gggg" id="user_id" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="${path}/resources/js/chatting/chatting_pop.js"></script>
+    <script src="${path}/resources/chatting_test.js"></script>
   </body>
 </html>

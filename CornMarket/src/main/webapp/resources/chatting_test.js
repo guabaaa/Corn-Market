@@ -1,8 +1,8 @@
 // 웹소켓 연결
 var webSocket;
 function connect() {
-  //webSocket = new WebSocket('ws://localhost:8090/market/chat');
-  webSocket = new WebSocket('ws://192.168.219.107:8090/market/chat');
+  webSocket = new WebSocket('ws://localhost:8090/market/chat');
+  //webSocket = new WebSocket('ws://192.168.219.107:8090/market/chat');
 
   webSocket.onopen = onOpen;
   webSocket.onmessage = onMessage;
@@ -21,8 +21,10 @@ function sendMsg() {
 }
 // 웹소켓에 데이터 전송
 function send(type, msg) {
-  let room = $('#room_id').val();
-  let id = $('#user_id').val();
+  //let room = $('#room_id').val();
+  let room = '1ee1d151-e2ab-4b97-ae25-8a885167a91a';
+  //let id = $('#user_id').val();
+  let id = 'gggg';
   //var msg = $('#message').val(); //메시지 입력 input
   let chattingContent = {
     type: type, // 'enter':웹소켓 연결시, 'send_msg':메시지 전송시, 'out':웹소켓 끊어질시
@@ -71,7 +73,8 @@ function appendSendMessage(msg) {
 // 타인 메시지 채팅창에 추가
 function appendRecvMessage(msg) {
   let time = showTime();
-  let img = $('#other_prf_img').val();
+  //let img = $('#other_prf_img').val();
+  let img = '/resources/images/profile/profile_img_default.png';
   $('#chatMessageArea').append(
     '<div class="other_profile"><img class="other_img" src="' +
       img +
