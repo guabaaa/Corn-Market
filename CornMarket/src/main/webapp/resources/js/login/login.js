@@ -1,62 +1,52 @@
-window.addEventListener('load', function () {
-  $('#loginbtn').click(login);
+function login(){
 
-  function login() {
-    let id = $('#id').val();
-    let pw = $('#pw').val();
+	let id = $('#user_id').val();
+    let pw = $('#user_pw').val();
 
     if (id == '') {
       alert('아이디를 입력해주세요');
-      user_id.focus();
+      $('#user_id').focus();
       return false;
     } else if (pw == '') {
       alert('비밀번호를 입력해주세요');
-      user_pw.focus();
+      $('#user_pw').focus();
       return false;
     } else {
-      frm.submit();
-      if (id == '') {
-        alert('아이디를 입력해주세요');
-        $('#id').focus();
-        return false;
-      } else if (pw == '') {
-        alert('비밀번호를 입력해주세요');
-        $('#pw').focus();
-        return false;
-      } else {
-        frm.submit();
-      }
+      right_login();
+      
     }
-  }
-});
-/*
+}
+
 function right_login(){
 	
-	let id = $("#id").val();
-	let pw = $("#pw").val();
+	let user_id = $("#user_id").val();
+	let user_pw = $("#user_pw").val();
 	let member = {
-	    	user_id: id,
-	    	user_pw: pw,
+	    	user_id:user_id,
+	    	user_pw:user_pw,
 	    };
+	let url = $("#url").val();
 	   
 	$.ajax({
     type: 'POST',
-    url: '/market/login',
+    url: url + '/login/checklogin',
     headers: { 'content-type': 'application/json' }, 
     data: JSON.stringify(member),
+    datatype : 'json',
     success: function (data) {
       console.log(data);
       if (data == 1) {
-        location.href="index2Url";
+        frm.submit();
       } else if (data == 0) {
 		alert("아이디와 비밀번호를 확인하세요");
-		location.href="loginUrl";
+		location.href="/market/login";
         check=false
      }
     },
-    error: function (data) {
+    error: function () {
+    	alert("오류입니다");
     },
   }); 
   
 }
-*/
+

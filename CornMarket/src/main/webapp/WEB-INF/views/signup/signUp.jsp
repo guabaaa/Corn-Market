@@ -8,8 +8,7 @@
 <meta charset="UTF-8" />
 <title>Corn-Market 회원가입</title>
 <link rel="stylesheet" href="${path}/resources/css/signup/signUp.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<jsp:include page="../base/header.jsp" />
@@ -355,33 +354,9 @@ MMS 등으로 게시물을 등록할 경우 발생하는 요금은 회원이 가
 		</form>
 	</section>
 	<jsp:include page="../base/footer.jsp" />
-	
-	<script>
-	//아이디  중복확인
-	$("#idCheck").click(function(){
-		//alert('test1')
-		
-	var id = $('.join_input').val();     // .join_input에 입력되는 값
-	var data = {id : id}                // controller에 넘길 데이터 
-		$.ajax({
-			
-			type : "post",
-			url : "/market/idcheck",
-			data : data,
-			
-		success: function (data) {
-		if(data == 1) {
-			alert("사용중인 아이디입니다.");
-			}else {
-				alert("사용 가능한 아이디입니다.");
-			
-			}
-			}
-		})
-		});
-
-	
-	</script>
+	<input type="hidden" id="url" value="${path}">
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="${path}/resources/js/signup/signUp.js"></script>
 </body>
 </html>
