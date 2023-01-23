@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<jsp:include page="../base/header.jsp" />
 	<div class="board-wrap">
         <form method="post" action="<c:url value='/post/enroll'/>" enctype="multipart/form-data" name="frmregister">
             <div class="board-img-wrap">
@@ -70,7 +71,7 @@
             </div>
         </form>
     </div>
-  
+  	<jsp:include page="../base/footer.jsp" />
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="${path}/resources/js/post/postregister.js"></script>

@@ -38,8 +38,8 @@ function ajax() {
     latitude: latitude,
     longitude: longitude,
   };
-  console.log(town);
-  console.log('이름:' + town_name + ' 위도:' + latitude + ' 경도:' + longitude);
+  //console.log(town);
+  //console.log('이름:' + town_name + ' 위도:' + latitude + ' 경도:' + longitude);
 
   $.ajax({
     type: 'POST',
@@ -47,11 +47,11 @@ function ajax() {
     headers: { 'content-type': 'application/json' },
     data: JSON.stringify(town),
     success: function () {
-      console.log('데이터 전송 성공');
+      //console.log('데이터 전송 성공');
       townCertify();
     },
     error: function () {
-      console.log('오류 발생');
+      alert('오류 발생');
     },
   });
 }

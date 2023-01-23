@@ -52,8 +52,13 @@
 .update_first img {
   width: 300px;
   height: 300px;
+  box-sizing: border-box;
+  border: 0.3px solid rgba(241, 196, 15, 0.4);
   border-radius: 50%;
-  background-color: rgba(241, 196, 15, 0.2);
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0px auto;
   display: block;
 }

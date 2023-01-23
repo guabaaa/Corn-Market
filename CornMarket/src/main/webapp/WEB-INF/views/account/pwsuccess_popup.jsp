@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pw-success-popup</title>
+    <title>비밀번호 찾기</title>
     <script></script>
     <c:set var="path" value="${pageContext.request.contextPath}"/>
   	<link rel="stylesheet" href="${path}/resources/css/account/account_popup.css"/>

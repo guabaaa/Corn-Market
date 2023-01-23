@@ -1,7 +1,7 @@
 //전송할 이메일 맞는지 확인
 function checkEmail() {
   let email = $('#memberEmail').val() + '@' + $('#memberEmail2').val();
-  console.log(email);
+  //console.log(email);
   let id = $('#conInput').val();
   let name = $('#memberNm2').val();
   let searchPw = {
@@ -14,7 +14,7 @@ function checkEmail() {
     data: email,
     contentType: 'text/plain; charset=utf-8',
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data == 1) {
         codenumshow(); //인증번호 입력창 보여주기
         sendEmail(); //인증번호 메일 전송
@@ -33,7 +33,7 @@ function checkEmail() {
 //비밀번호 찾기 메일 인증번호 전송
 function sendEmail() {
   const email = $('#memberEmail').val() + '@' + $('#memberEmail2').val();
-  console.log('이메일 주소 : ' + email);
+  //console.log('이메일 주소 : ' + email);
   const codeNum = $('#codeNum');
 
   $.ajax({
@@ -68,13 +68,13 @@ function codenumshow() {
 function numBtnClick() {
   $('#numBtn').click(() => {
     const mail_code = $('#codeNum').val(); // 인증코드 값
-    console.log('인증 코드 : ' + mail_code);
+    //console.log('인증 코드 : ' + mail_code);
 
     $.ajax({
       type: 'GET',
       url: pwMailCodeUrl + mail_code,
       success: function (data) {
-        console.log(data);
+        //console.log(data);
         if (data == 1) {
           alert('인증번호가 확인되었습니다.');
           $('#code-show-input').hide(); //인증번호 입력창 숨기기
@@ -143,7 +143,7 @@ function checkPw() {
     headers: { 'content-type': 'application/json' }, // 요청 헤더
     data: JSON.stringify(searchPw),
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data == 1) {
       	codenumshow(); //인증번호 입력창 보여주기
         sendEmail(); //인증번호 메일 전송

@@ -65,13 +65,14 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         if (nickname == '') {
             alert('닉네임을 입력해주세요.');
             $('#update_nickname').focus();
+            return;
         }
-        console.log(nickname);
+        //console.log(nickname);
         $.ajax({
           type: 'GET', //중복확인
           url: '<c:url value="/profile/update/check?nickname=" />' + nickname,
           success: function (num) {
-            console.log(num);
+            //console.log(num);
             //alert('ddd');
             if (num == 0) alert('닉네임을 사용하실 수 있습니다.');
             else if (num == 1) {

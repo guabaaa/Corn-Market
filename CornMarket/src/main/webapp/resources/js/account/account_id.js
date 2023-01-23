@@ -16,7 +16,6 @@ function searchdisplayemail() {
 //errormessage
 
 function idpopup() {
-  alert('idpopup');
   let name = document.getElementById('memberNm1').value;
   let hp = document.getElementById('memberHp').value;
   //let id = document.getElementById("conInput").value
@@ -50,7 +49,7 @@ function checkIdFromPhone() {
     headers: { 'content-type': 'application/json' }, 
     data: JSON.stringify(idPhone),
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data == 1) {
         idFromPhone();
         $('.error').hide();
@@ -81,7 +80,7 @@ function checkIdFromMail() {
     headers: { 'content-type': 'application/json' }, // 요청 헤더
     data: JSON.stringify(idMail),
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data == 1) {
         idFromMail();
         $('.error').hide();
