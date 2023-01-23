@@ -7,9 +7,7 @@ public class WebSocketInfo {
 	private String room_id;
 	private String sender_id;
 
-	public WebSocketInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public WebSocketInfo() {}
 
 	public WebSocketInfo(String room_id, String sender_id) {
 		super();

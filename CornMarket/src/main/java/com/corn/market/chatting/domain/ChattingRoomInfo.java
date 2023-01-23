@@ -10,9 +10,7 @@ public class ChattingRoomInfo {
 	private String last_send_date;
 	private String post_town_name;
 	
-	public ChattingRoomInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingRoomInfo() {}
 
 	public ChattingRoomInfo(String room_id, String other_user_id, String other_profile_img, String other_nickname,
 			String last_chat_content, String last_send_date, String post_town_name) {

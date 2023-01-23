@@ -5,9 +5,7 @@ public class SearchIdPhone {
 	private String user_name;
 	private String phone;
 	
-	public SearchIdPhone() {
-		// TODO Auto-generated constructor stub
-	}
+	public SearchIdPhone() {}
 	
 	public SearchIdPhone(String user_name, String phone) {
 		super();

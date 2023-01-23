@@ -4,9 +4,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.corn.market.town.domain.TownCertification;
 import com.corn.market.town.domain.TownInfo;
@@ -19,14 +19,14 @@ public class TownController {
 	private TownService townService;
 
 	//동네인증 페이지
-	@RequestMapping(value = "/town", method = RequestMethod.GET)
+	@GetMapping("/town")
 	public String townCertificationGET() {
 		
 		return "town/popup_profile_mytown";
 	}
 	
 	//동네인증 정보 받아서 테이블에 등록
-	@RequestMapping(value = "/town", method = RequestMethod.POST)
+	@PostMapping("/town")
 	public String townCertificationPOST(@RequestBody TownInfo townInfo, HttpSession session) {
 		System.out.println(townInfo);
 		//session.setAttribute("id", "fourkimm"); //세션 테스트

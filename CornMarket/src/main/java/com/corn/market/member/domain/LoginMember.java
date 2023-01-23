@@ -5,9 +5,7 @@ public class LoginMember {
 	private String user_id;
 	private String user_pw;
 	
-	public LoginMember() {
-		// TODO Auto-generated constructor stub
-	}
+	public LoginMember() {}
 
 	public LoginMember(String user_id, String user_pw) {
 		super();

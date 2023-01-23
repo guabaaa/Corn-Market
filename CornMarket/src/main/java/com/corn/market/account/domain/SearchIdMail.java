@@ -6,9 +6,7 @@ public class SearchIdMail {
 	private String email_id;
 	private String email_domain;
 	
-	public SearchIdMail() {
-		// TODO Auto-generated constructor stub
-	}
+	public SearchIdMail() {}
 
 	public SearchIdMail(String user_name, String email_id, String email_domain) {
 		super();

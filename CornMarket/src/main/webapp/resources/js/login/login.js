@@ -34,7 +34,7 @@ function right_login(){
     data: JSON.stringify(member),
     datatype : 'json',
     success: function (data) {
-      console.log(data);
+      //console.log(data);
       if (data == 1) {
         frm.submit();
       } else if (data == 0) {

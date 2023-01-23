@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.corn.market.member.domain.Member;
 
-
 @Repository
 public class MemberDao {
 

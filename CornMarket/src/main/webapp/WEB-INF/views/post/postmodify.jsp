@@ -12,6 +12,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   </head>
 
   <body>
+  	<jsp:include page="../base/header.jsp" />
     <div class="board-wrap">
       <form method="post" action="<c:url value='/post/${post.post_id}/modify'/>" enctype="multipart/form-data">
         <div class="board-img-wrap">
@@ -83,6 +84,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </div>
       </form>
     </div>
+	<jsp:include page="../base/footer.jsp" />
 
     <input type="hidden" value="${post.content}" id="post_content" />
     <input type="hidden" value="${post.category_id}" id="post_category_id" />

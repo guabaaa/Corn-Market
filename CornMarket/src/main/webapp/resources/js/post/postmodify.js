@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 const imageTag = document.getElementById("chooseFile");
 imageTag.addEventListener('change', function () {
-    console.log('파일선택');
+    //console.log('파일선택');
     /*
     while (onnode.hasChildNodes()) {
         onnode.removeChild(onnode.firstChild);
@@ -29,7 +29,7 @@ function getImageFiles(e) {
     const uploadFiles = [];
     const files = e.currentTarget.files;
     const imagePreview = document.querySelector('.image-preview');
-    console.log(typeof files, files);
+    //console.log(typeof files, files);
 
 
     if ([...files].length >= 6) {
@@ -103,7 +103,7 @@ $(".btn-delete").click(function (event) {
     var $input = $(".real-upload");
     var $preview = $('#preview');
     resetInputFile($input, $preview);
-    console.log('삭제완료');
+    //console.log('삭제완료');
 });
 
 //게시판 작성 form 제출

@@ -5,9 +5,7 @@ public class ProfileUpdate {
 	private String profile_img;
 	private String nickname;
 	
-	public ProfileUpdate() {
-		// TODO Auto-generated constructor stub
-	}
+	public ProfileUpdate() {}
 
 	public ProfileUpdate(String profile_img, String nickname) {
 		super();

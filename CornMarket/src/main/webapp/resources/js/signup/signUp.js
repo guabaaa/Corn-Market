@@ -83,7 +83,7 @@ function idcheck(){
     data: user_id,
     contentType: 'text/plain; charset=utf-8',
    	success:function(data){
-   		console.log(data);
+   		//console.log(data);
 		if(data == 0){
 			alert("사용 가능한 닉네임입니다.");
 		}
@@ -115,7 +115,7 @@ function idcheck(){
 	  	data: nickname,
 		contentType: 'text/plain; charset=utf-8',
 	   	success:function(data){
-	   	console.log(data);
+	   	//console.log(data);
 		if(data == 0){
 		alert("사용 가능한  닉네임입니다.");
 		}

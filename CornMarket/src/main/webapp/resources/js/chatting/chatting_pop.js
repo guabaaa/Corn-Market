@@ -1,8 +1,8 @@
 // 웹소켓 연결
 var webSocket;
 function connect() {
-  //webSocket = new WebSocket('ws://localhost:8090/market/chat');
-  webSocket = new WebSocket('ws://192.168.219.107:8090/market/chat');
+  webSocket = new WebSocket('ws://localhost:8090/market/chat');
+  //webSocket = new WebSocket('ws://ip주소:8090/market/chat');
 
   webSocket.onopen = onOpen;
   webSocket.onmessage = onMessage;
@@ -55,8 +55,7 @@ function onMessage(evt) {
 // 웹소켓 서버와 연결이 끊어졌을 때 호출되는 이벤트
 function onClose(evt) {
   send('out', '');
-  alert('연결을 끊었습니다');
-  console.log('Socket is closed. Reconnect will be attempted in 1 second.');
+  //alert('연결을 끊었습니다');
 }
 
 /*   HTML 추가 메소드   */
@@ -90,7 +89,7 @@ function appendNowDate() {
   let index = lastDateArr.length - 1;
   let lastDate;
   if (lastDateArr.length) lastDate = lastDateArr[index].innerText;
-  console.log(lastDate);
+  //console.log(lastDate);
   if (lastDate != showDate() || !lastDate) {
     $('#chatMessageArea').append(`<div class="chat_date">${today}</div>`);
     scrollDown();
@@ -182,7 +181,7 @@ function ajaxChatContent(msg) {
 
 //거래 완료 버튼
 function dealEndBtn() {
-  alert('거래완료');
+  //alert('거래완료');
   //판매글id로 판매글 상태 거래완료로 변경
   let endUrl = $('#dealEndUrl').val();
   let post_id = $('#post_id').val();
@@ -199,7 +198,7 @@ function dealEndBtn() {
     success: function (data) {
       //alert('성공');
       let status = data;
-      console.log(status);
+      //console.log(status);
       if (status == '거래완료') {
         $('#deal_end').attr('disabled', 'true');
         $('#deal_end').css('cursor', 'default');
@@ -221,7 +220,7 @@ function dealEndBtn() {
 //거래후기창 팝업으로 열기
 function openReview() {
   if ($('#seller_id').val() == $('#user_id').val()) {
-    alert('구매자가 후기를 작성할 때까지 기다려주세요.');
+    alert('구매자만 후기를 작성할 수 있습니다.');
     return;
   }
   let url = $('#reviewUrl').val();

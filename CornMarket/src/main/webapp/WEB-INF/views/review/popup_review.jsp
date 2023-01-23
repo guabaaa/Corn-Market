@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Corn-Market 리뷰팝업</title>
+    <title>Corn-Market 거래후기</title>
     <link rel="stylesheet" href="${path}/resources/css/review/popup_review.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="${path}/resources/js/profile/update_myinfo.js"></script>

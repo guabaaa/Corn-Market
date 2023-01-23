@@ -9,13 +9,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.corn.market.profile.domain.ProfileUpdate;
-import com.corn.market.profile.service.ProfileService;
 
 @Service
 public class FileUploadService {
@@ -31,7 +27,7 @@ public class FileUploadService {
 		String path = "/resources/images/profile/";
 		//파일 저장 실제 위치 경로
 		String folderPath = request.getSession().getServletContext().getRealPath(path); 
-		System.out.println("파일실제위치: "+folderPath);
+		//System.out.println("파일실제위치: "+folderPath);
 		//파일 이름 변경 (profile_날짜+시간+랜덤숫자)
 		String random = Integer.toString((int)(Math.random()*99+1));
 		String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
@@ -62,7 +58,7 @@ public class FileUploadService {
 		String path = "/resources/images/post/";
 		//파일 저장 실제 위치 경로
 		String folderPath = request.getSession().getServletContext().getRealPath(path); 
-		System.out.println("파일실제위치: "+folderPath);
+		//System.out.println("파일실제위치: "+folderPath);
 		
 		String random = ""; 
 		String date = ""; 
@@ -76,7 +72,7 @@ public class FileUploadService {
 		//파일 하나씩 업로드 (반복)
 		for(int i=0; i<list.size(); i++) {
 			String fileName = list.get(i).getOriginalFilename();
-			System.out.println("파일"+(i+1)+": "+fileName);
+			//System.out.println("파일"+(i+1)+": "+fileName);
 			//파일 확장자 구하기 ".png"
 			
 			if(fileName.length() < 5 || fileName.lastIndexOf(".") < 1) return "/resources/images/post/post_img_thumbnail.png";
@@ -104,7 +100,7 @@ public class FileUploadService {
 		String url = "";
 		if(list.size() > 1) url = String.join(",", urls); //파일 여러개일때
 		else if(list.size() == 1) url = urls[0]; //파일 한개일때
-		System.out.println(url);
+		//System.out.println(url);
 				
 		return url; //디비에 저장할 url
 	}

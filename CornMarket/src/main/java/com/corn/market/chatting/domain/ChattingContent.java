@@ -6,9 +6,7 @@ public class ChattingContent {
 	private String sender_id;
 	private String chat_content;
 	
-	public ChattingContent() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingContent() {}
 
 	public ChattingContent(String room_id, String sender_id, String chat_content) {
 		super();

@@ -75,7 +75,7 @@ function categoryList() {
     success: function (data) {
       //alert('카테고리id 전송 성공');
       let list = data;
-      console.log(list[0]);
+      //console.log(list[0]);
       $('#recent_list').hide(); //기존 리스트 숨기기
       $('#town_list').hide();
       $('#category_list').empty(); //카테고리 목록 초기화
@@ -123,7 +123,7 @@ function townList() {
     success: function (data) {
       //alert('카테고리id 전송 성공');
       let list = data;
-      console.log(list[0]);
+      //console.log(list[0]);
       $('#recent_list').hide(); //기존 리스트 숨기기
       $('#category_list').hide();
       $('#town_list').empty(); //카테고리 목록 초기화
@@ -162,14 +162,14 @@ function townList() {
 
 function showValue() {
   let select1 = $('#sortchoice1 option:selected').val();
-  console.log('대분류:' + select1);
+  //console.log('대분류:' + select1);
   if (select1 == 'category') categoryList(); //카테고리별 데이터 가져오기 ajax
   if (select1 == 'town') townList(); //지역별 데이터 가져오기 ajax
 }
 
 $(document).ready(function () {
   let loadpage = $('#loadPage').val();
-  console.log(loadpage);
+  //console.log(loadpage);
   $('#clickPage' + loadpage).css({
     color: '#ffffff',
     'background-color': 'rgb(241, 196, 15)',

@@ -84,7 +84,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	  <input type="hidden" value="${chat.post_id}" id="post_id" />
 	  <input type="hidden" value="${chat.room_id}" id="room_id" />
     <input type="hidden" value="<c:url value='/review/post-end'/>" id="dealEndUrl" />
-    <input type="hidden" value="<c:url value='/review'/>" id="reviewUrl" />
+    <input type="hidden" value="${path}/review" id="reviewUrl" />
     <input type="hidden" value="<c:url value='/chatting/list/' />" id="chat_content_url" />
     <input type="hidden" value="${id}" id="user_id" />
     

@@ -80,8 +80,6 @@ public class PostDao {
 		return session.selectOne(namespace + "getSearchTotal", keyword); 
 	}
 
-
-
 }
  
   

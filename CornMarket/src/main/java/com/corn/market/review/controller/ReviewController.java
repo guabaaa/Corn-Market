@@ -25,20 +25,21 @@ public class ReviewController {
 	
 	@PostMapping("/review")
 	public String regReview(ReviewReg review) {
-		System.out.println("리뷰:"+review);
+		//System.out.println("리뷰:"+review);
 		service.regReview(review);
 		return "redirect:/chatting/list";
 	}
 	//판매글의 거래상태를 거래완료로 수정
 	@ResponseBody
-	@RequestMapping(value="/review/post-end", produces = "application/json; charset=utf-8",method = RequestMethod.POST)
+	@RequestMapping(value="/review/post-end", produces = "application/json; charset=utf-8", 
+	method = RequestMethod.POST)
 	public String changePostStatus(@RequestBody String post_id) {
-		System.out.println("거래완료할 판매글id"+post_id);
+		//System.out.println("거래완료할 판매글id"+post_id);
 		String status = service.getPostStatus(post_id);
-		System.out.println("거래상태:"+status);
+		//System.out.println("거래상태:"+status);
 		if(status.equals("판매중")) {
 			service.modifyPostStatus(post_id);
-			System.out.println("done");
+			//System.out.println("done");
 		}
 		return status;
 	}

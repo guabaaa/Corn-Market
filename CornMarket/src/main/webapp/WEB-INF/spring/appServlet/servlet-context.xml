@@ -28,7 +28,9 @@
 	<!-- 로그인 인터셉터 등록 -->
 	<interceptors>	
 	<interceptor>	
-		<mapping path="/*.corn" />
+		<mapping path="/profile/**" />
+		<mapping path="/post/enroll" />
+		<mapping path="/chatting/**" />
 		<exclude-mapping path="/resources/**"/>
 		<beans:bean class="com.corn.market.common.interceptor.SessionInterceptor" />	
 	</interceptor>	

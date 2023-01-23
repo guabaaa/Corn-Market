@@ -30,7 +30,6 @@ public class FileUploadTestController {
 		//DB에 이미지데이터 등록
 		String id = "bb22";
 		service.modifyProfileImage(id, url);
-		System.out.println("데이터 입력");
 		
 		//데이터 확인 테스트용
 		ProfileUpdate profile = service.getProfileInfo(id);
@@ -49,7 +48,6 @@ public class FileUploadTestController {
 		//DB에 이미지데이터 등록
 		String id = "aa11";
 		service.modifyProfileImage(id, url);
-		System.out.println("데이터 입력");
 
 		//데이터 확인 테스트용
 		ProfileUpdate profile = service.getProfileInfo(id);

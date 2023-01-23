@@ -28,24 +28,15 @@ public class PostController {
 	PostService postService;
 	@Autowired
 	private FileUploadService fileService;
-
-	/* 판매글 전체 조회 페이지 (기본 최신순)
-	@GetMapping("/post")
-	public String postRecentList(Model model) throws Exception {
-		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostList();
-		System.out.println(list);
-		model.addAttribute("list",list);
-		return "post/postlookup";
-		
-	} */
 	
 	//판매글 검색
 	@GetMapping("/post/search")
-	public String getSearchResult(String keyword, Model model, Criteria cri) throws Exception {
+	public String getSearchResult(String keyword, Model model, Criteria cri) 
+			throws Exception {
         model.addAttribute("list", postService.getSearchResult(cri, keyword));            
         int total = postService.getSearchTotal(keyword);
         Page pageMake = new Page(cri, total);
-        System.out.println(cri.getPageNum());
+        //System.out.println(cri.getPageNum());
         model.addAttribute("pageMaker", pageMake);  
         model.addAttribute("keyword",keyword);
         return "post/postlookup_search";
@@ -53,7 +44,8 @@ public class PostController {
 	
 	/* 판매글 전체 조회 페이지(페이징 적용) */
     @GetMapping("/post")
-    public String boardListGET(Model model, Criteria cri) throws Exception {
+    public String boardListGET(Model model, Criteria cri) 
+    		throws Exception {
         model.addAttribute( "list", postService.getListPaging(cri) );            
         int total = postService.getTotal();
         Page pageMake = new Page(cri, total);
@@ -63,7 +55,8 @@ public class PostController {
     
     // 판매글 카테고리별 조회 - 메인 (페이징)
     @GetMapping("/post/category")
-    public String postCategoryListMain(String id, Model model, Criteria cri) throws Exception {
+    public String postCategoryListMain(String id, Model model, Criteria cri) 
+    		throws Exception {
     	ArrayList<PostList> list = (ArrayList<PostList>) postService.getCategoryList(cri, id);
     	model.addAttribute("list",list);
     	Page pageMake = new Page(cri, postService.getCategoryTotal(id));
@@ -74,20 +67,23 @@ public class PostController {
 	// 판매글 카테고리별 조회 (ajax)
 	@ResponseBody
 	@PostMapping("/post/category/{category_id}")
-	public ArrayList<PostList> postCategoryList(@PathVariable("category_id") String category_id) throws Exception {
+	public ArrayList<PostList> postCategoryList(@PathVariable("category_id") String category_id) 
+			throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostCategoryList(category_id);
 		return list;
 	} 
 	// 판매글 지역별 조회 (ajax)
 	@ResponseBody
 	@GetMapping("/post/town/{town_code}")
-	public ArrayList<PostList> postTownList(@PathVariable("town_code") String town_code) throws Exception {
+	public ArrayList<PostList> postTownList(@PathVariable("town_code") String town_code) 
+			throws Exception {
 		ArrayList<PostList> list = (ArrayList<PostList>) postService.getPostTownList(town_code);
 		return list;
 	}
 	// 판매글 상세 조회 (기본)
 	@GetMapping("/post/{post_id}")
-	public String getView(@PathVariable String post_id, Model model, HttpSession session) throws Exception {
+	public String getView(@PathVariable String post_id, 
+			Model model, HttpSession session) throws Exception {
 		String id = (String) session.getAttribute("id");
 		PostList post = postService.getOnePost(post_id);
 		model.addAttribute("post", post);
@@ -102,21 +98,23 @@ public class PostController {
 	} 
 	// 판매글 등록 + 이미지 등록
 	@PostMapping("/post/enroll")
-	public String write(PostVO post, HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request)
+	public String write(PostVO post, HttpSession session, 
+			MultipartHttpServletRequest files, HttpServletRequest request)
 			throws Exception {
 		String id = (String) session.getAttribute("id");
 		post.setUser_id(id);
 		post.setContent(postService.replaceLine(post.getContent()));
 		String url = fileService.multiFileUpload(files, request);  //파일 업로드
 		post.setPost_img(url);  //사진등록
-		System.out.println("이미지 등록: "+post.getPost_img());
+		//System.out.println("이미지 등록: "+post.getPost_img());
 		postService.registerPost(post); //등록
 		return "redirect:/post";
 	}
 	
 	// 판매글 수정 페이지 이동 
 	@GetMapping("/post/{post_id}/modify")
-	public String boardModifyGET(@PathVariable String post_id, Model model, HttpSession session) throws Exception {
+	public String boardModifyGET(@PathVariable String post_id, Model model, 
+			HttpSession session) throws Exception {
 		String id = (String) session.getAttribute("id");
 		PostList post = postService.getOnePost(post_id);
 		model.addAttribute("post", post);
@@ -125,13 +123,15 @@ public class PostController {
 	}
 	// 판매글 수정
 	@PostMapping("/post/{post_id}/modify")
-	public String postModify(@PathVariable String post_id, PostVO post, HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request) throws Exception {
+	public String postModify(@PathVariable String post_id, PostVO post, 
+			HttpSession session, MultipartHttpServletRequest files, HttpServletRequest request) 
+					throws Exception {
 		String id = (String) session.getAttribute("id");
 		post.setUser_id(id);
 		post.setContent(postService.replaceLine(post.getContent()));
 		String url = fileService.multiFileUpload(files, request);  //파일 업로드
 		post.setPost_img(url);  //사진등록
-		System.out.println("이미지 수정: "+post.getPost_img());
+		//System.out.println("이미지 수정: "+post.getPost_img());
 		postService.modifyPost(post);
 		return "redirect:/post/"+post_id;
 	}

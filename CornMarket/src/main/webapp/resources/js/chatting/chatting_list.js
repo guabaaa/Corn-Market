@@ -1,6 +1,6 @@
 //채팅방 삭제
 function removeChatRoom(self) {
-  console.log(self);
+  //console.log(self);
   let url = $('#delete_url').val();
   let room_id = $(self).attr('id');
   $.ajax({
