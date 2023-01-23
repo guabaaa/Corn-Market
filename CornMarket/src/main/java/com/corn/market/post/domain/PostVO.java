@@ -14,9 +14,7 @@ public class PostVO {
 	private String post_status; // 상태 (기본 '판매중')
 	private String post_img; // 이미지주소 (기본 '/resources/images/post/post_img_thumbnail.png')
 
-	public PostVO() {
-		// TODO Auto-generated constructor stub
-	}
+	public PostVO() {}
 
 	public PostVO(String post_id, String user_id, String category_id, String town_code, String title, String price,
 			String content, String created, String updated, String post_status, String post_img) {

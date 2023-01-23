@@ -54,7 +54,7 @@ public class MemberController {
 	@PostMapping("/idcheck")
 	public int idcheck(@RequestBody String user_id) throws Exception {
 		int result= dao.idCheck(user_id);	
-		System.out.println(user_id + " : " + result);
+		//System.out.println(user_id + " : " + result);
 		return result; //아이디가 있으면 1 없으면 0
 	} 
 
@@ -63,7 +63,7 @@ public class MemberController {
 	@PostMapping("/nickcheck")
 	public int nickcheck(@RequestBody String nickname) throws Exception {
 		int result=dao.nicknameCheck(nickname);
-		System.out.println(nickname + " : " + result);
+		//System.out.println(nickname + " : " + result);
 		return result; //닉네임이 있으면 1 없으면 0
 	} 
 
@@ -100,18 +100,15 @@ public class MemberController {
 
 		//json정보를 온걸 자바에어 다루기위해 처리하는것 ( json라이브러리추가 )
 		ObjectMapper objectMapper = new ObjectMapper ();
-		KakaoToken kakaoToken=null;
+		KakaoToken kakaoToken = null;
 		try {
 			kakaoToken = objectMapper.readValue(response.getBody(), KakaoToken.class);
 			///받아온 response.getBody()를  KakaoToken클래스에 담아줄거임 변수명이 일치해야함 
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -123,7 +120,7 @@ public class MemberController {
 	public String loginForm() {
 		return "login/login";
 	} 
-	
+
 	// 로그인 전 아이디, 비밀번호 확인
 	@ResponseBody
 	@PostMapping("/login/checklogin")
@@ -138,9 +135,9 @@ public class MemberController {
 	public String login(Member member, boolean rememberMe, 
 			HttpServletResponse response,HttpServletRequest request) throws Exception {
 
-		System.out.println("id : " + member.getUser_id());
-		System.out.println("passwd : " + member.getUser_pw());
-		System.out.println("rememberMe : " + rememberMe);
+		//System.out.println("id : " + member.getUser_id());
+		//System.out.println("passwd : " + member.getUser_pw());
+		//System.out.println("rememberMe : " + rememberMe);
 
 		// 로그인 유지 체크 확인 
 		if (rememberMe == true) { 

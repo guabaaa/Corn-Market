@@ -7,9 +7,7 @@ public class Review {
 	private String nickname;
 	private String review;
 	
-	public Review() {
-		// TODO Auto-generated constructor stub
-	}
+	public Review() {}
 
 	public Review(String user_id, String profile_img, String nickname, String review) {
 		super();

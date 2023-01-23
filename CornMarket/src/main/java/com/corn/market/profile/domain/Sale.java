@@ -8,9 +8,7 @@ public class Sale {
 	private String price;
 	private String town_name;
 	
-	public Sale() {
-		// TODO Auto-generated constructor stub
-	}
+	public Sale() {}
 
 	public Sale(String post_id, String post_img, String title, String price, String town_name) {
 		super();

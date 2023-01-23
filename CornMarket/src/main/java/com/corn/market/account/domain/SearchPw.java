@@ -7,9 +7,7 @@ public class SearchPw {
 	private String email_id;
 	private String email_domain;
 	
-	public SearchPw() {
-		// TODO Auto-generated constructor stub
-	}
+	public SearchPw() {}
 
 	public SearchPw(String user_id, String user_name, String email_id, String email_domain) {
 		super();

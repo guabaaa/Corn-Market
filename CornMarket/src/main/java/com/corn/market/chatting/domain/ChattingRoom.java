@@ -7,9 +7,7 @@ public class ChattingRoom {
 	private String seller_id;
 	private String buyer_id;
 	
-	public ChattingRoom() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingRoom() {}
 
 	public ChattingRoom(String room_id, String post_id, String seller_id, String buyer_id) {
 		super();

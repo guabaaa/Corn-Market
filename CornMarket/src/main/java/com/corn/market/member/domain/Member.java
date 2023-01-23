@@ -1,10 +1,7 @@
 package com.corn.market.member.domain;
 
-
-import java.util.Date;
-import java.util.Objects;
-
 public class Member {
+
 	private String user_name;
 	private String user_id;
 	private String nickname;
@@ -12,12 +9,8 @@ public class Member {
 	private String email;
 	private String phone;
 	
-	@Override
-	public String toString() {
-		return "Member [user_name=" + user_name + ", user_id=" + user_id + ", nickname=" + nickname + ", user_pw="
-				+ user_pw + ", email=" + email + ", phone=" + phone + "]";
-	}
 	public Member() {};
+	
 	public Member(String user_name, String user_id, String nickname, String user_pw, String email, String phone) {
 		super();
 		this.user_name = user_name;
@@ -27,6 +20,7 @@ public class Member {
 		this.email = email;
 		this.phone = phone;
 	}
+	
 	public String getUser_name() {
 		return user_name;
 	}
@@ -63,10 +57,11 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	@Override
+	public String toString() {
+		return "Member [user_name=" + user_name + ", user_id=" + user_id + ", nickname=" + nickname + ", user_pw="
+				+ user_pw + ", email=" + email + ", phone=" + phone + "]";
+	}
 	
-	
-	
-   
-    
-     
 }

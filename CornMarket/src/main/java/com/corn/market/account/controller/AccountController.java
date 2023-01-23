@@ -39,7 +39,7 @@ public class AccountController {
 	//아이디 찾기 - 휴대폰번호로
 	@RequestMapping(value = "/account/id/phone", method = RequestMethod.POST)
 	public String searchIdPhone(SearchIdPhone phone, Model model) {
-		System.out.println(phone); //
+		//System.out.println(phone); //
 		AccountId accountId = service.searchIdPhone(phone);
 		model.addAttribute("accountId",accountId);
 		return "account/idsuccess_popup";
@@ -57,7 +57,7 @@ public class AccountController {
 	//아이디 찾기 - 이메일로
 	@RequestMapping(value = "/account/id/mail", method = RequestMethod.POST)
 	public String searchIdMail(SearchIdMail mail, Model model) {
-		System.out.println(mail);
+		//System.out.println(mail);
 		AccountId accountId = service.searchIdMail(mail);
 		model.addAttribute("accountId",accountId);
 		return "account/idsuccess_popup";
@@ -73,7 +73,7 @@ public class AccountController {
 	@ResponseBody
 	@RequestMapping(value = "/account/pw/mail/check", method = RequestMethod.POST)
 	public int checkMail(@RequestBody String email) {
-		System.out.println("이메일 전송전 확인:"+email);
+		//System.out.println("이메일 전송전 확인:"+email);
 		int check = service.checkEmail(email);
 		//이메일이 회원정보에 없으면 0, 있으면 1
 		return check;
@@ -91,13 +91,10 @@ public class AccountController {
 	//비밀번호 찾기
 	@RequestMapping(value = "/account/pw", method = RequestMethod.POST)
 	public String searchPwPOST(SearchPw searchPw, Model model) {
-		System.out.println(searchPw);
+		//System.out.println(searchPw);
 		AccountPw accountPw = service.searchPw(searchPw);
 		model.addAttribute("accountPw", accountPw);
 		return "account/pwsuccess_popup";
 	}
-	
-	//비밀번호 변경
-		
 	
 }

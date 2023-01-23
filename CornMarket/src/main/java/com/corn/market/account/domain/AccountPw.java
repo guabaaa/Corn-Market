@@ -4,9 +4,7 @@ public class AccountPw {
 	
 	private String user_pw;
 	
-	public AccountPw() {
-		// TODO Auto-generated constructor stub
-	}
+	public AccountPw() {}
 
 	public AccountPw(String user_pw) {
 		super();

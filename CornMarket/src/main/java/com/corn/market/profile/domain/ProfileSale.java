@@ -1,7 +1,6 @@
 package com.corn.market.profile.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ProfileSale {
 	
@@ -13,9 +12,7 @@ public class ProfileSale {
 	private String profile_img;
 	private ArrayList<Sale> saleList;
 	
-	public ProfileSale() {
-		// TODO Auto-generated constructor stub
-	}
+	public ProfileSale() {}
 
 	public ProfileSale(String user_id, String nickname, String temperature, String town_name, String join_date,
 			String profile_img, ArrayList<Sale> saleList) {

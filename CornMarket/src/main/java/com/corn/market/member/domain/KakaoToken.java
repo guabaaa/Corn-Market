@@ -1,14 +1,13 @@
 package com.corn.market.member.domain;
 
-
 public class KakaoToken {
-    String token_type;
-    String access_token;
-    Integer expires_in;
-    String refresh_token;
-    Integer refresh_token_expires_in;
-    String scope;
-    
+	
+    private String token_type;
+    private String access_token;
+    private Integer expires_in;
+    private String refresh_token;
+    private Integer refresh_token_expires_in;
+    private String scope;
     
 	public String getToken_type() {
 		return token_type;
@@ -46,13 +45,12 @@ public class KakaoToken {
 	public void setScope(String scope) {
 		this.scope = scope;
 	}
+	
 	@Override
 	public String toString() {
 		return "KakaoToken [token_type=" + token_type + ", access_token=" + access_token + ", expires_in=" + expires_in
 				+ ", refresh_token=" + refresh_token + ", refresh_token_expires_in=" + refresh_token_expires_in
 				+ ", scope=" + scope + "]";
 	}
-
-    
     
 }

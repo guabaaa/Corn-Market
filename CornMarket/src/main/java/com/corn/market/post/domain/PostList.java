@@ -17,9 +17,7 @@ public class PostList {
 	private String post_status; // 상태 (기본 '판매중')
 	private String post_img; // 이미지주소 (기본 '/resources/images/post/post_img_thumbnail.png')
 	
-	public PostList() {
-		// TODO Auto-generated constructor stub
-	}
+	public PostList() {}
 
 	public PostList(String post_id, String user_id, String nickname, String category_id, String category_name,
 			String town_code, String town_name, String title, String price, String content, String created,

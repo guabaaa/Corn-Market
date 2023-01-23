@@ -40,6 +40,8 @@ public class PostService {
 	//판매글 상세 조회
 	public PostList getOnePost(String post_id) throws Exception {
 		PostList post = dao.selectOne(post_id);
+		String[] imgs = post.getPost_img().split(",");
+		post.setPost_img(imgs[0]);
 		return post;
 	}
 	

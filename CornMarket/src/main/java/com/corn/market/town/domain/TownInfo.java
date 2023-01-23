@@ -6,9 +6,7 @@ public class TownInfo {
 	private String latitude;
 	private String longitude;
 	
-	public TownInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public TownInfo() {}
 
 	public TownInfo(String town_name, String latitude, String longitude) {
 		super();

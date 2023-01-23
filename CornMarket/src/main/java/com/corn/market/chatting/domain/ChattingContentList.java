@@ -7,9 +7,7 @@ public class ChattingContentList {
 	private String chat_content;
 	private String time;
 	
-	public ChattingContentList() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingContentList() {}
 
 	public ChattingContentList(String sender_id, String date, String chat_content, String time) {
 		super();

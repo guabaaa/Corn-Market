@@ -7,9 +7,7 @@ public class TownCertification {
 	private String latitude;
 	private String longitude;
 	
-	public TownCertification() {
-		// TODO Auto-generated constructor stub
-	}
+	public TownCertification() {}
 
 	public TownCertification(String user_id, String town_code, String latitude, String longitude) {
 		super();

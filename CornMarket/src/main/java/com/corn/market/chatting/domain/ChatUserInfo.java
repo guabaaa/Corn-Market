@@ -5,9 +5,7 @@ public class ChatUserInfo {
 	private String user_name;
 	private String profile_img;
 	
-	public ChatUserInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChatUserInfo() {}
 
 	public ChatUserInfo(String user_name, String profile_img) {
 		super();

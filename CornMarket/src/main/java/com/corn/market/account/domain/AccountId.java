@@ -4,9 +4,7 @@ public class AccountId {
 	
 	private String user_id;
 	
-	public AccountId() {
-		// TODO Auto-generated constructor stub
-	}
+	public AccountId() {}
 
 	public AccountId(String user_id) {
 		super();

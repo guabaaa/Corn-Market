@@ -14,9 +14,7 @@ public class ChattingInfo {
 	private String post_price;
 	private List<ChattingContentList> chatlist;
 	
-	public ChattingInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingInfo() {}
 
 	public ChattingInfo(String seller_id, String room_id, String post_id, String post_title, String post_img,
 			String other_profile_img, String other_nickname, String post_price, List<ChattingContentList> chatlist) {

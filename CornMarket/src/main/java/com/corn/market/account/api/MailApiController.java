@@ -19,7 +19,7 @@ public class MailApiController {
 	//메일 전송 & code 쿠키에 담기
 	@RequestMapping(value = "/account/pw/mail", method = RequestMethod.GET)
 	public void sendMail(String email,HttpServletRequest request,HttpServletResponse response) {
-		System.out.println(email);
+		//System.out.println(email);
 		String code = mailSendService.sendMail(email); //메일 전송
 		//String code = mailSendService.makeMailCode(); //인증코드만 테스트
 		//쿠키 생성 및 수정
@@ -32,15 +32,15 @@ public class MailApiController {
 	@ResponseBody
 	@RequestMapping(value = "/account/pw/mail/code", method = RequestMethod.GET)
 	public String checkMailCode(String mail_code,HttpServletRequest request) {
-		System.out.println("입력받은 값: "+mail_code);//
+		//System.out.println("입력받은 값: "+mail_code);//
 		String cookie_code = "";
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie ck : cookies) {
-				System.out.println("쿠키이름: "+ck.getName());//
+				//System.out.println("쿠키이름: "+ck.getName());//
 				if(ck.getName().equals("mail_code")) {
 					cookie_code = ck.getValue();
-					System.out.println("쿠키값: "+cookie_code);//
+					//System.out.println("쿠키값: "+cookie_code);//
 				}//if
 			}//for
 		}//if

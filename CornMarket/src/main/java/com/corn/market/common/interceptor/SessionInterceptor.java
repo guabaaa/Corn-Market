@@ -16,7 +16,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 			throws ServletException {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id"); //세션에서 아이디 가져오기	
-		System.out.println("인터셉터 로그인여부:" + id);
+		//System.out.println("인터셉터 로그인여부:" + id);
 		if (id == null){
 			try {
 				response.sendRedirect(request.getContextPath() +"/login");

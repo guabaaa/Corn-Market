@@ -18,7 +18,6 @@ import com.corn.market.chatting.domain.ChattingInfo;
 import com.corn.market.chatting.domain.ChattingRoom;
 import com.corn.market.chatting.domain.ChattingRoomDeleteInfo;
 import com.corn.market.chatting.domain.ChattingRoomInfo;
-import com.corn.market.chatting.domain.CheckChattingRoom;
 
 @Component
 public class ChattingDao {

@@ -6,9 +6,7 @@ public class ReviewReg {
 	private String rate;
 	private String review;
 	
-	public ReviewReg() {
-		// TODO Auto-generated constructor stub
-	}
+	public ReviewReg() {}
 
 	public ReviewReg(String room_id, String rate, String review) {
 		super();

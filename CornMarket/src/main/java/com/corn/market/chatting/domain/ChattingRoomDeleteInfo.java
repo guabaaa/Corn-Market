@@ -5,9 +5,7 @@ public class ChattingRoomDeleteInfo {
 	private String user_id;
 	private String room_id;
 	
-	public ChattingRoomDeleteInfo() {
-		// TODO Auto-generated constructor stub
-	}
+	public ChattingRoomDeleteInfo() {}
 
 	public ChattingRoomDeleteInfo(String user_id, String room_id) {
 		super();
